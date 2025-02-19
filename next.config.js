@@ -1,6 +1,11 @@
+// next.config.js
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // This enables static exports in Next.js 15+
+ output: 'export',
+ images: {
+   unoptimized: true,
+ },
+ // other configurations...
 };
 
 module.exports = nextConfig;
