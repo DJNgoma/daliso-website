@@ -8,12 +8,40 @@
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://daliso.com/" />
+<meta property="og:title" content="Daliso Ngoma – Technopreneur & Storyteller" />
+<meta property="og:description" content="Crafting Africa’s immersive tech future — one experience at a time." />
+<meta property="og:image" content="https://daliso.com/images/og-image.png" />
+
+<!-- Twitter (optional) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Daliso Ngoma – Technopreneur & Storyteller" />
+<meta name="twitter:description" content="Crafting Africa’s immersive tech future — one experience at a time." />
+<meta name="twitter:image" content="https://daliso.com/images/og-image.png" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://daliso.com/" />
+<meta property="og:title" content="Daliso Ngoma – Technopreneur & Storyteller" />
+<meta property="og:description" content="Crafting Africa’s immersive tech future — one experience at a time." />
+<meta property="og:image" content="https://daliso.com/images/og-image.png" />
+
+<!-- Twitter (optional) -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Daliso Ngoma – Technopreneur & Storyteller" />
+<meta name="twitter:description" content="Crafting Africa’s immersive tech future — one experience at a time." />
+<meta name="twitter:image" content="https://daliso.com/images/og-image.png" />
 </head>
 <body>
 
   <!-- Navigation -->
   <nav class="navbar">
-    <div class="logo">Daliso Ngoma</div>
+    <div class="logo">
+      <a href="#">
+        <img src="images/logo.png" alt="Daliso Ngoma Logo" height="40" />
+      </a>
+    </div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#projects">Projects</a></li>
@@ -81,27 +109,23 @@
     <!-- Featured -->
     <section id="featured" class="animate-on-scroll">
       <h2>Featured In</h2>
-      <div class="carousel">
-        <div class="carousel-track">
-          <a href="https://youtu.be/dPdQaC2FfsQ" target="_blank" class="carousel-item">
-            <img src="images/takealot.png" alt="Takealot Marketplace" />
-            <span>Takealot Marketplace</span>
-          </a>
-          <a href="https://www.cnbcafrica.com/" target="_blank" class="carousel-item">
-            <img src="images/cnbc.webp" alt="CNBC Africa" />
-            <span>CNBC Africa</span>
-          </a>
-          <a href="#" target="_blank" class="carousel-item">
-            <img src="images/hekima.jpeg" alt="Makala Podcast" />
-            <span>Makala Podcast</span>
-          </a>
-          <a href="#" target="_blank" class="carousel-item">
-            <img src="images/talk.png" alt="Talk with Confidence" />
-            <span>Talk with Confidence</span>
-          </a>
-        </div>
-        <button class="carousel-arrow left" onclick="scrollCarousel(-1)">‹</button>
-        <button class="carousel-arrow right" onclick="scrollCarousel(1)">›</button>
+      <div class="featured-grid">
+        <a href="https://youtu.be/dPdQaC2FfsQ" target="_blank" class="featured-item">
+          <img src="images/takealot.png" alt="Takealot Marketplace" />
+          <span>Takealot Marketplace</span>
+        </a>
+        <a href="https://www.cnbcafrica.com/" target="_blank" class="featured-item">
+          <img src="images/cnbc.webp" alt="CNBC Africa" />
+          <span>CNBC Africa</span>
+        </a>
+        <a href="#" target="_blank" class="featured-item">
+          <img src="images/hekima.jpeg" alt="Makala Podcast" />
+          <span>Makala Podcast</span>
+        </a>
+        <a href="#" target="_blank" class="featured-item">
+          <img src="images/talk.png" alt="Talk with Confidence" />
+          <span>Talk with Confidence</span>
+        </a>
       </div>
     </section>
 
@@ -153,6 +177,5 @@
       });
     });
   </script>
-
 </body>
 </html>
