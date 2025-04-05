@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="css/style.css" />
   <link rel="stylesheet" href="css/animations.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website" />
@@ -21,150 +21,89 @@
   <meta name="twitter:title" content="Daliso Ngoma – Technopreneur & Storyteller" />
   <meta name="twitter:description" content="Crafting Africa’s immersive tech future — one experience at a time." />
   <meta name="twitter:image" content="https://daliso.com/images/og-image.png" />
+  <style>
+    h1, h2, .hero-subtitle {
+      font-family: 'Space Grotesk', sans-serif;
+      font-weight: 700;
+    }
+    h1 {
+      font-size: 3rem;
+      line-height: 1.2;
+      margin-bottom: 0.25rem;
+    }
+    h2 {
+      font-size: 2rem;
+      line-height: 1.3;
+      border-left: 4px solid var(--accent);
+      padding-left: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .hero-subtitle {
+      font-weight: 500;
+      font-size: 1.15rem;
+      color: var(--accent);
+    }
+    .hero-quote {
+      font-style: italic;
+      font-size: 1.1rem;
+      color: var(--text);
+      margin: 0.5rem 0;
+    }
+    .hero-tagline {
+      font-size: 1rem;
+      margin: 0.5rem auto 1.5rem;
+      max-width: 600px;
+      color: var(--text);
+    }
+    .keyword-rotate {
+      display: inline-block;
+      color: var(--accent);
+      font-weight: 700;
+      animation: keywordChange 8s infinite;
+    }
+    @keyframes keywordChange {
+      0%, 20%   { content: "MR"; }
+      25%, 45%  { content: "Education"; }
+      50%, 70%  { content: "Spatial"; }
+      75%, 95%  { content: "Retail"; }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Navigation -->
-  <nav class="navbar">
-    <div class="logo">
-      <a href="#">
-        <img src="images/logo.png" alt="Daliso Ngoma Logo" height="40" />
-      </a>
+<nav class="navbar">
+  <div class="logo">
+    <a href="#">
+      <img src="images/logo.png" alt="Daliso Ngoma Logo" height="40" />
+    </a>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+    <li><a href="#featured">Featured In</a></li>
+    <li><a href="#thoughts">Thoughts</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button id="theme-toggle">🌓</button></li>
+  </ul>
+</nav>
+
+<header class="hero animate-on-scroll">
+  <img src="images/hero.png" alt="Daliso Ngoma Illustration" class="hero-image" loading="lazy" />
+  <h1>Daliso Ngoma</h1>
+  <p class="hero-subtitle">Founder • Technopreneur • <span class="keyword-rotate">MR</span></p>
+  <p class="hero-quote">Good (Vibe) Coding Only</p>
+  <p class="hero-tagline">Crafting Africa’s immersive tech future — one experience at a time.</p>
+  <div class="hero-buttons">
+    <div class="dropdown btn-wrapper">
+      <button class="dropbtn btn">Follow Me</button>
+      <div class="dropdown-content">
+        <a href="https://x.com/djngoma" target="_blank">X</a>
+        <a href="https://linkedin.com/in/djngoma" target="_blank">LinkedIn</a>
+        <a href="https://instagram.com/djngoma" target="_blank">Instagram</a>
+      </div>
     </div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#podcast">Podcast</a></li>
-      <li><a href="#featured">Featured In</a></li>
-      <li><a href="#thoughts">Thoughts</a></li>
-      <li><a href="#contact">Contact</a></li>
-      <li><button id="theme-toggle">🌓</button></li>
-    </ul>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero animate-on-scroll">
-    <img src="images/hero.png" alt="Daliso Ngoma Illustration" class="hero-image" loading="lazy" />
-    <h1>Daliso Ngoma</h1>
-    <p class="hero-subtitle">Founder • Technopreneur • Storyteller</p>
-    <p class="hero-quote">Good (Vibe) Coding Only</p>
-    <p class="hero-tagline">Crafting Africa’s immersive tech future — one experience at a time.</p>
-    <div class="hero-buttons">
-      <div class="dropdown btn-wrapper">
-        <button class="dropbtn btn">Follow Me</button>
-        <div class="dropdown-content">
-          <a href="https://x.com/djngoma" target="_blank">X</a>
-          <a href="https://linkedin.com/in/djngoma" target="_blank">LinkedIn</a>
-          <a href="https://instagram.com/djngoma" target="_blank">Instagram</a>
-        </div>
-      </div>
-      <a href="mailto:daliso@africantechno.com" class="btn">Email Me</a>
-      <a href="#contact" class="btn">Contact Me</a>
-    </div>
-  </header>
-
-  <main>
-    <!-- About -->
-    <section id="about" class="animate-on-scroll">
-      <h2>About</h2>
-      <p>Tech is moving fast — and I’m helping Africa move with it.</p>
-      <p>I’m Daliso, founder of <a href="https://africantechno.com" target="_blank">African Technopreneurs</a> under the <a href="https://earninternational.net" target="_blank">EARN Group</a>. I work across spatial computing and MR (AR/VR), ecommerce, education, and automation. If it’s immersive and impactful, I’m involved.</p>
-      <p><strong>Gear & Tools:</strong> Meta Quest 3, Vision Pro, Xcode, Shopify, AI, Webflow</p>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="animate-on-scroll">
-      <h2>Projects</h2>
-      <div class="project-card">
-        <h3><a href="https://africantechno.com" target="_blank">African Technopreneurs</a></h3>
-        <p>My day-to-day. A technology company making immersive experiences and spatial computing accessible across Africa — from MR gear to education and creative innovation.</p>
-      </div>
-      <div class="project-card">
-        <h3><a href="https://180by2.co.za" target="_blank">180by2</a></h3>
-        <p>Our online store for everything MR. A curated online store and physical retail experience for mixed reality hardware, wearables, and accessories — powered by the African Technopreneurs team.</p>
-      </div>
-    </section>
-
-    <!-- Podcast -->
-    <section id="podcast" class="animate-on-scroll fade-left">
-      <h2>African Techno Podcast</h2>
-      <p>Conversations on immersive tech and building Africa’s digital future — with creators, technologists, and culture shifters who are shaping what’s next.</p>
-      <div class="podcast-links">
-        <a href="https://podcast.africantechno.com" class="btn" target="_blank">Listen</a>
-        <a href="https://x.com/djngoma" class="btn" target="_blank">Suggest a Guest</a>
-      </div>
-    </section>
-
-    <!-- Featured -->
-    <section id="featured" class="animate-on-scroll">
-      <h2>Featured In</h2>
-      <div class="featured-grid">
-        <a href="https://youtu.be/dPdQaC2FfsQ" target="_blank" class="featured-item">
-          <img src="images/takealot.png" alt="Takealot Marketplace" loading="lazy" />
-          <span>Takealot Marketplace</span>
-        </a>
-        <a href="https://www.cnbcafrica.com/" target="_blank" class="featured-item">
-          <img src="images/cnbc.webp" alt="CNBC Africa" loading="lazy" />
-          <span>CNBC Africa</span>
-        </a>
-        <a href="#" target="_blank" class="featured-item">
-          <img src="images/hekima.jpeg" alt="Makala Podcast" loading="lazy" />
-          <span>Makala Podcast</span>
-        </a>
-        <a href="#" target="_blank" class="featured-item">
-          <img src="images/talk.png" alt="Talk with Confidence" loading="lazy" />
-          <span>Talk with Confidence</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- Thoughts -->
-    <section id="thoughts" class="animate-on-scroll">
-      <h2>Thoughts</h2>
-      <p>I occasionally share ideas, perspectives, and moments of clarity — catch the stream on X.</p>
-      <a href="https://x.com/djngoma" class="btn" target="_blank">Follow Me on X</a>
-    </section>
-
-    <!-- Contact -->
-    <section id="contact" class="animate-on-scroll">
-      <h2>Contact</h2>
-      <form action="mailto:daliso@africantechno.com" method="POST" enctype="text/plain">
-        <input type="text" name="name" placeholder="Your Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
-        <textarea name="message" placeholder="Your Message" required></textarea>
-        <button type="submit">Send Message</button>
-      </form>
-      <div class="quick-links">
-        <p><a href="https://calendly.com/daliso" target="_blank">Book a Call</a></p>
-        <p>Typical response: within 24 hours. For urgent matters, call the office after 10am (weekdays).</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <p>© 2025 Daliso Ngoma. Built with caffeine, code & good (vibe) energy.</p>
-    <div class="social-icons">
-      <a href="https://linkedin.com/in/djngoma" target="_blank"><img src="assets/icons/linkedin.svg" alt="LinkedIn" /></a>
-      <a href="https://x.com/djngoma" target="_blank"><img src="assets/icons/x.svg" alt="X" /></a>
-      <a href="https://instagram.com/djngoma" target="_blank"><img src="assets/icons/instagram.svg" alt="Instagram" /></a>
-    </div>
-    <a href="#" class="back-to-top">↑ Back to Top</a>
-  </footer>
-
-  <!-- Scripts -->
-  <script defer src="js/toggle-theme.js"></script>
-  <script defer src="js/carousel.js"></script>
-  <script defer src="js/scroll-animate.js"></script>
-  <script>
-    // Smooth scroll to top
-    document.querySelector('.back-to-top')?.addEventListener('click', (e) => {
-      e.preventDefault();
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  </script>
-</body>
-</html>
+    <a href="mailto:daliso@africantechno.com" class="btn">Email Me</a>
+    <a href="#contact" class="btn">Contact Me</a>
+  </div>
+</header>
