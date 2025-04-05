@@ -1,0 +1,20 @@
+/* Default state before animation */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.6s ease-out;
+  }
+  
+  /* When visible in viewport */
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* Optional variations */
+  .fade-left {
+    transform: translateX(-30px);
+  }
+  .fade-right {
+    transform: translateX(30px);
+  }

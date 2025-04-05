@@ -1,0 +1,41 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code workspace settings
+.vscode/
+
+# Other editor folders
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Node modules or build tools (if added later)
+node_modules/
+dist/
+build/
+
+# Environment/config files
+.env
+.env.*
+
+# Log files
+*.log
+
+# Backup or temporary files
+*.bak
+*.tmp
+*.swp
+*.lock
+
+# GitHub Pages deployment output (if used)
+docs/
+
+# System-specific
+*.orig
