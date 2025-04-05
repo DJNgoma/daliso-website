@@ -1,10 +1,17 @@
-/* style.css */
-
 :root {
   --background: #fff;
   --text: #111;
   --accent: #0077ff;
   --shadow: rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #121212;
+    --text: #eee;
+    --accent: #66ccff;
+    --shadow: rgba(255, 255, 255, 0.05);
+  }
 }
 
 body {
@@ -13,6 +20,41 @@ body {
   margin: 0;
   padding: 0;
   background: var(--background);
+  color: var(--text);
+}
+
+/* Typography */
+h1, h2, .hero-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+}
+h1 {
+  font-size: 3rem;
+  line-height: 1.2;
+  margin-bottom: 0.25rem;
+}
+h2 {
+  font-size: 2rem;
+  line-height: 1.3;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.75rem;
+  margin-bottom: 1rem;
+}
+.hero-subtitle {
+  font-weight: 500;
+  font-size: 1.15rem;
+  color: var(--accent);
+}
+.hero-quote {
+  font-style: italic;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 0.5rem 0;
+}
+.hero-tagline {
+  font-size: 1rem;
+  margin: 0.5rem auto 1.5rem;
+  max-width: 600px;
   color: var(--text);
 }
 
@@ -81,6 +123,37 @@ section {
   background: #005fd1;
 }
 
+/* Dropdown */
+.dropdown {
+  position: relative;
+}
+.dropbtn {
+  position: relative;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  background-color: var(--background);
+  box-shadow: 0 2px 8px var(--shadow);
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  min-width: 150px;
+}
+.dropdown-content a {
+  display: block;
+  padding: 0.5rem 1rem;
+  color: var(--text);
+  text-decoration: none;
+}
+.dropdown-content a:hover {
+  background-color: #f2f2f2;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
 /* Projects Section */
 .projects-grid {
   display: grid;
@@ -88,28 +161,23 @@ section {
   gap: 2rem;
   padding-top: 1.5rem;
 }
-
 .project-block {
   background: #f9f9f9;
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
-
 .project-block h3 {
   margin-top: 0;
 }
-
 .project-role {
   margin: 0.75rem 0;
   font-weight: 500;
 }
-
 .project-highlight {
   font-size: 0.95rem;
   color: #555;
 }
-
 .project-link {
   display: inline-block;
   margin-top: 0.75rem;
@@ -120,9 +188,117 @@ section {
 .project-link:hover {
   text-decoration: underline;
 }
-
 @media (min-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Featured In Section */
+.featured-carousel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: space-between;
+  padding-top: 2rem;
+}
+.featured-item {
+  flex: 1 1 calc(50% - 1rem);
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px var(--shadow);
+  padding: 1rem;
+  text-align: center;
+  transition: transform 0.2s ease;
+}
+.featured-item img {
+  max-width: 100px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+.featured-item .media-name {
+  display: block;
+  font-weight: 700;
+  margin-top: 0.5rem;
+}
+.featured-item .media-quote {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  color: #555;
+}
+.featured-item:hover {
+  transform: translateY(-4px);
+}
+
+/* Contact Form */
+form input,
+form textarea {
+  display: block;
+  width: 100%;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
+form textarea {
+  height: 150px;
+  resize: vertical;
+}
+form button {
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+form button:hover {
+  background: #005fd1;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.85rem;
+  background: var(--background);
+  border-top: 1px solid #eee;
+}
+footer .social-icons {
+  margin: 1rem 0;
+}
+footer .social-icons img {
+  height: 24px;
+  margin: 0 0.5rem;
+}
+.back-to-top {
+  display: block;
+  margin-top: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--accent);
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 2rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .project-highlight {
+    font-size: 0.85rem;
+  }
+  .featured-item {
+    flex: 1 1 100%;
+  }
+  .featured-carousel.dragging {
+    cursor: grabbing;
+  }
+  .featured-carousel {
+    cursor: grab;
   }
 }

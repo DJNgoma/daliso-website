@@ -1,17 +1,19 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const animatedElements = document.querySelectorAll(".animate-on-scroll");
+document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.animate-on-scroll');
   
     const observer = new IntersectionObserver(
-      entries => {
+      (entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target); // Only animate once
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target); // animate only once
           }
         });
       },
-      { threshold: 0.1 }
+      {
+        threshold: 0.1
+      }
     );
   
-    animatedElements.forEach(el => observer.observe(el));
+    elements.forEach(el => observer.observe(el));
   });
