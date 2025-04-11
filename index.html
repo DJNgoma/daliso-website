@@ -47,6 +47,12 @@
   "image": "https://daliso.com/images/hero.png"
 }
 </script>
+  <script defer data-domain="daliso.com" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
+  <script>
+    window.plausible = window.plausible || function() {
+      (window.plausible.q = window.plausible.q || []).push(arguments)
+    }
+  </script>
 </head>
 <body>
   <header class="hero">
@@ -72,7 +78,7 @@
       <div class="hero-content animate-on-scroll">
         <img src="images/hero.png" alt="Daliso Ngoma" class="hero-img" style="margin-top: 2rem;" loading="lazy" />
         <h1>Daliso Ngoma</h1>
-        <p class="subtitle">Founder • Technopreneur • MR Advocate</p>
+        <p class="subtitle">Founder • Technopreneur • Spatial Computing Advocate</p>
         <p class="tagline">Crafting immersive tech futures in Africa — one experience at a time.</p>
         <div class="cta-buttons">
           <a href="#contact" class="btn">Email Me</a>
@@ -121,7 +127,7 @@
       <div class="container">
         <h2>Book Me</h2>
         <p>Want to collaborate, brainstorm, or consult? Schedule a 1:1 session with me below.</p>
-        <a href="https://calendly.com/daliso" class="btn" target="_blank">Schedule a Call via Calendly</a>
+        <a href="https://calendly.com/daliso" class="btn" target="_blank" onclick="plausible('BookMeClick')">Schedule a Call via Calendly</a>
       </div>
     </section>
 
