@@ -55,8 +55,10 @@ h2 {
   align-items: center;
   padding: 1rem;
   background: var(--background);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 1000;
   box-shadow: 0 1px 4px var(--shadow);
   transition: background 0.3s ease;
@@ -108,8 +110,9 @@ h2 {
 
 .hero {
   text-align: center;
-  padding: 2.5rem 1rem;
+  padding: 2rem 1rem;
   background: var(--background);
+  margin-top: 80px;
   animation: fadeUp 1.2s ease;
   position: relative;
   z-index: 1;
@@ -134,7 +137,7 @@ h2 {
   height: 160px;
   object-fit: cover;
   border-radius: 50%;
-  margin-top: 5rem;
+  margin-top: 2.5rem;
   margin-bottom: 2rem;
   box-shadow: 0 4px 20px rgba(0, 119, 255, 0.15);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
