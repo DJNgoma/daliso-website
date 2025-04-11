@@ -1,3 +1,5 @@
+// js/carousel.js
+
 document.addEventListener('DOMContentLoaded', () => {
   const carousel = document.querySelector('.featured-carousel');
 
@@ -7,13 +9,14 @@ document.addEventListener('DOMContentLoaded', () => {
   carousel.style.overflowX = 'auto';
   carousel.style.scrollSnapType = 'x mandatory';
   carousel.style.scrollBehavior = 'smooth';
+
   carousel.querySelectorAll('.featured-item').forEach(item => {
     item.style.scrollSnapAlign = 'start';
     item.style.minWidth = '260px';
     item.style.flex = '0 0 auto';
   });
 
-  // Optional: Allow mouse dragging (touch works by default)
+  // Optional: Allow mouse dragging
   let isDown = false;
   let startX;
   let scrollLeft;
