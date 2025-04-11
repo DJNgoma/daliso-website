@@ -2,6 +2,8 @@
 .DS_Store
 .AppleDouble
 .LSOverride
+.Trash-*
+Icon
 
 # Windows system files
 Thumbs.db
