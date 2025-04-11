@@ -386,3 +386,29 @@ footer .social a:hover {
 .contact-info a:hover {
   text-decoration: underline;
 }
+
+.tap-hint {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--text);
+  opacity: 0.6;
+  margin-top: -1rem;
+  margin-bottom: 1rem;
+  transition: opacity 0.3s ease;
+}
+
+.tap-hint:hover {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .tap-hint {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .tap-hint {
+    display: none;
+  }
+}
