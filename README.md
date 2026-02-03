@@ -38,7 +38,6 @@ https://daliso.com
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, animations)
 - `index.html` → Main HTML structure
 - `404.html` → Not found page
-- `thanks.html` → Post-contact thank-you page
 - `manifest.webmanifest` → PWA support
 
 ---
