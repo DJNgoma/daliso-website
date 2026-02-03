@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    logo.src = theme === 'dark' ? 'assets/images/logo_white.png' : 'assets/images/logo.png';
+    logo.src = theme === 'dark' ? 'assets/images/logo_white.png' : 'assets/images/logo-160.png';
     localStorage.setItem('theme', theme);
   }
 

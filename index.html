@@ -10,6 +10,7 @@
   <title>Daliso Ngoma</title>
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
   <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="preload" as="image" href="assets/images/hero-640.jpg" imagesrcset="assets/images/hero-320.jpg 320w, assets/images/hero-640.jpg 640w" imagesizes="160px" />
   <link rel="stylesheet" href="css/base.css?v=20250411" />
   <link rel="stylesheet" href="css/layout.css?v=20250411" />
   <link rel="stylesheet" href="css/components.css?v=20250411" />
@@ -46,7 +47,7 @@
   },
   "knowsAbout": ["Mixed Reality", "Spatial Computing", "VR", "AR", "Education", "Ecommerce", "Digital Innovation"],
   "description": "Daliso Ngoma is a technopreneur leading immersive tech adoption across Africa through education, innovation, and retail.",
-  "image": "https://daliso.com/assets/images/hero.png"
+  "image": "https://daliso.com/assets/images/hero-640.jpg"
 }
 </script>
 </head>
@@ -55,7 +56,7 @@
     <div class="container">
       <nav class="navbar">
         <div class="logo">
-          <a href="#"><img id="site-logo" src="assets/images/logo.png" alt="Daliso Logo" /></a>
+          <a href="#"><img id="site-logo" src="assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span class="bar"></span>
@@ -72,7 +73,7 @@
         <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
       </nav>
       <div class="hero-content animate-on-scroll">
-        <img src="assets/images/hero.png" alt="Daliso Ngoma" class="hero-img" loading="lazy" />
+        <img src="assets/images/hero-640.jpg" alt="Daliso Ngoma" class="hero-img" width="160" height="160" loading="eager" decoding="async" fetchpriority="high" srcset="assets/images/hero-320.jpg 320w, assets/images/hero-640.jpg 640w" sizes="160px" />
         <h1>Daliso Ngoma</h1>
         <p class="subtitle">Founder • Technopreneur • Immersive Tech Specialist</p>
         <p class="tagline">Crafting immersive tech futures in Africa — one experience at a time.</p>
@@ -88,7 +89,7 @@
     <section id="about" class="section animate-on-scroll">
       <div class="container">
         <h2>About Me</h2>
-        <p>I’m a tech entrepreneur pushing the boundaries of mixed reality and digital innovation across Africa. As the founder of <a href="https://africantechno.com" target="_blank">African Technopreneurs</a>, I work where storytelling meets immersive experience.</p>
+        <p>I’m a tech entrepreneur pushing the boundaries of mixed reality and digital innovation across Africa. As the founder of <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">African Technopreneurs</a>, I work where storytelling meets immersive experience.</p>
         <p><strong>Tools I use:</strong> Meta Quest 3, Vision Pro, Xcode, Shopify, AI, Webflow</p>
       </div>
     </section>
@@ -100,12 +101,12 @@
           <div class="project">
             <h3>180by2</h3>
             <p>Your gateway to cutting-edge MR tech — from devices to accessories.</p>
-            <a href="https://180by2.co.za" target="_blank">Visit Store →</a>
+            <a href="https://180by2.co.za" target="_blank" rel="noopener noreferrer">Visit Store →</a>
           </div>
           <div class="project">
             <h3>African Technopreneurs</h3>
             <p>We distribute, educate, and enable immersive tools for Africa’s future.</p>
-            <a href="https://africantechno.com" target="_blank">Explore →</a>
+            <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">Explore →</a>
           </div>
         </div>
       </div>
@@ -115,7 +116,7 @@
       <div class="container">
         <h2>African Techno Podcast</h2>
         <p>Conversations with creators, technologists, and builders shaping Africa’s tech landscape.</p>
-        <a href="https://podcast.africantechno.com" class="btn" target="_blank">Listen to Episodes</a>
+        <a href="https://podcast.africantechno.com" class="btn" target="_blank" rel="noopener noreferrer">Listen to Episodes</a>
       </div>
     </section>
 
@@ -123,7 +124,7 @@
       <div class="container">
         <h2>Book Me</h2>
         <p>Want to collaborate, brainstorm, or consult? Schedule a 1:1 session with me below.</p>
-        <a href="https://calendly.com/daliso" class="btn" target="_blank">Schedule a Call via Calendly</a>
+        <a href="https://calendly.com/daliso" class="btn" target="_blank" rel="noopener noreferrer">Schedule a Call via Calendly</a>
       </div>
     </section>
 
@@ -134,7 +135,7 @@
           <p>You can reach me by email or phone, or connect on social.</p>
           <div class="contact-actions">
             <a href="mailto:daliso@africantechno.com" class="btn">Email Me</a>
-            <a href="https://calendly.com/daliso" class="btn btn-outline" target="_blank">Book a Call</a>
+            <a href="https://calendly.com/daliso" class="btn btn-outline" target="_blank" rel="noopener noreferrer">Book a Call</a>
           </div>
           <ul class="contact-details">
             <li><strong>Email:</strong> <a href="mailto:daliso@africantechno.com">daliso@africantechno.com</a></li>
@@ -143,9 +144,9 @@
           <div class="contact-social">
             <span><strong>Social:</strong></span>
             <ul class="social-links">
-              <li><a href="https://linkedin.com/in/djngoma" target="_blank">LinkedIn</a></li>
-              <li><a href="https://x.com/djngoma" target="_blank">X</a></li>
-              <li><a href="https://instagram.com/djngoma" target="_blank">Instagram</a></li>
+              <li><a href="https://linkedin.com/in/djngoma" target="_blank" rel="noopener noreferrer">LinkedIn</a></li>
+              <li><a href="https://x.com/djngoma" target="_blank" rel="noopener noreferrer">X</a></li>
+              <li><a href="https://instagram.com/djngoma" target="_blank" rel="noopener noreferrer">Instagram</a></li>
             </ul>
           </div>
         </div>

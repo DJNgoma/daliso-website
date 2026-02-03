@@ -8,6 +8,10 @@
   --hamburger-bar: #111111;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 [data-theme="dark"] {
   --background: #121212;
   --text: #ffffff;
