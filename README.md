@@ -31,10 +31,11 @@ https://daliso.com
 - `assets/icons/` → SVG icons for social media
 - `assets/images/` → Hero and media images (favicon, OG, logos)
 - `css/fonts.css` → Local @font-face declarations
-- `css/base.css` → CSS variables, typography, global base styles
-- `css/layout.css` → Layout primitives (container, hero, footer)
-- `css/components.css` → Reusable UI components (buttons, cards, forms)
-- `css/animations.css` → Scroll-triggered animations and keyframes
+- `css/style.css` → Combined production stylesheet (used by the site)
+- `css/base.css` → CSS variables, typography, global base styles (source)
+- `css/layout.css` → Layout primitives (container, hero, footer) (source)
+- `css/components.css` → Reusable UI components (buttons, cards, forms) (source)
+- `css/animations.css` → Scroll-triggered animations and keyframes (source)
 - `css/pages/` → Page-specific styles (`404.css`)
 - `js/main.js` → Single entry point
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, animations)
