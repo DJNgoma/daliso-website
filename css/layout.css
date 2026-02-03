@@ -1,0 +1,85 @@
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background: var(--background);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 4px var(--shadow);
+  transition: background 0.3s ease;
+  transform: translateZ(0);
+}
+
+.navbar .logo img {
+  height: 40px;
+  transition: filter 0.3s ease;
+}
+
+.hero {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  padding-top: 6rem;
+  background: var(--background);
+  animation: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  left: -10%;
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle at center, var(--accent) 0%, transparent 70%);
+  opacity: 0.08;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.hero-img {
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 16px;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 20px rgba(0, 119, 255, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 1 / 1;
+}
+
+[data-theme="dark"] .hero-img {
+  box-shadow: 0 4px 20px rgba(102, 204, 255, 0.25);
+}
+
+.hero-img:hover {
+  transform: scale(1.05);
+}
+
+.section {
+  background: var(--background);
+  padding: 3rem 1rem;
+}
+
+footer {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: var(--background);
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}

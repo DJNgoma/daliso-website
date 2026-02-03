@@ -1,0 +1,12 @@
+.not-found-page h1 {
+  font-size: 3rem;
+}
+
+.not-found-page p {
+  font-size: 1.25rem;
+}
+
+.not-found-page .btn {
+  margin-top: 2rem;
+  display: inline-block;
+}
