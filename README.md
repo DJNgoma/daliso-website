@@ -20,7 +20,7 @@ https://daliso.com
 - Profile intro and clear CTAs (Email Me, Book Me)
 - Projects section showcasing ventures
 - Embedded podcast CTA
-- Contact form powered by Formsubmit
+- Contact section with direct email and booking links
 - Mobile-friendly and accessible
 
 ---
@@ -33,7 +33,7 @@ https://daliso.com
 - `css/layout.css` → Layout primitives (container, hero, footer)
 - `css/components.css` → Reusable UI components (buttons, cards, forms)
 - `css/animations.css` → Scroll-triggered animations and keyframes
-- `css/pages/` → Page-specific styles (`404.css`, `thanks.css`)
+- `css/pages/` → Page-specific styles (`404.css`)
 - `js/main.js` → Single entry point
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, animations)
 - `index.html` → Main HTML structure
