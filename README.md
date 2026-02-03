@@ -27,8 +27,10 @@ https://daliso.com
 
 ## Folder Structure
 
+- `assets/fonts/` → Self-hosted web fonts (woff2)
 - `assets/icons/` → SVG icons for social media
 - `assets/images/` → Hero and media images (favicon, OG, logos)
+- `css/fonts.css` → Local @font-face declarations
 - `css/base.css` → CSS variables, typography, global base styles
 - `css/layout.css` → Layout primitives (container, hero, footer)
 - `css/components.css` → Reusable UI components (buttons, cards, forms)
