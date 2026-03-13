@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="A living catalog of Daliso Ngoma's projects, experiments, and codebases with commit counts, timestamps, and repo visibility."
+  />
+  <meta
+    name="keywords"
+    content="Daliso Ngoma projects, project catalog, code portfolio, repositories, immersive tech, software experiments, African Technopreneurs"
+  />
+  <meta name="author" content="Daliso Ngoma" />
+  <meta name="robots" content="index, follow" />
+  <title>Projects | Daliso Ngoma</title>
+  <link rel="icon" href="../assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="../manifest.webmanifest" />
+  <link rel="preload" href="../assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="../assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="style" href="../css/style.css?v=20250411" />
+  <link rel="stylesheet" href="../css/style.css?v=20250411" />
+  <link rel="stylesheet" href="../css/pages/projects.css?v=20260313" />
+  <meta property="og:title" content="Projects | Daliso Ngoma" />
+  <meta
+    property="og:description"
+    content="Projects, experiments, prototypes, and live work across the Daliso.com workspace."
+  />
+  <meta property="og:image" content="https://daliso.com/assets/images/og-image.png" />
+  <meta property="og:url" content="https://daliso.com/projects/" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Projects | Daliso Ngoma" />
+  <meta
+    name="twitter:description"
+    content="A timestamped index of projects, experiments, commit counts, and repo visibility."
+  />
+  <meta name="twitter:image" content="https://daliso.com/assets/images/og-image.png" />
+  <link rel="canonical" href="https://daliso.com/projects/" />
+  <script type="module" src="../js/projects-page.js?v=20260313"></script>
+</head>
+<body>
+  <header class="hero projects-hero">
+    <div class="container">
+      <nav class="navbar">
+        <div class="logo">
+          <a href="../"><img id="site-logo" src="../assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="../">Home</a></li>
+          <li><a href="#triage">Triage</a></li>
+          <li><a href="#catalog">Catalog</a></li>
+          <li><a href="../#contact">Contact</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      </nav>
+
+      <div class="projects-hero-copy animate-on-scroll">
+        <p class="projects-kicker">Daliso.com / Projects</p>
+        <h1>Projects, prototypes, side quests, and live work.</h1>
+        <p class="projects-intro">
+          This page is a snapshot of the active code landscape behind the scenes: browser-ready apps, docs systems,
+          native experiments, utilities, and the projects that still need cleanup or version control.
+        </p>
+        <div class="cta-buttons">
+          <a href="#catalog" class="btn">Browse Catalog</a>
+          <a href="../" class="btn btn-outline">Back Home</a>
+        </div>
+      </div>
+
+      <div class="hero-metrics" id="hero-metrics"></div>
+    </div>
+  </header>
+
+  <main>
+    <section id="triage" class="section animate-on-scroll">
+      <div class="container">
+        <h2>What Needs Attention</h2>
+        <p class="section-intro">
+          This is a workspace snapshot, not a promise that every server was started. The goal is clarity: what is live,
+          what is runnable, what is private, and what deserves cleanup first.
+        </p>
+        <div class="summary-grid" id="summary-grid"></div>
+      </div>
+    </section>
+
+    <section id="catalog" class="section animate-on-scroll">
+      <div class="container">
+        <h2>Project Catalog</h2>
+        <p class="section-intro">
+          Every card includes a last-updated timestamp, a commit count when git history exists, and a public repo link
+          only when the repository is publicly reachable.
+        </p>
+        <div id="catalog-sections"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2026 Daliso Ngoma. Projects are moving targets. This page is the map, not the destination.</p>
+    </div>
+  </footer>
+</body>
+</html>
