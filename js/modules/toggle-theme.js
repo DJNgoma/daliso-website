@@ -6,8 +6,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!toggleBtn || !logo) return;
 
-  const logoLight = logo.src.replace('logo_white-160.png', 'logo-160.png');
-  const logoDark = logoLight.replace('logo-160.png', 'logo_white-160.png');
+  const basePath = logo.src.substring(0, logo.src.lastIndexOf('/') + 1);
+  const logoLight = basePath + 'logo-160.png';
+  const logoDark = basePath + 'logo_white-160.png';
 
   function getStored(key) {
     try { return localStorage.getItem(key); } catch { return null; }
