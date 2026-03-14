@@ -1,7 +1,7 @@
-import './modules/navbar.js';
-import './modules/toggle-theme.js';
-import './modules/scroll-animate.js';
+import './modules/nav.js';
+import './modules/theme.js';
+import './modules/scroll.js';
 
 if (document.querySelector('.featured-carousel')) {
-  import('./modules/carousel.js');
+  import('./modules/carousel-scroll.js');
 }

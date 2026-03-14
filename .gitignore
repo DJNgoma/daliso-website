@@ -19,3 +19,4 @@ Thumbs.db
 
 # Build outputs (if introduced later)
 dist/
+.wrangler/
