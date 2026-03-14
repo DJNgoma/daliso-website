@@ -4,26 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('theme-toggle');
   const logo = document.getElementById('site-logo');
 
-  if (!toggleBtn || !logo) {
-    console.error('Theme toggle button or logo image not found.');
-    return;
+  if (!toggleBtn || !logo) return;
+
+  const logoLight = logo.src.replace('logo_white-160.png', 'logo-160.png');
+  const logoDark = logoLight.replace('logo-160.png', 'logo_white-160.png');
+
+  function getStored(key) {
+    try { return localStorage.getItem(key); } catch { return null; }
+  }
+
+  function setStored(key, value) {
+    try { localStorage.setItem(key, value); } catch { /* private browsing */ }
   }
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    logo.src = theme === 'dark' ? 'assets/images/logo_white-160.png' : 'assets/images/logo-160.png';
-    localStorage.setItem('theme', theme);
+    logo.src = theme === 'dark' ? logoDark : logoLight;
+    setStored('theme', theme);
   }
 
-  const savedTheme = localStorage.getItem('theme');
+  const savedTheme = getStored('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  const initialTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-
-  applyTheme(initialTheme);
+  applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
 
   toggleBtn.addEventListener('click', () => {
-    const currentTheme = document.documentElement.getAttribute('data-theme');
-    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-    applyTheme(newTheme);
+    const current = document.documentElement.getAttribute('data-theme');
+    applyTheme(current === 'dark' ? 'light' : 'dark');
   });
 });

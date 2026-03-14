@@ -1,3 +1,21 @@
+/* skip-link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 10000;
+  padding: 0.75rem 1.5rem;
+  background: var(--accent);
+  color: white;
+  border-radius: 0 0 8px 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
 /* fonts.css */
 @font-face {
   font-family: 'Inter';
@@ -463,63 +481,23 @@ footer .social a:hover {
 /* animations.css */
 /* Base scroll-triggered animation */
 .animate-on-scroll {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    will-change: transform, opacity;
-  }
-  
-  .animate-on-scroll.visible {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  will-change: transform, opacity;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Respect reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll {
     opacity: 1;
     transform: none;
+    transition: none;
+    will-change: auto;
   }
-  
-  /* Directional fades */
-  .animate-on-scroll.fade-left {
-    transform: translateX(-30px);
-  }
-  
-  .animate-on-scroll.fade-right {
-    transform: translateX(30px);
-  }
-  
-  .animate-on-scroll.fade-up {
-    transform: translateY(40px);
-  }
-  
-  .animate-on-scroll.fade-in {
-    opacity: 0;
-    transform: none;
-  }
-  
-  /* Zoom variant */
-  .animate-on-scroll.zoom-in {
-    transform: scale(0.95);
-    opacity: 0;
-  }
-  
-  .animate-on-scroll.visible.zoom-in {
-    transform: scale(1);
-    opacity: 1;
-  }
-  
-  /* Subtle slide-in for nav or hero buttons */
-  .animate-on-scroll.slide-up {
-    transform: translateY(20px);
-    opacity: 0;
-  }
-  
-  .animate-on-scroll.visible.slide-up {
-    transform: translateY(0);
-    opacity: 1;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+}

@@ -15,13 +15,16 @@ https://daliso.com
 ## Features
 
 - Hero section with theme toggle (light/dark mode)
-- Sticky navbar with hamburger menu on mobile
-- Smooth section scroll and scroll-triggered animations
+- Sticky navbar with hamburger menu on mobile (accessible: focus trap, Escape key, aria-expanded)
+- Smooth section scroll and scroll-triggered animations (respects prefers-reduced-motion)
+- Skip-to-content link for keyboard/screen reader users
 - Profile intro and clear CTAs for projects, podcast, and email
 - Work section highlighting African Technopreneurs, 180by2, and software/product systems
 - Embedded podcast CTA
-- Contact section with a shared inbox and social links
+- Contact section with a shared inbox and social links (inline SVG icons)
 - Mobile-friendly and accessible
+- Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy)
+- SEO: robots.txt, sitemap.xml, structured data, theme-color meta
 
 ---
 
@@ -35,13 +38,19 @@ https://daliso.com
 - `css/base.css` → CSS variables, typography, global base styles (source)
 - `css/layout.css` → Layout primitives (container, hero, footer) (source)
 - `css/components.css` → Reusable UI components (buttons, cards, forms) (source)
-- `css/animations.css` → Scroll-triggered animations and keyframes (source)
-- `css/pages/` → Page-specific styles (`404.css`)
+- `css/animations.css` → Scroll-triggered animations with reduced-motion support (source)
+- `css/pages/` → Page-specific styles (`404.css`, `projects.css`)
 - `js/main.js` → Single entry point
-- `js/modules/` → Modular UI behaviors (nav, theme, scroll, animations)
+- `js/modules/` → Modular UI behaviors (nav, theme, scroll, carousel)
+- `js/projects-page.js` → Projects page renderer (fetches data from JSON)
+- `js/projects-data.json` → Project catalog data
+- `projects/index.html` → Dynamic projects catalog page
 - `index.html` → Main HTML structure
 - `404.html` → Not found page
 - `manifest.webmanifest` → PWA support
+- `robots.txt` → Search engine crawl rules
+- `sitemap.xml` → Sitemap for search engines
+- `_headers` → Netlify/Cloudflare cache and security headers
 
 ---
 

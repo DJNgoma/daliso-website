@@ -10,6 +10,17 @@
       "src": "assets/images/favicon.ico",
       "sizes": "16x16 32x32 48x48",
       "type": "image/x-icon"
+    },
+    {
+      "src": "assets/images/logo-160.png",
+      "sizes": "160x160",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "assets/images/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
     }
   ]
 }
