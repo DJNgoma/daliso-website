@@ -1,8 +1,8 @@
 # Daliso Ngoma – Personal Website
 
-Welcome to the source code for [daliso.com](https://daliso.com) — the personal site of Daliso Ngoma, founder of African Technopreneurs and host of the African Techno Podcast.
+Welcome to the source code for [daliso.com](https://daliso.com) — the personal site of Daliso Ngoma, Founder & Managing Director of African Technopreneurs and host of the African Techno Podcast.
 
-This website is a fast, responsive, and accessible portfolio built using HTML, CSS, and vanilla JavaScript. It highlights Daliso’s work in immersive tech, digital innovation, and storytelling across Africa.
+This website is a fast, responsive, and accessible portfolio built using HTML, CSS, and vanilla JavaScript. It highlights Daliso’s work across immersive tech, digital commerce, media, and software systems.
 
 ---
 
@@ -17,10 +17,10 @@ https://daliso.com
 - Hero section with theme toggle (light/dark mode)
 - Sticky navbar with hamburger menu on mobile
 - Smooth section scroll and scroll-triggered animations
-- Profile intro and clear CTAs (Email Me, Book Me)
-- Projects section showcasing ventures
+- Profile intro and clear CTAs for projects, podcast, and email
+- Work section highlighting African Technopreneurs, 180by2, and software/product systems
 - Embedded podcast CTA
-- Contact section with direct email and booking links
+- Contact section with a shared inbox and social links
 - Mobile-friendly and accessible
 
 ---
@@ -70,10 +70,9 @@ Plausible analytics is integrated for privacy-friendly site tracking.
 
 ## Contact
 
-For collaborations or interviews:
+For collaborations, speaking, partnerships, or media:
 
-- Email: daliso@africantechno.com
-- Phone: +27 12 946 2665
+- Email: info@africantechno.com
 - LinkedIn: linkedin.com/in/djngoma
 - X (Twitter): x.com/djngoma
 - Instagram: instagram.com/djngoma
