@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const EXPECTED_NAV_ITEMS = ['About', 'Work', 'Projects', 'Podcast', 'Contact'];
+const EXPECTED_NAV_ITEMS = ['About', 'Work', 'Projects', 'Podcast', 'Blog'];
 
 test.describe('Navbar consistency', () => {
   test('main page has correct nav items', async ({ page }) => {
@@ -45,11 +45,25 @@ test.describe('Navbar consistency', () => {
     await expect(navMenu).toHaveClass(/show/);
   });
 
-  test('theme toggle exists on both pages', async ({ page }) => {
-    await page.goto('/');
-    await expect(page.locator('#theme-toggle')).toBeVisible();
+  test('blog page has correct nav items', async ({ page }) => {
+    await page.goto('/blog/');
+    const navItems = await page.locator('.nav-menu a').allTextContents();
+    expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+  });
 
-    await page.goto('/projects/');
-    await expect(page.locator('#theme-toggle')).toBeVisible();
+  test('theme toggle exists on all pages', async ({ page }) => {
+    for (const path of ['/', '/projects/', '/blog/']) {
+      await page.goto(path);
+      await expect(page.locator('#theme-toggle')).toBeVisible();
+    }
+  });
+
+  test('footer has email and social links on all pages', async ({ page }) => {
+    for (const path of ['/', '/projects/', '/blog/']) {
+      await page.goto(path);
+      await expect(page.locator('.footer-email')).toBeVisible();
+      const socialLinks = page.locator('footer .social-links a');
+      await expect(socialLinks).toHaveCount(3);
+    }
   });
 });

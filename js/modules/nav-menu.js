@@ -3,7 +3,7 @@ const NAV_ITEMS = [
   { label: 'Work', hash: '#work' },
   { label: 'Projects', path: 'projects/' },
   { label: 'Podcast', hash: '#podcast' },
-  { label: 'Contact', hash: '#contact' },
+  { label: 'Blog', path: 'blog/' },
 ];
 
 export function renderNavMenu(basePath = '') {

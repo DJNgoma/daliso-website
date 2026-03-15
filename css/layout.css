@@ -78,19 +78,48 @@
 
 footer {
   text-align: center;
-  padding: 2rem 1rem;
+  padding: 3rem 1rem 2rem;
   background: var(--background);
-  font-size: 0.9rem;
   margin-top: 2rem;
+  border-top: 1px solid var(--shadow);
 }
 
-footer a {
+footer h2 {
+  font-size: 1.4rem;
+  margin: 0 0 0.75rem;
+  border-left: none;
+  padding-left: 0;
+}
+
+.footer-email {
+  display: inline-block;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.footer-email:hover {
+  text-decoration: underline;
+}
+
+footer .social-links {
+  justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.footer-copy {
+  font-size: 0.85rem;
+  opacity: 0.6;
+  margin: 0;
+}
+
+.footer-copy a {
   color: var(--text);
-  opacity: 0.5;
   text-decoration: none;
   margin-left: 0.25rem;
 }
 
-footer a:hover {
-  opacity: 1;
+.footer-copy a:hover {
+  opacity: 0.8;
 }
