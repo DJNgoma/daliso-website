@@ -193,18 +193,6 @@ footer h2 {
   padding-left: 0;
 }
 
-.footer-email {
-  display: inline-block;
-  color: var(--accent);
-  text-decoration: none;
-  font-weight: 600;
-  margin-bottom: 1rem;
-}
-
-.footer-email:hover {
-  text-decoration: underline;
-}
-
 footer .social-links {
   justify-content: center;
   margin-bottom: 1.5rem;

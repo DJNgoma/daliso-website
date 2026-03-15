@@ -58,12 +58,11 @@ test.describe('Navbar consistency', () => {
     }
   });
 
-  test('footer has email and social links on all pages', async ({ page }) => {
+  test('footer has contact icons on all pages', async ({ page }) => {
     for (const path of ['/', '/projects/', '/blog/']) {
       await page.goto(path);
-      await expect(page.locator('.footer-email')).toBeVisible();
       const socialLinks = page.locator('footer .social-links a');
-      await expect(socialLinks).toHaveCount(3);
+      await expect(socialLinks).toHaveCount(4);
     }
   });
 });
