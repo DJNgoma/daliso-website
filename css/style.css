@@ -183,6 +183,17 @@ footer {
   margin-top: 2rem;
 }
 
+footer a {
+  color: var(--text);
+  opacity: 0.5;
+  text-decoration: none;
+  margin-left: 0.25rem;
+}
+
+footer a:hover {
+  opacity: 1;
+}
+
 /* components.css */
 .nav-menu {
   display: flex;
