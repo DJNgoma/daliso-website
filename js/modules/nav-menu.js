@@ -1,8 +1,9 @@
 const NAV_ITEMS = [
+  { label: 'Home', path: '' },
   { label: 'About', hash: '#about' },
   { label: 'Work', hash: '#work' },
-  { label: 'Projects', path: 'projects/' },
   { label: 'Podcast', hash: '#podcast' },
+  { label: 'Projects', path: 'projects/' },
   { label: 'Blog', path: 'blog/' },
 ];
 
@@ -11,7 +12,7 @@ export function renderNavMenu(basePath = '') {
   if (!menu) return;
 
   menu.innerHTML = NAV_ITEMS.map((item) => {
-    const href = item.path
+    const href = 'path' in item
       ? `${basePath}${item.path}`
       : `${basePath}${item.hash}`;
     return `<li><a href="${href}">${item.label}</a></li>`;
