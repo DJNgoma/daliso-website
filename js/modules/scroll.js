@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     },
-    { threshold: 0.1 }
+    { threshold: 0, rootMargin: '0px 0px 200px 0px' }
   );
 
   document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));

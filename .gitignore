@@ -20,3 +20,7 @@ Thumbs.db
 # Build outputs (if introduced later)
 dist/
 .wrangler/
+
+# Playwright
+test-results/
+playwright-report/
