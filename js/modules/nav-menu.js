@@ -1,20 +1,17 @@
 const NAV_ITEMS = [
-  { label: 'Home', path: '' },
-  { label: 'About', hash: '#about' },
-  { label: 'Work', hash: '#work' },
-  { label: 'Podcast', hash: '#podcast' },
-  { label: 'Projects', path: 'projects/' },
-  { label: 'Blog', path: 'blog/' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/#about' },
+  { label: 'Work', href: '/#work' },
+  { label: 'Podcast', href: '/#podcast' },
+  { label: 'Projects', href: '/projects/' },
+  { label: 'Blog', href: '/blog/' },
 ];
 
-export function renderNavMenu(basePath = '') {
+export function renderNavMenu() {
   const menu = document.getElementById('nav-menu');
   if (!menu) return;
 
-  menu.innerHTML = NAV_ITEMS.map((item) => {
-    const href = 'path' in item
-      ? `${basePath}${item.path}`
-      : `${basePath}${item.hash}`;
-    return `<li><a href="${href}">${item.label}</a></li>`;
-  }).join('');
+  menu.innerHTML = NAV_ITEMS.map((item) =>
+    `<li><a href="${item.href}">${item.label}</a></li>`
+  ).join('');
 }
