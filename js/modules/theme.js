@@ -1,4 +1,4 @@
-// js/toggle-theme.js
+// js/theme.js
 
 document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('theme-toggle');

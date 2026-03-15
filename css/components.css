@@ -155,23 +155,6 @@
 }
 
 
-footer .social {
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-footer .social a {
-  color: var(--accent);
-  font-weight: 600;
-  text-decoration: none;
-}
-
-footer .social a:hover {
-  text-decoration: underline;
-}
-
 .hamburger {
   display: none;
   flex-direction: column;

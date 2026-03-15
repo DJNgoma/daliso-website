@@ -59,20 +59,9 @@ https://daliso.com
 Clone the repo and open in any browser:
 
 ```bash
-git clone https://github.com/your-username/daliso-website.git
+git clone https://github.com/djngoma/daliso-website.git
 cd daliso-website
 open index.html
-```
-
----
-
-## Analytics
-
-Plausible analytics is integrated for privacy-friendly site tracking.
-
-```html
-<script defer data-domain="daliso.com" src="https://plausible.io/js/script.file-downloads.hash.outbound-links.pageview-props.revenue.tagged-events.js"></script>
-<script>window.plausible = window.plausible || function() { (window.plausible.q = window.plausible.q || []).push(arguments) }</script>
 ```
 
 ---
