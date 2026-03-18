@@ -12,7 +12,20 @@
   </url>
   <url>
     <loc>https://daliso.com/blog/</loc>
+    <lastmod>2026-03-18T21:38:42+02:00</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/</loc>
+    <lastmod>2026-03-18T21:38:42+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/</loc>
+    <lastmod>2026-03-18T20:24:23+02:00</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 </urlset>

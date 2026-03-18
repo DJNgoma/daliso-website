@@ -33,14 +33,18 @@ https://daliso.com
 - `assets/fonts/` → Self-hosted web fonts (woff2)
 - `assets/icons/` → SVG icons for social media
 - `assets/images/` → Hero and media images (favicon, OG, logos)
+- `blog/posts/` → Published Markdown source posts for the generated blog
+- `blog/drafts/` → Draft Markdown posts created by the blog scaffold command
 - `css/fonts.css` → Local @font-face declarations
 - `css/style.css` → Combined production stylesheet (used by the site)
+- `css/pages/blog.css` → Blog index and article styles
 - `css/base.css` → CSS variables, typography, global base styles (source)
 - `css/layout.css` → Layout primitives (container, hero, footer) (source)
 - `css/components.css` → Reusable UI components (buttons, cards, forms) (source)
 - `css/animations.css` → Scroll-triggered animations with reduced-motion support (source)
 - `css/pages/` → Page-specific styles (`404.css`, `projects.css`)
 - `data/projects-manifest.json` → Checked-in curation manifest for the public projects page
+- `scripts/blog-generator.mjs` → Generates `/blog/`, `/blog/{slug}/`, and draft post scaffolds
 - `js/main.js` → Single entry point
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, carousel)
 - `js/projects-page.js` → Projects page renderer (fetches synced portfolio data from JSON)
@@ -64,6 +68,7 @@ Install dependencies, refresh the generated projects data, and run tests:
 git clone https://github.com/djngoma/daliso-website.git
 cd daliso-website
 npm install
+npm run build:blog
 npm run sync:projects
 npm test
 ```
@@ -75,6 +80,31 @@ python3 -m http.server 8080
 ```
 
 Then open `http://localhost:8080`.
+
+## Blog Workflow
+
+The blog is generated from Markdown source files committed to this repo.
+
+Published posts can use either `YYYY-MM-DD` or a full ISO timestamp such as `YYYY-MM-DDTHH:MM:SS+02:00`. The scaffold command now uses the local Johannesburg timestamp by default.
+
+Build the publishable blog pages and refresh the sitemap:
+
+```bash
+npm run build:blog
+```
+
+Create a new draft post scaffold:
+
+```bash
+npm run new:post -- --title "My New Post"
+```
+
+Workflow:
+
+1. Create a draft in `blog/drafts/`.
+2. Move a finished draft into `blog/posts/`.
+3. Run `npm run build:blog` to regenerate `/blog/`, the article route, and `sitemap.xml`.
+4. Run `npm test` to verify the generator and browser output.
 
 ## Projects Sync Workflow
 

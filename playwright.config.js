@@ -2,7 +2,9 @@ import { defineConfig } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
+  testIgnore: ['tests/blog-generator.spec.mjs'],
   timeout: 15000,
+  workers: 2,
   use: {
     baseURL: 'http://localhost:8080',
   },

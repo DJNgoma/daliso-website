@@ -31,5 +31,11 @@ test.describe('Theme toggle', () => {
 
     await page.goto('/projects/');
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+    await page.goto('/blog/');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+    await page.goto('/blog/ai-psychosis-and-synthetic-confidence/');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
   });
 });

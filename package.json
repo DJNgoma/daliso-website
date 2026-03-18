@@ -4,13 +4,18 @@
   "description": "Welcome to the source code for [daliso.com](https://daliso.com) — the personal site of Daliso Ngoma, Founder & Managing Director of African Technopreneurs and host of the African Techno Podcast.",
   "main": "index.js",
   "scripts": {
+    "build:blog": "node scripts/blog-generator.mjs build",
+    "new:post": "node scripts/blog-generator.mjs new",
+    "pretest": "npm run build:blog",
     "sync:projects": "node scripts/sync-projects.mjs",
-    "test": "npx playwright test"
+    "test": "node --test tests/blog-generator.spec.mjs && npx playwright test"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@playwright/test": "^1.58.2"
+    "@playwright/test": "^1.58.2",
+    "gray-matter": "^4.0.3",
+    "markdown-it": "^14.1.1"
   }
 }
