@@ -40,10 +40,12 @@ https://daliso.com
 - `css/components.css` → Reusable UI components (buttons, cards, forms) (source)
 - `css/animations.css` → Scroll-triggered animations with reduced-motion support (source)
 - `css/pages/` → Page-specific styles (`404.css`, `projects.css`)
+- `data/projects-manifest.json` → Checked-in curation manifest for the public projects page
 - `js/main.js` → Single entry point
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, carousel)
-- `js/projects-page.js` → Projects page renderer (fetches data from JSON)
-- `js/projects-data.json` → Project catalog data
+- `js/projects-page.js` → Projects page renderer (fetches synced portfolio data from JSON)
+- `js/projects-data.json` → Generated project catalog data for `/projects/`
+- `scripts/sync-projects.mjs` → Syncs the curated projects page from the live Developer folder
 - `projects/index.html` → Dynamic projects catalog page
 - `index.html` → Main HTML structure
 - `404.html` → Not found page
@@ -56,13 +58,33 @@ https://daliso.com
 
 ## Development
 
-Clone the repo and open in any browser:
+Install dependencies, refresh the generated projects data, and run tests:
 
 ```bash
 git clone https://github.com/djngoma/daliso-website.git
 cd daliso-website
-open index.html
+npm install
+npm run sync:projects
+npm test
 ```
+
+For a quick local preview outside Playwright:
+
+```bash
+python3 -m http.server 8080
+```
+
+Then open `http://localhost:8080`.
+
+## Projects Sync Workflow
+
+The `/projects/` page is curated from the live Developer workspace rather than hand-edited JSON.
+
+1. Update `data/projects-manifest.json` to add, remove, reorder, or relabel public projects.
+2. Run `npm run sync:projects` to scan the immediate children of the Developer folder and regenerate `js/projects-data.json`.
+3. Run `npm test` to verify the refreshed catalog.
+
+By default the sync script scans the parent directory of this repo, which matches `/Users/daliso/Developer` in this workspace. Override it with `PROJECTS_WORKSPACE_ROOT=/custom/path npm run sync:projects` when needed.
 
 ---
 

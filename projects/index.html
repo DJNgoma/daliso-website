@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta
     name="description"
-    content="A living catalog of Daliso Ngoma's projects, experiments, and codebases with commit counts, timestamps, and repo visibility."
+    content="A curated portfolio of Daliso Ngoma's active websites, products, systems, and experiments synced from the current Developer workspace."
   />
   <meta
     name="keywords"
-    content="Daliso Ngoma projects, project catalog, code portfolio, repositories, immersive tech, software experiments, African Technopreneurs"
+    content="Daliso Ngoma projects, portfolio, software products, internal systems, experiments, African Technopreneurs"
   />
   <meta name="author" content="Daliso Ngoma" />
   <meta name="robots" content="index, follow" />
@@ -20,13 +20,13 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="style" href="/css/style.css?v=20260314" />
-  <link rel="stylesheet" href="/css/style.css?v=20260314" />
-  <link rel="stylesheet" href="/css/pages/projects.css?v=20260314" />
+  <link rel="preload" as="style" href="/css/style.css?v=20260318" />
+  <link rel="stylesheet" href="/css/style.css?v=20260318" />
+  <link rel="stylesheet" href="/css/pages/projects.css?v=20260318" />
   <meta property="og:title" content="Projects | Daliso Ngoma" />
   <meta
     property="og:description"
-    content="Projects, experiments, prototypes, and live work across the Daliso.com workspace."
+    content="A curated portfolio of active websites, software products, internal systems, and experiments."
   />
   <meta property="og:image" content="https://daliso.com/assets/images/og-image.png" />
   <meta property="og:url" content="https://daliso.com/projects/" />
@@ -35,11 +35,11 @@
   <meta name="twitter:title" content="Projects | Daliso Ngoma" />
   <meta
     name="twitter:description"
-    content="A timestamped index of projects, experiments, commit counts, and repo visibility."
+    content="A curated portfolio of active websites, software products, internal systems, and experiments."
   />
   <meta name="twitter:image" content="https://daliso.com/assets/images/og-image.png" />
   <link rel="canonical" href="https://daliso.com/projects/" />
-  <script type="module" src="/js/projects-page.js?v=20260314"></script>
+  <script type="module" src="/js/projects-page.js?v=20260318"></script>
 </head>
 <body>
   <a href="#overview" class="skip-link">Skip to main content</a>
@@ -67,10 +67,10 @@
 
       <div class="projects-hero-copy animate-on-scroll">
         <p class="projects-kicker">Daliso.com / Projects</p>
-        <h1>Projects, prototypes, side quests, and live work.</h1>
+        <h1>Active projects pulled from the current Developer workspace.</h1>
         <p class="projects-intro">
-          This page is a snapshot of the active code landscape behind the scenes: browser-ready apps, docs systems,
-          native experiments, utilities, and the projects that still need cleanup or version control.
+          This page is a curated portfolio built from the live top-level Developer folder: websites, products,
+          internal systems, and experiments that are active enough to feature publicly.
         </p>
         <div class="cta-buttons">
           <a href="#catalog" class="btn">Browse Catalog</a>
@@ -85,10 +85,10 @@
   <main>
     <section id="overview" class="section animate-on-scroll">
       <div class="container">
-        <h2>Project Overview</h2>
+        <h2>Portfolio Overview</h2>
         <p class="section-intro">
-          A snapshot of the current project landscape — what's live, what's in progress,
-          and what's being built behind the scenes.
+          The catalog is synced from the current workspace, then filtered through a checked-in manifest so the page
+          stays current without exposing the full internal repo inventory.
         </p>
         <div class="summary-grid" id="summary-grid"></div>
       </div>
@@ -98,11 +98,11 @@
       <div class="container">
         <h2>Project Catalog</h2>
         <p class="section-intro">
-          Every card includes a last-updated timestamp, a commit count when git history exists, and a public repo link
-          only when the repository is publicly reachable.
+          Every card highlights what the project is, where it sits in the portfolio, when its source folder was last
+          active, and any public links that are intentionally exposed from the curation manifest.
         </p>
         <div id="catalog-sections"></div>
-        <noscript><p>This page requires JavaScript to display the project catalog.</p></noscript>
+        <noscript><p>This page requires JavaScript to render the synced project catalog.</p></noscript>
       </div>
     </section>
   </main>

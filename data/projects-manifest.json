@@ -1,0 +1,150 @@
+{
+  "categories": [
+    {
+      "id": "websites-publishing",
+      "title": "Websites & Publishing",
+      "description": "Public sites, brand surfaces, and publishing destinations that are already live or close to launch.",
+      "order": 10
+    },
+    {
+      "id": "products-commerce",
+      "title": "Products & Commerce",
+      "description": "Product builds focused on finance, retail operations, commercial tooling, and purchase workflows.",
+      "order": 20
+    },
+    {
+      "id": "internal-systems",
+      "title": "Internal Systems",
+      "description": "Operator-facing systems and internal control planes that support delivery, governance, and maintenance.",
+      "order": 30
+    },
+    {
+      "id": "experiments-tools",
+      "title": "Experiments & Tools",
+      "description": "Smaller experiments and exploratory builds that are still shaping the next product direction.",
+      "order": 40
+    }
+  ],
+  "projects": {
+    "BuildATPage": {
+      "title": "Build by African Technopreneurs",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Community events website for AI-focused meetups in South Africa.",
+      "order": 10,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://build.africantechno.com",
+          "kind": "live"
+        }
+      ]
+    },
+    "daliso-website": {
+      "title": "Daliso.com",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
+      "order": 20,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://daliso.com",
+          "kind": "live"
+        }
+      ]
+    },
+    "EARN_Ecosystem_Website": {
+      "title": "EARN Ecosystem Website",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
+      "order": 30,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://earn-ecosystem-website.pages.dev",
+          "kind": "live"
+        }
+      ]
+    },
+    "thelombardy-co-za": {
+      "title": "The Lombardy Lifestyle Estate",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate.",
+      "order": 40,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://thelombardy.co.za",
+          "kind": "live"
+        }
+      ]
+    },
+    "LedgerOne": {
+      "title": "LedgerOne",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary.",
+      "order": 10,
+      "links": []
+    },
+    "PricePilotForShopify": {
+      "title": "Price Pilot",
+      "category": "products-commerce",
+      "status": "Internal",
+      "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
+      "order": 20,
+      "links": []
+    },
+    "GearRoulette": {
+      "title": "Gear Roulette",
+      "category": "products-commerce",
+      "status": "Prototype",
+      "summary": "Playful product discovery app that recommends XR and creator gear from a short quiz.",
+      "order": 30,
+      "links": []
+    },
+    "invoiceGenerator": {
+      "title": "Commercial Invoice Generator",
+      "category": "products-commerce",
+      "status": "Operational",
+      "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
+      "order": 40,
+      "links": []
+    },
+    "CallGrid": {
+      "title": "CallGrid",
+      "category": "internal-systems",
+      "status": "Internal",
+      "summary": "CLI-first telephony governance system for Zoom Phone inventory, validation, migration planning, and operator review.",
+      "order": 10,
+      "links": []
+    },
+    "EmailAliasOps": {
+      "title": "AliasOps",
+      "category": "internal-systems",
+      "status": "Internal",
+      "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
+      "order": 20,
+      "links": []
+    },
+    "repo-workboard": {
+      "title": "Repo Workboard",
+      "category": "internal-systems",
+      "status": "Internal",
+      "summary": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps.",
+      "order": 30,
+      "links": []
+    },
+    "FounderPressureTest": {
+      "title": "Founder Pressure Test",
+      "category": "experiments-tools",
+      "status": "Prototype",
+      "summary": "Mobile-first decision game about founder tradeoffs, pressure, and pacing.",
+      "order": 10,
+      "links": []
+    }
+  }
+}

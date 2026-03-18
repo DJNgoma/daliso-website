@@ -13,20 +13,66 @@ test.describe('Projects page', () => {
     await expect(metrics).not.toHaveCount(0);
     const count = await metrics.count();
     expect(count).toBe(4);
+    await expect(metrics.nth(0).locator('span')).toHaveText('Featured projects');
+    await expect(metrics.nth(1).locator('span')).toHaveText('Categories');
+    await expect(metrics.nth(2).locator('span')).toHaveText('Live links');
+    await expect(metrics.nth(3).locator('span')).toHaveText('Last sync');
   });
 
-  test('project cards render in catalog', async ({ page }) => {
+  test('project cards render in all curated categories', async ({ page }) => {
     await page.goto('/projects/');
     await page.waitForSelector('.repo-card', { timeout: 5000 });
+    const categoryHeadings = await page.locator('.catalog-group-header h3').allTextContents();
+    expect(categoryHeadings).toEqual([
+      'Websites & Publishing',
+      'Products & Commerce',
+      'Internal Systems',
+      'Experiments & Tools',
+    ]);
+
     const cards = page.locator('.repo-card');
-    const count = await cards.count();
-    expect(count).toBeGreaterThan(0);
+    await expect(cards).toHaveCount(12);
   });
 
   test('summary grid renders', async ({ page }) => {
     await page.goto('/projects/');
     const summaryCards = page.locator('.summary-card');
     await expect(summaryCards).not.toHaveCount(0);
+    await expect(page.getByText('Live on the web')).toBeVisible();
+    await expect(page.getByText('Curated from Developer')).toBeVisible();
+  });
+
+  test('excluded folders do not appear in the public catalog', async ({ page }) => {
+    await page.goto('/projects/');
+    await page.waitForSelector('.repo-card', { timeout: 5000 });
+
+    await expect(page.getByText('AGNedbank2024', { exact: true })).toHaveCount(0);
+    await expect(page.getByText('TestWeb', { exact: true })).toHaveCount(0);
+    await expect(page.getByText('cin7-product-checker', { exact: true })).toHaveCount(0);
+  });
+
+  test('cards without public links still render cleanly', async ({ page }) => {
+    await page.goto('/projects/');
+    const card = page.locator('.repo-card', {
+      has: page.getByRole('heading', { name: 'Price Pilot' }),
+    });
+
+    await expect(card).toBeVisible();
+    await expect(card.locator('.repo-link')).toHaveCount(0);
+  });
+
+  test('configured live links use the manifest URLs', async ({ page }) => {
+    await page.goto('/projects/');
+
+    const buildCard = page.locator('.repo-card', {
+      has: page.getByRole('heading', { name: 'Build by African Technopreneurs' }),
+    });
+    await expect(buildCard.locator('.repo-link')).toHaveAttribute('href', 'https://build.africantechno.com');
+
+    const dalisoCard = page.locator('.repo-card', {
+      has: page.getByRole('heading', { name: 'Daliso.com' }),
+    });
+    await expect(dalisoCard.locator('.repo-link')).toHaveAttribute('href', 'https://daliso.com');
   });
 
   test('all animate-on-scroll sections become visible after scrolling', async ({ page }) => {
