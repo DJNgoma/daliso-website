@@ -40,4 +40,15 @@ test.describe('Accessibility', () => {
       expect(ariaLabel).toBeTruthy();
     }
   });
+
+  test('home content remains visible without JavaScript', async ({ browser }) => {
+    const page = await browser.newPage({
+      javaScriptEnabled: false,
+      viewport: { width: 375, height: 812 },
+    });
+
+    await page.goto('/');
+    await expect(page.locator('.hero-content')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1, name: 'Daliso Ngoma' })).toBeVisible();
+  });
 });
