@@ -106,6 +106,26 @@ Workflow:
 3. Run `npm run build:blog` to regenerate `/blog/`, the article route, and `sitemap.xml`.
 4. Run `npm test` to verify the generator and browser output.
 
+## PageSpeed Notes
+
+If the homepage posts a very high PageSpeed Insights or Lighthouse score, the reason is mostly architectural rather than tactical.
+
+- The site is primarily static HTML, CSS, and vanilla JavaScript, so there is no hydration cost or framework runtime on the homepage.
+- The homepage ships very little code: `index.html` is about 9.8 KB, `css/style.css` is about 8.2 KB, and `js/main.js` is 256 B before it conditionally loads anything else.
+- There are no analytics tags, ad scripts, chat widgets, or third-party embeds on the homepage.
+- Critical assets are explicit: the hero image is preloaded, responsive, and dimensioned, and the primary fonts are self-hosted WOFF2 files with `font-display: swap`.
+- Accessibility and SEO are mostly handled in the markup itself: skip link, semantic sections, ARIA labels, canonical URL, robots meta, sitemap, and structured data.
+- The DOM is small and the interaction model is simple, which keeps main-thread work low.
+
+Important caveat: PageSpeed Insights is page-specific and run-specific. A great score on the homepage is not a guarantee for every route or every future run.
+
+On March 18, 2026, a local Lighthouse run against `https://daliso.com/` from this environment did not reproduce a permanent `100/100/100/100` result. It came back as:
+
+- Mobile: `88 / 95 / 100 / 100`
+- Desktop: `68 / 95 / 100 / 100`
+
+The main misses in that run were image format and sizing opportunities, relatively short cache TTLs on some static assets, and a contrast issue affecting accessibility. So the accurate statement is: the site is structured to score very well, but the score is not a fixed property of the repo.
+
 ## Projects Sync Workflow
 
 The `/projects/` page is curated from the live Developer workspace rather than hand-edited JSON.

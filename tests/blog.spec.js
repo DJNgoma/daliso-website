@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const FEATURED_ARTICLE_PATH = '/blog/my-second-ai-written-post-which-is-already-suspicious/';
+const FEATURED_ARTICLE_PATH = '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/';
 const ARCHIVE_ARTICLE_PATH = '/blog/ai-psychosis-and-synthetic-confidence/';
 
 test.describe('Blog pages', () => {
@@ -18,11 +18,10 @@ test.describe('Blog pages', () => {
       })
     ).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Latest article' })).toBeVisible();
-    await expect(
-      page.locator('.blog-featured-card').getByRole('link', {
-        name: 'My Second AI-Written Post, Which Is Already Suspicious',
-      })
-    ).toHaveAttribute('href', FEATURED_ARTICLE_PATH);
+    await expect(page.locator('.blog-featured-card h3 a')).toHaveAttribute('href', FEATURED_ARTICLE_PATH);
+    await expect(page.locator('.blog-featured-card')).toContainText(
+      'Why This Site Tends to Score Well in PageSpeed Insights'
+    );
     await expect(
       page.locator('.blog-post-grid').getByRole('link', {
         name: 'AI Psychosis: When Intelligence Becomes Too Convincing',
@@ -35,11 +34,11 @@ test.describe('Blog pages', () => {
     await page.goto(FEATURED_ARTICLE_PATH);
 
     await expect(
-      page.getByRole('heading', { name: 'My Second AI-Written Post, Which Is Already Suspicious' })
+      page.getByRole('heading', { name: 'Why This Site Tends to Score Well in PageSpeed Insights' })
     ).toBeVisible();
-    await expect(page.locator('time[datetime="2026-03-18T21:38:42+02:00"]')).toBeVisible();
+    await expect(page.locator('time[datetime="2026-03-18T21:54:40+02:00"]')).toBeVisible();
     await expect(page.locator('.blog-prose')).toContainText(
-      'A machine helping write a post about machine-written posts is objectively funny.'
+      'The real reason this site can score very well is simple:'
     );
     await expect(page.getByRole('link', { name: 'Back to blog' })).toHaveAttribute('href', '/blog/');
   });

@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-03-18
+
+### Documentation
+- Added PageSpeed and Lighthouse notes to `README.md`, documenting why the homepage tends to score well and why scores still vary by run and environment
+
+### Blog
+- Published `Why This Site Tends to Score Well in PageSpeed Insights`
+
 ## 2026-03-14
 
 ### Accessibility

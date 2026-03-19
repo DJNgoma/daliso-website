@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed." />
+  <meta name="author" content="Daliso Ngoma" />
+  <meta name="robots" content="index, follow" />
+  <meta name="base-path" content="/" />
+  <meta name="theme-color" content="#0077ff" />
+  <meta name="last-modified" content="2026-03-18T21:54:40+02:00" />
+  <title>Why This Site Tends to Score Well in PageSpeed Insights | Blog | Daliso Ngoma</title>
+  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" as="style" href="/css/style.css?v=20260318" />
+  <link rel="stylesheet" href="/css/style.css?v=20260318" />
+  <link rel="stylesheet" href="/css/pages/blog.css?v=20260318" />
+  <meta property="og:title" content="Why This Site Tends to Score Well in PageSpeed Insights | Blog | Daliso Ngoma" />
+  <meta property="og:description" content="A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed." />
+  <meta property="og:image" content="https://daliso.com/assets/images/og-image.png" />
+  <meta property="og:url" content="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/" />
+  <meta property="og:type" content="article" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Why This Site Tends to Score Well in PageSpeed Insights | Blog | Daliso Ngoma" />
+  <meta name="twitter:description" content="A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed." />
+  <meta name="twitter:image" content="https://daliso.com/assets/images/og-image.png" />
+  <link rel="canonical" href="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/" />
+  <meta property="article:published_time" content="2026-03-18T21:54:40+02:00" />
+  <meta property="article:author" content="Daliso Ngoma" />
+  <meta property="article:tag" content="Performance" />
+  <meta property="article:tag" content="Web" />
+  <meta property="article:tag" content="PageSpeed" />
+  <meta property="article:tag" content="Lighthouse" />
+  <meta property="article:tag" content="Systems" />
+
+  <script type="module" src="/js/main.js?v=20260318"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Why This Site Tends to Score Well in PageSpeed Insights",
+  "description": "A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.",
+  "datePublished": "2026-03-18T21:54:40+02:00",
+  "dateModified": "2026-03-18T21:54:40+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Daliso Ngoma"
+  },
+  "image": "https://daliso.com/assets/images/og-image.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Daliso Ngoma"
+  },
+  "keywords": [
+    "Performance",
+    "Web",
+    "PageSpeed",
+    "Lighthouse",
+    "Systems"
+  ],
+  "url": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
+}
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="hero">
+    <div class="container">
+      
+      <nav class="navbar">
+        <div class="logo">
+          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/#podcast">Podcast</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+      </nav>
+  
+      
+        <div class="blog-article-hero animate-on-scroll">
+          <a class="blog-back-link" href="/blog/">Back to blog</a>
+          <p class="blog-eyebrow">Essay</p>
+          <h1>Why This Site Tends to Score Well in PageSpeed Insights</h1>
+          <p class="blog-article-dek">A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.</p>
+          <div class="blog-meta-list" aria-label="Article metadata">
+            <span>By Daliso Ngoma</span>
+            <span><time datetime="2026-03-18T21:54:40+02:00">18 March 2026 at 21:54</time></span>
+            <span>5 min read</span>
+          </div>
+          
+          <ul class="blog-tag-list" aria-label="Tags">
+            <li class="blog-tag">Performance</li><li class="blog-tag">Web</li><li class="blog-tag">PageSpeed</li><li class="blog-tag">Lighthouse</li><li class="blog-tag">Systems</li>
+          </ul>
+  
+        </div>
+  
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <section class="section blog-article-section">
+      <div class="container">
+        <article class="blog-article animate-on-scroll">
+          <div class="blog-prose">
+            <p>If you have seen a very high PageSpeed Insights score on this site, the reason is not mystery, and it is not a plugin.</p>
+<p>It is mostly the result of choosing a simple architecture and then being disciplined enough not to ruin it.</p>
+<p>That sounds less impressive than “performance engineering”, but it is usually the truth.</p>
+<h2>First, the Honest Bit</h2>
+<p>PageSpeed scores are not a permanent property of a website.</p>
+<p>They vary by:</p>
+<ul>
+<li>the specific page being tested</li>
+<li>network and device assumptions</li>
+<li>Lighthouse version</li>
+<li>test environment</li>
+<li>time</li>
+</ul>
+<p>So before turning a screenshot into mythology, it helps to stay precise.</p>
+<p>On March 18, 2026, I ran Lighthouse against <code>https://daliso.com/</code> from my environment and did not reproduce a permanent <code>100 / 100 / 100 / 100</code>.</p>
+<p>That run came back roughly as:</p>
+<ul>
+<li>mobile: <code>88 / 95 / 100 / 100</code></li>
+<li>desktop: <code>68 / 95 / 100 / 100</code></li>
+</ul>
+<p>That does not contradict the larger point.</p>
+<p>It just means the right claim is not “this score is guaranteed forever.”</p>
+<p>The right claim is: this site is built in a way that gives it a strong chance of performing very well.</p>
+<h2>The Biggest Reason: It Is Mostly Static</h2>
+<p>The homepage is static HTML, CSS, and vanilla JavaScript.</p>
+<p>There is no React hydration cost on the landing page.</p>
+<p>There is no client-side application shell pretending to be a brochure site.</p>
+<p>There is no state management layer, data fetching abstraction, or component runtime doing work just to render a name, a hero image, and a handful of links.</p>
+<p>That matters because performance problems usually start before anyone “optimises” anything.</p>
+<p>They start when a page that could have been HTML becomes an application.</p>
+<h2>The Payload Is Small</h2>
+<p>The homepage is not trying to ship a lot.</p>
+<p>In this repo, the rough sizes are small enough to stay comprehensible:</p>
+<ul>
+<li><code>index.html</code>: about <code>9.8 KB</code></li>
+<li><code>css/style.css</code>: about <code>8.2 KB</code></li>
+<li><code>js/main.js</code>: <code>256 B</code></li>
+<li>all homepage JS modules together: still only a few kilobytes</li>
+</ul>
+<p>That is a meaningful advantage.</p>
+<p>A lot of performance wins are just the absence of unnecessary weight.</p>
+<p>If the browser receives less code, it has less to download, parse, execute, and repaint around.</p>
+<p>That sounds obvious, but it is surprisingly rare.</p>
+<h2>There Is No Third-Party Tax on the Homepage</h2>
+<p>The homepage is not paying rent to ten external services.</p>
+<p>There are no analytics bundles, chat widgets, ad networks, tag managers, A/B testing platforms, session replay scripts, or heavy embeds on first load.</p>
+<p>That choice matters more than many fine-grained optimisations.</p>
+<p>Third-party scripts are often the fastest way to turn a clean performance profile into a negotiation with strangers.</p>
+<h2>Critical Assets Are Declared Clearly</h2>
+<p>The site does a few straightforward things that Lighthouse likes for good reason:</p>
+<ul>
+<li>the hero image is preloaded</li>
+<li>the hero image uses <code>srcset</code> and fixed dimensions</li>
+<li>the hero image is marked with <code>fetchpriority=&quot;high&quot;</code></li>
+<li>fonts are self-hosted WOFF2 files</li>
+<li>fonts use <code>font-display: swap</code></li>
+<li>the stylesheet is preloaded before use</li>
+</ul>
+<p>None of that is exotic.</p>
+<p>It is just a competent critical rendering path.</p>
+<p>The browser gets told what matters early, and the page does not make it guess.</p>
+<h2>The JavaScript Is Small and Boring</h2>
+<p>This is one of the better compliments a site can receive.</p>
+<p>The homepage JavaScript exists for practical UI behavior:</p>
+<ul>
+<li>mobile navigation</li>
+<li>theme toggle</li>
+<li>scroll reveal</li>
+<li>conditional carousel logic</li>
+</ul>
+<p>That is very different from loading a large JavaScript runtime just to recreate what the browser already knows how to do.</p>
+<p>Performance improves when JavaScript stops trying to be architecture theater.</p>
+<h2>Accessibility and SEO Are Already in the Markup</h2>
+<p>A site usually scores well in accessibility and SEO when those concerns are built into the document itself instead of added after complaints.</p>
+<p>This repo already includes:</p>
+<ul>
+<li>skip links</li>
+<li>semantic sections</li>
+<li>labeled controls</li>
+<li>alt text</li>
+<li>canonical URLs</li>
+<li>robots directives</li>
+<li>structured data</li>
+<li>sitemap support</li>
+</ul>
+<p>Those do not directly make the page feel faster in the way a user describes speed, but they do make Lighthouse and PageSpeed much happier, because those tools are evaluating more than raw rendering performance.</p>
+<h2>The DOM Is Small and the Visual Model Is Controlled</h2>
+<p>In one recent Lighthouse run, the homepage DOM was only <code>89</code> elements.</p>
+<p>That is not tiny for its own sake.</p>
+<p>It just means the page is not built from layers of wrappers, abstractions, and decorative machinery.</p>
+<p>The visual design also stays within reasonable limits:</p>
+<ul>
+<li>one small hero image</li>
+<li>no autoplay media</li>
+<li>no massive sliders on load</li>
+<li>no complicated above-the-fold layout</li>
+<li>reduced-motion support for users who request it</li>
+</ul>
+<p>Again, boring in the right places.</p>
+<h2>What Still Prevents Perfect Scores in Some Runs</h2>
+<p>This part matters because otherwise performance writing becomes propaganda.</p>
+<p>The same Lighthouse run that showed strong overall results still identified a few clear issues:</p>
+<ul>
+<li>some images could use next-generation formats</li>
+<li>some images could be sized more tightly</li>
+<li>cache TTLs on some static assets could be longer</li>
+<li>one contrast issue still affects accessibility</li>
+</ul>
+<p>So if you ever see a perfect score, the right interpretation is not “the site is flawless.”</p>
+<p>It is just that the overall profile was clean enough, on that run, to clear the thresholds.</p>
+<h2>Final Thought</h2>
+<p>The real reason this site can score very well is simple:</p>
+<p>it is small,
+it is direct,
+and it avoids a lot of expensive habits that modern websites treat as normal.</p>
+<p>If there is a lesson in that, it is not “chase 100.”</p>
+<p>It is this:</p>
+<p>Most web performance wins happen before optimisation begins.</p>
+<p>They happen when you decide what not to build.</p>
+
+          </div>
+          <div class="blog-article-cta">
+            <a class="btn btn-outline" href="/blog/">Back to all posts</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  
+  </main>
+
+  
+  <footer>
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <ul class="social-links">
+        <li><a href="mailto:info@africantechno.com" aria-label="Email"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm0 2.83V18h16V8.83l-8 7-8-7z"/></svg></a></li>
+        <li><a href="https://linkedin.com/in/djngoma" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.98h4.51V24H.24zM8.6 8.98h4.31v2.05h.06c.6-1.14 2.06-2.35 4.24-2.35 4.54 0 5.38 2.99 5.38 6.87V24h-4.51v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.98V24H8.6z"/></svg></a></li>
+        <li><a href="https://x.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.146 2H16.36l-4.28 5.62-3.66-5.62H2.22l6.73 9.63L2 22h3.787l4.356-5.72L14 22h5.908l-7.08-10.21z"/></svg></a></li>
+        <li><a href="https://instagram.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.402a4.92 4.92 0 011.77 1.025c.47.47.843 1.1 1.025 1.77.162.46.346 1.26.402 2.43.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.402 2.43a4.92 4.92 0 01-1.025 1.77 4.92 4.92 0 01-1.77 1.025c-.46.162-1.26.346-2.43.402-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.402a4.92 4.92 0 01-1.77-1.025A4.92 4.92 0 012.2 19.65c-.162-.46-.346-1.26-.402-2.43C1.74 15.954 1.728 15.57 1.728 12.37s.012-3.584.07-4.85c.056-1.17.24-1.97.402-2.43a4.92 4.92 0 011.025-1.77A4.92 4.92 0 015.32 2.672c.46-.162 1.26-.346 2.43-.402C8.416 2.212 8.8 2.2 12 2.2zM12 6.838a5.162 5.162 0 100 10.324 5.162 5.162 0 000-10.324zm0 8.324a3.162 3.162 0 110-6.324 3.162 3.162 0 010 6.324zm6.406-8.826a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Daliso Ngoma. <a href="https://github.com/DJNgoma/daliso-website" target="_blank" rel="noopener noreferrer">Source</a></p>
+    </div>
+  </footer>
+  
+</body>
+</html>

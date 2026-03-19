@@ -1,0 +1,189 @@
+---
+title: "Why This Site Tends to Score Well in PageSpeed Insights"
+slug: "why-this-site-tends-to-score-well-in-pagespeed-insights"
+description: "A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed."
+author: "Daliso Ngoma"
+date: "2026-03-18T21:54:40+02:00"
+tags:
+  - Performance
+  - Web
+  - PageSpeed
+  - Lighthouse
+  - Systems
+---
+
+# Why This Site Tends to Score Well in PageSpeed Insights
+
+If you have seen a very high PageSpeed Insights score on this site, the reason is not mystery, and it is not a plugin.
+
+It is mostly the result of choosing a simple architecture and then being disciplined enough not to ruin it.
+
+That sounds less impressive than "performance engineering", but it is usually the truth.
+
+## First, the Honest Bit
+
+PageSpeed scores are not a permanent property of a website.
+
+They vary by:
+
+- the specific page being tested
+- network and device assumptions
+- Lighthouse version
+- test environment
+- time
+
+So before turning a screenshot into mythology, it helps to stay precise.
+
+On March 18, 2026, I ran Lighthouse against `https://daliso.com/` from my environment and did not reproduce a permanent `100 / 100 / 100 / 100`.
+
+That run came back roughly as:
+
+- mobile: `88 / 95 / 100 / 100`
+- desktop: `68 / 95 / 100 / 100`
+
+That does not contradict the larger point.
+
+It just means the right claim is not "this score is guaranteed forever."
+
+The right claim is: this site is built in a way that gives it a strong chance of performing very well.
+
+## The Biggest Reason: It Is Mostly Static
+
+The homepage is static HTML, CSS, and vanilla JavaScript.
+
+There is no React hydration cost on the landing page.
+
+There is no client-side application shell pretending to be a brochure site.
+
+There is no state management layer, data fetching abstraction, or component runtime doing work just to render a name, a hero image, and a handful of links.
+
+That matters because performance problems usually start before anyone "optimises" anything.
+
+They start when a page that could have been HTML becomes an application.
+
+## The Payload Is Small
+
+The homepage is not trying to ship a lot.
+
+In this repo, the rough sizes are small enough to stay comprehensible:
+
+- `index.html`: about `9.8 KB`
+- `css/style.css`: about `8.2 KB`
+- `js/main.js`: `256 B`
+- all homepage JS modules together: still only a few kilobytes
+
+That is a meaningful advantage.
+
+A lot of performance wins are just the absence of unnecessary weight.
+
+If the browser receives less code, it has less to download, parse, execute, and repaint around.
+
+That sounds obvious, but it is surprisingly rare.
+
+## There Is No Third-Party Tax on the Homepage
+
+The homepage is not paying rent to ten external services.
+
+There are no analytics bundles, chat widgets, ad networks, tag managers, A/B testing platforms, session replay scripts, or heavy embeds on first load.
+
+That choice matters more than many fine-grained optimisations.
+
+Third-party scripts are often the fastest way to turn a clean performance profile into a negotiation with strangers.
+
+## Critical Assets Are Declared Clearly
+
+The site does a few straightforward things that Lighthouse likes for good reason:
+
+- the hero image is preloaded
+- the hero image uses `srcset` and fixed dimensions
+- the hero image is marked with `fetchpriority="high"`
+- fonts are self-hosted WOFF2 files
+- fonts use `font-display: swap`
+- the stylesheet is preloaded before use
+
+None of that is exotic.
+
+It is just a competent critical rendering path.
+
+The browser gets told what matters early, and the page does not make it guess.
+
+## The JavaScript Is Small and Boring
+
+This is one of the better compliments a site can receive.
+
+The homepage JavaScript exists for practical UI behavior:
+
+- mobile navigation
+- theme toggle
+- scroll reveal
+- conditional carousel logic
+
+That is very different from loading a large JavaScript runtime just to recreate what the browser already knows how to do.
+
+Performance improves when JavaScript stops trying to be architecture theater.
+
+## Accessibility and SEO Are Already in the Markup
+
+A site usually scores well in accessibility and SEO when those concerns are built into the document itself instead of added after complaints.
+
+This repo already includes:
+
+- skip links
+- semantic sections
+- labeled controls
+- alt text
+- canonical URLs
+- robots directives
+- structured data
+- sitemap support
+
+Those do not directly make the page feel faster in the way a user describes speed, but they do make Lighthouse and PageSpeed much happier, because those tools are evaluating more than raw rendering performance.
+
+## The DOM Is Small and the Visual Model Is Controlled
+
+In one recent Lighthouse run, the homepage DOM was only `89` elements.
+
+That is not tiny for its own sake.
+
+It just means the page is not built from layers of wrappers, abstractions, and decorative machinery.
+
+The visual design also stays within reasonable limits:
+
+- one small hero image
+- no autoplay media
+- no massive sliders on load
+- no complicated above-the-fold layout
+- reduced-motion support for users who request it
+
+Again, boring in the right places.
+
+## What Still Prevents Perfect Scores in Some Runs
+
+This part matters because otherwise performance writing becomes propaganda.
+
+The same Lighthouse run that showed strong overall results still identified a few clear issues:
+
+- some images could use next-generation formats
+- some images could be sized more tightly
+- cache TTLs on some static assets could be longer
+- one contrast issue still affects accessibility
+
+So if you ever see a perfect score, the right interpretation is not "the site is flawless."
+
+It is just that the overall profile was clean enough, on that run, to clear the thresholds.
+
+## Final Thought
+
+The real reason this site can score very well is simple:
+
+it is small,
+it is direct,
+and it avoids a lot of expensive habits that modern websites treat as normal.
+
+If there is a lesson in that, it is not "chase 100."
+
+It is this:
+
+Most web performance wins happen before optimisation begins.
+
+They happen when you decide what not to build.
