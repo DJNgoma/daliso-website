@@ -10,6 +10,7 @@ import {
 } from "node:fs";
 import { basename, dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { generateOgImage } from "./og-image.mjs";
 
 const scriptDir = dirname(fileURLToPath(import.meta.url));
 const siteRoot = resolve(process.env.BLOG_SITE_ROOT ?? join(scriptDir, ".."));
@@ -21,7 +22,8 @@ const sitemapPath = join(siteRoot, "sitemap.xml");
 const siteUrl = "https://daliso.com";
 const siteTitle = "Daliso Ngoma";
 const defaultAuthor = "Daliso Ngoma";
-const ogImage = `${siteUrl}/assets/images/og-image.png`;
+const defaultOgImage = `${siteUrl}/assets/images/og-image.png`;
+const fontsDir = join(siteRoot, "assets", "fonts");
 const assetVersion = "20260319";
 const generatedMarkerFile = ".blog-generated";
 const reservedBlogDirs = new Set(["posts", "drafts"]);
@@ -34,12 +36,12 @@ const markdown = new MarkdownIt({
 
 main();
 
-function main() {
+async function main() {
   const [command, ...args] = process.argv.slice(2);
 
   try {
     if (command === "build") {
-      buildBlog();
+      await buildBlog();
       return;
     }
 
@@ -57,7 +59,7 @@ function main() {
   }
 }
 
-function buildBlog() {
+async function buildBlog() {
   ensureDir(blogRoot);
   ensureDir(postsDir);
   ensureDir(draftsDir);
@@ -70,7 +72,17 @@ function buildBlog() {
   for (const post of posts) {
     const routeDir = join(blogRoot, post.slug);
     ensureDir(routeDir);
-    writeFileSync(join(routeDir, "index.html"), renderPostPage(post), "utf8");
+
+    let postOgImage = defaultOgImage;
+    try {
+      const ogImagePath = join(routeDir, "og-image.png");
+      await generateOgImage(post, ogImagePath, fontsDir);
+      postOgImage = `${siteUrl}/blog/${post.slug}/og-image.png`;
+    } catch (error) {
+      console.warn(`Warning: OG image generation failed for "${post.slug}": ${error.message}`);
+    }
+
+    writeFileSync(join(routeDir, "index.html"), renderPostPage(post, postOgImage), "utf8");
     writeFileSync(join(routeDir, generatedMarkerFile), `${post.slug}\n`, "utf8");
   }
 
@@ -235,7 +247,7 @@ function renderBlogIndex(posts) {
   const hero = `
         <div class="blog-page-hero animate-on-scroll">
           <p class="blog-eyebrow">Daliso Ngoma Blog</p>
-          <h1>Notes from building African Technopreneurs</h1>
+          <h1>Writing by Daliso</h1>
           <h2>Writing about judgment, systems, and practical technology where speed matters and bad assumptions compound.</h2>
         </div>
   `;
@@ -287,7 +299,7 @@ function renderBlogIndex(posts) {
   });
 }
 
-function renderPostPage(post) {
+function renderPostPage(post, postOgImage = defaultOgImage) {
   const articleTagMeta = post.tags
     .map((tag) => `  <meta property="article:tag" content="${escapeHtml(tag)}" />`)
     .join("\n");
@@ -303,7 +315,7 @@ function renderPostPage(post) {
         "@type": "Person",
         name: post.author,
       },
-      image: ogImage,
+      image: postOgImage,
       mainEntityOfPage: {
         "@type": "WebPage",
         "@id": post.url,
@@ -354,6 +366,7 @@ function renderPostPage(post) {
     description: post.description,
     canonicalPath: post.canonicalPath,
     ogType: "article",
+    ogImage: postOgImage,
     heroContent: hero,
     mainContent,
     extraHead: `
@@ -373,6 +386,7 @@ function renderDocument({
   heroContent,
   mainContent,
   ogType = "website",
+  ogImage = defaultOgImage,
   extraHead = "",
   jsonLd = "",
   lastModified,
@@ -401,7 +415,6 @@ ${jsonLd}
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" as="style" href="/css/style.css?v=${assetVersion}" />
   <link rel="stylesheet" href="/css/style.css?v=${assetVersion}" />
   <link rel="stylesheet" href="/css/pages/blog.css?v=${assetVersion}" />
   <meta property="og:title" content="${escapeHtml(pageTitle)}" />
@@ -450,8 +463,8 @@ function renderNav() {
           <li><a href="/">Home</a></li>
           <li><a href="/#about">About</a></li>
           <li><a href="/#work">Work</a></li>
-          <li><a href="/#podcast">Podcast</a></li>
           <li><a href="/projects/">Projects</a></li>
+          <li><a href="/media/">Media</a></li>
           <li><a href="/blog/">Blog</a></li>
         </ul>
         <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
@@ -470,7 +483,7 @@ function renderFooter() {
         <li><a href="https://x.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.146 2H16.36l-4.28 5.62-3.66-5.62H2.22l6.73 9.63L2 22h3.787l4.356-5.72L14 22h5.908l-7.08-10.21z"/></svg></a></li>
         <li><a href="https://instagram.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.402a4.92 4.92 0 011.77 1.025c.47.47.843 1.1 1.025 1.77.162.46.346 1.26.402 2.43.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.402 2.43a4.92 4.92 0 01-1.025 1.77 4.92 4.92 0 01-1.77 1.025c-.46.162-1.26.346-2.43.402-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.402a4.92 4.92 0 01-1.77-1.025A4.92 4.92 0 012.2 19.65c-.162-.46-.346-1.26-.402-2.43C1.74 15.954 1.728 15.57 1.728 12.37s.012-3.584.07-4.85c.056-1.17.24-1.97.402-2.43a4.92 4.92 0 011.025-1.77A4.92 4.92 0 015.32 2.672c.46-.162 1.26-.346 2.43-.402C8.416 2.212 8.8 2.2 12 2.2zM12 6.838a5.162 5.162 0 100 10.324 5.162 5.162 0 000-10.324zm0 8.324a3.162 3.162 0 110-6.324 3.162 3.162 0 010 6.324zm6.406-8.826a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a></li>
       </ul>
-      <p class="footer-copy">© 2026 Daliso Ngoma. <a href="https://github.com/DJNgoma/daliso-website" target="_blank" rel="noopener noreferrer">Source</a></p>
+      <p class="footer-copy">© 2026 Daliso Ngoma. <a href="https://github.com/DJNgoma/daliso-website" target="_blank" rel="noopener noreferrer">Source Code</a></p>
     </div>
   </footer>
   `;
@@ -532,6 +545,11 @@ function renderSitemap(posts) {
       loc: `${siteUrl}/projects/`,
       changefreq: "weekly",
       priority: "0.8",
+    },
+    {
+      loc: `${siteUrl}/media/`,
+      changefreq: "monthly",
+      priority: "0.7",
     },
     {
       loc: `${siteUrl}/blog/`,

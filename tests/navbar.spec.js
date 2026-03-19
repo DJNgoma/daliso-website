@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const EXPECTED_NAV_ITEMS = ['Home', 'About', 'Work', 'Podcast', 'Projects', 'Blog'];
+const EXPECTED_NAV_ITEMS = ['Home', 'About', 'Work', 'Projects', 'Media', 'Blog'];
 
 test.describe('Navbar consistency', () => {
   test('main page has correct nav items', async ({ page }) => {

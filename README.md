@@ -142,10 +142,10 @@ By default the sync script scans the parent directory of this repo, which matche
 
 For collaborations, speaking, partnerships, or media:
 
-- Email: info@africantechno.com
-- LinkedIn: linkedin.com/in/djngoma
-- X (Twitter): x.com/djngoma
-- Instagram: instagram.com/djngoma
+- Email: [info@africantechno.com](mailto:info@africantechno.com)
+- LinkedIn: [linkedin.com/in/djngoma](https://linkedin.com/in/djngoma)
+- X (Twitter): [x.com/djngoma](https://x.com/djngoma)
+- Instagram: [instagram.com/djngoma](https://instagram.com/djngoma)
 
 ---
 

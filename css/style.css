@@ -36,14 +36,6 @@
 @font-face {
   font-family: 'Space Grotesk';
   font-style: normal;
-  font-weight: 500;
-  font-display: swap;
-  src: url('../assets/fonts/space-grotesk-500.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Space Grotesk';
-  font-style: normal;
   font-weight: 700;
   font-display: swap;
   src: url('../assets/fonts/space-grotesk-700.woff2') format('woff2');
@@ -442,6 +434,50 @@ footer .social-links {
   .hamburger {
     display: flex;
   }
+}
+
+/* Homepage featured-in preview */
+.featured-in-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.featured-in-card {
+  padding: 1.25rem;
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: 0 2px 6px var(--shadow);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.featured-in-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 18px var(--shadow);
+}
+
+.featured-in-card h3 {
+  margin: 0 0 0.4rem;
+  font-size: 1.05rem;
+  line-height: 1.2;
+}
+
+.featured-in-card p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: color-mix(in srgb, var(--text) 78%, transparent);
+}
+
+.featured-in-type {
+  display: block;
+  margin-bottom: 0.6rem;
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 /* animations.css */

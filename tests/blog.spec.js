@@ -9,7 +9,7 @@ test.describe('Blog pages', () => {
 
     await expect(page.getByText('Coming Soon')).toHaveCount(0);
     await expect(
-      page.getByRole('heading', { level: 1, name: 'Notes from building African Technopreneurs' })
+      page.getByRole('heading', { level: 1, name: 'Writing by Daliso' })
     ).toBeVisible();
     await expect(
       page.getByRole('heading', {

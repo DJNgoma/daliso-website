@@ -83,6 +83,66 @@ date: "not-a-date"
   assert.match(sitemap, /https:\/\/daliso\.com\/blog\/ai-psychosis-and-synthetic-confidence\//);
 });
 
+test("build generates per-post OG images when fonts are available", (t) => {
+  const fixtureRoot = createFixture(t);
+  copyFonts(fixtureRoot);
+  writePublishedPost(
+    fixtureRoot,
+    "test-post.md",
+    `---
+title: "Test Post"
+description: "A test post."
+date: "2026-03-18"
+tags:
+  - Testing
+---
+
+Body text.
+`
+  );
+
+  runCli(fixtureRoot, ["build"]);
+
+  const ogImagePath = join(fixtureRoot, "blog", "test-post", "og-image.png");
+  assert.equal(existsSync(ogImagePath), true, "OG image should be generated");
+
+  const articleHtml = readFileSync(
+    join(fixtureRoot, "blog", "test-post", "index.html"),
+    "utf8"
+  );
+  assert.match(articleHtml, /og:image" content="https:\/\/daliso\.com\/blog\/test-post\/og-image\.png"/);
+
+  const indexHtml = readFileSync(join(fixtureRoot, "blog", "index.html"), "utf8");
+  assert.match(indexHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image\.png"/);
+});
+
+test("build falls back to default OG image when fonts are missing", (t) => {
+  const fixtureRoot = createFixture(t);
+  writePublishedPost(
+    fixtureRoot,
+    "no-fonts-post.md",
+    `---
+title: "No Fonts Post"
+description: "Should still build."
+date: "2026-03-18"
+---
+
+Body text.
+`
+  );
+
+  runCli(fixtureRoot, ["build"]);
+
+  const ogImagePath = join(fixtureRoot, "blog", "no-fonts-post", "og-image.png");
+  assert.equal(existsSync(ogImagePath), false, "No OG image without fonts");
+
+  const articleHtml = readFileSync(
+    join(fixtureRoot, "blog", "no-fonts-post", "index.html"),
+    "utf8"
+  );
+  assert.match(articleHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image\.png"/);
+});
+
 test("build fails when two published posts resolve to the same slug", (t) => {
   const fixtureRoot = createFixture(t);
   writePublishedPost(
@@ -162,6 +222,24 @@ function createFixture(t) {
     rmSync(root, { recursive: true, force: true });
   });
   return root;
+}
+
+function copyFonts(root) {
+  const fontsDir = join(root, "assets", "fonts");
+  const imagesDir = join(root, "assets", "images");
+  mkdirSync(fontsDir, { recursive: true });
+  mkdirSync(imagesDir, { recursive: true });
+  const repoFontsDir = join(repoRoot, "assets", "fonts");
+  for (const name of ["inter-400.ttf", "space-grotesk-700.ttf"]) {
+    const src = join(repoFontsDir, name);
+    if (existsSync(src)) {
+      writeFileSync(join(fontsDir, name), readFileSync(src));
+    }
+  }
+  const heroSrc = join(repoRoot, "assets", "images", "hero-640.jpg");
+  if (existsSync(heroSrc)) {
+    writeFileSync(join(imagesDir, "hero-640.jpg"), readFileSync(heroSrc));
+  }
 }
 
 function writePublishedPost(root, fileName, contents) {
