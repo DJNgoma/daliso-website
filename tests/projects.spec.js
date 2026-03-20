@@ -31,7 +31,7 @@ test.describe('Projects page', () => {
     ]);
 
     const cards = page.locator('.repo-card');
-    await expect(cards).toHaveCount(12);
+    await expect(cards).toHaveCount(16);
   });
 
   test('summary grid renders', async ({ page }) => {
@@ -59,6 +59,16 @@ test.describe('Projects page', () => {
 
     await expect(card).toBeVisible();
     await expect(card.locator('.repo-link')).toHaveCount(0);
+  });
+
+  test('newly curated repos render in the public catalog', async ({ page }) => {
+    await page.goto('/projects/');
+    await page.waitForSelector('.repo-card', { timeout: 5000 });
+
+    await expect(page.getByRole('heading', { name: "The Devil's AI Dictionary" })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'HeadsetHire' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Sentiment Trader' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'PoolOps' })).toBeVisible();
   });
 
   test('configured live links use the manifest URLs', async ({ page }) => {

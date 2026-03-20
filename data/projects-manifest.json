@@ -76,6 +76,22 @@
         }
       ]
     },
+    "TheDevilsAIDictionary": {
+      "title": "The Devil's AI Dictionary",
+      "category": "websites-publishing",
+      "status": "Building",
+      "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
+      "order": 50,
+      "links": []
+    },
+    "VR_Rental_Website": {
+      "title": "HeadsetHire",
+      "category": "websites-publishing",
+      "status": "Building",
+      "summary": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow.",
+      "order": 60,
+      "links": []
+    },
     "LedgerOne": {
       "title": "LedgerOne",
       "category": "products-commerce",
@@ -108,6 +124,14 @@
       "order": 40,
       "links": []
     },
+    "FearGreedCryptoTrader": {
+      "title": "Sentiment Trader",
+      "category": "products-commerce",
+      "status": "Prototype",
+      "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
+      "order": 50,
+      "links": []
+    },
     "CallGrid": {
       "title": "CallGrid",
       "category": "internal-systems",
@@ -138,6 +162,14 @@
       "status": "Prototype",
       "summary": "Mobile-first decision game about founder tradeoffs, pressure, and pacing.",
       "order": 10,
+      "links": []
+    },
+    "PoolOps": {
+      "title": "PoolOps",
+      "category": "experiments-tools",
+      "status": "Prototype",
+      "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
+      "order": 20,
       "links": []
     }
   }

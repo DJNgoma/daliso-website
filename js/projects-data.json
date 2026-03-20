@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-19T20:03:36.384Z",
+  "generatedAt": "2026-03-20T05:58:22.796Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-03-19T19:54:06.000Z",
+      "lastUpdated": "2026-03-20T04:15:56.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -108,6 +108,18 @@
           "kind": "live"
         }
       ]
+    },
+    {
+      "id": "PoolOps",
+      "folder": "PoolOps",
+      "title": "PoolOps",
+      "category": "experiments-tools",
+      "status": "Prototype",
+      "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
+      "order": 20,
+      "lastUpdated": "2026-03-20T05:37:02.000Z",
+      "freshnessSource": "git",
+      "links": []
     },
     {
       "id": "PricePilotForShopify",
@@ -192,6 +204,42 @@
           "kind": "live"
         }
       ]
+    },
+    {
+      "id": "FearGreedCryptoTrader",
+      "folder": "FearGreedCryptoTrader",
+      "title": "Sentiment Trader",
+      "category": "products-commerce",
+      "status": "Prototype",
+      "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
+      "order": 50,
+      "lastUpdated": "2026-03-19T15:20:28.000Z",
+      "freshnessSource": "git",
+      "links": []
+    },
+    {
+      "id": "TheDevilsAIDictionary",
+      "folder": "TheDevilsAIDictionary",
+      "title": "The Devil's AI Dictionary",
+      "category": "websites-publishing",
+      "status": "Building",
+      "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
+      "order": 50,
+      "lastUpdated": "2026-03-20T05:53:22.000Z",
+      "freshnessSource": "git",
+      "links": []
+    },
+    {
+      "id": "VR_Rental_Website",
+      "folder": "VR_Rental_Website",
+      "title": "HeadsetHire",
+      "category": "websites-publishing",
+      "status": "Building",
+      "summary": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow.",
+      "order": 60,
+      "lastUpdated": "2026-03-19T05:13:17.868Z",
+      "freshnessSource": "filesystem",
+      "links": []
     }
   ]
 }
