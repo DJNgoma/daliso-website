@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-18T17:57:48.306Z",
+  "generatedAt": "2026-03-19T20:03:36.384Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -41,13 +41,7 @@
       "order": 10,
       "lastUpdated": "2026-03-15T19:26:00.000Z",
       "freshnessSource": "git",
-      "links": [
-        {
-          "label": "Visit site",
-          "url": "https://build.africantechno.com",
-          "kind": "live"
-        }
-      ]
+      "links": []
     },
     {
       "id": "CallGrid",
@@ -93,7 +87,7 @@
       "status": "Internal",
       "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
       "order": 20,
-      "lastUpdated": "2026-03-13T20:05:13.000Z",
+      "lastUpdated": "2026-03-19T05:54:04.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -105,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-03-15T19:46:23.000Z",
+      "lastUpdated": "2026-03-19T19:54:06.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -177,7 +171,7 @@
       "status": "Operational",
       "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
       "order": 40,
-      "lastUpdated": "2026-03-16T19:44:39.000Z",
+      "lastUpdated": "2026-03-19T18:42:04.000Z",
       "freshnessSource": "git",
       "links": []
     },

@@ -64,11 +64,6 @@ test.describe('Projects page', () => {
   test('configured live links use the manifest URLs', async ({ page }) => {
     await page.goto('/projects/');
 
-    const buildCard = page.locator('.repo-card', {
-      has: page.getByRole('heading', { name: 'Build by African Technopreneurs' }),
-    });
-    await expect(buildCard.locator('.repo-link')).toHaveAttribute('href', 'https://build.africantechno.com');
-
     const dalisoCard = page.locator('.repo-card', {
       has: page.getByRole('heading', { name: 'Daliso.com' }),
     });
