@@ -211,22 +211,6 @@
       "summary": "Change review workflow app for African Technopreneurs operational decisions and release governance.",
       "order": 50,
       "links": []
-    },
-    "TwitterClone": {
-      "title": "Twitter Clone",
-      "category": "experiments-tools",
-      "status": "Prototype",
-      "summary": "Twitter-style single-page app demo built with React and TypeScript.",
-      "order": 30,
-      "links": []
-    },
-    "GPTSnake": {
-      "title": "GPT Snake",
-      "category": "experiments-tools",
-      "status": "Prototype",
-      "summary": "Classic snake game built with vanilla JavaScript — no frameworks, no build step.",
-      "order": 40,
-      "links": []
     }
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-25T20:02:24.671Z",
+  "generatedAt": "2026-03-25T20:04:25.817Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-03-25T19:20:59.000Z",
+      "lastUpdated": "2026-03-25T20:03:00.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -188,18 +188,6 @@
       "links": []
     },
     {
-      "id": "TwitterClone",
-      "folder": "TwitterClone",
-      "title": "Twitter Clone",
-      "category": "experiments-tools",
-      "status": "Prototype",
-      "summary": "Twitter-style single-page app demo built with React and TypeScript.",
-      "order": 30,
-      "lastUpdated": "2026-03-25T19:42:23.000Z",
-      "freshnessSource": "git",
-      "links": []
-    },
-    {
       "id": "quickquote",
       "folder": "quickquote",
       "title": "QuickQuote",
@@ -232,18 +220,6 @@
       "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
       "order": 40,
       "lastUpdated": "2026-03-19T18:42:04.000Z",
-      "freshnessSource": "git",
-      "links": []
-    },
-    {
-      "id": "GPTSnake",
-      "folder": "GPTSnake",
-      "title": "GPT Snake",
-      "category": "experiments-tools",
-      "status": "Prototype",
-      "summary": "Classic snake game built with vanilla JavaScript — no frameworks, no build step.",
-      "order": 40,
-      "lastUpdated": "2026-03-13T20:05:13.000Z",
       "freshnessSource": "git",
       "links": []
     },
