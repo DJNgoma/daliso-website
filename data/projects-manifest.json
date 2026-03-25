@@ -179,6 +179,54 @@
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
       "links": []
+    },
+    "Cin7CorePriceAnalyzer": {
+      "title": "Cin7 Price Analyzer",
+      "category": "products-commerce",
+      "status": "Internal",
+      "summary": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories.",
+      "order": 25,
+      "links": []
+    },
+    "actioninbox": {
+      "title": "Action Inbox",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
+      "order": 55,
+      "links": []
+    },
+    "commanddashboard": {
+      "title": "Command Dashboard",
+      "category": "internal-systems",
+      "status": "Building",
+      "summary": "Universal macOS, iOS, and Apple Watch dashboard app with cross-device sync and Xcode Cloud CI.",
+      "order": 40,
+      "links": []
+    },
+    "atos-change-review": {
+      "title": "atOS Change Review",
+      "category": "internal-systems",
+      "status": "Building",
+      "summary": "Change review workflow app for African Technopreneurs operational decisions and release governance.",
+      "order": 50,
+      "links": []
+    },
+    "TwitterClone": {
+      "title": "Twitter Clone",
+      "category": "experiments-tools",
+      "status": "Prototype",
+      "summary": "Twitter-style single-page app demo built with React and TypeScript.",
+      "order": 30,
+      "links": []
+    },
+    "GPTSnake": {
+      "title": "GPT Snake",
+      "category": "experiments-tools",
+      "status": "Prototype",
+      "summary": "Classic snake game built with vanilla JavaScript — no frameworks, no build step.",
+      "order": 40,
+      "links": []
     }
   }
 }
