@@ -3,6 +3,7 @@ import './main.js';
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
   const summaryGrid = document.getElementById('summary-grid');
+  const recentActivityGrid = document.getElementById('recent-activity-grid');
   const catalogSections = document.getElementById('catalog-sections');
   try {
     const moduleUrl = new URL(import.meta.url);
@@ -30,6 +31,13 @@ async function init() {
     const liveProjects = [];
     const productsAndCommerce = projectCatalog.filter((project) => project.category === 'products-commerce');
     const internalSystems = projectCatalog.filter((project) => project.category === 'internal-systems');
+    const recentProjects = [...projectCatalog]
+      .sort(
+        (left, right) =>
+          new Date(right.lastUpdated).getTime() - new Date(left.lastUpdated).getTime() ||
+          left.title.localeCompare(right.title)
+      )
+      .slice(0, 4);
 
     projectCatalog.forEach((project) => {
       const links = getProjectLinks(project);
@@ -48,6 +56,7 @@ async function init() {
 
     renderHeroMetrics();
     renderSummaryCards();
+    renderRecentActivity();
     renderCatalogSections();
 
     function renderHeroMetrics() {
@@ -100,6 +109,14 @@ async function init() {
             `${liveLinks.length} public links configured in the checked-in manifest`,
           ],
         },
+        {
+          tone: 'watch',
+          title: 'Latest featured movement',
+          body: `${recentProjects.length} projects currently lead the public portfolio by most recent source activity.`,
+          items: recentProjects.map(
+            (project) => `${project.title} · ${formatMetricDate(project.lastUpdated)}`
+          ),
+        },
       ];
 
       summaryGrid.innerHTML = summaryCards
@@ -113,6 +130,16 @@ async function init() {
             </article>
           `
         )
+        .join('');
+    }
+
+    function renderRecentActivity() {
+      if (!recentActivityGrid) {
+        return;
+      }
+
+      recentActivityGrid.innerHTML = recentProjects
+        .map((project) => renderProjectCard(project, { compact: true }))
         .join('');
     }
 
@@ -134,13 +161,14 @@ async function init() {
         .join('');
     }
 
-    function renderProjectCard(project) {
+    function renderProjectCard(project, options = {}) {
       const categoryTitle = sectionTitleById.get(project.category) || project.category;
       const statusClass = statusToClassName(project.status);
       const links = getProjectLinks(project);
+      const compactClassName = options.compact ? ' repo-card-compact' : '';
 
       return `
-        <article class="repo-card" data-project="${escapeHtml(project.id)}">
+        <article class="repo-card${compactClassName}" data-project="${escapeHtml(project.id)}">
           <div class="repo-card-header">
             <div>
               <h4>${escapeHtml(project.title)}</h4>
@@ -164,7 +192,7 @@ async function init() {
     }
   } catch (error) {
     console.error('Failed to render projects page', error);
-    renderFailureState(heroMetrics, summaryGrid, catalogSections);
+    renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalogSections);
   }
 }
 
@@ -225,7 +253,7 @@ function getSourceLabel(source) {
   return source && source.label ? source.label : 'workspace';
 }
 
-function renderFailureState(heroMetrics, summaryGrid, catalogSections) {
+function renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalogSections) {
   if (heroMetrics) {
     heroMetrics.innerHTML = `
       <article class="metric-card">
@@ -243,6 +271,10 @@ function renderFailureState(heroMetrics, summaryGrid, catalogSections) {
         <p>The synced portfolio data could not be loaded in this browser. Try reloading the page or serving the site locally over HTTP.</p>
       </article>
     `;
+  }
+
+  if (recentActivityGrid) {
+    recentActivityGrid.innerHTML = '';
   }
 
   if (catalogSections) {

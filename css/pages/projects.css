@@ -199,6 +199,17 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.recent-activity-grid .repo-card {
+  min-height: 100%;
+}
+
+.repo-card-compact .repo-summary {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 .repo-card-header {
   display: flex;
   align-items: flex-start;

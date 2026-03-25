@@ -116,6 +116,14 @@
       "order": 30,
       "links": []
     },
+    "quickquote": {
+      "title": "QuickQuote",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
+      "order": 35,
+      "links": []
+    },
     "invoiceGenerator": {
       "title": "Commercial Invoice Generator",
       "category": "products-commerce",

@@ -30,8 +30,8 @@ test.describe('Projects page', () => {
       'Experiments & Tools',
     ]);
 
-    const cards = page.locator('.repo-card');
-    await expect(cards).toHaveCount(16);
+    const cards = page.locator('#catalog .repo-card');
+    await expect(cards).toHaveCount(17);
   });
 
   test('summary grid renders', async ({ page }) => {
@@ -40,6 +40,7 @@ test.describe('Projects page', () => {
     await expect(summaryCards).not.toHaveCount(0);
     await expect(page.getByText('Live on the web')).toBeVisible();
     await expect(page.getByText('Curated from Developer')).toBeVisible();
+    await expect(page.getByText('Latest featured movement')).toBeVisible();
   });
 
   test('excluded folders do not appear in the public catalog', async ({ page }) => {
@@ -69,6 +70,14 @@ test.describe('Projects page', () => {
     await expect(page.getByRole('heading', { name: 'HeadsetHire' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Sentiment Trader' })).toBeVisible();
     await expect(page.getByRole('heading', { name: 'PoolOps' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'QuickQuote' })).toBeVisible();
+  });
+
+  test('recent activity section renders the latest featured workspace updates', async ({ page }) => {
+    await page.goto('/projects/');
+    const recentSection = page.locator('#recent-activity');
+    await expect(recentSection).toBeVisible();
+    await expect(recentSection.locator('.repo-card')).toHaveCount(4);
   });
 
   test('configured live links use the manifest URLs', async ({ page }) => {

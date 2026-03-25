@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-20T05:58:22.796Z",
+  "generatedAt": "2026-03-25T19:10:43.797Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-03-20T04:15:56.000Z",
+      "lastUpdated": "2026-03-20T05:58:47.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -141,7 +141,7 @@
       "status": "Live",
       "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
       "order": 30,
-      "lastUpdated": "2026-03-13T18:38:31.000Z",
+      "lastUpdated": "2026-03-25T17:38:42.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -176,6 +176,18 @@
       "links": []
     },
     {
+      "id": "quickquote",
+      "folder": "quickquote",
+      "title": "QuickQuote",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
+      "order": 35,
+      "lastUpdated": "2026-03-22T10:57:34.000Z",
+      "freshnessSource": "git",
+      "links": []
+    },
+    {
       "id": "invoiceGenerator",
       "folder": "invoiceGenerator",
       "title": "Commercial Invoice Generator",
@@ -195,7 +207,7 @@
       "status": "Live",
       "summary": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate.",
       "order": 40,
-      "lastUpdated": "2026-03-13T20:18:17.000Z",
+      "lastUpdated": "2026-03-25T18:57:49.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -225,7 +237,7 @@
       "status": "Building",
       "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-03-20T05:53:22.000Z",
+      "lastUpdated": "2026-03-20T10:28:15.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -237,7 +249,7 @@
       "status": "Building",
       "summary": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow.",
       "order": 60,
-      "lastUpdated": "2026-03-19T05:13:17.868Z",
+      "lastUpdated": "2026-03-20T13:39:02.731Z",
       "freshnessSource": "filesystem",
       "links": []
     }
