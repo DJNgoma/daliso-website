@@ -81,6 +81,14 @@ python3 -m http.server 8080
 
 Then open `http://localhost:8080`.
 
+## CI/CD
+
+GitHub Actions now runs the deterministic CI pipeline for pull requests to `main` and pushes to `main`.
+
+- CI runs `npm ci`, installs Playwright's Chromium browser plus OS dependencies, and executes `npm test`.
+- CD remains owned by the existing Cloudflare Pages GitHub integration for this repository.
+- `npm run sync:projects` is intentionally not part of CI because it depends on the surrounding local Developer workspace.
+
 ## Blog Workflow
 
 The blog is generated from Markdown source files committed to this repo.
