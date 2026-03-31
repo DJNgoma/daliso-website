@@ -24,7 +24,7 @@ const siteTitle = "Daliso Ngoma";
 const defaultAuthor = "Daliso Ngoma";
 const defaultOgImage = `${siteUrl}/assets/images/og-image.png`;
 const fontsDir = join(siteRoot, "assets", "fonts");
-const assetVersion = "20260319";
+const assetVersion = "20260331";
 const generatedMarkerFile = ".blog-generated";
 const reservedBlogDirs = new Set(["posts", "drafts"]);
 const siteTimeZone = "Africa/Johannesburg";
@@ -411,7 +411,10 @@ ${jsonLd}
   <meta name="theme-color" content="#0077ff" />
   ${lastModified ? `<meta name="last-modified" content="${escapeHtml(lastModified)}" />` : ""}
   <title>${escapeHtml(pageTitle)}</title>
-  <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon" />
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
@@ -422,10 +425,13 @@ ${jsonLd}
   <meta property="og:image" content="${escapeHtml(ogImage)}" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
   <meta property="og:type" content="${escapeHtml(ogType)}" />
+  <meta property="og:site_name" content="${escapeHtml(siteTitle)}" />
+  <meta property="og:image:alt" content="${escapeHtml(siteTitle)} page preview card" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${escapeHtml(pageTitle)}" />
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
+  <meta name="twitter:image:alt" content="${escapeHtml(siteTitle)} page preview card" />
   <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />${extraHead}
   <script type="module" src="/js/main.js?v=${assetVersion}"></script>${ldJsonScript}
 </head>
@@ -450,7 +456,7 @@ ${jsonLd}
 
 function renderNav() {
   return `
-      <nav class="navbar">
+      <nav class="navbar" aria-label="Primary">
         <div class="logo">
           <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
         </div>
@@ -467,7 +473,7 @@ function renderNav() {
           <li><a href="/media/">Media</a></li>
           <li><a href="/blog/">Blog</a></li>
         </ul>
-        <button id="theme-toggle" aria-label="Toggle dark mode">🌓</button>
+        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
       </nav>
   `;
 }
@@ -477,6 +483,7 @@ function renderFooter() {
   <footer>
     <div class="container">
       <h2>Get in Touch</h2>
+      <p class="footer-contact"><a href="mailto:info@africantechno.com">info@africantechno.com</a></p>
       <ul class="social-links">
         <li><a href="mailto:info@africantechno.com" aria-label="Email"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm0 2.83V18h16V8.83l-8 7-8-7z"/></svg></a></li>
         <li><a href="https://linkedin.com/in/djngoma" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.98h4.51V24H.24zM8.6 8.98h4.31v2.05h.06c.6-1.14 2.06-2.35 4.24-2.35 4.54 0 5.38 2.99 5.38 6.87V24h-4.51v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.98V24H8.6z"/></svg></a></li>

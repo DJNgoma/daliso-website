@@ -18,9 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
     try { localStorage.setItem(key, value); } catch { /* private browsing */ }
   }
 
+  function updateToggleState(theme) {
+    const isDark = theme === 'dark';
+    const nextMode = isDark ? 'light' : 'dark';
+    const label = `Switch to ${nextMode} mode`;
+
+    toggleBtn.setAttribute('aria-pressed', String(isDark));
+    toggleBtn.setAttribute('aria-label', label);
+    toggleBtn.setAttribute('title', label);
+  }
+
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
     logo.src = theme === 'dark' ? logoDark : logoLight;
+    updateToggleState(theme);
     setStored('theme', theme);
   }
 

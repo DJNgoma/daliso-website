@@ -75,7 +75,10 @@ date: "not-a-date"
   assert.match(indexHtml, /Latest article/);
   assert.match(indexHtml, /ai-psychosis-and-synthetic-confidence\//);
   assert.doesNotMatch(indexHtml, /Coming Soon/);
+  assert.match(indexHtml, /apple-touch-icon\.png/);
   assert.match(articleHtml, /<meta property="og:type" content="article" \/>/);
+  assert.match(articleHtml, /og:site_name" content="Daliso Ngoma"/);
+  assert.match(articleHtml, /twitter:image:alt" content="Daliso Ngoma page preview card"/);
   assert.match(articleHtml, /article:published_time" content="2026-03-18T20:24:23\+02:00"/);
   assert.match(articleHtml, /18 March 2026 at 20:24/);
   assert.match(articleHtml, /What if this is wrong\?/);

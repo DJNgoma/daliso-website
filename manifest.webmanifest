@@ -12,14 +12,19 @@
       "type": "image/x-icon"
     },
     {
+      "src": "assets/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
       "src": "assets/images/logo-160.png",
       "sizes": "160x160",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "assets/images/og-image.png",
-      "sizes": "1200x630",
+      "src": "assets/images/apple-touch-icon.png",
+      "sizes": "180x180",
       "type": "image/png"
     }
   ]

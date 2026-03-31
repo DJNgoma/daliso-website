@@ -1,4 +1,4 @@
-import './main.js';
+import './main.js?v=20260331';
 
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
@@ -16,7 +16,7 @@ async function init() {
       throw new Error(`Projects data request failed with status ${response.status}`);
     }
 
-    const { generatedAt, projectCatalog, projectSections, source } = await response.json();
+    const { generatedAt, projectCatalog, projectSections } = await response.json();
 
     const groupedSections = projectSections
       .map((section) => ({
@@ -64,7 +64,7 @@ async function init() {
         { label: 'Featured projects', value: projectCatalog.length },
         { label: 'Categories', value: groupedSections.length },
         { label: 'Live links', value: liveLinks.length },
-        { label: 'Last sync', value: formatMetricDate(generatedAt) },
+        { label: 'Last refresh', value: formatMetricDate(generatedAt) },
       ];
 
       heroMetrics.innerHTML = metrics
@@ -101,18 +101,18 @@ async function init() {
         },
         {
           tone: 'sync',
-          title: 'Curated from Developer',
-          body: `Last synced ${formatDate(generatedAt)} from the current ${escapeHtml(getSourceLabel(source))}.`,
+          title: 'Portfolio curation',
+          body: `Last refreshed ${formatDate(generatedAt)} for the public portfolio.`,
           items: [
-            `${projectCatalog.length} portfolio projects selected from the live workspace`,
+            `${projectCatalog.length} projects featured in the public portfolio`,
             `${groupedSections.length} curated categories`,
-            `${liveLinks.length} public links configured in the checked-in manifest`,
+            `${liveLinks.length} public links across selected work`,
           ],
         },
         {
           tone: 'watch',
-          title: 'Latest featured movement',
-          body: `${recentProjects.length} projects currently lead the public portfolio by most recent source activity.`,
+          title: 'Recent movement',
+          body: `${recentProjects.length} projects currently lead the portfolio by most recent public update.`,
           items: recentProjects.map(
             (project) => `${project.title} · ${formatMetricDate(project.lastUpdated)}`
           ),
@@ -249,10 +249,6 @@ function getProjectOrder(project) {
   return typeof project.order === 'number' ? project.order : 0;
 }
 
-function getSourceLabel(source) {
-  return source && source.label ? source.label : 'workspace';
-}
-
 function renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalogSections) {
   if (heroMetrics) {
     heroMetrics.innerHTML = `
@@ -268,7 +264,7 @@ function renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalo
       <article class="summary-card">
         <span class="tone-pill high">error</span>
         <h3>Projects page unavailable</h3>
-        <p>The synced portfolio data could not be loaded in this browser. Try reloading the page or serving the site locally over HTTP.</p>
+        <p>The portfolio data could not be loaded in this browser. Try reloading the page or serving the site locally over HTTP.</p>
       </article>
     `;
   }

@@ -48,7 +48,7 @@ test.describe('Projects page', () => {
     await expect(metrics.nth(0).locator('span')).toHaveText('Featured projects');
     await expect(metrics.nth(1).locator('span')).toHaveText('Categories');
     await expect(metrics.nth(2).locator('span')).toHaveText('Live links');
-    await expect(metrics.nth(3).locator('span')).toHaveText('Last sync');
+    await expect(metrics.nth(3).locator('span')).toHaveText('Last refresh');
   });
 
   test('project cards render in all curated categories', async ({ page, request }) => {
@@ -71,9 +71,10 @@ test.describe('Projects page', () => {
     await page.goto('/projects/');
     const summaryCards = page.locator('.summary-card');
     await expect(summaryCards).not.toHaveCount(0);
-    await expect(page.getByText('Live on the web')).toBeVisible();
-    await expect(page.getByText('Curated from Developer')).toBeVisible();
-    await expect(page.getByText('Latest featured movement')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Live on the web' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Portfolio curation' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Recent movement' })).toBeVisible();
+    await expect(page.getByText('Developer workspace')).toHaveCount(0);
   });
 
   test('excluded folders do not appear in the public catalog', async ({ page }) => {

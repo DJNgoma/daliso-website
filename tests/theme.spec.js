@@ -4,13 +4,20 @@ test.describe('Theme toggle', () => {
   test('toggles between light and dark mode', async ({ page }) => {
     await page.goto('/');
     const html = page.locator('html');
+    const toggle = page.locator('#theme-toggle');
     await expect(html).toHaveAttribute('data-theme', 'light');
+    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    await expect(toggle).toHaveAttribute('title', 'Switch to dark mode');
 
-    await page.click('#theme-toggle');
+    await toggle.click();
     await expect(html).toHaveAttribute('data-theme', 'dark');
+    await expect(toggle).toHaveAttribute('aria-pressed', 'true');
+    await expect(toggle).toHaveAttribute('title', 'Switch to light mode');
 
-    await page.click('#theme-toggle');
+    await toggle.click();
     await expect(html).toHaveAttribute('data-theme', 'light');
+    await expect(toggle).toHaveAttribute('aria-pressed', 'false');
+    await expect(toggle).toHaveAttribute('title', 'Switch to dark mode');
   });
 
   test('logo changes with theme', async ({ page }) => {
@@ -30,6 +37,9 @@ test.describe('Theme toggle', () => {
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 
     await page.goto('/projects/');
+    await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
+
+    await page.goto('/media/');
     await expect(page.locator('html')).toHaveAttribute('data-theme', 'dark');
 
     await page.goto('/blog/');

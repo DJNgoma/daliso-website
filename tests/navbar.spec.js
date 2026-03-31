@@ -51,6 +51,12 @@ test.describe('Navbar consistency', () => {
     expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
   });
 
+  test('media page has correct nav items', async ({ page }) => {
+    await page.goto('/media/');
+    const navItems = await page.locator('.nav-menu a').allTextContents();
+    expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+  });
+
   test('blog article page has correct nav items', async ({ page }) => {
     await page.goto('/blog/ai-psychosis-and-synthetic-confidence/');
     const navItems = await page.locator('.nav-menu a').allTextContents();
@@ -58,14 +64,14 @@ test.describe('Navbar consistency', () => {
   });
 
   test('theme toggle exists on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of ['/', '/projects/', '/media/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
       await page.goto(path);
       await expect(page.locator('#theme-toggle')).toBeVisible();
     }
   });
 
   test('footer has contact icons on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of ['/', '/projects/', '/media/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
       await page.goto(path);
       const socialLinks = page.locator('footer .social-links a');
       await expect(socialLinks).toHaveCount(4);
