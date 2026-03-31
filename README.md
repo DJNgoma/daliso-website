@@ -36,7 +36,7 @@ https://daliso.com
 - `blog/posts/` → Published Markdown source posts for the generated blog
 - `blog/drafts/` → Draft Markdown posts created by the blog scaffold command
 - `css/fonts.css` → Local @font-face declarations
-- `css/style.css` → Combined production stylesheet (used by the site)
+- `css/style.css` → Single site entrypoint that imports the shared source stylesheets
 - `css/pages/blog.css` → Blog index and article styles
 - `css/base.css` → CSS variables, typography, global base styles (source)
 - `css/layout.css` → Layout primitives (container, hero, footer) (source)
