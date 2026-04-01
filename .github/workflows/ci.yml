@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   test:
-    name: Build and test
+    name: Validate site
     runs-on: ubuntu-latest
     timeout-minutes: 20
 
@@ -24,7 +24,7 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "22"
+          node-version: "24.14.1"
           cache: npm
 
       - name: Install dependencies

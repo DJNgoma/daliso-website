@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Welcome to the source code for [daliso.com](https://daliso.com) — the personal site of Daliso Ngoma, Founder & Managing Director of African Technopreneurs and host of the African Techno Podcast.",
   "main": "index.js",
+  "packageManager": "npm@11.12.1",
   "scripts": {
     "build:blog": "node scripts/blog-generator.mjs build",
     "new:post": "node scripts/blog-generator.mjs new",
