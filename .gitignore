@@ -25,3 +25,6 @@ dist/
 test-results/
 playwright-report/
 .claude/
+
+# Local audit artifacts
+audit/lighthouse-*.json
