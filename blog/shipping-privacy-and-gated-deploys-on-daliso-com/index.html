@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026." />
+  <meta name="author" content="Daliso Ngoma" />
+  <meta name="robots" content="index, follow" />
+  <meta name="base-path" content="/" />
+  <meta name="theme-color" content="#0077ff" />
+  <meta name="last-modified" content="2026-04-03T18:02:00+02:00" />
+  <title>Shipping Privacy and Gated Deploys on daliso.com | Blog | Daliso Ngoma</title>
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/css/style.css?v=20260331" />
+  <link rel="stylesheet" href="/css/pages/blog.css?v=20260331" />
+  <meta property="og:title" content="Shipping Privacy and Gated Deploys on daliso.com | Blog | Daliso Ngoma" />
+  <meta property="og:description" content="A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026." />
+  <meta property="og:image" content="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png" />
+  <meta property="og:url" content="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Daliso Ngoma" />
+  <meta property="og:image:alt" content="Daliso Ngoma page preview card" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Shipping Privacy and Gated Deploys on daliso.com | Blog | Daliso Ngoma" />
+  <meta name="twitter:description" content="A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026." />
+  <meta name="twitter:image" content="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png" />
+  <meta name="twitter:image:alt" content="Daliso Ngoma page preview card" />
+  <link rel="canonical" href="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/" />
+  <meta property="article:published_time" content="2026-04-03T18:02:00+02:00" />
+  <meta property="article:author" content="Daliso Ngoma" />
+  <meta property="article:tag" content="Web" />
+  <meta property="article:tag" content="CI/CD" />
+  <meta property="article:tag" content="Cloudflare" />
+  <meta property="article:tag" content="GitHub Actions" />
+  <meta property="article:tag" content="Privacy" />
+  <meta property="article:tag" content="Systems" />
+
+  <script type="module" src="/js/main.js?v=20260331"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Shipping Privacy and Gated Deploys on daliso.com",
+  "description": "A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.",
+  "datePublished": "2026-04-03T18:02:00+02:00",
+  "dateModified": "2026-04-03T18:02:00+02:00",
+  "author": {
+    "@type": "Person",
+    "name": "Daliso Ngoma"
+  },
+  "image": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
+  },
+  "publisher": {
+    "@type": "Person",
+    "name": "Daliso Ngoma"
+  },
+  "keywords": [
+    "Web",
+    "CI/CD",
+    "Cloudflare",
+    "GitHub Actions",
+    "Privacy",
+    "Systems"
+  ],
+  "url": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
+}
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="hero">
+    <div class="container">
+      
+      <nav class="navbar" aria-label="Primary">
+        <div class="logo">
+          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
+      </nav>
+  
+      
+        <div class="blog-article-hero animate-on-scroll">
+          <a class="blog-back-link" href="/blog/">Back to blog</a>
+          <p class="blog-eyebrow">Essay</p>
+          <h1>Shipping Privacy and Gated Deploys on daliso.com</h1>
+          <p class="blog-article-dek">A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.</p>
+          <div class="blog-meta-list" aria-label="Article metadata">
+            <span>By Daliso Ngoma</span>
+            <span><time datetime="2026-04-03T18:02:00+02:00">03 April 2026 at 18:02</time></span>
+            <span>5 min read</span>
+          </div>
+          
+          <ul class="blog-tag-list" aria-label="Tags">
+            <li class="blog-tag">Web</li><li class="blog-tag">CI/CD</li><li class="blog-tag">Cloudflare</li><li class="blog-tag">GitHub Actions</li><li class="blog-tag">Privacy</li><li class="blog-tag">Systems</li>
+          </ul>
+  
+        </div>
+  
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <section class="section blog-article-section">
+      <div class="container">
+        <article class="blog-article animate-on-scroll">
+          <div class="blog-prose">
+            <p>On April 3, 2026, I made a set of practical changes to <code>daliso.com</code>.</p>
+<p>None of them were dramatic on their own, but together they tightened up the public site, the release flow, and the baseline operational hygiene around publishing.</p>
+<p>This is the short record of what changed.</p>
+<h2>1. A Dedicated Privacy Policy Went Live</h2>
+<p>The site now has a dedicated privacy policy page at:</p>
+<p><a href="https://daliso.com/privacy/">https://daliso.com/privacy/</a></p>
+<p>The page is written specifically for the apps I publish under African Techno and African Technopreneurs, and it explicitly identifies my role as Founder of the company.</p>
+<p>That mattered for two reasons:</p>
+<ul>
+<li>it creates a stable public URL I can use for app listings and submissions</li>
+<li>it makes the policy feel connected to the actual operator behind the products rather than sounding generic and anonymous</li>
+</ul>
+<p>The route was added as a first-class page, not as a hidden document. It now has:</p>
+<ul>
+<li>its own metadata and canonical URL</li>
+<li>sitemap coverage</li>
+<li>a consistent footer link from the rest of the site</li>
+<li>mobile and desktop layouts that match the current site design</li>
+</ul>
+<h2>2. Production Deploys Are Now Gated by CI</h2>
+<p>The more important systems change was moving production deploy control into GitHub Actions.</p>
+<p>Before this change, the repo already had CI, but Cloudflare Pages was still the part that could publish the site independently through Git integration.</p>
+<p>That setup works, but it leaves too much room for production to move outside the exact validation path I want.</p>
+<p>The site now follows a tighter rule:</p>
+<ul>
+<li>pull requests to <code>main</code> run validation</li>
+<li>pushes to <code>main</code> run validation first</li>
+<li>Cloudflare production deploy only runs if the validation job passes</li>
+</ul>
+<p>In practical terms, that means a bad push can still be a bad push, but it should no longer become a bad production deploy.</p>
+<p>That is the distinction that matters.</p>
+<h2>3. Cloudflare Pages Now Publishes from a Clean Build Artifact</h2>
+<p>I also added a dedicated site assembly step so the deploy uploads a clean <code>dist/</code> directory instead of treating the repo root as the publish surface.</p>
+<p>That build step does a few useful things:</p>
+<ul>
+<li>regenerates the blog first</li>
+<li>copies only the files the static site actually needs</li>
+<li>excludes source-only blog directories such as drafts and markdown source posts</li>
+<li>avoids shipping stray local files like <code>.DS_Store</code></li>
+</ul>
+<p>This is a small improvement, but it is the kind that compounds.</p>
+<p>Production should receive a deliberate artifact, not whatever happened to be present in the working tree.</p>
+<h2>4. The Blog Generator Was Updated Too</h2>
+<p>Because the privacy page is now a permanent route, the blog generator also had to learn about it.</p>
+<p>The generated sitemap now keeps <code>/privacy/</code> in place every time the blog rebuilds.</p>
+<p>That sounds minor, but it prevents the sort of quiet regression that happens when generated files and manually added routes drift apart over time.</p>
+<h2>5. The GitHub and Cloudflare Wiring Was Finished Properly</h2>
+<p>The repository now has the GitHub Actions configuration it needs for Cloudflare Pages direct upload:</p>
+<ul>
+<li>Cloudflare account ID secret</li>
+<li>Cloudflare API token secret</li>
+<li>Cloudflare Pages project name variable</li>
+</ul>
+<p>On the Cloudflare side, production Git auto-deploys were confirmed to be off, which is the correct pairing for the GitHub Actions deployment model now in place.</p>
+<p>That means the control path is clearer:</p>
+<p>GitHub validates, GitHub decides whether deployment is allowed, and Cloudflare receives the final built artifact.</p>
+<h2>6. The Workflow Was Modernized After the First Pass</h2>
+<p>After the deploy path was working, there was still one piece of maintenance worth doing immediately.</p>
+<p>GitHub Actions emitted deprecation warnings around JavaScript actions still targeting the Node 20 runtime.</p>
+<p>So I followed up by:</p>
+<ul>
+<li>moving <code>actions/checkout</code> to <code>v6</code></li>
+<li>moving <code>actions/setup-node</code> to <code>v5</code></li>
+<li>forcing JavaScript actions onto Node 24 in the workflow</li>
+</ul>
+<p>That removed the old warnings for the GitHub-maintained actions.</p>
+<p>There is still one remaining warning from <code>cloudflare/wrangler-action@v3</code>, which GitHub now forces onto Node 24 successfully. So the workflow is stable, but there is still one future cleanup step available if I want a completely warning-free pipeline.</p>
+<h2>7. Branch Cleanup Was Done After the Merge</h2>
+<p>Once the privacy page and CI/CD work were merged and deployed successfully, the merged working branches were cleaned up as well.</p>
+<p>I left only one local branch in place because it is still attached to a separate worktree and should not be deleted casually.</p>
+<p>That is not an outstanding product issue. It is just the correct kind of caution around repo hygiene.</p>
+<h2>Why This Matters</h2>
+<p>None of this is especially glamorous.</p>
+<p>But this is the kind of work that keeps a public site usable as an operating surface rather than just a brochure.</p>
+<p>At the end of the day, the site gained:</p>
+<ul>
+<li>a real privacy policy URL for app publishing</li>
+<li>a safer production deploy path</li>
+<li>a cleaner Cloudflare artifact boundary</li>
+<li>a more current GitHub Actions runtime baseline</li>
+</ul>
+<p>That is a good day’s work.</p>
+<h2>Final Note</h2>
+<p>The privacy policy is live at:</p>
+<p><a href="https://daliso.com/privacy/">https://daliso.com/privacy/</a></p>
+<p>And the release pipeline for <code>daliso.com</code> is now materially harder to break by accident.</p>
+
+          </div>
+          <div class="blog-article-cta">
+            <a class="btn btn-outline" href="/blog/">Back to all posts</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  
+  </main>
+
+  
+  <footer>
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p class="footer-contact"><a href="mailto:info@africantechno.com">info@africantechno.com</a></p>
+      <ul class="social-links">
+        <li><a href="mailto:info@africantechno.com" aria-label="Email"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm0 2.83V18h16V8.83l-8 7-8-7z"/></svg></a></li>
+        <li><a href="https://linkedin.com/in/djngoma" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.98h4.51V24H.24zM8.6 8.98h4.31v2.05h.06c.6-1.14 2.06-2.35 4.24-2.35 4.54 0 5.38 2.99 5.38 6.87V24h-4.51v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.98V24H8.6z"/></svg></a></li>
+        <li><a href="https://x.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.146 2H16.36l-4.28 5.62-3.66-5.62H2.22l6.73 9.63L2 22h3.787l4.356-5.72L14 22h5.908l-7.08-10.21z"/></svg></a></li>
+        <li><a href="https://instagram.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.402a4.92 4.92 0 011.77 1.025c.47.47.843 1.1 1.025 1.77.162.46.346 1.26.402 2.43.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.402 2.43a4.92 4.92 0 01-1.025 1.77 4.92 4.92 0 01-1.77 1.025c-.46.162-1.26.346-2.43.402-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.402a4.92 4.92 0 01-1.77-1.025A4.92 4.92 0 012.2 19.65c-.162-.46-.346-1.26-.402-2.43C1.74 15.954 1.728 15.57 1.728 12.37s.012-3.584.07-4.85c.056-1.17.24-1.97.402-2.43a4.92 4.92 0 011.025-1.77A4.92 4.92 0 015.32 2.672c.46-.162 1.26-.346 2.43-.402C8.416 2.212 8.8 2.2 12 2.2zM12 6.838a5.162 5.162 0 100 10.324 5.162 5.162 0 000-10.324zm0 8.324a3.162 3.162 0 110-6.324 3.162 3.162 0 010 6.324zm6.406-8.826a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Daliso Ngoma. <a href="/privacy/">Privacy Policy</a> · <a href="https://github.com/DJNgoma/daliso-website" target="_blank" rel="noopener noreferrer">Source Code</a></p>
+    </div>
+  </footer>
+  
+</body>
+</html>

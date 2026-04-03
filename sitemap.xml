@@ -17,12 +17,18 @@
   </url>
   <url>
     <loc>https://daliso.com/blog/</loc>
-    <lastmod>2026-03-18T21:54:40+02:00</lastmod>
+    <lastmod>2026-04-03T18:02:00+02:00</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://daliso.com/privacy/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/</loc>
+    <lastmod>2026-04-03T18:02:00+02:00</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>

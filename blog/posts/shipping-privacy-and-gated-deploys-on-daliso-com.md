@@ -1,0 +1,144 @@
+---
+title: "Shipping Privacy and Gated Deploys on daliso.com"
+slug: "shipping-privacy-and-gated-deploys-on-daliso-com"
+description: "A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026."
+author: "Daliso Ngoma"
+date: "2026-04-03T18:02:00+02:00"
+tags:
+  - Web
+  - CI/CD
+  - Cloudflare
+  - GitHub Actions
+  - Privacy
+  - Systems
+---
+
+# Shipping Privacy and Gated Deploys on daliso.com
+
+On April 3, 2026, I made a set of practical changes to `daliso.com`.
+
+None of them were dramatic on their own, but together they tightened up the public site, the release flow, and the baseline operational hygiene around publishing.
+
+This is the short record of what changed.
+
+## 1. A Dedicated Privacy Policy Went Live
+
+The site now has a dedicated privacy policy page at:
+
+[https://daliso.com/privacy/](https://daliso.com/privacy/)
+
+The page is written specifically for the apps I publish under African Techno and African Technopreneurs, and it explicitly identifies my role as Founder of the company.
+
+That mattered for two reasons:
+
+- it creates a stable public URL I can use for app listings and submissions
+- it makes the policy feel connected to the actual operator behind the products rather than sounding generic and anonymous
+
+The route was added as a first-class page, not as a hidden document. It now has:
+
+- its own metadata and canonical URL
+- sitemap coverage
+- a consistent footer link from the rest of the site
+- mobile and desktop layouts that match the current site design
+
+## 2. Production Deploys Are Now Gated by CI
+
+The more important systems change was moving production deploy control into GitHub Actions.
+
+Before this change, the repo already had CI, but Cloudflare Pages was still the part that could publish the site independently through Git integration.
+
+That setup works, but it leaves too much room for production to move outside the exact validation path I want.
+
+The site now follows a tighter rule:
+
+- pull requests to `main` run validation
+- pushes to `main` run validation first
+- Cloudflare production deploy only runs if the validation job passes
+
+In practical terms, that means a bad push can still be a bad push, but it should no longer become a bad production deploy.
+
+That is the distinction that matters.
+
+## 3. Cloudflare Pages Now Publishes from a Clean Build Artifact
+
+I also added a dedicated site assembly step so the deploy uploads a clean `dist/` directory instead of treating the repo root as the publish surface.
+
+That build step does a few useful things:
+
+- regenerates the blog first
+- copies only the files the static site actually needs
+- excludes source-only blog directories such as drafts and markdown source posts
+- avoids shipping stray local files like `.DS_Store`
+
+This is a small improvement, but it is the kind that compounds.
+
+Production should receive a deliberate artifact, not whatever happened to be present in the working tree.
+
+## 4. The Blog Generator Was Updated Too
+
+Because the privacy page is now a permanent route, the blog generator also had to learn about it.
+
+The generated sitemap now keeps `/privacy/` in place every time the blog rebuilds.
+
+That sounds minor, but it prevents the sort of quiet regression that happens when generated files and manually added routes drift apart over time.
+
+## 5. The GitHub and Cloudflare Wiring Was Finished Properly
+
+The repository now has the GitHub Actions configuration it needs for Cloudflare Pages direct upload:
+
+- Cloudflare account ID secret
+- Cloudflare API token secret
+- Cloudflare Pages project name variable
+
+On the Cloudflare side, production Git auto-deploys were confirmed to be off, which is the correct pairing for the GitHub Actions deployment model now in place.
+
+That means the control path is clearer:
+
+GitHub validates, GitHub decides whether deployment is allowed, and Cloudflare receives the final built artifact.
+
+## 6. The Workflow Was Modernized After the First Pass
+
+After the deploy path was working, there was still one piece of maintenance worth doing immediately.
+
+GitHub Actions emitted deprecation warnings around JavaScript actions still targeting the Node 20 runtime.
+
+So I followed up by:
+
+- moving `actions/checkout` to `v6`
+- moving `actions/setup-node` to `v5`
+- forcing JavaScript actions onto Node 24 in the workflow
+
+That removed the old warnings for the GitHub-maintained actions.
+
+There is still one remaining warning from `cloudflare/wrangler-action@v3`, which GitHub now forces onto Node 24 successfully. So the workflow is stable, but there is still one future cleanup step available if I want a completely warning-free pipeline.
+
+## 7. Branch Cleanup Was Done After the Merge
+
+Once the privacy page and CI/CD work were merged and deployed successfully, the merged working branches were cleaned up as well.
+
+I left only one local branch in place because it is still attached to a separate worktree and should not be deleted casually.
+
+That is not an outstanding product issue. It is just the correct kind of caution around repo hygiene.
+
+## Why This Matters
+
+None of this is especially glamorous.
+
+But this is the kind of work that keeps a public site usable as an operating surface rather than just a brochure.
+
+At the end of the day, the site gained:
+
+- a real privacy policy URL for app publishing
+- a safer production deploy path
+- a cleaner Cloudflare artifact boundary
+- a more current GitHub Actions runtime baseline
+
+That is a good day’s work.
+
+## Final Note
+
+The privacy policy is live at:
+
+[https://daliso.com/privacy/](https://daliso.com/privacy/)
+
+And the release pipeline for `daliso.com` is now materially harder to break by accident.

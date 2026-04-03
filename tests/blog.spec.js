@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 
-const FEATURED_ARTICLE_PATH = '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/';
-const ARCHIVE_ARTICLE_PATH = '/blog/ai-psychosis-and-synthetic-confidence/';
+const FEATURED_ARTICLE_PATH = '/blog/shipping-privacy-and-gated-deploys-on-daliso-com/';
+const ARCHIVE_ARTICLE_PATH = '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/';
 
 test.describe('Blog pages', () => {
   test('blog index renders generated content and featured article link', async ({ page }) => {
@@ -20,11 +20,11 @@ test.describe('Blog pages', () => {
     await expect(page.getByRole('heading', { name: 'Latest article' })).toBeVisible();
     await expect(page.locator('.blog-featured-card h3 a')).toHaveAttribute('href', FEATURED_ARTICLE_PATH);
     await expect(page.locator('.blog-featured-card')).toContainText(
-      'Why This Site Tends to Score Well in PageSpeed Insights'
+      'Shipping Privacy and Gated Deploys on daliso.com'
     );
     await expect(
       page.locator('.blog-post-grid').getByRole('link', {
-        name: 'AI Psychosis: When Intelligence Becomes Too Convincing',
+        name: 'Why This Site Tends to Score Well in PageSpeed Insights',
       })
     ).toHaveAttribute('href', ARCHIVE_ARTICLE_PATH);
     await expect(page.locator('.blog-featured-card')).toContainText('Read article');
@@ -34,11 +34,11 @@ test.describe('Blog pages', () => {
     await page.goto(FEATURED_ARTICLE_PATH);
 
     await expect(
-      page.getByRole('heading', { name: 'Why This Site Tends to Score Well in PageSpeed Insights' })
+      page.getByRole('heading', { name: 'Shipping Privacy and Gated Deploys on daliso.com' })
     ).toBeVisible();
-    await expect(page.locator('time[datetime="2026-03-18T21:54:40+02:00"]')).toBeVisible();
+    await expect(page.locator('time[datetime="2026-04-03T18:02:00+02:00"]')).toBeVisible();
     await expect(page.locator('.blog-prose')).toContainText(
-      'The real reason this site can score very well is simple:'
+      'And the release pipeline for daliso.com is now materially harder to break by accident.'
     );
     await expect(page.getByRole('link', { name: 'Back to blog' })).toHaveAttribute('href', '/blog/');
   });
