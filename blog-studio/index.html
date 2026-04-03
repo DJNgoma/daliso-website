@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Local-only blog studio for drafting, previewing, and publishing Markdown posts." />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta name="base-path" content="/" />
+  <meta name="theme-color" content="#0077ff" />
+  <title>Blog Studio | Daliso Ngoma</title>
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/css/style.css?v=20260331" />
+  <link rel="stylesheet" href="/css/pages/blog.css?v=20260331" />
+  <link rel="stylesheet" href="/css/pages/blog-studio.css?v=20260403" />
+</head>
+<body class="blog-studio-page">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header class="hero studio-hero">
+    <div class="container">
+      <nav class="navbar" aria-label="Primary">
+        <div class="logo">
+          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/#about">About</a></li>
+          <li><a href="/#work">Work</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
+      </nav>
+
+      <div class="studio-hero-content animate-on-scroll">
+        <p class="blog-eyebrow">Local blog studio</p>
+        <h1>Write, preview, and publish Markdown posts from one workspace.</h1>
+        <p class="studio-hero-lede">
+          Keep your own writing and AI-assisted drafts in the same editor, keep unfinished work in
+          drafts, and publish only when the post is ready to join the public blog.
+        </p>
+        <div class="cta-buttons">
+          <button class="btn" type="button" id="reload-documents">Reload library</button>
+          <button class="btn btn-outline" type="button" id="focus-new-post">New post</button>
+          <a class="btn btn-outline" href="/blog/">View public blog</a>
+        </div>
+      </div>
+
+      <div class="studio-summary-grid animate-on-scroll" aria-label="Studio summary">
+        <article class="studio-summary-card">
+          <span class="studio-summary-label">Drafts</span>
+          <strong id="summary-draft-count">0</strong>
+          <span id="summary-draft-note">Waiting for local data</span>
+        </article>
+        <article class="studio-summary-card">
+          <span class="studio-summary-label">Published</span>
+          <strong id="summary-published-count">0</strong>
+          <span id="summary-published-note">Ready to sync</span>
+        </article>
+        <article class="studio-summary-card">
+          <span class="studio-summary-label">Status</span>
+          <strong id="summary-connection-state">Idle</strong>
+          <span id="summary-connection-note">Local API not checked yet</span>
+        </article>
+      </div>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <section class="section studio-top-section">
+      <div class="container studio-top-grid">
+        <section class="studio-panel studio-create-panel" aria-labelledby="new-post-heading">
+          <div class="panel-header">
+            <div>
+              <p class="blog-eyebrow">New post</p>
+              <h2 id="new-post-heading">Create a draft from a title</h2>
+            </div>
+            <p class="studio-panel-note">Starts as a draft and stays local until you publish it.</p>
+          </div>
+          <form id="new-post-form" class="studio-form">
+            <label>
+              <span>Title</span>
+              <input id="new-post-title" name="title" type="text" placeholder="What are you writing about?" autocomplete="off" />
+            </label>
+            <label>
+              <span>Origin</span>
+              <select id="new-post-origin" name="origin">
+                <option value="human">Human-written</option>
+                <option value="ai-assisted">AI-assisted</option>
+                <option value="ai-generated">AI-generated</option>
+              </select>
+            </label>
+            <label class="checkbox-field">
+              <input id="new-post-show-origin" name="showOriginLabel" type="checkbox" checked />
+              <span>Show a public disclosure when the post is AI-assisted or AI-generated</span>
+            </label>
+            <div class="studio-form-actions">
+              <button class="btn" type="submit">Create draft</button>
+            </div>
+          </form>
+        </section>
+
+        <section class="studio-panel studio-status-panel" aria-labelledby="studio-status-heading">
+          <div class="panel-header">
+            <div>
+              <p class="blog-eyebrow">Studio status</p>
+              <h2 id="studio-status-heading">Current session</h2>
+            </div>
+            <span class="status-pill" id="status-pill">Idle</span>
+          </div>
+          <p id="status-message" class="studio-status-message" role="status" aria-live="polite">
+            Load the local API to see drafts and published posts here.
+          </p>
+          <dl class="studio-status-list">
+            <div>
+              <dt>Active document</dt>
+              <dd id="active-document-summary">None selected</dd>
+            </div>
+            <div>
+              <dt>Dirty state</dt>
+              <dd id="dirty-state-summary">Clean</dd>
+            </div>
+            <div>
+              <dt>Preview</dt>
+              <dd id="preview-state-summary">Waiting for content</dd>
+            </div>
+          </dl>
+        </section>
+      </div>
+    </section>
+
+    <section class="section studio-workspace-section">
+      <div class="container studio-workspace-grid">
+        <aside class="studio-panel studio-sidebar" aria-labelledby="library-heading">
+          <div class="panel-header">
+            <div>
+              <p class="blog-eyebrow">Library</p>
+              <h2 id="library-heading">Drafts and published posts</h2>
+            </div>
+            <button class="inline-button" type="button" id="refresh-library">Refresh</button>
+          </div>
+
+          <div class="studio-library-group">
+            <div class="studio-library-heading">
+              <h3>Drafts</h3>
+              <span class="status-pill" id="draft-count-badge">0</span>
+            </div>
+            <div id="draft-list" class="document-list" aria-live="polite"></div>
+          </div>
+
+          <div class="studio-library-group">
+            <div class="studio-library-heading">
+              <h3>Published</h3>
+              <span class="status-pill" id="published-count-badge">0</span>
+            </div>
+            <div id="published-list" class="document-list" aria-live="polite"></div>
+          </div>
+        </aside>
+
+        <div class="studio-main-column">
+          <section class="studio-panel editor-panel" aria-labelledby="editor-heading">
+            <div class="panel-header editor-panel-header">
+              <div>
+                <p class="blog-eyebrow">Markdown editor</p>
+                <h2 id="editor-heading">Select a document to edit</h2>
+                <p class="studio-panel-note" id="editor-subtitle">Frontmatter and body stay in the raw Markdown source.</p>
+              </div>
+              <div class="editor-badges" aria-label="Document metadata">
+                <span class="status-pill" id="document-status-pill">No document</span>
+                <span class="status-pill status-pill-accent" id="document-origin-pill">Origin: human</span>
+              </div>
+            </div>
+
+            <div class="studio-meta-grid" aria-label="Frontmatter controls">
+              <label>
+                <span>Title</span>
+                <input id="field-title" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Slug</span>
+                <input id="field-slug" type="text" autocomplete="off" />
+              </label>
+              <label class="studio-meta-wide">
+                <span>Description</span>
+                <textarea id="field-description" rows="3"></textarea>
+              </label>
+              <label>
+                <span>Author</span>
+                <input id="field-author" type="text" autocomplete="off" />
+              </label>
+              <label>
+                <span>Date</span>
+                <input id="field-date" type="text" placeholder="2026-04-03T18:02:00+02:00" autocomplete="off" />
+              </label>
+              <label>
+                <span>Tags</span>
+                <input id="field-tags" type="text" placeholder="AI, Writing, Systems" autocomplete="off" />
+              </label>
+              <label>
+                <span>Origin</span>
+                <select id="field-origin">
+                  <option value="human">Human-written</option>
+                  <option value="ai-assisted">AI-assisted</option>
+                  <option value="ai-generated">AI-generated</option>
+                </select>
+              </label>
+              <label class="checkbox-field">
+                <input id="field-show-origin" type="checkbox" />
+                <span>Show disclosure in the published post</span>
+              </label>
+            </div>
+
+            <div class="studio-editor-grid">
+              <div class="studio-source-column">
+                <div class="panel-subheader">
+                  <div>
+                    <h3>Raw Markdown</h3>
+                    <p>Edit the frontmatter directly, then write the body below it.</p>
+                  </div>
+                  <button class="inline-button" type="button" id="sync-metadata">Apply metadata</button>
+                </div>
+                <label class="sr-only" for="markdown-input">Markdown source</label>
+                <textarea id="markdown-input" spellcheck="true" autocapitalize="off" autocorrect="off"></textarea>
+              </div>
+
+              <div class="studio-preview-column">
+                <div class="panel-subheader studio-preview-header">
+                  <div>
+                    <h3>Live preview</h3>
+                    <p id="preview-note">Rendered through the local preview endpoint.</p>
+                  </div>
+                  <button class="btn btn-outline" type="button" id="refresh-preview">Refresh preview</button>
+                </div>
+                <div id="preview-status" class="preview-status" role="status" aria-live="polite"></div>
+                <article id="preview-frame" class="preview-frame" aria-label="Live preview of the selected blog post">
+                  <div class="preview-empty-state">
+                    <h3>No document selected</h3>
+                    <p>Create a draft or pick a document from the sidebar to start editing.</p>
+                  </div>
+                </article>
+              </div>
+            </div>
+
+            <div class="studio-actions">
+              <button class="btn btn-outline" type="button" id="save-draft">Save Draft</button>
+              <button class="btn" type="button" id="publish-post">Publish</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <h2>Local Studio</h2>
+      <p class="footer-contact">
+        <a href="/blog/">Public blog</a> · <a href="mailto:info@africantechno.com">info@africantechno.com</a>
+      </p>
+      <p class="footer-copy">
+        Local authoring surface for `blog/drafts` and `blog/posts`. The public site stays static.
+      </p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/main.js?v=20260331"></script>
+  <script type="module" src="/js/blog-studio.js?v=20260403"></script>
+</body>
+</html>

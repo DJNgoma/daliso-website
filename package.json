@@ -5,6 +5,7 @@
   "main": "index.js",
   "packageManager": "npm@11.12.1",
   "scripts": {
+    "dev": "node scripts/dev-server.mjs",
     "build:blog": "node scripts/blog-generator.mjs build",
     "build:site": "npm run build:blog && node scripts/build-site.mjs",
     "new:post": "node scripts/blog-generator.mjs new",

@@ -73,13 +73,16 @@ npm run sync:projects
 npm test
 ```
 
-For a quick local preview outside Playwright:
+For the local site plus the write-capable blog studio:
 
 ```bash
-python3 -m http.server 8080
+npm run dev
 ```
 
-Then open `http://localhost:8080`.
+Then open:
+
+- `http://127.0.0.1:8080/` for the public site
+- `http://127.0.0.1:8080/blog-studio/` for local draft editing, preview, and publish actions
 
 ## CI/CD
 
@@ -128,9 +131,11 @@ npm run new:post -- --title "My New Post"
 Workflow:
 
 1. Create a draft in `blog/drafts/`.
-2. Move a finished draft into `blog/posts/`.
-3. Run `npm run build:blog` to regenerate `/blog/`, the article route, and `sitemap.xml`.
+2. Use `npm run dev` and open `/blog-studio/` to edit raw Markdown, preview the rendered article, and choose `Save Draft` or `Publish`.
+3. Published posts are written into `blog/posts/`, and the generator rebuilds `/blog/`, the article route, and `sitemap.xml`.
 4. Run `npm test` to verify the generator and browser output.
+
+The studio is local-only. It is not included in the production publish surface, and draft Markdown files are never exposed through the public blog or sitemap.
 
 ## PageSpeed Notes
 
