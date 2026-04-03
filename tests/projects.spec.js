@@ -134,12 +134,15 @@ test.describe('Projects page', () => {
 
     // Scroll through the entire page to trigger all IntersectionObservers
     await page.evaluate(async () => {
-      const step = window.innerHeight;
+      const step = Math.max(Math.floor(window.innerHeight * 0.6), 200);
       const max = document.documentElement.scrollHeight;
       for (let y = 0; y < max; y += step) {
         window.scrollTo(0, y);
         await new Promise(r => setTimeout(r, 100));
       }
+
+      window.scrollTo(0, max);
+      await new Promise(r => setTimeout(r, 250));
     });
 
     const sections = page.locator('.animate-on-scroll');

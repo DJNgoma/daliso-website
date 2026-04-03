@@ -11,6 +11,7 @@ const cleanupPrefixes = [
   'ai-disclosure-enabled',
   'ai-disclosure-hidden',
 ];
+const runSuffix = `${Date.now().toString(36)}-${process.pid.toString(36)}`;
 
 test.describe('Blog studio', () => {
   test.afterEach(() => {
@@ -172,7 +173,7 @@ test.describe('Blog studio', () => {
 });
 
 function withProjectSuffix(title, testInfo) {
-  return `${title} ${testInfo.project.name}`;
+  return `${title} ${testInfo.project.name} ${runSuffix}`;
 }
 
 function slugify(value) {
