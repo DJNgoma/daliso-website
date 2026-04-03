@@ -1,6 +1,6 @@
 import { test, expect } from '@playwright/test';
 
-const CORE_PUBLIC_PATHS = ['/', '/projects/', '/media/', '/blog/', '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/'];
+const CORE_PUBLIC_PATHS = ['/', '/projects/', '/media/', '/blog/', '/privacy/', '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/'];
 
 test.describe('Metadata', () => {
   test('core public pages include png favicon and apple touch icon references', async ({ page }) => {

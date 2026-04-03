@@ -1,0 +1,167 @@
+.privacy-hero {
+  padding-bottom: 3.5rem;
+}
+
+.privacy-hero::before {
+  background:
+    radial-gradient(circle at top center, color-mix(in srgb, var(--accent) 26%, transparent) 0%, transparent 58%),
+    radial-gradient(circle at 25% 18%, color-mix(in srgb, var(--accent) 14%, transparent) 0%, transparent 42%);
+  opacity: 1;
+}
+
+.privacy-hero-copy {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  margin: 0 auto;
+  padding-top: 5.5rem;
+}
+
+.privacy-kicker {
+  margin: 0 0 1rem;
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.privacy-hero-copy h1 {
+  margin: 0;
+  font-size: clamp(2.6rem, 6vw, 4.2rem);
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.privacy-intro {
+  max-width: 640px;
+  margin: 1.25rem auto 0;
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--text) 80%, transparent);
+}
+
+.privacy-badges {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+.privacy-badges span {
+  padding: 0.65rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, var(--shadow));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--card) 88%, transparent);
+  font-size: 0.92rem;
+}
+
+.privacy-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 280px) minmax(0, 1fr);
+  gap: 2.5rem;
+  align-items: start;
+}
+
+.privacy-aside {
+  position: sticky;
+  top: 6.75rem;
+  align-self: start;
+}
+
+.privacy-aside-block {
+  padding: 1.2rem 1.25rem;
+  border: 1px solid color-mix(in srgb, var(--accent) 14%, var(--shadow));
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--card) 85%, transparent);
+  box-shadow: 0 12px 40px color-mix(in srgb, var(--shadow) 55%, transparent);
+}
+
+.privacy-aside-block + .privacy-aside-block {
+  margin-top: 1rem;
+}
+
+.privacy-label {
+  margin: 0 0 0.45rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.privacy-aside p {
+  margin: 0;
+}
+
+.privacy-checklist,
+.policy-list {
+  margin: 0.9rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.privacy-checklist li + li,
+.policy-list li + li {
+  margin-top: 0.65rem;
+}
+
+.privacy-content {
+  min-width: 0;
+}
+
+.policy-section {
+  padding: 0 0 2rem;
+  border-top: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+}
+
+.policy-section:first-child {
+  border-top: none;
+  padding-top: 0;
+}
+
+.policy-section + .policy-section {
+  padding-top: 2rem;
+}
+
+.policy-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+}
+
+.policy-section p,
+.policy-list li {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--text) 88%, transparent);
+}
+
+.policy-section-final {
+  padding-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .privacy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .privacy-aside {
+    position: static;
+  }
+}
+
+@media (max-width: 768px) {
+  .privacy-hero-copy {
+    padding-top: 4.5rem;
+  }
+
+  .privacy-badges {
+    justify-content: flex-start;
+  }
+
+  .privacy-badges span {
+    width: 100%;
+    text-align: left;
+  }
+}

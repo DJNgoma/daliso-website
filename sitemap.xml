@@ -22,6 +22,12 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://daliso.com/privacy/</loc>
+    <lastmod>2026-04-03T00:00:00+02:00</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/</loc>
     <lastmod>2026-03-18T21:54:40+02:00</lastmod>
     <changefreq>monthly</changefreq>
