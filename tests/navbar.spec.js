@@ -19,7 +19,7 @@ test.describe('Navbar consistency', () => {
     await page.goto('/');
     const logo = page.locator('#site-logo');
     await expect(logo).toBeVisible();
-    await expect(logo).toHaveAttribute('src', /logo-160\.png/);
+    await expect(logo).toHaveAttribute('src', /logo-120\.webp/);
     const naturalWidth = await logo.evaluate(img => img.naturalWidth);
     expect(naturalWidth).toBeGreaterThan(0);
   });
@@ -28,7 +28,7 @@ test.describe('Navbar consistency', () => {
     await page.goto('/projects/');
     const logo = page.locator('#site-logo');
     await expect(logo).toBeVisible();
-    await expect(logo).toHaveAttribute('src', /logo-160\.png/);
+    await expect(logo).toHaveAttribute('src', /logo-120\.webp/);
     const naturalWidth = await logo.evaluate(img => img.naturalWidth);
     expect(naturalWidth).toBeGreaterThan(0);
   });

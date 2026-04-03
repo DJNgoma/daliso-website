@@ -36,13 +36,14 @@ https://daliso.com
 - `blog/posts/` → Published Markdown source posts for the generated blog
 - `blog/drafts/` → Draft Markdown posts created by the blog scaffold command
 - `css/fonts.css` → Local @font-face declarations
-- `css/style.css` → Single site entrypoint that imports the shared source stylesheets
+- `css/style.css` → Generated shared CSS bundle served by the public site
 - `css/pages/blog.css` → Blog index and article styles
 - `css/base.css` → CSS variables, typography, global base styles (source)
 - `css/layout.css` → Layout primitives (container, hero, footer) (source)
 - `css/components.css` → Reusable UI components (buttons, cards, forms) (source)
 - `css/animations.css` → Scroll-triggered animations with reduced-motion support (source)
 - `css/pages/` → Page-specific styles (`404.css`, `projects.css`)
+- `scripts/build-css.mjs` → Rebuilds `css/style.css` from the shared source stylesheets
 - `data/projects-manifest.json` → Checked-in curation manifest for the public projects page
 - `scripts/blog-generator.mjs` → Generates `/blog/`, `/blog/{slug}/`, and draft post scaffolds
 - `js/main.js` → Single entry point
@@ -69,6 +70,8 @@ git clone https://github.com/djngoma/daliso-website.git
 cd daliso-website
 npm install
 npm run build:blog
+npm run build:css
+npm run build:assets
 npm run sync:projects
 npm test
 ```
@@ -84,6 +87,18 @@ Then open:
 - `http://127.0.0.1:8080/` for the public site
 - `http://127.0.0.1:8080/blog-studio/` for local draft editing, preview, and publish actions
 
+If you edit the shared CSS source files and want to rebuild the served bundle without starting the dev server, run:
+
+```bash
+npm run build:css
+```
+
+If you edit the homepage hero or logo source assets and want to rebuild the optimized WebP versions, run:
+
+```bash
+npm run build:assets
+```
+
 ## CI/CD
 
 GitHub Actions now owns both validation and production deployment for this repository.
@@ -91,6 +106,8 @@ GitHub Actions now owns both validation and production deployment for this repos
 - Pull requests to `main` run CI only.
 - Pushes to `main` run CI first, and only deploy to Cloudflare Pages if CI passes.
 - Production deploys use Cloudflare Pages Direct Upload via GitHub Actions rather than automatic Git-based production deploys.
+- The repository pins Node `24.14.1` in `.node-version`.
+- Because GitHub Actions uploads the prebuilt `dist/` directory directly, the Pages build image is bypassed in the normal production path. Pages v3 only matters if Git integration is re-enabled later.
 - `npm run sync:projects` is intentionally not part of CI because it depends on the surrounding local Developer workspace.
 
 Required GitHub repository configuration:
@@ -142,7 +159,7 @@ The studio is local-only. It is not included in the production publish surface, 
 If the homepage posts a very high PageSpeed Insights or Lighthouse score, the reason is mostly architectural rather than tactical.
 
 - The site is primarily static HTML, CSS, and vanilla JavaScript, so there is no hydration cost or framework runtime on the homepage.
-- The homepage ships very little code: `index.html` is about 9.8 KB, `css/style.css` is about 8.2 KB, and `js/main.js` is 256 B before it conditionally loads anything else.
+- The homepage ships very little code: `index.html` is about 9.8 KB, `js/main.js` is 256 B before it conditionally loads anything else, and the shared CSS is now served as a single generated bundle.
 - There are no analytics tags, ad scripts, chat widgets, or third-party embeds on the homepage.
 - Critical assets are explicit: the hero image is preloaded, responsive, and dimensioned, and the primary fonts are self-hosted WOFF2 files with `font-display: swap`.
 - Accessibility and SEO are mostly handled in the markup itself: skip link, semantic sections, ARIA labels, canonical URL, robots meta, sitemap, and structured data.
@@ -150,12 +167,12 @@ If the homepage posts a very high PageSpeed Insights or Lighthouse score, the re
 
 Important caveat: PageSpeed Insights is page-specific and run-specific. A great score on the homepage is not a guarantee for every route or every future run.
 
-On March 18, 2026, a local Lighthouse run against `https://daliso.com/` from this environment did not reproduce a permanent `100/100/100/100` result. It came back as:
+On April 3, 2026, a fresh live Lighthouse run against `https://daliso.com/` from this environment came back as:
 
-- Mobile: `88 / 95 / 100 / 100`
-- Desktop: `68 / 95 / 100 / 100`
+- Mobile performance: `94`
+- Desktop performance: `100`
 
-The main misses in that run were image format and sizing opportunities, relatively short cache TTLs on some static assets, and a contrast issue affecting accessibility. So the accurate statement is: the site is structured to score very well, but the score is not a fixed property of the repo.
+The main mobile misses were render-blocking CSS chaining, image delivery, and an injected Cloudflare email-decoder script on the live page. See [`audit/performance-guardrails.md`](/Users/daliso/Developer/daliso-website/audit/performance-guardrails.md) for the current fixes and the guardrails that should stop those regressions from sneaking back in.
 
 ## Projects Sync Workflow
 

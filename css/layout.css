@@ -22,8 +22,14 @@
 }
 
 .navbar .logo img {
+  display: block;
+  width: 40px;
   height: 40px;
   transition: filter 0.3s ease;
+}
+
+[data-theme="dark"] .navbar .logo img {
+  filter: invert(1);
 }
 
 .hero {

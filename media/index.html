@@ -15,15 +15,25 @@
   <meta name="robots" content="index, follow" />
   <meta name="base-path" content="/" />
   <meta name="theme-color" content="#0077ff" />
+  <meta name="color-scheme" content="light dark" />
   <title>Media | Daliso Ngoma</title>
   <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
   <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
   <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if ((savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch {}
+  </script>
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/css/style.css?v=20260331" />
+  <link rel="stylesheet" href="/css/style.css?v=20260403-perf" />
   <link rel="stylesheet" href="/css/pages/media.css?v=20260319" />
   <meta property="og:title" content="Media | Daliso Ngoma" />
   <meta
@@ -44,7 +54,7 @@
   <meta name="twitter:image" content="https://daliso.com/assets/images/og-image.png" />
   <meta name="twitter:image:alt" content="Daliso Ngoma media page preview card" />
   <link rel="canonical" href="https://daliso.com/media/" />
-  <script type="module" src="/js/main.js?v=20260331"></script>
+  <script type="module" src="/js/main.js?v=20260403-perf"></script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -52,7 +62,7 @@
     <div class="container">
       <nav class="navbar" aria-label="Primary">
         <div class="logo">
-          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+          <a href="/"><img id="site-logo" src="/assets/images/logo-120.webp" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span class="bar"></span>

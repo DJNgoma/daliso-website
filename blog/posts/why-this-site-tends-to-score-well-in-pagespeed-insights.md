@@ -99,7 +99,7 @@ The site does a few straightforward things that Lighthouse likes for good reason
 - the hero image is marked with `fetchpriority="high"`
 - fonts are self-hosted WOFF2 files
 - fonts use `font-display: swap`
-- the stylesheet is preloaded before use
+- the shared CSS is served as one bundled stylesheet instead of a runtime import chain
 
 None of that is exotic.
 

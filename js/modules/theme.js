@@ -2,13 +2,8 @@
 
 document.addEventListener('DOMContentLoaded', () => {
   const toggleBtn = document.getElementById('theme-toggle');
-  const logo = document.getElementById('site-logo');
 
-  if (!toggleBtn || !logo) return;
-
-  const basePath = logo.src.substring(0, logo.src.lastIndexOf('/') + 1);
-  const logoLight = basePath + 'logo-160.png';
-  const logoDark = basePath + 'logo_white-160.png';
+  if (!toggleBtn) return;
 
   function getStored(key) {
     try { return localStorage.getItem(key); } catch { return null; }
@@ -30,17 +25,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function applyTheme(theme) {
     document.documentElement.setAttribute('data-theme', theme);
-    logo.src = theme === 'dark' ? logoDark : logoLight;
     updateToggleState(theme);
-    setStored('theme', theme);
   }
 
   const savedTheme = getStored('theme');
   const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-  applyTheme(savedTheme || (prefersDark ? 'dark' : 'light'));
+  const initialTheme =
+    document.documentElement.getAttribute('data-theme') ||
+    savedTheme ||
+    (prefersDark ? 'dark' : 'light');
+
+  applyTheme(initialTheme);
 
   toggleBtn.addEventListener('click', () => {
     const current = document.documentElement.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    const nextTheme = current === 'dark' ? 'light' : 'dark';
+    applyTheme(nextTheme);
+    setStored('theme', nextTheme);
   });
 });

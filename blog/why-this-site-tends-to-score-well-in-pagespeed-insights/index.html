@@ -8,6 +8,7 @@
   <meta name="robots" content="index, follow" />
   <meta name="base-path" content="/" />
   <meta name="theme-color" content="#0077ff" />
+  <meta name="color-scheme" content="light dark" />
   <meta name="last-modified" content="2026-03-18T21:54:40+02:00" />
   <title>Why This Site Tends to Score Well in PageSpeed Insights | Blog | Daliso Ngoma</title>
   <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
@@ -15,10 +16,19 @@
   <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if ((savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch {}
+  </script>
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="stylesheet" href="/css/style.css?v=20260403" />
-  <link rel="stylesheet" href="/css/pages/blog.css?v=20260403" />
+  <link rel="stylesheet" href="/css/style.css?v=20260403-perf" />
+  <link rel="stylesheet" href="/css/pages/blog.css?v=20260403-perf" />
   <meta property="og:title" content="Why This Site Tends to Score Well in PageSpeed Insights | Blog | Daliso Ngoma" />
   <meta property="og:description" content="A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed." />
   <meta property="og:image" content="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/og-image.png" />
@@ -40,7 +50,7 @@
   <meta property="article:tag" content="Lighthouse" />
   <meta property="article:tag" content="Systems" />
 
-  <script type="module" src="/js/main.js?v=20260403"></script>
+  <script type="module" src="/js/main.js?v=20260403-perf"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -80,7 +90,7 @@
       
       <nav class="navbar" aria-label="Primary">
         <div class="logo">
-          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+          <a href="/"><img id="site-logo" src="/assets/images/logo-120.webp" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span class="bar"></span>
@@ -182,7 +192,7 @@
 <li>the hero image is marked with <code>fetchpriority=&quot;high&quot;</code></li>
 <li>fonts are self-hosted WOFF2 files</li>
 <li>fonts use <code>font-display: swap</code></li>
-<li>the stylesheet is preloaded before use</li>
+<li>the shared CSS is served as one bundled stylesheet instead of a runtime import chain</li>
 </ul>
 <p>None of that is exotic.</p>
 <p>It is just a competent critical rendering path.</p>

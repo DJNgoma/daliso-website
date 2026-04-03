@@ -2,6 +2,7 @@ import { createServer } from "node:http";
 import { statSync } from "node:fs";
 import { readFile } from "node:fs/promises";
 import { extname, join, normalize, resolve, sep } from "node:path";
+import { buildCssBundle } from "./build-css.mjs";
 import {
   buildBlog,
   getDocument,
@@ -50,6 +51,7 @@ const mimeTypes = {
   ".xml": "application/xml; charset=utf-8",
 };
 
+await buildCssBundle();
 await buildBlog({ siteRoot });
 
 const server = createServer(async (request, response) => {

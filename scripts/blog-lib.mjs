@@ -17,7 +17,7 @@ const siteUrl = "https://daliso.com";
 const siteTitle = "Daliso Ngoma";
 const defaultAuthor = "Daliso Ngoma";
 const defaultOgImage = `${siteUrl}/assets/images/og-image.png`;
-const assetVersion = "20260403";
+const assetVersion = "20260403-perf";
 const generatedMarkerFile = ".blog-generated";
 const reservedBlogDirs = new Set(["posts", "drafts"]);
 const validDocumentStatuses = new Set(["draft", "published"]);
@@ -718,6 +718,7 @@ ${jsonLd}
   <meta name="robots" content="index, follow" />
   <meta name="base-path" content="/" />
   <meta name="theme-color" content="#0077ff" />
+  <meta name="color-scheme" content="light dark" />
   ${lastModified ? `<meta name="last-modified" content="${escapeHtml(lastModified)}" />` : ""}
   <title>${escapeHtml(pageTitle)}</title>
   <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
@@ -725,7 +726,16 @@ ${jsonLd}
   <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
   <link rel="manifest" href="/manifest.webmanifest" />
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if ((savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch {}
+  </script>
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/style.css?v=${assetVersion}" />
   <link rel="stylesheet" href="/css/pages/blog.css?v=${assetVersion}" />
@@ -767,7 +777,7 @@ function renderNav() {
   return `
       <nav class="navbar" aria-label="Primary">
         <div class="logo">
-          <a href="/"><img id="site-logo" src="/assets/images/logo-160.png" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+          <a href="/"><img id="site-logo" src="/assets/images/logo-120.webp" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span class="bar"></span>
