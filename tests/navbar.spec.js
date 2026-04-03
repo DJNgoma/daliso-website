@@ -57,6 +57,12 @@ test.describe('Navbar consistency', () => {
     expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
   });
 
+  test('privacy page has correct nav items', async ({ page }) => {
+    await page.goto('/privacy/');
+    const navItems = await page.locator('.nav-menu a').allTextContents();
+    expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+  });
+
   test('blog article page has correct nav items', async ({ page }) => {
     await page.goto('/blog/ai-psychosis-and-synthetic-confidence/');
     const navItems = await page.locator('.nav-menu a').allTextContents();
@@ -64,17 +70,23 @@ test.describe('Navbar consistency', () => {
   });
 
   test('theme toggle exists on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/media/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of ['/', '/projects/', '/media/', '/blog/', '/privacy/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
       await page.goto(path);
       await expect(page.locator('#theme-toggle')).toBeVisible();
     }
   });
 
   test('footer has contact icons on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/media/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of ['/', '/projects/', '/media/', '/blog/', '/privacy/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
       await page.goto(path);
       const socialLinks = page.locator('footer .social-links a');
       await expect(socialLinks).toHaveCount(4);
     }
+  });
+
+  test('privacy page exposes policy heading and footer link', async ({ page }) => {
+    await page.goto('/privacy/');
+    await expect(page.getByRole('heading', { name: 'Privacy policy for the apps I publish.' })).toBeVisible();
+    await expect(page.locator('footer a[href="/privacy/"]')).toHaveText('Privacy Policy');
   });
 });
