@@ -83,6 +83,7 @@ date: "not-a-date"
   assert.match(articleHtml, /18 March 2026 at 20:24/);
   assert.match(articleHtml, /What if this is wrong\?/);
   assert.doesNotMatch(articleHtml, /<h1>AI Psychosis: When Intelligence Becomes Too Convincing<\/h1>[\s\S]*<h1>/);
+  assert.match(sitemap, /https:\/\/daliso\.com\/privacy\//);
   assert.match(sitemap, /https:\/\/daliso\.com\/blog\/ai-psychosis-and-synthetic-confidence\//);
 });
 

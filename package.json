@@ -6,6 +6,7 @@
   "packageManager": "npm@11.12.1",
   "scripts": {
     "build:blog": "node scripts/blog-generator.mjs build",
+    "build:site": "npm run build:blog && node scripts/build-site.mjs",
     "new:post": "node scripts/blog-generator.mjs new",
     "pretest": "npm run build:blog",
     "sync:projects": "node scripts/sync-projects.mjs",

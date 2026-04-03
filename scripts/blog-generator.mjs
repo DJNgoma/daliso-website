@@ -542,7 +542,7 @@ function renderTagList(tags) {
 
 function renderSitemap(posts) {
   const latestDate = posts[0]?.dateStamp ?? getCurrentDateTimeStamp();
-  const entries = [
+  const staticEntries = [
     {
       loc: `${siteUrl}/`,
       changefreq: "monthly",
@@ -564,13 +564,19 @@ function renderSitemap(posts) {
       priority: "0.7",
       lastmod: latestDate,
     },
-    ...posts.map((post) => ({
+    {
+      loc: `${siteUrl}/privacy/`,
+      changefreq: "monthly",
+      priority: "0.6",
+    },
+  ];
+  const blogEntries = posts.map((post) => ({
       loc: post.url,
       changefreq: "monthly",
       priority: "0.6",
       lastmod: post.dateStamp,
-    })),
-  ];
+    }));
+  const entries = [...staticEntries, ...blogEntries];
 
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">

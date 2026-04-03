@@ -83,11 +83,29 @@ Then open `http://localhost:8080`.
 
 ## CI/CD
 
-GitHub Actions now runs the deterministic CI pipeline for pull requests to `main` and pushes to `main`.
+GitHub Actions now owns both validation and production deployment for this repository.
 
-- CI runs `npm ci`, installs Playwright's Chromium browser plus OS dependencies, and executes `npm test`.
-- CD remains owned by the existing Cloudflare Pages GitHub integration for this repository.
+- Pull requests to `main` run CI only.
+- Pushes to `main` run CI first, and only deploy to Cloudflare Pages if CI passes.
+- Production deploys use Cloudflare Pages Direct Upload via GitHub Actions rather than automatic Git-based production deploys.
 - `npm run sync:projects` is intentionally not part of CI because it depends on the surrounding local Developer workspace.
+
+Required GitHub repository configuration:
+
+- Secret: `CLOUDFLARE_ACCOUNT_ID`
+- Secret: `CLOUDFLARE_API_TOKEN`
+- Repository variable: `CLOUDFLARE_PAGES_PROJECT_NAME`
+
+Required Cloudflare Pages dashboard change:
+
+- Disable the existing Git-based production deployment path for this project, or disconnect Git integration entirely, so only the GitHub Actions deploy job publishes to production.
+
+Deploy workflow summary:
+
+- `npm ci`
+- `npm test`
+- `npm run build:site`
+- `wrangler pages deploy dist --project-name=$CLOUDFLARE_PAGES_PROJECT_NAME --branch=main`
 
 ## Blog Workflow
 
