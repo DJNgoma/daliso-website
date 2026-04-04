@@ -1,7 +1,14 @@
 import { defineConfig } from '@playwright/test';
+import { execSync } from 'node:child_process';
+import { dirname } from 'node:path';
 
-const npmCommand = process.env.NPM_BIN ?? '/opt/homebrew/bin/npm';
-const nodeBinDir = process.env.NODE_BIN_DIR ?? '/opt/homebrew/bin';
+function findNpm() {
+  try { return execSync('command -v npm', { encoding: 'utf8' }).trim(); }
+  catch { return process.execPath.replace(/node$/, 'npm'); }
+}
+
+const npmCommand = process.env.NPM_BIN ?? findNpm();
+const nodeBinDir = process.env.NODE_BIN_DIR ?? dirname(npmCommand);
 const playwrightPort = process.env.PLAYWRIGHT_PORT ?? '4173';
 
 export default defineConfig({
