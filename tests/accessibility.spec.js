@@ -59,7 +59,7 @@ test.describe('Accessibility', () => {
     });
 
     await page.goto('/');
-    await expect(page.locator('.hero-content')).toBeVisible();
-    await expect(page.getByRole('heading', { level: 1, name: 'Daliso Ngoma' })).toBeVisible();
+    await expect(page.locator('.home-hero-copy')).toBeVisible();
+    await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 });

@@ -199,6 +199,10 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.repo-card-featured {
+  border-left: 3px solid var(--accent);
+}
+
 .recent-activity-grid .repo-card {
   min-height: 100%;
 }
