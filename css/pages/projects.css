@@ -237,6 +237,8 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .tone-pill.high {
@@ -347,9 +349,10 @@
 
 .repo-card-header {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .repo-card h4 {
