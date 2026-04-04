@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T09:35:16.334Z",
+  "generatedAt": "2026-04-04T09:41:02.373Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-04T09:11:19.000Z",
+      "lastUpdated": "2026-04-04T09:36:54.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -275,7 +275,18 @@
       "order": 50,
       "lastUpdated": "2026-04-03T13:02:37.000Z",
       "freshnessSource": "git",
-      "links": []
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://thedevilsaidictionary.com/",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
+          "kind": "appstore"
+        }
+      ]
     },
     {
       "id": "actioninbox",

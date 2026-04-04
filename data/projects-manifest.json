@@ -82,7 +82,18 @@
       "status": "Live",
       "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "links": []
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://thedevilsaidictionary.com/",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
+          "kind": "appstore"
+        }
+      ]
     },
     "VR_Rental_Website": {
       "title": "HeadsetHire",

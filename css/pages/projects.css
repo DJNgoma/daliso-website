@@ -281,6 +281,22 @@
   background: rgba(0, 119, 255, 0.14);
 }
 
+.repo-link-badge {
+  padding: 0;
+  background: none;
+}
+
+.repo-link-badge:hover {
+  background: none;
+  opacity: 0.85;
+}
+
+.repo-link-badge img {
+  display: block;
+  height: 40px;
+  width: auto;
+}
+
 .repo-status.private {
   background: rgba(245, 158, 11, 0.14);
   color: #a16207;

@@ -216,8 +216,20 @@ async function init() {
 
 function renderProjectLinks(links) {
   return links
-    .map(
-      (link) => `
+    .map((link) => {
+      if (link.kind === 'appstore') {
+        return `
+          <a
+            class="repo-link repo-link-badge"
+            href="${escapeHtml(link.url)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/assets/images/badge-app-store.svg" alt="${escapeHtml(link.label)}" height="40" />
+          </a>
+        `;
+      }
+      return `
         <a
           class="repo-link"
           href="${escapeHtml(link.url)}"
@@ -226,8 +238,8 @@ function renderProjectLinks(links) {
         >
           ${escapeHtml(link.label)}
         </a>
-      `
-    )
+      `;
+    })
     .join('');
 }
 
