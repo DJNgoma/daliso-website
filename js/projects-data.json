@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T09:43:56.229Z",
+  "generatedAt": "2026-04-04T09:45:51.706Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-04T09:43:14.000Z",
+      "lastUpdated": "2026-04-04T09:44:34.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -242,14 +242,14 @@
       ]
     },
     {
-      "id": "atos-change-review",
-      "folder": "atos-change-review",
+      "id": "EARN_Company_OS_Websites",
+      "folder": "EARN_Company_OS_Websites",
       "title": "EARN OS Change Review",
       "category": "internal-systems",
       "status": "Building",
       "summary": "Change review workflow app for African Technopreneurs operational decisions and release governance.",
       "order": 50,
-      "lastUpdated": "2026-04-01T00:05:37.000Z",
+      "lastUpdated": "2026-04-04T08:10:22.000Z",
       "freshnessSource": "git",
       "links": []
     },
