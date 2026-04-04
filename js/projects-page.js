@@ -101,18 +101,21 @@ async function init() {
       const summaryCards = [
         {
           tone: 'live',
+          filter: 'live',
           title: 'Live on the web',
           body: `${liveProjects.length} featured projects currently point to public destinations.`,
           items: liveProjects.map((project) => project.title),
         },
         {
           tone: 'builder',
+          filter: 'builder',
           title: 'Products and commerce',
           body: `${productsAndCommerce.length} active builds span finance, retail tooling, product discovery, and operational workflows.`,
           items: productsAndCommerce.map((project) => project.title),
         },
         {
           tone: 'systems',
+          filter: 'systems',
           title: 'Internal systems',
           body: `${internalSystems.length} portfolio entries support operators, routing, aliases, and repo hygiene behind the scenes.`,
           items: internalSystems.map((project) => project.title),
@@ -140,7 +143,7 @@ async function init() {
       summaryGrid.innerHTML = summaryCards
         .map(
           (card) => `
-            <article class="summary-card">
+            <article class="summary-card"${card.filter ? ` data-filter="${card.filter}"` : ''}>
               <span class="tone-pill ${card.tone}">${card.tone}</span>
               <h3>${card.title}</h3>
               <p>${card.body}</p>
@@ -149,6 +152,8 @@ async function init() {
           `
         )
         .join('');
+
+      initSummaryFilters();
     }
 
     function renderRecentActivity() {
@@ -177,6 +182,64 @@ async function init() {
           `
         )
         .join('');
+    }
+
+    function initSummaryFilters() {
+      const liveProjectIds = new Set(liveProjects.map((p) => p.id));
+
+      const filterSets = {
+        live: { mode: 'projects', ids: liveProjectIds },
+        builder: { mode: 'category', category: 'products-commerce' },
+        systems: { mode: 'category', category: 'internal-systems' },
+      };
+
+      let activeFilter = null;
+
+      summaryGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('[data-filter]');
+        if (!card) return;
+
+        const filterKey = card.dataset.filter;
+        const isAlreadyActive = activeFilter === filterKey;
+
+        summaryGrid.querySelectorAll('.summary-card').forEach((c) => c.classList.remove('summary-card--active'));
+
+        if (isAlreadyActive) {
+          activeFilter = null;
+          clearFilter();
+          return;
+        }
+
+        activeFilter = filterKey;
+        card.classList.add('summary-card--active');
+        applyFilter(filterSets[filterKey]);
+        catalogSections.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      function applyFilter(spec) {
+        const groups = catalogSections.querySelectorAll('.catalog-group');
+
+        groups.forEach((group) => {
+          if (spec.mode === 'category') {
+            group.classList.toggle('catalog-group--hidden', group.dataset.category !== spec.category);
+            group.querySelectorAll('.repo-card').forEach((c) => c.classList.remove('repo-card--hidden'));
+          } else {
+            let visibleCount = 0;
+            group.querySelectorAll('.repo-card').forEach((card) => {
+              const projectId = card.dataset.project;
+              const hidden = !spec.ids.has(projectId);
+              card.classList.toggle('repo-card--hidden', hidden);
+              if (!hidden) visibleCount++;
+            });
+            group.classList.toggle('catalog-group--hidden', visibleCount === 0);
+          }
+        });
+      }
+
+      function clearFilter() {
+        catalogSections.querySelectorAll('.catalog-group').forEach((g) => g.classList.remove('catalog-group--hidden'));
+        catalogSections.querySelectorAll('.repo-card').forEach((c) => c.classList.remove('repo-card--hidden'));
+      }
     }
 
     function renderProjectCard(project, options = {}) {

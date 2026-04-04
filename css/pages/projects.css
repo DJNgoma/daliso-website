@@ -91,6 +91,28 @@
   border: 1px solid transparent;
 }
 
+.summary-card[data-filter] {
+  cursor: pointer;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card[data-filter]:hover {
+  border-color: color-mix(in srgb, var(--accent) 28%, transparent);
+}
+
+.summary-card--active {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+.catalog-group--hidden {
+  display: none;
+}
+
+.repo-card--hidden {
+  display: none;
+}
+
 .summary-card h3 {
   margin-top: 0.4rem;
   margin-bottom: 0.6rem;
