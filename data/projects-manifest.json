@@ -27,9 +27,9 @@
   ],
   "projects": {
     "BuildATPage": {
-      "title": "Build by African Technopreneurs",
+      "title": "Build by African Techno",
       "category": "websites-publishing",
-      "status": "Live",
+      "status": "Building",
       "summary": "Community events website for AI-focused meetups in South Africa.",
       "order": 10,
       "links": []
@@ -79,7 +79,7 @@
     "TheDevilsAIDictionary": {
       "title": "The Devil's AI Dictionary",
       "category": "websites-publishing",
-      "status": "Building",
+      "status": "Live",
       "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
       "links": []
@@ -94,7 +94,7 @@
     },
     "LedgerOne": {
       "title": "LedgerOne",
-      "category": "products-commerce",
+      "category": "experiments-tools",
       "status": "Building",
       "summary": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary.",
       "order": 10,
@@ -102,7 +102,7 @@
     },
     "PricePilotForShopify": {
       "title": "Price Pilot",
-      "category": "products-commerce",
+      "category": "internal-systems",
       "status": "Internal",
       "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
       "order": 20,
@@ -110,7 +110,7 @@
     },
     "GearRoulette": {
       "title": "Gear Roulette",
-      "category": "products-commerce",
+      "category": "experiments-tools",
       "status": "Prototype",
       "summary": "Playful product discovery app that recommends XR and creator gear from a short quiz.",
       "order": 30,
@@ -126,7 +126,7 @@
     },
     "invoiceGenerator": {
       "title": "Commercial Invoice Generator",
-      "category": "products-commerce",
+      "category": "internal-systems",
       "status": "Operational",
       "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
       "order": 40,
@@ -134,7 +134,7 @@
     },
     "FearGreedCryptoTrader": {
       "title": "Sentiment Trader",
-      "category": "products-commerce",
+      "category": "experiments-tools",
       "status": "Prototype",
       "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
       "order": 50,
@@ -182,7 +182,7 @@
     },
     "Cin7CorePriceAnalyzer": {
       "title": "Cin7 Price Analyzer",
-      "category": "products-commerce",
+      "category": "internal-systems",
       "status": "Internal",
       "summary": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories.",
       "order": 25,
