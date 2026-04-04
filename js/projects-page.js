@@ -4,7 +4,6 @@ async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
   const featuredGrid = document.getElementById('featured-grid');
   const summaryGrid = document.getElementById('summary-grid');
-  const recentActivityGrid = document.getElementById('recent-activity-grid');
   const catalogSections = document.getElementById('catalog-sections');
   try {
     const moduleUrl = new URL(import.meta.url);
@@ -58,7 +57,6 @@ async function init() {
     renderHeroMetrics();
     renderFeaturedGrid();
     renderSummaryCards();
-    renderRecentActivity();
     renderCatalogSections();
     initFilterBar();
 
@@ -104,19 +102,16 @@ async function init() {
           tone: 'live',
           title: 'Live on the web',
           body: `${liveProjects.length} featured projects currently point to public destinations.`,
-          items: liveProjects.map((project) => project.title),
         },
         {
           tone: 'builder',
           title: 'Products and commerce',
           body: `${productsAndCommerce.length} active builds span finance, retail tooling, product discovery, and operational workflows.`,
-          items: productsAndCommerce.map((project) => project.title),
         },
         {
           tone: 'systems',
           title: 'Internal systems',
           body: `${internalSystems.length} portfolio entries support operators, routing, aliases, and repo hygiene behind the scenes.`,
-          items: internalSystems.map((project) => project.title),
         },
         {
           tone: 'sync',
@@ -145,22 +140,12 @@ async function init() {
               <span class="tone-pill ${card.tone}">${card.tone}</span>
               <h3>${card.title}</h3>
               <p>${card.body}</p>
-              <ul>${card.items.map((item) => `<li>${item}</li>`).join('')}</ul>
+              ${card.items ? `<ul>${card.items.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
             </article>
           `
         )
         .join('');
 
-    }
-
-    function renderRecentActivity() {
-      if (!recentActivityGrid) {
-        return;
-      }
-
-      recentActivityGrid.innerHTML = recentProjects
-        .map((project) => renderProjectCard(project, { compact: true }))
-        .join('');
     }
 
     function renderCatalogSections() {
@@ -186,12 +171,14 @@ async function init() {
       if (!filterPills) return;
 
       const liveProjectIds = new Set(liveProjects.map((p) => p.id));
+      const recentProjectIds = new Set(recentProjects.map((p) => p.id));
 
       const filterSets = {
         all: null,
         live: { mode: 'projects', ids: liveProjectIds },
         builder: { mode: 'category', category: 'products-commerce' },
         systems: { mode: 'category', category: 'internal-systems' },
+        recent: { mode: 'projects', ids: recentProjectIds },
       };
 
       filterPills.addEventListener('click', (e) => {
@@ -269,7 +256,7 @@ async function init() {
     }
   } catch (error) {
     console.error('Failed to render projects page', error);
-    renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalogSections);
+    renderFailureState(heroMetrics, summaryGrid, catalogSections);
   }
 }
 
@@ -338,7 +325,7 @@ function getProjectOrder(project) {
   return typeof project.order === 'number' ? project.order : 0;
 }
 
-function renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalogSections) {
+function renderFailureState(heroMetrics, summaryGrid, catalogSections) {
   if (heroMetrics) {
     heroMetrics.innerHTML = `
       <article class="metric-card">
@@ -356,10 +343,6 @@ function renderFailureState(heroMetrics, summaryGrid, recentActivityGrid, catalo
         <p>The portfolio data could not be loaded in this browser. Try reloading the page or serving the site locally over HTTP.</p>
       </article>
     `;
-  }
-
-  if (recentActivityGrid) {
-    recentActivityGrid.innerHTML = '';
   }
 
   if (catalogSections) {

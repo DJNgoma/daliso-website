@@ -27,7 +27,7 @@ function getRecentProjects(data) {
 
 function getCatalogCard(page, title) {
   return page
-    .locator('#catalog')
+    .locator('#catalogue')
     .getByRole('heading', { name: title, exact: true })
     .locator('xpath=ancestor::article[contains(@class,"repo-card")]');
 }
@@ -35,7 +35,7 @@ function getCatalogCard(page, title) {
 test.describe('Projects page', () => {
   test('catalog section is visible (no whitespace bug)', async ({ page }) => {
     await page.goto('/projects/');
-    const catalog = page.locator('#catalog');
+    const catalog = page.locator('#catalogue');
     await expect(catalog).toBeVisible({ timeout: 5000 });
   });
 
@@ -56,7 +56,7 @@ test.describe('Projects page', () => {
     const catalogSections = getCatalogSections(data);
 
     await page.goto('/projects/');
-    await page.waitForSelector('#catalog .repo-card', { timeout: 5000 });
+    await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
 
     const categoryHeadings = await page.locator('#catalog-sections .catalog-group-header h3').allTextContents();
     expect(categoryHeadings).toEqual(catalogSections.map((section) => section.title));
@@ -79,7 +79,7 @@ test.describe('Projects page', () => {
 
   test('excluded folders do not appear in the public catalog', async ({ page }) => {
     await page.goto('/projects/');
-    await page.waitForSelector('#catalog .repo-card', { timeout: 5000 });
+    await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
 
     await expect(page.getByText('AGNedbank2024', { exact: true })).toHaveCount(0);
     await expect(page.getByText('TestWeb', { exact: true })).toHaveCount(0);
@@ -97,8 +97,8 @@ test.describe('Projects page', () => {
 
   test('newly curated repos render in the public catalog', async ({ page }) => {
     await page.goto('/projects/');
-    const catalog = page.locator('#catalog');
-    await page.waitForSelector('#catalog .repo-card', { timeout: 5000 });
+    const catalog = page.locator('#catalogue');
+    await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
 
     await expect(catalog.getByRole('heading', { name: "The Devil's AI Dictionary", exact: true })).toBeVisible();
     await expect(catalog.getByRole('heading', { name: 'HeadsetHire', exact: true })).toBeVisible();
@@ -107,17 +107,16 @@ test.describe('Projects page', () => {
     await expect(catalog.getByRole('heading', { name: 'QuickQuote', exact: true })).toBeVisible();
   });
 
-  test('recent activity section renders the latest featured workspace updates', async ({ page, request }) => {
+  test('recent activity filter shows the latest workspace updates', async ({ page, request }) => {
     const data = await loadProjectsData(request);
     const recentProjects = getRecentProjects(data);
 
     await page.goto('/projects/');
-    const recentSection = page.locator('#recent-activity');
-    await expect(recentSection).toBeVisible();
-    await expect(recentSection.locator('.repo-card')).toHaveCount(recentProjects.length);
-    await expect(recentSection.getByRole('heading', { level: 4 })).toHaveText(
-      recentProjects.map((project) => project.title)
-    );
+    await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
+
+    await page.click('[data-filter="recent"]');
+    const visibleCards = page.locator('#catalog-sections .repo-card:not(.repo-card--hidden)');
+    await expect(visibleCards).toHaveCount(recentProjects.length);
   });
 
   test('configured live links use the manifest URLs', async ({ page }) => {
@@ -130,7 +129,7 @@ test.describe('Projects page', () => {
 
   test('all animate-on-scroll sections become visible after scrolling', async ({ page }) => {
     await page.goto('/projects/');
-    await page.waitForSelector('#catalog .repo-card', { timeout: 5000 });
+    await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
 
     // Scroll through the entire page to trigger all IntersectionObservers
     await page.evaluate(async () => {
