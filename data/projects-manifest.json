@@ -114,7 +114,7 @@
     "PricePilotForShopify": {
       "title": "Price Pilot",
       "category": "internal-systems",
-      "status": "Internal",
+      "status": "Operational",
       "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
       "order": 20,
       "links": []
@@ -154,7 +154,7 @@
     "CallGrid": {
       "title": "CallGrid",
       "category": "internal-systems",
-      "status": "Internal",
+      "status": "Operational",
       "summary": "CLI-first telephony governance system for Zoom Phone inventory, validation, migration planning, and operator review.",
       "order": 10,
       "links": []
@@ -162,7 +162,7 @@
     "EmailAliasOps": {
       "title": "AliasOps",
       "category": "internal-systems",
-      "status": "Internal",
+      "status": "Operational",
       "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
       "order": 20,
       "links": []
@@ -170,7 +170,7 @@
     "repo-workboard": {
       "title": "Repo Workboard",
       "category": "internal-systems",
-      "status": "Internal",
+      "status": "Operational",
       "summary": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps.",
       "order": 30,
       "links": []
@@ -194,7 +194,7 @@
     "Cin7CorePriceAnalyzer": {
       "title": "Cin7 Price Analyzer",
       "category": "internal-systems",
-      "status": "Internal",
+      "status": "Operational",
       "summary": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories.",
       "order": 25,
       "links": []
