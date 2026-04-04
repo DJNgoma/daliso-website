@@ -97,50 +97,36 @@ async function init() {
     }
 
     function renderSummaryCards() {
-      const summaryCards = [
+      const glossaryEntries = [
         {
           tone: 'live',
-          title: 'Live on the web',
-          body: `${liveProjects.length} featured projects currently point to public destinations.`,
+          title: 'Live',
+          body: 'Shipped and publicly accessible. The project has a working URL or published app that anyone can visit or download.',
         },
         {
-          tone: 'builder',
-          title: 'Products and commerce',
-          body: `${productsAndCommerce.length} active builds span finance, retail tooling, product discovery, and operational workflows.`,
+          tone: 'building',
+          title: 'Building',
+          body: 'Actively under development. The project is being worked on but is not yet publicly available or feature-complete.',
         },
         {
-          tone: 'systems',
-          title: 'Internal systems',
-          body: `${internalSystems.length} portfolio entries support operators, routing, aliases, and repo hygiene behind the scenes.`,
+          tone: 'operational',
+          title: 'Operational',
+          body: 'Running and in active use. The system is deployed and serving its purpose, typically for internal operations.',
         },
         {
-          tone: 'sync',
-          title: 'Portfolio curation',
-          body: `Last refreshed ${formatDate(generatedAt)} for the public portfolio.`,
-          items: [
-            `${projectCatalog.length} projects featured in the public portfolio`,
-            `${groupedSections.length} curated categories`,
-            `${liveLinks.length} public links across selected work`,
-          ],
-        },
-        {
-          tone: 'watch',
-          title: 'Recent movement',
-          body: `${recentProjects.length} projects currently lead the portfolio by most recent public update.`,
-          items: recentProjects.map(
-            (project) => `${project.title} · ${formatMetricDate(project.lastUpdated)}`
-          ),
+          tone: 'prototype',
+          title: 'Prototype',
+          body: 'Early-stage experiment or proof of concept. The idea is being explored but has not yet reached a shippable state.',
         },
       ];
 
-      summaryGrid.innerHTML = summaryCards
+      summaryGrid.innerHTML = glossaryEntries
         .map(
-          (card) => `
+          (entry) => `
             <article class="summary-card">
-              <span class="tone-pill ${card.tone}">${card.tone}</span>
-              <h3>${card.title}</h3>
-              <p>${card.body}</p>
-              ${card.items ? `<ul>${card.items.map((item) => `<li>${item}</li>`).join('')}</ul>` : ''}
+              <span class="tone-pill ${entry.tone}">${escapeHtml(entry.title)}</span>
+              <h3>${escapeHtml(entry.title)}</h3>
+              <p>${entry.body}</p>
             </article>
           `
         )

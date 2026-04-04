@@ -67,14 +67,14 @@ test.describe('Projects page', () => {
     }
   });
 
-  test('summary grid renders', async ({ page }) => {
+  test('glossary renders status definitions', async ({ page }) => {
     await page.goto('/projects/');
     const summaryCards = page.locator('.summary-card');
-    await expect(summaryCards).not.toHaveCount(0);
-    await expect(page.getByRole('heading', { name: 'Live on the web' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Portfolio curation' })).toBeVisible();
-    await expect(page.getByRole('heading', { name: 'Recent movement' })).toBeVisible();
-    await expect(page.getByText('Developer workspace')).toHaveCount(0);
+    await expect(summaryCards).toHaveCount(4);
+    await expect(page.getByRole('heading', { name: 'Live', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Building', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Operational', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'Prototype', exact: true })).toBeVisible();
   });
 
   test('excluded folders do not appear in the public catalog', async ({ page }) => {
