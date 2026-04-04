@@ -290,8 +290,8 @@
   .home-hero-split {
     flex-direction: column;
     align-items: flex-start;
-    gap: 2rem;
-    margin-top: 4.5rem;
+    gap: 1.25rem;
+    margin-top: 1rem;
   }
 
   .home-hero h1 {
