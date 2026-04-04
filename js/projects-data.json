@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-03-31T20:12:40.776Z",
+  "generatedAt": "2026-04-04T08:52:54.072Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -39,7 +39,7 @@
       "status": "Live",
       "summary": "Community events website for AI-focused meetups in South Africa.",
       "order": 10,
-      "lastUpdated": "2026-03-25T19:22:41.000Z",
+      "lastUpdated": "2026-04-01T00:04:13.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -51,8 +51,8 @@
       "status": "Internal",
       "summary": "CLI-first telephony governance system for Zoom Phone inventory, validation, migration planning, and operator review.",
       "order": 10,
-      "lastUpdated": "2026-03-13T20:08:34.780Z",
-      "freshnessSource": "filesystem",
+      "lastUpdated": "2026-04-01T00:10:29.000Z",
+      "freshnessSource": "git",
       "links": []
     },
     {
@@ -63,8 +63,8 @@
       "status": "Prototype",
       "summary": "Mobile-first decision game about founder tradeoffs, pressure, and pacing.",
       "order": 10,
-      "lastUpdated": "2026-03-06T21:30:24.040Z",
-      "freshnessSource": "filesystem",
+      "lastUpdated": "2026-04-01T00:10:35.000Z",
+      "freshnessSource": "git",
       "links": []
     },
     {
@@ -73,10 +73,9 @@
       "title": "LedgerOne",
       "category": "products-commerce",
       "status": "Building",
-      "featured": true,
       "summary": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary.",
       "order": 10,
-      "lastUpdated": "2026-03-18T17:11:11.000Z",
+      "lastUpdated": "2026-04-03T17:04:04.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -88,7 +87,7 @@
       "status": "Internal",
       "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
       "order": 20,
-      "lastUpdated": "2026-03-25T19:15:25.000Z",
+      "lastUpdated": "2026-04-03T21:51:49.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -98,10 +97,9 @@
       "title": "Daliso.com",
       "category": "websites-publishing",
       "status": "Live",
-      "featured": true,
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-03-28T20:50:29.000Z",
+      "lastUpdated": "2026-04-04T08:49:34.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -119,7 +117,7 @@
       "status": "Prototype",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "lastUpdated": "2026-03-25T19:22:41.000Z",
+      "lastUpdated": "2026-04-03T21:02:45.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -131,7 +129,7 @@
       "status": "Internal",
       "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
       "order": 20,
-      "lastUpdated": "2026-03-25T19:34:00.000Z",
+      "lastUpdated": "2026-04-03T21:52:43.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -143,7 +141,7 @@
       "status": "Internal",
       "summary": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories.",
       "order": 25,
-      "lastUpdated": "2026-03-25T19:59:01.000Z",
+      "lastUpdated": "2026-04-02T21:16:31.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -153,10 +151,9 @@
       "title": "EARN Ecosystem Website",
       "category": "websites-publishing",
       "status": "Live",
-      "featured": true,
       "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
       "order": 30,
-      "lastUpdated": "2026-03-25T17:38:42.000Z",
+      "lastUpdated": "2026-04-01T09:40:31.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -174,7 +171,7 @@
       "status": "Prototype",
       "summary": "Playful product discovery app that recommends XR and creator gear from a short quiz.",
       "order": 30,
-      "lastUpdated": "2026-03-06T21:31:04.000Z",
+      "lastUpdated": "2026-04-01T00:26:00.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -186,7 +183,7 @@
       "status": "Internal",
       "summary": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps.",
       "order": 30,
-      "lastUpdated": "2026-03-25T19:34:06.000Z",
+      "lastUpdated": "2026-04-03T21:16:13.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -198,7 +195,7 @@
       "status": "Building",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-03-25T19:19:18.000Z",
+      "lastUpdated": "2026-04-03T20:25:52.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -210,7 +207,7 @@
       "status": "Building",
       "summary": "Universal macOS, iOS, and Apple Watch dashboard app with cross-device sync and Xcode Cloud CI.",
       "order": 40,
-      "lastUpdated": "2026-03-22T09:25:35.000Z",
+      "lastUpdated": "2026-04-03T16:13:07.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -222,7 +219,7 @@
       "status": "Operational",
       "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
       "order": 40,
-      "lastUpdated": "2026-03-19T18:42:04.000Z",
+      "lastUpdated": "2026-04-01T00:25:53.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -232,10 +229,9 @@
       "title": "The Lombardy Lifestyle Estate",
       "category": "websites-publishing",
       "status": "Live",
-      "featured": true,
       "summary": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate.",
       "order": 40,
-      "lastUpdated": "2026-03-25T18:57:49.000Z",
+      "lastUpdated": "2026-04-03T21:43:15.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -253,7 +249,7 @@
       "status": "Building",
       "summary": "Change review workflow app for African Technopreneurs operational decisions and release governance.",
       "order": 50,
-      "lastUpdated": "2026-03-25T19:43:09.000Z",
+      "lastUpdated": "2026-04-01T00:05:37.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -265,7 +261,7 @@
       "status": "Prototype",
       "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
       "order": 50,
-      "lastUpdated": "2026-03-25T19:19:18.000Z",
+      "lastUpdated": "2026-04-03T21:30:21.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -277,7 +273,7 @@
       "status": "Building",
       "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-03-31T19:56:18.000Z",
+      "lastUpdated": "2026-04-03T13:02:37.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -289,7 +285,7 @@
       "status": "Building",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
-      "lastUpdated": "2026-03-25T19:22:41.000Z",
+      "lastUpdated": "2026-04-03T16:26:58.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -301,7 +297,7 @@
       "status": "Building",
       "summary": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow.",
       "order": 60,
-      "lastUpdated": "2026-03-25T19:34:02.000Z",
+      "lastUpdated": "2026-04-03T21:33:17.000Z",
       "freshnessSource": "git",
       "links": []
     }
