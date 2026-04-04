@@ -96,6 +96,17 @@
     </div>
   </header>
 
+  <nav class="projects-filter-bar" id="filter-bar" aria-label="Filter projects">
+    <div class="container">
+      <div class="filter-pills" id="filter-pills">
+        <button class="filter-pill filter-pill--active" data-filter="all">All</button>
+        <button class="filter-pill" data-filter="live">Live</button>
+        <button class="filter-pill" data-filter="builder">Products &amp; Commerce</button>
+        <button class="filter-pill" data-filter="systems">Internal Systems</button>
+      </div>
+    </div>
+  </nav>
+
   <main id="main-content">
     <section id="featured" class="section animate-on-scroll">
       <div class="container">
@@ -104,16 +115,6 @@
           A selection of live products and key builds from the portfolio.
         </p>
         <div class="repo-grid" id="featured-grid"></div>
-      </div>
-    </section>
-
-    <section id="overview" class="section animate-on-scroll">
-      <div class="container">
-        <h2>Portfolio Overview</h2>
-        <p class="section-intro">
-          A concise view of the portfolio themes, public destinations, and recent movement across selected work.
-        </p>
-        <div class="summary-grid" id="summary-grid"></div>
       </div>
     </section>
 
@@ -136,6 +137,16 @@
         </p>
         <div id="catalog-sections"></div>
         <noscript><p>This page requires JavaScript to render the project catalog.</p></noscript>
+      </div>
+    </section>
+
+    <section id="glossary" class="section animate-on-scroll">
+      <div class="container">
+        <h2>Portfolio Glossary</h2>
+        <p class="section-intro">
+          A reference guide to the portfolio themes, public destinations, and recent movement across selected work.
+        </p>
+        <div class="summary-grid" id="summary-grid"></div>
       </div>
     </section>
   </main>

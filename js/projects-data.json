@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-04T09:50:22.321Z",
+  "generatedAt": "2026-04-04T10:00:30.064Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-04T09:46:49.000Z",
+      "lastUpdated": "2026-04-04T09:55:42.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -271,7 +271,7 @@
       "title": "The Devil's AI Dictionary",
       "category": "websites-publishing",
       "status": "Live",
-      "summary": "Editorial, book-like AI glossary translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
+      "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
       "lastUpdated": "2026-04-03T13:02:37.000Z",
       "freshnessSource": "git",

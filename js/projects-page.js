@@ -60,6 +60,7 @@ async function init() {
     renderSummaryCards();
     renderRecentActivity();
     renderCatalogSections();
+    initFilterBar();
 
     function renderHeroMetrics() {
       const metrics = [
@@ -101,21 +102,18 @@ async function init() {
       const summaryCards = [
         {
           tone: 'live',
-          filter: 'live',
           title: 'Live on the web',
           body: `${liveProjects.length} featured projects currently point to public destinations.`,
           items: liveProjects.map((project) => project.title),
         },
         {
           tone: 'builder',
-          filter: 'builder',
           title: 'Products and commerce',
           body: `${productsAndCommerce.length} active builds span finance, retail tooling, product discovery, and operational workflows.`,
           items: productsAndCommerce.map((project) => project.title),
         },
         {
           tone: 'systems',
-          filter: 'systems',
           title: 'Internal systems',
           body: `${internalSystems.length} portfolio entries support operators, routing, aliases, and repo hygiene behind the scenes.`,
           items: internalSystems.map((project) => project.title),
@@ -143,7 +141,7 @@ async function init() {
       summaryGrid.innerHTML = summaryCards
         .map(
           (card) => `
-            <article class="summary-card"${card.filter ? ` data-filter="${card.filter}"` : ''}>
+            <article class="summary-card">
               <span class="tone-pill ${card.tone}">${card.tone}</span>
               <h3>${card.title}</h3>
               <p>${card.body}</p>
@@ -153,7 +151,6 @@ async function init() {
         )
         .join('');
 
-      initSummaryFilters();
     }
 
     function renderRecentActivity() {
@@ -184,35 +181,34 @@ async function init() {
         .join('');
     }
 
-    function initSummaryFilters() {
+    function initFilterBar() {
+      const filterPills = document.getElementById('filter-pills');
+      if (!filterPills) return;
+
       const liveProjectIds = new Set(liveProjects.map((p) => p.id));
 
       const filterSets = {
+        all: null,
         live: { mode: 'projects', ids: liveProjectIds },
         builder: { mode: 'category', category: 'products-commerce' },
         systems: { mode: 'category', category: 'internal-systems' },
       };
 
-      let activeFilter = null;
+      filterPills.addEventListener('click', (e) => {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill) return;
 
-      summaryGrid.addEventListener('click', (e) => {
-        const card = e.target.closest('[data-filter]');
-        if (!card) return;
+        const filterKey = pill.dataset.filter;
 
-        const filterKey = card.dataset.filter;
-        const isAlreadyActive = activeFilter === filterKey;
+        filterPills.querySelectorAll('.filter-pill').forEach((p) => p.classList.remove('filter-pill--active'));
+        pill.classList.add('filter-pill--active');
 
-        summaryGrid.querySelectorAll('.summary-card').forEach((c) => c.classList.remove('summary-card--active'));
-
-        if (isAlreadyActive) {
-          activeFilter = null;
+        if (filterKey === 'all' || !filterSets[filterKey]) {
           clearFilter();
-          return;
+        } else {
+          applyFilter(filterSets[filterKey]);
         }
 
-        activeFilter = filterKey;
-        card.classList.add('summary-card--active');
-        applyFilter(filterSets[filterKey]);
         catalogSections.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
 
