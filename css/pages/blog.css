@@ -1,5 +1,5 @@
 .hero:has(.blog-page-hero, .blog-article-hero) {
-  padding-top: 1rem;
+  padding-top: 5rem;
   padding-bottom: 0.5rem;
 }
 
