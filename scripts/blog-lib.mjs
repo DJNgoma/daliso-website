@@ -531,7 +531,7 @@ function renderBlogIndex(posts) {
 
   const hero = `
         <div class="blog-page-hero animate-on-scroll">
-          <p class="blog-eyebrow">Daliso Ngoma Blog</p>
+          <p class="blog-eyebrow">Blog</p>
           <h1>Writing by Daliso</h1>
           <h2>Writing about judgment, systems, and practical technology where speed matters and bad assumptions compound.</h2>
         </div>
