@@ -203,8 +203,8 @@
   border-left: 3px solid var(--accent);
 }
 
-.recent-activity-grid .repo-card {
-  height: 100%;
+.recent-activity-grid {
+  grid-template-columns: 1fr;
 }
 
 .repo-card-compact .repo-summary {
