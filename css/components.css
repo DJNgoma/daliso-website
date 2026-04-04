@@ -294,17 +294,22 @@
     background: var(--background);
     padding: 1rem;
     width: 92%;
-    display: none;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
     border-radius: 16px;
     backdrop-filter: blur(10px);
     z-index: 999;
-    transition: transform 0.3s ease, opacity 0.3s ease;
     margin: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0.25s ease;
   }
 
   .nav-menu.show {
-    display: flex;
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   .hamburger {
