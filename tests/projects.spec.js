@@ -114,7 +114,12 @@ test.describe('Projects page', () => {
     await page.goto('/projects/');
     await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });
 
-    await page.click('[data-filter="recent"]');
+    const isMobile = (await page.viewportSize()).width <= 768;
+    if (isMobile) {
+      await page.selectOption('#filter-select', 'recent');
+    } else {
+      await page.click('[data-filter="recent"]');
+    }
     const visibleCards = page.locator('#catalog-sections .repo-card:not(.repo-card--hidden)');
     await expect(visibleCards).toHaveCount(recentProjects.length);
   });

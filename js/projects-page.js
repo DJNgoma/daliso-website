@@ -181,14 +181,13 @@ async function init() {
         recent: { mode: 'projects', ids: recentProjectIds },
       };
 
-      filterPills.addEventListener('click', (e) => {
-        const pill = e.target.closest('.filter-pill');
-        if (!pill) return;
+      const filterSelect = document.getElementById('filter-select');
 
-        const filterKey = pill.dataset.filter;
-
+      function activateFilter(filterKey) {
         filterPills.querySelectorAll('.filter-pill').forEach((p) => p.classList.remove('filter-pill--active'));
-        pill.classList.add('filter-pill--active');
+        const activePill = filterPills.querySelector(`[data-filter="${filterKey}"]`);
+        if (activePill) activePill.classList.add('filter-pill--active');
+        if (filterSelect) filterSelect.value = filterKey;
 
         if (filterKey === 'all' || !filterSets[filterKey]) {
           clearFilter();
@@ -197,7 +196,19 @@ async function init() {
         }
 
         catalogSections.closest('section')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      filterPills.addEventListener('click', (e) => {
+        const pill = e.target.closest('.filter-pill');
+        if (!pill) return;
+        activateFilter(pill.dataset.filter);
       });
+
+      if (filterSelect) {
+        filterSelect.addEventListener('change', () => {
+          activateFilter(filterSelect.value);
+        });
+      }
 
       function applyFilter(spec) {
         const groups = catalogSections.querySelectorAll('.catalog-group');
