@@ -32,7 +32,7 @@ test.describe('Performance guardrails', () => {
   test('homepage hero and shared logo use optimized assets', async ({ page }) => {
     await page.goto('/');
 
-    const heroCurrentSrc = await page.locator('.hero-content picture img').evaluate(image => image.currentSrc);
+    const heroCurrentSrc = await page.locator('.home-hero-split picture img').evaluate(image => image.currentSrc);
     expect(heroCurrentSrc).toContain('.webp');
 
     const logo = page.locator('#site-logo');

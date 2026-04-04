@@ -244,12 +244,24 @@ footer .social-links {
   width: 100%;
 }
 
+.nav-menu li a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 #theme-toggle {
   background: none;
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
   color: var(--text);
+}
+
+#theme-toggle:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
 }
 
 .subtitle {
@@ -309,9 +321,13 @@ footer .social-links {
   color: white;
 }
 
-.btn:focus {
+.btn:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .projects {
@@ -330,6 +346,10 @@ footer .social-links {
 .project:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 12px var(--shadow);
+}
+
+.project:active {
+  transform: translateY(0);
 }
 
 .project h3 {
@@ -352,6 +372,12 @@ footer .social-links {
   text-decoration: underline;
 }
 
+.project a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
 .hamburger {
   display: none;
   flex-direction: column;
@@ -363,12 +389,18 @@ footer .social-links {
   padding: 0.5rem;
 }
 
+.hamburger:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .hamburger .bar {
   width: 24px;
   height: 3px;
   background-color: var(--hamburger-bar);
   border-radius: 16px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, background-color 0.3s ease;
 }
 
 .social-links {
@@ -397,6 +429,15 @@ footer .social-links {
   border-color: var(--accent);
   color: var(--accent);
   transform: translateY(-1px);
+}
+
+.social-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.social-links a:active {
+  transform: translateY(0);
 }
 
 [data-theme="dark"] .social-links a {
@@ -429,6 +470,10 @@ footer .social-links {
 .featured-in-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 18px var(--shadow);
+}
+
+.featured-in-card:active {
+  transform: translateY(0);
 }
 
 .featured-in-card h3 {
@@ -469,7 +514,7 @@ footer .social-links {
     border-radius: 16px;
     backdrop-filter: blur(10px);
     z-index: 999;
-    transition: all 0.3s ease;
+    transition: transform 0.3s ease, opacity 0.3s ease;
     margin: 0;
   }
 

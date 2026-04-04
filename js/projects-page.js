@@ -2,6 +2,7 @@ import './main.js?v=20260403-perf';
 
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
+  const featuredGrid = document.getElementById('featured-grid');
   const summaryGrid = document.getElementById('summary-grid');
   const recentActivityGrid = document.getElementById('recent-activity-grid');
   const catalogSections = document.getElementById('catalog-sections');
@@ -55,6 +56,7 @@ async function init() {
     });
 
     renderHeroMetrics();
+    renderFeaturedGrid();
     renderSummaryCards();
     renderRecentActivity();
     renderCatalogSections();
@@ -76,6 +78,22 @@ async function init() {
             </article>
           `
         )
+        .join('');
+    }
+
+    function renderFeaturedGrid() {
+      if (!featuredGrid) {
+        return;
+      }
+
+      const featured = projectCatalog.filter((project) => project.featured === true);
+      if (featured.length === 0) {
+        featuredGrid.closest('section')?.remove();
+        return;
+      }
+
+      featuredGrid.innerHTML = featured
+        .map((project) => renderProjectCard(project, { featured: true }))
         .join('');
     }
 
@@ -165,10 +183,10 @@ async function init() {
       const categoryTitle = sectionTitleById.get(project.category) || project.category;
       const statusClass = statusToClassName(project.status);
       const links = getProjectLinks(project);
-      const compactClassName = options.compact ? ' repo-card-compact' : '';
+      const modifierClass = options.compact ? ' repo-card-compact' : options.featured ? ' repo-card-featured' : '';
 
       return `
-        <article class="repo-card${compactClassName}" data-project="${escapeHtml(project.id)}">
+        <article class="repo-card${modifierClass}" data-project="${escapeHtml(project.id)}">
           <div class="repo-card-header">
             <div>
               <h4>${escapeHtml(project.title)}</h4>

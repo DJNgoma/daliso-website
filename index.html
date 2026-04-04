@@ -29,6 +29,7 @@
   <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/style.css?v=20260403-perf" />
+  <link rel="stylesheet" href="/css/pages/home.css?v=20260404" />
   <meta property="og:title" content="Daliso Ngoma | Founder, African Technopreneurs, XR &amp; Immersive Tech in Africa" />
   <meta property="og:description" content="Building immersive tech, commerce, media, and software products across Africa." />
   <meta property="og:image" content="https://daliso.com/assets/images/og-image.png" />
@@ -68,7 +69,7 @@
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <header class="hero">
+  <header class="hero home-hero">
     <div class="container">
       <nav class="navbar" aria-label="Primary">
         <div class="logo">
@@ -89,53 +90,80 @@
         </ul>
         <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
       </nav>
-      <div class="hero-content animate-on-scroll">
+      <div class="home-hero-split animate-on-scroll">
+        <div class="home-hero-copy">
+          <p class="home-eyebrow">Daliso Ngoma</p>
+          <h1>Founder, operator, and builder across immersive tech and software in Africa.</h1>
+          <p class="home-intro">I run <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">African Technopreneurs</a> and <a href="https://180by2.co.za" target="_blank" rel="noopener noreferrer">180by2</a> &mdash; building XR distribution, commerce systems, and media products across African markets.</p>
+          <div class="cta-buttons">
+            <a href="#work" class="btn">See My Work</a>
+            <a href="#contact" class="btn btn-outline">Get in Touch</a>
+          </div>
+        </div>
         <picture>
           <source type="image/webp" srcset="/assets/images/hero-320.webp 320w, /assets/images/hero-640.webp 640w" sizes="160px" />
           <img src="/assets/images/hero-640.jpg" alt="Daliso Ngoma" class="hero-img" width="160" height="160" loading="eager" decoding="async" fetchpriority="high" srcset="/assets/images/hero-320.jpg 320w, /assets/images/hero-640.jpg 640w" sizes="160px" />
         </picture>
-        <h1>Daliso Ngoma</h1>
-        <p class="subtitle">Founder &amp; Managing Director • Immersive Tech &amp; Product Builder</p>
-        <p class="tagline">Building immersive tech, commerce, media, and software products across Africa.</p>
-        <div class="cta-buttons">
-          <a href="#contact" class="btn">Get in Touch</a>
-          <a href="/projects/" class="btn btn-outline">View Projects</a>
-          <a href="/media/" class="btn btn-outline">Watch &amp; Listen</a>
-        </div>
+      </div>
+      <div class="home-proof-bar animate-on-scroll">
+        <span>Featured on CNBC Africa</span>
+        <span>21+ projects shipped</span>
+        <span>Host, African Techno Podcast</span>
       </div>
     </div>
   </header>
 
   <main id="main-content">
-    <section id="about" class="section animate-on-scroll">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>I build across immersive technology, digital commerce, media, and software systems. As Founder &amp; Managing Director of <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">African Technopreneurs</a>, I focus on making emerging technology more practical, visible, and commercially useful across African markets.</p>
-        <p><strong>Current focus:</strong> XR distribution, product ecosystems, founder storytelling, and software systems that support operations, publishing, and growth.</p>
-        <p><strong>Tools I use:</strong> Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, and modern web platforms</p>
-      </div>
-    </section>
-
     <section id="work" class="section animate-on-scroll">
       <div class="container">
         <h2>My Work</h2>
-        <div class="projects">
-          <div class="project">
+        <div class="home-work-grid">
+          <article class="home-work-card">
+            <span class="home-work-type">Organization</span>
             <h3>African Technopreneurs</h3>
             <p>Building the bridge between immersive technology, education, and market adoption across Africa.</p>
-            <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">Explore →</a>
-          </div>
-          <div class="project">
+            <a class="home-work-link" href="https://africantechno.com" target="_blank" rel="noopener noreferrer">Explore &rarr;</a>
+          </article>
+          <article class="home-work-card">
+            <span class="home-work-type">Retail / XR</span>
             <h3>180by2</h3>
             <p>A retail layer for XR hardware, accessories, and practical entry points into spatial computing.</p>
-            <a href="https://180by2.co.za" target="_blank" rel="noopener noreferrer">Visit Store →</a>
-          </div>
-          <div class="project">
+            <a class="home-work-link" href="https://180by2.co.za" target="_blank" rel="noopener noreferrer">Visit Store &rarr;</a>
+          </article>
+          <article class="home-work-card">
+            <span class="home-work-type">Software Portfolio</span>
             <h3>Software Products &amp; Systems</h3>
-            <p>An evolving body of product experiments, internal tools, and operating systems spanning commerce, operations, and publishing.</p>
-            <a href="/projects/">Browse Projects →</a>
-          </div>
+            <p>Product experiments, internal tools, and operating systems spanning commerce, operations, and publishing.</p>
+            <a class="home-work-link" href="/projects/">Browse Projects &rarr;</a>
+          </article>
         </div>
+      </div>
+    </section>
+
+    <section id="media" class="section animate-on-scroll">
+      <div class="container">
+        <h2>Featured In</h2>
+        <div class="home-media-grid">
+          <article class="home-media-card">
+            <span class="home-media-type">TV / Media</span>
+            <h3>CNBC Africa</h3>
+            <p class="home-media-subtitle">What&rsquo;s the business case for the metaverse?</p>
+            <a class="home-media-link" href="https://www.cnbcafrica.com/media/6280424282001/whats-the-business-case-for-the-metaverse-" target="_blank" rel="noopener noreferrer">Watch &rarr;</a>
+          </article>
+          <article class="home-media-card">
+            <span class="home-media-type">Article</span>
+            <h3>FoundersSauce</h3>
+            <p class="home-media-subtitle">For the Love of Technology</p>
+            <a class="home-media-link" href="https://founderssauce.com/2024/06/20/for-the-love-of-technology-with-daliso-ngoma-african-technopreneurs/" target="_blank" rel="noopener noreferrer">Read Feature &rarr;</a>
+          </article>
+          <article class="home-media-card">
+            <span class="home-media-type">Podcast</span>
+            <h3>Social Geeks Podcast</h3>
+            <p class="home-media-subtitle">Virtual Reality and the actual REALITY in Africa</p>
+            <a class="home-media-link" href="https://podcasts.apple.com/za/podcast/virtual-reality-and-the-actual-reality-in-africa/id1508978189?i=1000511514546" target="_blank" rel="noopener noreferrer">Listen &rarr;</a>
+          </article>
+        </div>
+        <a href="/media/" class="home-section-more">View all media &rarr;</a>
       </div>
     </section>
 
@@ -148,27 +176,12 @@
       </div>
     </section>
 
-    <section id="media" class="section animate-on-scroll">
+    <section id="about" class="section animate-on-scroll">
       <div class="container">
-        <h2>Featured In</h2>
-        <div class="featured-in-grid">
-          <div class="featured-in-card">
-            <span class="featured-in-type">Podcast</span>
-            <h3>Social Geeks Podcast</h3>
-            <p>Virtual Reality and the actual REALITY in Africa</p>
-          </div>
-          <div class="featured-in-card">
-            <span class="featured-in-type">TV / Media</span>
-            <h3>CNBC Africa</h3>
-            <p>What's the business case for the metaverse?</p>
-          </div>
-          <div class="featured-in-card">
-            <span class="featured-in-type">Article</span>
-            <h3>FoundersSauce</h3>
-            <p>For the Love of Technology</p>
-          </div>
-        </div>
-        <a href="/media/">View all media &rarr;</a>
+        <h2>About Me</h2>
+        <p>I build across immersive technology, digital commerce, media, and software systems. As Founder &amp; Managing Director of <a href="https://africantechno.com" target="_blank" rel="noopener noreferrer">African Technopreneurs</a>, I focus on making emerging technology more practical, visible, and commercially useful across African markets.</p>
+        <p><strong>Current focus:</strong> XR distribution, product ecosystems, founder storytelling, and software systems that support operations, publishing, and growth.</p>
+        <p><strong>Tools I use:</strong> Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, and modern web platforms</p>
       </div>
     </section>
 
