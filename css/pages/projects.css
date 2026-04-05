@@ -43,6 +43,13 @@
   font-size: 1.05rem;
 }
 
+/* ── Anchor scroll offsets (clear fixed nav + sticky filter bar) ── */
+
+#catalogue,
+#glossary {
+  scroll-margin-top: 140px;
+}
+
 /* ── Sticky filter bar ────────────────────────────── */
 
 .projects-filter-bar {
