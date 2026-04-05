@@ -77,6 +77,15 @@ test.describe('Projects page', () => {
     await expect(page.getByRole('heading', { name: 'Prototype', exact: true })).toBeVisible();
   });
 
+  test('glossary must not contain old summary-card content', async ({ page }) => {
+    await page.goto('/projects/');
+    await page.waitForSelector('.summary-card', { timeout: 5000 });
+    const grid = page.locator('#summary-grid');
+    await expect(grid.getByText('Live on the web')).toHaveCount(0);
+    await expect(grid.getByText('Products and commerce')).toHaveCount(0);
+    await expect(grid.getByText('Portfolio curation')).toHaveCount(0);
+  });
+
   test('excluded folders do not appear in the public catalog', async ({ page }) => {
     await page.goto('/projects/');
     await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });

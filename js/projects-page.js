@@ -1,4 +1,4 @@
-import './main.js?v=20260403-perf';
+import './main.js?v=20260405';
 
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
