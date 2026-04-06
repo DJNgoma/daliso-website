@@ -20,6 +20,7 @@ const publishPaths = [
   'media',
   'privacy',
   'projects',
+  'support',
   'robots.txt',
   'sitemap.xml',
 ];
