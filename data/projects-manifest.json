@@ -205,7 +205,13 @@
       "status": "Building",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
-      "links": []
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/za/app/action-inbox/id6760961555",
+          "kind": "appstore"
+        }
+      ]
     },
     "commanddashboard": {
       "title": "Command Dashboard",
