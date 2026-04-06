@@ -6,6 +6,7 @@
   "packageManager": "npm@11.12.1",
   "scripts": {
     "build:assets": "node scripts/optimize-homepage-assets.mjs",
+    "build:og": "node scripts/build-og-images.mjs",
     "dev": "npm run build:css && npm run build:assets && node scripts/dev-server.mjs",
     "build:css": "node scripts/build-css.mjs",
     "build:blog": "node scripts/blog-generator.mjs build",
