@@ -13,8 +13,13 @@
     "build:site": "npm run build:blog && npm run build:css && npm run build:assets && node scripts/build-site.mjs",
     "new:post": "node scripts/blog-generator.mjs new",
     "pretest": "npm run build:blog && npm run build:css && npm run build:assets",
+    "test:unit": "node --test tests/blog-generator.spec.mjs tests/performance-guardrails.spec.mjs",
+    "coverage:unit": "node --experimental-test-coverage tests/blog-generator.spec.mjs tests/performance-guardrails.spec.mjs",
+    "test:e2e": "npx playwright test",
+    "test:ci": "npm run test:unit && npm run test:e2e",
+    "check": "npm run test:ci && npm run build:site",
     "sync:projects": "node scripts/sync-projects.mjs",
-    "test": "node --test tests/blog-generator.spec.mjs tests/performance-guardrails.spec.mjs && npx playwright test"
+    "test": "npm run test:ci"
   },
   "keywords": [],
   "author": "",

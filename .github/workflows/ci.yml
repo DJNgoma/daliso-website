@@ -40,8 +40,8 @@ jobs:
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
 
-      - name: Run test suite
-        run: npm test
+      - name: Run validation suite
+        run: npm run check
 
   deploy:
     name: Deploy to Cloudflare Pages
