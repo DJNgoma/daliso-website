@@ -8,6 +8,7 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, "..");
 const fontsDir = join(root, "assets", "fonts");
 const imagesDir = join(root, "assets", "images");
+const sharedOgImageFilenames = ["og-image.png", "og-image-v2.png"];
 
 const spaceGrotesk = readFileSync(join(fontsDir, "space-grotesk-700.ttf"));
 const inter = readFileSync(join(fontsDir, "inter-400.ttf"));
@@ -162,14 +163,16 @@ async function render(markup, outPath) {
   console.log("wrote", outPath);
 }
 
-await render(
-  card({
-    eyebrow: "Founder, African Technopreneurs",
-    title: "Daliso Ngoma",
-    description: "Immersive tech, commerce, media, and software products across Africa.",
-  }),
-  join(imagesDir, "og-image.png"),
-);
+for (const filename of sharedOgImageFilenames) {
+  await render(
+    card({
+      eyebrow: "Founder, African Technopreneurs",
+      title: "Daliso Ngoma",
+      description: "Immersive tech, commerce, media, and software products across Africa.",
+    }),
+    join(imagesDir, filename),
+  );
+}
 
 await render(
   card({

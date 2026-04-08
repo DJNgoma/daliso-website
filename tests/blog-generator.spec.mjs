@@ -394,7 +394,7 @@ Body text.
   assert.match(articleHtml, /og:image" content="https:\/\/daliso\.com\/blog\/test-post\/og-image\.png"/);
 
   const indexHtml = readFileSync(join(fixtureRoot, "blog", "index.html"), "utf8");
-  assert.match(indexHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image\.png"/);
+  assert.match(indexHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image-v2\.png"/);
 });
 
 test("build falls back to default OG image when fonts are missing", (t) => {
@@ -421,7 +421,7 @@ Body text.
     join(fixtureRoot, "blog", "no-fonts-post", "index.html"),
     "utf8"
   );
-  assert.match(articleHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image\.png"/);
+  assert.match(articleHtml, /og:image" content="https:\/\/daliso\.com\/assets\/images\/og-image-v2\.png"/);
 });
 
 test("build fails when two published posts resolve to the same slug", (t) => {
