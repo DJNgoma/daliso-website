@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-06T20:52:01.608Z",
+  "generatedAt": "2026-04-08T09:47:55.104Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-06T18:57:55.000Z",
+      "lastUpdated": "2026-04-06T21:50:44.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -195,7 +195,7 @@
       "status": "Building",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-04-03T20:25:52.000Z",
+      "lastUpdated": "2026-04-06T22:49:20.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -207,7 +207,7 @@
       "status": "Building",
       "summary": "Universal macOS, iOS, and Apple Watch dashboard app with cross-device sync and Xcode Cloud CI.",
       "order": 40,
-      "lastUpdated": "2026-04-03T16:13:07.000Z",
+      "lastUpdated": "2026-04-06T23:35:05.000Z",
       "freshnessSource": "git",
       "links": []
     },
