@@ -39,3 +39,18 @@ test("theme runtime and blog generator keep the lightweight shared asset path", 
     "Generated pages should bootstrap the saved theme before CSS loads."
   );
 });
+
+test("unfingerprinted CSS stays revalidating instead of immutable", () => {
+  const headers = read("_headers");
+
+  assert.match(
+    headers,
+    /\/css\/\*\s+Cache-Control:\s+public,\s+max-age=0,\s+must-revalidate,\s+no-transform/,
+    "Shared CSS should revalidate so page-specific stylesheet edits cannot get stuck behind immutable caching."
+  );
+  assert.doesNotMatch(
+    headers,
+    /\/css\/\*\s+Cache-Control:\s+public,\s+max-age=31536000,\s+immutable/,
+    "Do not mark unfingerprinted CSS as immutable."
+  );
+});
