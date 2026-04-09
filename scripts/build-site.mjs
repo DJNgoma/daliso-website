@@ -11,6 +11,7 @@ const distDir = path.join(repoRoot, 'dist');
 const publishPaths = [
   '404.html',
   '_headers',
+  'about',
   'assets',
   'blog',
   'css',
@@ -21,6 +22,7 @@ const publishPaths = [
   'privacy',
   'projects',
   'support',
+  'work',
   'robots.txt',
   'sitemap.xml',
 ];

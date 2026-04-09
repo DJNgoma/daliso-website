@@ -786,8 +786,8 @@ function renderNav() {
         </button>
         <ul class="nav-menu" id="nav-menu">
           <li><a href="/">Home</a></li>
-          <li><a href="/#about">About</a></li>
-          <li><a href="/#work">Work</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/work/">Work</a></li>
           <li><a href="/projects/">Projects</a></li>
           <li><a href="/media/">Media</a></li>
           <li><a href="/blog/">Blog</a></li>
@@ -879,6 +879,16 @@ function renderSitemap(posts) {
       loc: `${siteUrl}/`,
       changefreq: "monthly",
       priority: "1.0",
+    },
+    {
+      loc: `${siteUrl}/about/`,
+      changefreq: "monthly",
+      priority: "0.7",
+    },
+    {
+      loc: `${siteUrl}/work/`,
+      changefreq: "monthly",
+      priority: "0.8",
     },
     {
       loc: `${siteUrl}/projects/`,

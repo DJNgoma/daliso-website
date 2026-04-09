@@ -1,12 +1,36 @@
 import { test, expect } from '@playwright/test';
 
 const EXPECTED_NAV_ITEMS = ['Home', 'About', 'Work', 'Projects', 'Media', 'Blog'];
+const SHARED_CHROME_PATHS = [
+  '/',
+  '/about/',
+  '/work/',
+  '/projects/',
+  '/media/',
+  '/blog/',
+  '/privacy/',
+  '/blog/ai-psychosis-and-synthetic-confidence/',
+];
 
 test.describe('Navbar consistency', () => {
   test('main page has correct nav items', async ({ page }) => {
     await page.goto('/');
     const navItems = await page.locator('.nav-menu a').allTextContents();
     expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+  });
+
+  test('about page has correct nav items and renders its hero', async ({ page }) => {
+    await page.goto('/about/');
+    const navItems = await page.locator('.nav-menu a').allTextContents();
+    expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+    await expect(page.getByRole('heading', { name: 'About Me' })).toBeVisible();
+  });
+
+  test('work page has correct nav items and renders its hero', async ({ page }) => {
+    await page.goto('/work/');
+    const navItems = await page.locator('.nav-menu a').allTextContents();
+    expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+    await expect(page.getByRole('heading', { name: 'My Work' })).toBeVisible();
   });
 
   test('projects page has correct nav items', async ({ page }) => {
@@ -70,14 +94,14 @@ test.describe('Navbar consistency', () => {
   });
 
   test('theme toggle exists on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/media/', '/blog/', '/privacy/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of SHARED_CHROME_PATHS) {
       await page.goto(path);
       await expect(page.locator('#theme-toggle')).toBeVisible();
     }
   });
 
   test('footer has contact icons on all pages', async ({ page }) => {
-    for (const path of ['/', '/projects/', '/media/', '/blog/', '/privacy/', '/blog/ai-psychosis-and-synthetic-confidence/']) {
+    for (const path of SHARED_CHROME_PATHS) {
       await page.goto(path);
       const socialLinks = page.locator('footer .social-links a');
       await expect(socialLinks).toHaveCount(4);

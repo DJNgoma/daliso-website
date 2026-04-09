@@ -112,14 +112,20 @@
     {
       "id": "PoolOps",
       "folder": "PoolOps",
-      "title": "PoolOps",
+      "title": "Pool Clarity",
       "category": "experiments-tools",
-      "status": "Prototype",
+      "status": "Building",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "lastUpdated": "2026-04-03T21:02:45.000Z",
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
       "freshnessSource": "git",
-      "links": []
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/8EYv7shk",
+          "kind": "testflight"
+        }
+      ]
     },
     {
       "id": "PricePilotForShopify",
@@ -190,14 +196,20 @@
     {
       "id": "quickquote",
       "folder": "quickquote",
-      "title": "QuickQuote",
+      "title": "FlashQuote",
       "category": "products-commerce",
       "status": "Building",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-04-06T22:49:20.000Z",
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
       "freshnessSource": "git",
-      "links": []
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/NrfVZc6x",
+          "kind": "testflight"
+        }
+      ]
     },
     {
       "id": "commanddashboard",
@@ -285,6 +297,11 @@
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
           "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/AtJWXcgD",
+          "kind": "testflight"
         }
       ]
     },
@@ -303,6 +320,83 @@
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/za/app/action-inbox/id6760961555",
           "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/JYqETxJ1",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "MyMedRoutine",
+      "folder": "MyMedRoutine",
+      "title": "My Med Routine",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
+      "order": 60,
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "freshnessSource": "manual",
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/uffDMQSF",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "OpsAtlas",
+      "folder": "OpsAtlas",
+      "title": "Ops Atlas",
+      "category": "internal-systems",
+      "status": "Building",
+      "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
+      "order": 60,
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "freshnessSource": "manual",
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/7asmBkDp",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "JustBP",
+      "folder": "JustBP",
+      "title": "Just BP",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
+      "order": 65,
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "freshnessSource": "manual",
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/1NqxSEA2",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "ItsADateScheduler",
+      "folder": "ItsADateScheduler",
+      "title": "It’s a Date — Scheduler",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
+      "order": 70,
+      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "freshnessSource": "manual",
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/kpGjZW95",
+          "kind": "testflight"
         }
       ]
     },

@@ -92,6 +92,11 @@
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
           "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/AtJWXcgD",
+          "kind": "testflight"
         }
       ]
     },
@@ -128,12 +133,18 @@
       "links": []
     },
     "quickquote": {
-      "title": "QuickQuote",
+      "title": "FlashQuote",
       "category": "products-commerce",
       "status": "Building",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "links": []
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/NrfVZc6x",
+          "kind": "testflight"
+        }
+      ]
     },
     "invoiceGenerator": {
       "title": "Commercial Invoice Generator",
@@ -184,12 +195,18 @@
       "links": []
     },
     "PoolOps": {
-      "title": "PoolOps",
+      "title": "Pool Clarity",
       "category": "experiments-tools",
-      "status": "Prototype",
+      "status": "Building",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "links": []
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/8EYv7shk",
+          "kind": "testflight"
+        }
+      ]
     },
     "Cin7CorePriceAnalyzer": {
       "title": "Cin7 Price Analyzer",
@@ -210,6 +227,67 @@
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/za/app/action-inbox/id6760961555",
           "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/JYqETxJ1",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "MyMedRoutine": {
+      "title": "My Med Routine",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/uffDMQSF",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "OpsAtlas": {
+      "title": "Ops Atlas",
+      "category": "internal-systems",
+      "status": "Building",
+      "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/7asmBkDp",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "JustBP": {
+      "title": "Just BP",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
+      "order": 65,
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/1NqxSEA2",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "ItsADateScheduler": {
+      "title": "It’s a Date — Scheduler",
+      "category": "products-commerce",
+      "status": "Building",
+      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
+      "order": 70,
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/kpGjZW95",
+          "kind": "testflight"
         }
       ]
     },

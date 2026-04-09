@@ -272,6 +272,18 @@ function renderProjectLinks(links) {
           </a>
         `;
       }
+      if (link.kind === 'testflight') {
+        return `
+          <a
+            class="repo-link repo-link-badge"
+            href="${escapeHtml(link.url)}"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/assets/images/badge-testflight.png" alt="${escapeHtml(link.label)}" height="40" />
+          </a>
+        `;
+      }
       return `
         <a
           class="repo-link"

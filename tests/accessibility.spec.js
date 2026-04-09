@@ -1,6 +1,14 @@
 import { test, expect } from '@playwright/test';
 
-const CORE_PUBLIC_PATHS = ['/', '/projects/', '/media/', '/blog/', '/blog/ai-psychosis-and-synthetic-confidence/'];
+const CORE_PUBLIC_PATHS = [
+  '/',
+  '/about/',
+  '/work/',
+  '/projects/',
+  '/media/',
+  '/blog/',
+  '/blog/ai-psychosis-and-synthetic-confidence/',
+];
 
 test.describe('Accessibility', () => {
   test('skip link exists and points to the main landmark on core public pages', async ({ page }) => {

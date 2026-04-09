@@ -19,6 +19,7 @@ const port = Number(process.env.PORT ?? "8080");
 const siteRoot = resolveSiteRoot();
 const allowedTopLevelEntries = new Set([
   "404.html",
+  "about",
   "assets",
   "blog",
   "blog-studio",
@@ -30,6 +31,7 @@ const allowedTopLevelEntries = new Set([
   "privacy",
   "projects",
   "support",
+  "work",
   "robots.txt",
   "sitemap.xml",
 ]);

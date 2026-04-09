@@ -112,8 +112,8 @@ test.describe('Projects page', () => {
     await expect(catalog.getByRole('heading', { name: "The Devil's AI Dictionary", exact: true })).toBeVisible();
     await expect(catalog.getByRole('heading', { name: 'HeadsetHire', exact: true })).toBeVisible();
     await expect(catalog.getByRole('heading', { name: 'Sentiment Trader', exact: true })).toBeVisible();
-    await expect(catalog.getByRole('heading', { name: 'PoolOps', exact: true })).toBeVisible();
-    await expect(catalog.getByRole('heading', { name: 'QuickQuote', exact: true })).toBeVisible();
+    await expect(catalog.getByRole('heading', { name: 'Pool Clarity', exact: true })).toBeVisible();
+    await expect(catalog.getByRole('heading', { name: 'FlashQuote', exact: true })).toBeVisible();
   });
 
   test('recent activity filter shows the latest workspace updates', async ({ page, request }) => {
