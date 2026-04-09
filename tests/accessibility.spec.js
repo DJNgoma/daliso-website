@@ -70,4 +70,27 @@ test.describe('Accessibility', () => {
     await expect(page.locator('.home-hero-copy')).toBeVisible();
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
+
+  test('home hero CTAs stay visible on a compact mobile viewport', async ({ browser }) => {
+    const page = await browser.newPage({
+      viewport: { width: 375, height: 700 },
+      hasTouch: true,
+    });
+
+    await page.goto('/');
+
+    const primaryCta = page.getByRole('link', { name: 'See My Work' });
+    const secondaryCta = page.getByRole('link', { name: 'Get in Touch' });
+    const heroPicture = page.locator('.home-hero-split > picture');
+
+    await expect(primaryCta).toBeVisible();
+    await expect(secondaryCta).toBeVisible();
+
+    const primaryBox = await primaryCta.boundingBox();
+    const pictureBox = await heroPicture.boundingBox();
+
+    expect(primaryBox).not.toBeNull();
+    expect(pictureBox).not.toBeNull();
+    expect(primaryBox.y).toBeLessThan(pictureBox.y);
+  });
 });

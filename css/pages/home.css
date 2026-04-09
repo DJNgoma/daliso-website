@@ -287,19 +287,38 @@
 /* ── Mobile ───────────────────────────────────────── */
 
 @media (max-width: 768px) {
+  .home-hero {
+    padding-top: 4.5rem;
+  }
+
+  .home-hero .container {
+    padding-top: 1rem;
+    padding-bottom: 1.5rem;
+  }
+
   .home-hero-split {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .home-hero h1 {
     max-width: none;
+    font-size: clamp(2rem, 8.5vw, 3rem);
+  }
+
+  .home-intro {
+    margin-top: 0.85rem;
+    font-size: 1rem;
+  }
+
+  .home-hero .cta-buttons {
+    margin-top: 1.25rem;
   }
 
   .home-hero-split > picture {
-    order: -1;
+    align-self: flex-start;
   }
 
   .home-proof-bar {
