@@ -40,7 +40,7 @@ test("theme runtime and blog generator keep the lightweight shared asset path", 
   );
 });
 
-test("unfingerprinted CSS stays revalidating instead of immutable", () => {
+test("unfingerprinted CSS and JS stay revalidating instead of immutable", () => {
   const headers = read("_headers");
 
   assert.match(
@@ -52,5 +52,16 @@ test("unfingerprinted CSS stays revalidating instead of immutable", () => {
     headers,
     /\/css\/\*\s+Cache-Control:\s+public,\s+max-age=31536000,\s+immutable/,
     "Do not mark unfingerprinted CSS as immutable."
+  );
+
+  assert.match(
+    headers,
+    /\/js\/\*\s+Cache-Control:\s+public,\s+max-age=0,\s+must-revalidate,\s+no-transform/,
+    "Shared JS should revalidate so deployed module updates cannot get stuck behind immutable caching."
+  );
+  assert.doesNotMatch(
+    headers,
+    /\/js\/\*\s+Cache-Control:\s+public,\s+max-age=31536000,\s+immutable/,
+    "Do not mark unfingerprinted JS as immutable."
   );
 });
