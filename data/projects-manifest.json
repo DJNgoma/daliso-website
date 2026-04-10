@@ -100,6 +100,20 @@
         }
       ]
     },
+    "justsomethingdotapp": {
+      "title": "justsomething.app",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface.",
+      "order": 55,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        }
+      ]
+    },
     "VR_Rental_Website": {
       "title": "HeadsetHire",
       "category": "websites-publishing",
@@ -274,6 +288,11 @@
       "order": 65,
       "links": [
         {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
+        {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-bp/id6761688889",
           "kind": "appstore"
@@ -293,6 +312,11 @@
       "order": 67,
       "links": [
         {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
+        {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-glucose/id6761859666",
           "kind": "appstore"
@@ -306,6 +330,11 @@
       "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
       "order": 68,
       "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
         {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-weight-no-wait/id6761859022",

@@ -164,6 +164,16 @@ test.describe('Projects page', () => {
     await expect(dalisoCard.locator('.repo-link')).toHaveAttribute('href', 'https://daliso.com');
   });
 
+  test('Just apps link back to justsomething.app', async ({ page }) => {
+    await page.goto('/projects/');
+
+    for (const title of ['Just BP', 'Just Glucose', 'Just Weight - No Wait']) {
+      const card = getCatalogCard(page, title);
+      await expect(card).toHaveCount(1);
+      await expect(card.getByRole('link', { name: 'Visit site' })).toHaveAttribute('href', 'https://justsomething.app');
+    }
+  });
+
   test('all animate-on-scroll sections become visible after scrolling', async ({ page }) => {
     await page.goto('/projects/');
     await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });

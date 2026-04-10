@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T01:20:46.429Z",
+  "generatedAt": "2026-04-10T01:28:56.827Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-10T01:03:55.000Z",
+      "lastUpdated": "2026-04-10T01:23:18.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -117,7 +117,7 @@
       "status": "Live",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "lastUpdated": "2026-04-08T21:31:16.000Z",
+      "lastUpdated": "2026-04-10T01:23:27.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -206,7 +206,7 @@
       "status": "Live",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-04-08T20:17:34.000Z",
+      "lastUpdated": "2026-04-10T01:23:40.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -283,7 +283,7 @@
       "status": "Live",
       "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-04-09T22:59:38.000Z",
+      "lastUpdated": "2026-04-10T01:23:37.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -311,7 +311,7 @@
       "status": "Live",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
-      "lastUpdated": "2026-04-08T20:03:41.000Z",
+      "lastUpdated": "2026-04-10T01:23:53.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -323,6 +323,24 @@
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/JYqETxJ1",
           "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "justsomethingdotapp",
+      "folder": "justsomethingdotapp",
+      "title": "justsomething.app",
+      "category": "websites-publishing",
+      "status": "Live",
+      "summary": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface.",
+      "order": 55,
+      "lastUpdated": "2026-04-09T20:22:11.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
         }
       ]
     },
@@ -346,7 +364,7 @@
       "status": "Live",
       "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
       "order": 60,
-      "lastUpdated": "2026-04-09T19:12:21.000Z",
+      "lastUpdated": "2026-04-10T01:23:34.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -387,7 +405,7 @@
       "status": "Live",
       "summary": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning.",
       "order": 60,
-      "lastUpdated": "2026-04-08T20:17:34.000Z",
+      "lastUpdated": "2026-04-10T01:24:01.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -405,9 +423,14 @@
       "status": "Live",
       "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
       "order": 65,
-      "lastUpdated": "2026-04-08T21:18:13.000Z",
+      "lastUpdated": "2026-04-10T01:23:43.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
         {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-bp/id6761688889",
@@ -428,9 +451,14 @@
       "status": "Live",
       "summary": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup.",
       "order": 67,
-      "lastUpdated": "2026-04-09T21:28:44.000Z",
+      "lastUpdated": "2026-04-10T01:23:46.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
         {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-glucose/id6761859666",
@@ -446,9 +474,14 @@
       "status": "Live",
       "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
       "order": 68,
-      "lastUpdated": "2026-04-08T21:00:10.000Z",
+      "lastUpdated": "2026-04-10T01:23:49.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
         {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/just-weight-no-wait/id6761859022",
@@ -464,7 +497,7 @@
       "status": "Live",
       "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
       "order": 70,
-      "lastUpdated": "2026-04-08T20:03:56.000Z",
+      "lastUpdated": "2026-04-10T01:23:30.000Z",
       "freshnessSource": "git",
       "links": [
         {
