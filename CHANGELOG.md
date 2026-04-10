@@ -1,5 +1,23 @@
 # Changelog
 
+## 2026-04-10
+
+### Caching
+- Fixed a live Safari/WebKit regression where immutable shared JS could survive deploys and keep executing stale module bodies after the homepage HTML had updated
+- Changed shared `/js/*` cache policy to revalidate instead of `immutable` unless the public filenames become content-hashed
+
+### Navigation
+- Fixed the live homepage nav so `About` and `Work` consistently resolve to `/about/` and `/work/` instead of falling back to home-page anchors in stale clients
+
+### UI
+- Restored the homepage portrait placement so it stays above the CTA block on mobile instead of dropping below it
+
+### Tests
+- Added regression coverage for standalone nav routes, mobile menu navigation, portrait placement on compact mobile viewports, and the shared JS cache-policy rule
+
+### Documentation
+- Documented the shared entrypoint cache policy and the April 10 Safari cache incident in `README.md` and `audit/performance-guardrails.md`
+
 ## 2026-03-18
 
 ### Documentation

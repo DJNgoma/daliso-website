@@ -1,6 +1,6 @@
 # Performance Guardrails
 
-Updated: 3 April 2026
+Updated: 10 April 2026
 
 ## Live Snapshot
 
@@ -35,9 +35,18 @@ That means the site is still excellent on desktop, but it is not currently a sta
 - Added `Cache-Control: ... no-transform` to the default HTML header rule to stop Cloudflare HTML rewrites from reintroducing the email decoder script.
 - Added performance guardrail coverage in `tests/performance.spec.js`.
 
+## Safari Cache Incident: 10 April 2026
+
+The homepage route links worked in preview but failed on the live site in Safari and WebKit-based clients because shared JS under `/js/*` was still marked `immutable` even though those files were not content-hashed filenames.
+
+- The live HTML had already moved to the new entrypoint URL, but Safari could still execute an older cached `main.js` body.
+- That stale module imported `nav-menu.js?v=20260403-perf`, which rewrote `About` and `Work` back to `/#about` and `/#work`.
+- The fix was to change shared JS cache headers to `max-age=0, must-revalidate`, rotate the shared entrypoint version again, and add a guardrail test in `tests/performance-guardrails.spec.mjs` so unfingerprinted JS cannot be marked immutable again.
+
 ## Guardrails
 
 - Keep shared CSS source files in `css/`, but always serve the generated bundle in `css/style.css`.
+- Keep shared JS entrypoints revalidating unless the repo moves to content-hashed filenames for public modules.
 - Do not reintroduce JS-driven image swaps for above-the-fold assets.
 - Keep the homepage hero and nav logo in modern, tightly sized formats.
 - Preserve HTML `no-transform` unless Cloudflare email obfuscation is disabled another way.
