@@ -71,7 +71,7 @@ test.describe('Accessibility', () => {
     await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
   });
 
-  test('home hero CTAs stay visible on a compact mobile viewport', async ({ browser }) => {
+  test('home hero portrait stays above the CTAs on a compact mobile viewport', async ({ browser }) => {
     const page = await browser.newPage({
       viewport: { width: 375, height: 700 },
       hasTouch: true,
@@ -91,6 +91,6 @@ test.describe('Accessibility', () => {
 
     expect(primaryBox).not.toBeNull();
     expect(pictureBox).not.toBeNull();
-    expect(primaryBox.y).toBeLessThan(pictureBox.y);
+    expect(pictureBox.y).toBeLessThan(primaryBox.y);
   });
 });

@@ -1,4 +1,4 @@
-import './main.js?v=20260405';
+import './main.js?v=20260410-navfix';
 
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');

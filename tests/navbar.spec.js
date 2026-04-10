@@ -1,6 +1,7 @@
 import { test, expect } from '@playwright/test';
 
 const EXPECTED_NAV_ITEMS = ['Home', 'About', 'Work', 'Projects', 'Media', 'Blog'];
+const EXPECTED_NAV_HREFS = ['/', '/about/', '/work/', '/projects/', '/media/', '/blog/'];
 const SHARED_CHROME_PATHS = [
   '/',
   '/about/',
@@ -17,6 +18,14 @@ test.describe('Navbar consistency', () => {
     await page.goto('/');
     const navItems = await page.locator('.nav-menu a').allTextContents();
     expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
+  });
+
+  test('home page nav points to standalone routes', async ({ page }) => {
+    await page.goto('/');
+    const navHrefs = await page.locator('.nav-menu a').evaluateAll((links) =>
+      links.map((link) => link.getAttribute('href'))
+    );
+    expect(navHrefs).toEqual(EXPECTED_NAV_HREFS);
   });
 
   test('about page has correct nav items and renders its hero', async ({ page }) => {
@@ -67,6 +76,24 @@ test.describe('Navbar consistency', () => {
     await hamburger.click();
     const navMenu = page.locator('.nav-menu');
     await expect(navMenu).toHaveClass(/show/);
+  });
+
+  test('mobile menu routes About and Work to standalone pages', async ({ page, viewport }) => {
+    if (viewport.width > 768) {
+      test.skip();
+    }
+
+    await page.goto('/');
+    await page.locator('#hamburger').click();
+    await page.locator('#nav-menu a', { hasText: 'About' }).click();
+    await expect(page).toHaveURL(/\/about\/$/);
+    await expect(page.getByRole('heading', { name: 'About Me' })).toBeVisible();
+
+    await page.goto('/');
+    await page.locator('#hamburger').click();
+    await page.locator('#nav-menu a', { hasText: 'Work' }).click();
+    await expect(page).toHaveURL(/\/work\/$/);
+    await expect(page.getByRole('heading', { name: 'My Work' })).toBeVisible();
   });
 
   test('blog page has correct nav items', async ({ page }) => {
