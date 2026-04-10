@@ -188,10 +188,18 @@ The main mobile misses were render-blocking CSS chaining, image delivery, and an
 The `/projects/` page is curated from the live Developer workspace rather than hand-edited JSON.
 
 1. Update `data/projects-manifest.json` to add, remove, reorder, or relabel public projects.
-2. Run `npm run sync:projects` to scan the immediate children of the Developer folder and regenerate `js/projects-data.json`.
-3. Run `npm test` to verify the refreshed catalog.
+2. If a public project should resolve to a differently named top-level repo folder, set `folder` on that manifest entry.
+3. Run `npm run sync:projects` to scan the immediate children of the Developer folder and regenerate `js/projects-data.json`.
+4. Run `npm test` to verify the refreshed catalog.
 
 By default the sync script scans the parent directory of this repo, which matches `/Users/daliso/Developer` in this workspace. Override it with `PROJECTS_WORKSPACE_ROOT=/custom/path npm run sync:projects` when needed.
+
+The sync path is intentionally local-workspace aware:
+
+- it reads the full top level of `~/Developer`
+- it uses the manifest to decide what is public
+- it supports `folder` overrides so stable public IDs do not require repo-folder renames
+- it stays out of CI because CI does not have the whole surrounding workspace
 
 ---
 

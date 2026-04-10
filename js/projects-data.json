@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-08T09:47:55.104Z",
+  "generatedAt": "2026-04-10T01:20:46.429Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -39,7 +39,7 @@
       "status": "Building",
       "summary": "Community events website for AI-focused meetups in South Africa.",
       "order": 10,
-      "lastUpdated": "2026-04-01T00:04:13.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -63,7 +63,7 @@
       "status": "Prototype",
       "summary": "Mobile-first decision game about founder tradeoffs, pressure, and pacing.",
       "order": 10,
-      "lastUpdated": "2026-04-01T00:10:35.000Z",
+      "lastUpdated": "2026-04-08T21:11:00.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -75,7 +75,7 @@
       "status": "Building",
       "summary": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary.",
       "order": 10,
-      "lastUpdated": "2026-04-03T17:04:04.000Z",
+      "lastUpdated": "2026-04-08T21:11:00.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -87,7 +87,7 @@
       "status": "Operational",
       "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
       "order": 20,
-      "lastUpdated": "2026-04-03T21:51:49.000Z",
+      "lastUpdated": "2026-04-08T19:48:00.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-06T21:50:44.000Z",
+      "lastUpdated": "2026-04-10T01:03:55.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -111,15 +111,20 @@
     },
     {
       "id": "PoolOps",
-      "folder": "PoolOps",
+      "folder": "Clarity",
       "title": "Pool Clarity",
       "category": "experiments-tools",
-      "status": "Building",
+      "status": "Live",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "lastUpdated": "2026-04-08T21:31:16.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/pool-clarity/id6761671930",
+          "kind": "appstore"
+        },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/8EYv7shk",
@@ -135,7 +140,7 @@
       "status": "Operational",
       "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
       "order": 20,
-      "lastUpdated": "2026-04-03T21:52:43.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -159,7 +164,7 @@
       "status": "Live",
       "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
       "order": 30,
-      "lastUpdated": "2026-04-01T09:40:31.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -177,7 +182,7 @@
       "status": "Prototype",
       "summary": "Playful product discovery app that recommends XR and creator gear from a short quiz.",
       "order": 30,
-      "lastUpdated": "2026-04-01T00:26:00.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -189,7 +194,7 @@
       "status": "Operational",
       "summary": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps.",
       "order": 30,
-      "lastUpdated": "2026-04-03T21:16:13.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -198,30 +203,23 @@
       "folder": "quickquote",
       "title": "FlashQuote",
       "category": "products-commerce",
-      "status": "Building",
+      "status": "Live",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
+      "lastUpdated": "2026-04-08T20:17:34.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/flashquote/id6761631585",
+          "kind": "appstore"
+        },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/NrfVZc6x",
           "kind": "testflight"
         }
       ]
-    },
-    {
-      "id": "commanddashboard",
-      "folder": "commanddashboard",
-      "title": "Command Dashboard",
-      "category": "internal-systems",
-      "status": "Building",
-      "summary": "Universal macOS, iOS, and Apple Watch dashboard app with cross-device sync and Xcode Cloud CI.",
-      "order": 40,
-      "lastUpdated": "2026-04-06T23:35:05.000Z",
-      "freshnessSource": "git",
-      "links": []
     },
     {
       "id": "invoiceGenerator",
@@ -231,7 +229,7 @@
       "status": "Operational",
       "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
       "order": 40,
-      "lastUpdated": "2026-04-01T00:25:53.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -243,7 +241,7 @@
       "status": "Live",
       "summary": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate.",
       "order": 40,
-      "lastUpdated": "2026-04-03T21:43:15.000Z",
+      "lastUpdated": "2026-04-08T20:31:36.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -285,7 +283,7 @@
       "status": "Live",
       "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-04-06T19:23:39.000Z",
+      "lastUpdated": "2026-04-09T22:59:38.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -295,7 +293,7 @@
         },
         {
           "label": "Download on the App Store",
-          "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
+          "url": "https://apps.apple.com/us/app/the-devils-ai-dictionary/id6761293350",
           "kind": "appstore"
         },
         {
@@ -310,92 +308,20 @@
       "folder": "actioninbox",
       "title": "Action Inbox",
       "category": "products-commerce",
-      "status": "Building",
+      "status": "Live",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
-      "lastUpdated": "2026-04-03T16:26:58.000Z",
+      "lastUpdated": "2026-04-08T20:03:41.000Z",
       "freshnessSource": "git",
       "links": [
         {
           "label": "Download on the App Store",
-          "url": "https://apps.apple.com/za/app/action-inbox/id6760961555",
+          "url": "https://apps.apple.com/us/app/action-inbox/id6760961555",
           "kind": "appstore"
         },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/JYqETxJ1",
-          "kind": "testflight"
-        }
-      ]
-    },
-    {
-      "id": "MyMedRoutine",
-      "folder": "MyMedRoutine",
-      "title": "My Med Routine",
-      "category": "products-commerce",
-      "status": "Building",
-      "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
-      "order": 60,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
-      "freshnessSource": "manual",
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/uffDMQSF",
-          "kind": "testflight"
-        }
-      ]
-    },
-    {
-      "id": "OpsAtlas",
-      "folder": "OpsAtlas",
-      "title": "Ops Atlas",
-      "category": "internal-systems",
-      "status": "Building",
-      "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
-      "order": 60,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
-      "freshnessSource": "manual",
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/7asmBkDp",
-          "kind": "testflight"
-        }
-      ]
-    },
-    {
-      "id": "JustBP",
-      "folder": "JustBP",
-      "title": "Just BP",
-      "category": "products-commerce",
-      "status": "Building",
-      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
-      "order": 65,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
-      "freshnessSource": "manual",
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/1NqxSEA2",
-          "kind": "testflight"
-        }
-      ]
-    },
-    {
-      "id": "ItsADateScheduler",
-      "folder": "ItsADateScheduler",
-      "title": "It’s a Date — Scheduler",
-      "category": "products-commerce",
-      "status": "Building",
-      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
-      "order": 70,
-      "lastUpdated": "2026-04-08T00:00:00.000Z",
-      "freshnessSource": "manual",
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/kpGjZW95",
           "kind": "testflight"
         }
       ]
@@ -411,6 +337,147 @@
       "lastUpdated": "2026-04-03T21:33:17.000Z",
       "freshnessSource": "git",
       "links": []
+    },
+    {
+      "id": "MyMedRoutine",
+      "folder": "My Med Routine",
+      "title": "My Med Routine",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
+      "order": 60,
+      "lastUpdated": "2026-04-09T19:12:21.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/my-med-routine/id6761585029",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/uffDMQSF",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "commanddashboard",
+      "folder": "commanddashboard",
+      "title": "Ops Atlas",
+      "category": "internal-systems",
+      "status": "Building",
+      "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
+      "order": 60,
+      "lastUpdated": "2026-04-08T20:04:10.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/7asmBkDp",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "UniverseUnveiled",
+      "folder": "UniverseUnveiled ",
+      "title": "Universe Unveiled",
+      "category": "experiments-tools",
+      "status": "Live",
+      "summary": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning.",
+      "order": 60,
+      "lastUpdated": "2026-04-08T20:17:34.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/universe-unveiled/id6476923783",
+          "kind": "appstore"
+        }
+      ]
+    },
+    {
+      "id": "JustBP",
+      "folder": "JustBP",
+      "title": "Just BP",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
+      "order": 65,
+      "lastUpdated": "2026-04-08T21:18:13.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-bp/id6761688889",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/1NqxSEA2",
+          "kind": "testflight"
+        }
+      ]
+    },
+    {
+      "id": "JustGlucose",
+      "folder": "JustGlucose",
+      "title": "Just Glucose",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup.",
+      "order": 67,
+      "lastUpdated": "2026-04-09T21:28:44.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-glucose/id6761859666",
+          "kind": "appstore"
+        }
+      ]
+    },
+    {
+      "id": "JustWeight",
+      "folder": "JustWeight",
+      "title": "Just Weight - No Wait",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
+      "order": 68,
+      "lastUpdated": "2026-04-08T21:00:10.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-weight-no-wait/id6761859022",
+          "kind": "appstore"
+        }
+      ]
+    },
+    {
+      "id": "ItsADateScheduler",
+      "folder": "ItsADate",
+      "title": "It’s a Date — Scheduler",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
+      "order": 70,
+      "lastUpdated": "2026-04-08T20:03:56.000Z",
+      "freshnessSource": "git",
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/its-a-date-scheduler/id6761782557",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/kpGjZW95",
+          "kind": "testflight"
+        }
+      ]
     }
   ]
 }

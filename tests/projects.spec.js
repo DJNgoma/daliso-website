@@ -25,6 +25,12 @@ function getRecentProjects(data) {
     .slice(0, 4);
 }
 
+function getLiveAppProjects(data) {
+  return data.projectCatalog.filter((project) =>
+    Array.isArray(project.links) && project.links.some((link) => link.kind === 'appstore')
+  );
+}
+
 function getCatalogCard(page, title) {
   return page
     .locator('#catalogue')
@@ -44,11 +50,28 @@ test.describe('Projects page', () => {
     const metrics = page.locator('.metric-card');
     await expect(metrics).not.toHaveCount(0);
     const count = await metrics.count();
-    expect(count).toBe(4);
+    expect(count).toBe(5);
     await expect(metrics.nth(0).locator('span')).toHaveText('Featured projects');
     await expect(metrics.nth(1).locator('span')).toHaveText('Categories');
-    await expect(metrics.nth(2).locator('span')).toHaveText('Live links');
-    await expect(metrics.nth(3).locator('span')).toHaveText('Last refresh');
+    await expect(metrics.nth(2).locator('span')).toHaveText('Live apps');
+    await expect(metrics.nth(3).locator('span')).toHaveText('Live links');
+    await expect(metrics.nth(4).locator('span')).toHaveText('Last refresh');
+  });
+
+  test('live apps section renders published App Store projects', async ({ page, request }) => {
+    const data = await loadProjectsData(request);
+    const liveApps = getLiveAppProjects(data);
+
+    await page.goto('/projects/');
+    const section = page.locator('#live-apps');
+    await expect(section).toBeVisible();
+
+    const cards = section.locator('.repo-card');
+    await expect(cards).toHaveCount(liveApps.length);
+
+    for (const project of liveApps) {
+      await expect(section.getByRole('heading', { name: project.title, exact: true })).toBeVisible();
+    }
   });
 
   test('project cards render in all curated categories', async ({ page, request }) => {

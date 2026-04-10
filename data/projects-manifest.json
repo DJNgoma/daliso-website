@@ -90,7 +90,7 @@
         },
         {
           "label": "Download on the App Store",
-          "url": "https://apps.apple.com/za/app/the-devils-ai-dictionary/id6761293350",
+          "url": "https://apps.apple.com/us/app/the-devils-ai-dictionary/id6761293350",
           "kind": "appstore"
         },
         {
@@ -135,10 +135,15 @@
     "quickquote": {
       "title": "FlashQuote",
       "category": "products-commerce",
-      "status": "Building",
+      "status": "Live",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
       "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/flashquote/id6761631585",
+          "kind": "appstore"
+        },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/NrfVZc6x",
@@ -195,12 +200,18 @@
       "links": []
     },
     "PoolOps": {
+      "folder": "Clarity",
       "title": "Pool Clarity",
       "category": "experiments-tools",
-      "status": "Building",
+      "status": "Live",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
       "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/pool-clarity/id6761671930",
+          "kind": "appstore"
+        },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/8EYv7shk",
@@ -219,13 +230,13 @@
     "actioninbox": {
       "title": "Action Inbox",
       "category": "products-commerce",
-      "status": "Building",
+      "status": "Live",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
       "links": [
         {
           "label": "Download on the App Store",
-          "url": "https://apps.apple.com/za/app/action-inbox/id6760961555",
+          "url": "https://apps.apple.com/us/app/action-inbox/id6760961555",
           "kind": "appstore"
         },
         {
@@ -236,12 +247,18 @@
       ]
     },
     "MyMedRoutine": {
+      "folder": "My Med Routine",
       "title": "My Med Routine",
       "category": "products-commerce",
-      "status": "Building",
+      "status": "Live",
       "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
       "order": 60,
       "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/my-med-routine/id6761585029",
+          "kind": "appstore"
+        },
         {
           "label": "Available on TestFlight",
           "url": "https://testflight.apple.com/join/uffDMQSF",
@@ -249,7 +266,89 @@
         }
       ]
     },
-    "OpsAtlas": {
+    "JustBP": {
+      "title": "Just BP",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
+      "order": 65,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-bp/id6761688889",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/1NqxSEA2",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "JustGlucose": {
+      "title": "Just Glucose",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup.",
+      "order": 67,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-glucose/id6761859666",
+          "kind": "appstore"
+        }
+      ]
+    },
+    "JustWeight": {
+      "title": "Just Weight - No Wait",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
+      "order": 68,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-weight-no-wait/id6761859022",
+          "kind": "appstore"
+        }
+      ]
+    },
+    "ItsADateScheduler": {
+      "folder": "ItsADate",
+      "title": "It’s a Date — Scheduler",
+      "category": "products-commerce",
+      "status": "Live",
+      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
+      "order": 70,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/its-a-date-scheduler/id6761782557",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/kpGjZW95",
+          "kind": "testflight"
+        }
+      ]
+    },
+    "UniverseUnveiled": {
+      "folder": "UniverseUnveiled ",
+      "title": "Universe Unveiled",
+      "category": "experiments-tools",
+      "status": "Live",
+      "summary": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/universe-unveiled/id6476923783",
+          "kind": "appstore"
+        }
+      ]
+    },
+    "commanddashboard": {
       "title": "Ops Atlas",
       "category": "internal-systems",
       "status": "Building",
@@ -262,42 +361,6 @@
           "kind": "testflight"
         }
       ]
-    },
-    "JustBP": {
-      "title": "Just BP",
-      "category": "products-commerce",
-      "status": "Building",
-      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
-      "order": 65,
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/1NqxSEA2",
-          "kind": "testflight"
-        }
-      ]
-    },
-    "ItsADateScheduler": {
-      "title": "It’s a Date — Scheduler",
-      "category": "products-commerce",
-      "status": "Building",
-      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
-      "order": 70,
-      "links": [
-        {
-          "label": "Available on TestFlight",
-          "url": "https://testflight.apple.com/join/kpGjZW95",
-          "kind": "testflight"
-        }
-      ]
-    },
-    "commanddashboard": {
-      "title": "Command Dashboard",
-      "category": "internal-systems",
-      "status": "Building",
-      "summary": "Universal macOS, iOS, and Apple Watch dashboard app with cross-device sync and Xcode Cloud CI.",
-      "order": 40,
-      "links": []
     },
     "EARN_Company_OS_Websites": {
       "title": "EARN OS Change Review",

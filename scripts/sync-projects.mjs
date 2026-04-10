@@ -62,11 +62,17 @@ function main() {
   const workspaceFolders = readdirSync(workspaceRoot, { withFileTypes: true })
     .filter((entry) => entry.isDirectory() && !entry.name.startsWith("."))
     .map((entry) => entry.name);
+  const publishedProjects = Object.entries(manifest.projects).map(([id, config]) => ({
+    id,
+    folder: config.folder ?? id,
+    config,
+  }));
 
   const categories = [...manifest.categories].sort((left, right) => left.order - right.order);
   const categoryIds = new Set(categories.map((category) => category.id));
-  const publishedFolders = Object.keys(manifest.projects);
-  const missingFolders = publishedFolders.filter((folder) => !workspaceFolders.includes(folder));
+  const missingFolders = publishedProjects
+    .filter((project) => !workspaceFolders.includes(project.folder))
+    .map((project) => `${project.id} -> ${project.folder}`);
 
   if (missingFolders.length > 0) {
     throw new Error(
@@ -74,18 +80,17 @@ function main() {
     );
   }
 
-  const projectCatalog = publishedFolders
-    .map((folder) => {
-      const config = manifest.projects[folder];
+  const projectCatalog = publishedProjects
+    .map(({ id, folder, config }) => {
       if (!categoryIds.has(config.category)) {
-        throw new Error(`Unknown category "${config.category}" configured for ${folder}`);
+        throw new Error(`Unknown category "${config.category}" configured for ${id}`);
       }
 
       const projectPath = join(workspaceRoot, folder);
       const freshness = getProjectFreshness(projectPath);
 
       return {
-        id: folder,
+        id,
         folder,
         title: config.title,
         category: config.category,

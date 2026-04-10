@@ -3,6 +3,7 @@ import './main.js?v=20260410-cachefix';
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');
   const featuredGrid = document.getElementById('featured-grid');
+  const liveAppsGrid = document.getElementById('live-apps-grid');
   const summaryGrid = document.getElementById('summary-grid');
   const catalogSections = document.getElementById('catalog-sections');
   try {
@@ -28,6 +29,9 @@ async function init() {
       .filter((section) => section.projects.length > 0);
     const sectionTitleById = new Map(projectSections.map((section) => [section.id, section.title]));
     const liveLinks = [];
+    const liveAppProjects = [...projectCatalog]
+      .filter((project) => getProjectLinks(project).some((link) => link.kind === 'appstore'))
+      .sort((left, right) => getProjectOrder(left) - getProjectOrder(right) || left.title.localeCompare(right.title));
     const liveProjects = [];
     const productsAndCommerce = projectCatalog.filter((project) => project.category === 'products-commerce');
     const internalSystems = projectCatalog.filter((project) => project.category === 'internal-systems');
@@ -42,8 +46,9 @@ async function init() {
     projectCatalog.forEach((project) => {
       const links = getProjectLinks(project);
       const hasLiveLink = links.some((link) => link.kind === 'live');
+      const hasLiveApp = links.some((link) => link.kind === 'appstore');
 
-      if (hasLiveLink) {
+      if (hasLiveLink || hasLiveApp) {
         liveProjects.push(project);
       }
 
@@ -56,6 +61,7 @@ async function init() {
 
     renderHeroMetrics();
     renderFeaturedGrid();
+    renderLiveAppsSection();
     renderSummaryCards();
     renderCatalogSections();
     initFilterBar();
@@ -64,6 +70,7 @@ async function init() {
       const metrics = [
         { label: 'Featured projects', value: projectCatalog.length },
         { label: 'Categories', value: groupedSections.length },
+        { label: 'Live apps', value: liveAppProjects.length },
         { label: 'Live links', value: liveLinks.length },
         { label: 'Last refresh', value: formatMetricDate(generatedAt) },
       ];
@@ -93,6 +100,21 @@ async function init() {
 
       featuredGrid.innerHTML = featured
         .map((project) => renderProjectCard(project, { featured: true }))
+        .join('');
+    }
+
+    function renderLiveAppsSection() {
+      if (!liveAppsGrid) {
+        return;
+      }
+
+      if (liveAppProjects.length === 0) {
+        liveAppsGrid.closest('section')?.remove();
+        return;
+      }
+
+      liveAppsGrid.innerHTML = liveAppProjects
+        .map((project) => renderProjectCard(project, { compact: true }))
         .join('');
     }
 
