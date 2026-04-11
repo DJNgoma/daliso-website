@@ -351,6 +351,11 @@
       "order": 70,
       "links": [
         {
+          "label": "Visit site",
+          "url": "https://itsadate.to/",
+          "kind": "live"
+        },
+        {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/its-a-date-scheduler/id6761782557",
           "kind": "appstore"

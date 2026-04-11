@@ -174,6 +174,14 @@ test.describe('Projects page', () => {
     }
   });
 
+  test('It’s a Date links to its public website', async ({ page }) => {
+    await page.goto('/projects/');
+
+    const card = getCatalogCard(page, 'It’s a Date — Scheduler');
+    await expect(card).toHaveCount(1);
+    await expect(card.getByRole('link', { name: 'Visit site' })).toHaveAttribute('href', 'https://itsadate.to/');
+  });
+
   test('all animate-on-scroll sections become visible after scrolling', async ({ page }) => {
     await page.goto('/projects/');
     await page.waitForSelector('#catalogue .repo-card', { timeout: 5000 });

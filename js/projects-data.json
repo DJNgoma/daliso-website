@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-10T01:28:56.827Z",
+  "generatedAt": "2026-04-11T19:00:12.613Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-10T01:23:18.000Z",
+      "lastUpdated": "2026-04-10T01:31:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -283,7 +283,7 @@
       "status": "Live",
       "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-04-10T01:23:37.000Z",
+      "lastUpdated": "2026-04-11T16:28:26.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -334,7 +334,7 @@
       "status": "Live",
       "summary": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface.",
       "order": 55,
-      "lastUpdated": "2026-04-09T20:22:11.000Z",
+      "lastUpdated": "2026-04-10T01:31:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -423,7 +423,7 @@
       "status": "Live",
       "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
       "order": 65,
-      "lastUpdated": "2026-04-10T01:23:43.000Z",
+      "lastUpdated": "2026-04-10T01:31:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -451,7 +451,7 @@
       "status": "Live",
       "summary": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup.",
       "order": 67,
-      "lastUpdated": "2026-04-10T01:23:46.000Z",
+      "lastUpdated": "2026-04-10T01:31:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -474,7 +474,7 @@
       "status": "Live",
       "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
       "order": 68,
-      "lastUpdated": "2026-04-10T01:23:49.000Z",
+      "lastUpdated": "2026-04-10T01:31:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -500,6 +500,11 @@
       "lastUpdated": "2026-04-10T01:23:30.000Z",
       "freshnessSource": "git",
       "links": [
+        {
+          "label": "Visit site",
+          "url": "https://itsadate.to/",
+          "kind": "live"
+        },
         {
           "label": "Download on the App Store",
           "url": "https://apps.apple.com/us/app/its-a-date-scheduler/id6761782557",
