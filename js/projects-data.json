@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-04-11T19:00:12.613Z",
+  "generatedAt": "2026-04-19T22:28:20.429Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-04-10T01:31:50.000Z",
+      "lastUpdated": "2026-04-11T19:05:32.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -117,7 +117,7 @@
       "status": "Live",
       "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
       "order": 20,
-      "lastUpdated": "2026-04-10T01:23:27.000Z",
+      "lastUpdated": "2026-04-18T18:59:10.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -164,7 +164,7 @@
       "status": "Live",
       "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
       "order": 30,
-      "lastUpdated": "2026-04-08T20:31:36.000Z",
+      "lastUpdated": "2026-04-15T17:40:27.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -206,7 +206,7 @@
       "status": "Live",
       "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
       "order": 35,
-      "lastUpdated": "2026-04-10T01:23:40.000Z",
+      "lastUpdated": "2026-04-18T19:01:03.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -271,7 +271,7 @@
       "status": "Prototype",
       "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
       "order": 50,
-      "lastUpdated": "2026-04-03T21:30:21.000Z",
+      "lastUpdated": "2026-04-11T23:17:37.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -283,7 +283,7 @@
       "status": "Live",
       "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
       "order": 50,
-      "lastUpdated": "2026-04-11T16:28:26.000Z",
+      "lastUpdated": "2026-04-18T18:43:38.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -311,7 +311,7 @@
       "status": "Live",
       "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
       "order": 55,
-      "lastUpdated": "2026-04-10T01:23:53.000Z",
+      "lastUpdated": "2026-04-19T00:10:45.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -364,7 +364,7 @@
       "status": "Live",
       "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
       "order": 60,
-      "lastUpdated": "2026-04-10T01:23:34.000Z",
+      "lastUpdated": "2026-04-18T21:41:45.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -387,7 +387,7 @@
       "status": "Building",
       "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
       "order": 60,
-      "lastUpdated": "2026-04-08T20:04:10.000Z",
+      "lastUpdated": "2026-04-19T13:38:23.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -423,7 +423,7 @@
       "status": "Live",
       "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
       "order": 65,
-      "lastUpdated": "2026-04-10T01:31:50.000Z",
+      "lastUpdated": "2026-04-11T23:17:28.000Z",
       "freshnessSource": "git",
       "links": [
         {
@@ -497,7 +497,7 @@
       "status": "Live",
       "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
       "order": 70,
-      "lastUpdated": "2026-04-10T01:23:30.000Z",
+      "lastUpdated": "2026-04-18T20:03:15.000Z",
       "freshnessSource": "git",
       "links": [
         {
