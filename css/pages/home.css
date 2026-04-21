@@ -285,6 +285,138 @@
   border-radius: 4px;
 }
 
+/* ── Agent-Ready section ─────────────────────────── */
+
+.home-agent-ready {
+  position: relative;
+  overflow: hidden;
+}
+
+.home-agent-ready::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.14;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 20%, var(--accent) 0%, transparent 30%),
+    radial-gradient(circle at 88% 80%, rgba(124, 58, 237, 0.45) 0%, transparent 32%);
+}
+
+.home-agent-ready .container {
+  position: relative;
+  z-index: 1;
+}
+
+.agent-ready-head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.5rem;
+}
+
+.agent-ready-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, transparent);
+  border-radius: 999px;
+}
+
+.agent-ready-badge::before {
+  content: "";
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 999px;
+  background: var(--accent);
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent);
+  animation: agent-ready-pulse 2.2s ease-out infinite;
+}
+
+@keyframes agent-ready-pulse {
+  0%   { box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent) 55%, transparent); }
+  70%  { box-shadow: 0 0 0 10px transparent; }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .agent-ready-badge::before { animation: none; }
+}
+
+.home-agent-ready h2 {
+  margin: 0.2rem 0 0.4rem;
+}
+
+.home-agent-ready > .container > p {
+  max-width: 62ch;
+  color: color-mix(in srgb, var(--text) 82%, transparent);
+}
+
+.agent-ready-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.9rem;
+  margin-top: 1.4rem;
+}
+
+.agent-ready-grid a {
+  display: grid;
+  gap: 0.3rem;
+  padding: 1rem 1.1rem;
+  background: color-mix(in srgb, var(--card) 88%, var(--background));
+  border: 1px solid color-mix(in srgb, var(--text) 10%, transparent);
+  border-radius: 14px;
+  color: var(--text);
+  text-decoration: none;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.agent-ready-grid a:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 40%, transparent);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .agent-ready-grid a {
+  background: rgba(18, 24, 38, 0.94);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.agent-ready-grid code {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.01em;
+}
+
+.agent-ready-grid span {
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: color-mix(in srgb, var(--text) 74%, transparent);
+}
+
+.agent-ready-footnote {
+  margin-top: 1rem;
+  font-size: 0.86rem;
+  color: color-mix(in srgb, var(--text) 62%, transparent);
+}
+
+.agent-ready-footnote a {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.agent-ready-footnote a:hover { text-decoration: underline; }
+
 /* ── Mobile ───────────────────────────────────────── */
 
 @media (max-width: 768px) {

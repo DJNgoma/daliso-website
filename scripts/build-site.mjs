@@ -11,12 +11,18 @@ const distDir = path.join(repoRoot, 'dist');
 const publishPaths = [
   '404.html',
   '_headers',
+  '.well-known',
   'about',
+  'api',
   'assets',
   'blog',
   'css',
+  'feed.json',
+  'feed.xml',
   'index.html',
   'js',
+  'llms-full.txt',
+  'llms.txt',
   'manifest.webmanifest',
   'media',
   'privacy',
@@ -42,7 +48,7 @@ async function buildSite() {
         const pathSegments = repoRelativePath.split(path.sep);
         const baseName = path.basename(sourcePath);
 
-        if (baseName.startsWith('.')) {
+        if (baseName.startsWith('.') && baseName !== '.well-known') {
           return false;
         }
 

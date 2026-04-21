@@ -1,0 +1,114 @@
+openapi: 3.0.3
+info:
+  title: Daliso Ngoma — Public Content API
+  version: "1.0.0"
+  description: |
+    Read-only JSON and text feeds exposing the public content of daliso.com
+    for AI agents and research tools. There is no authentication and no rate
+    limiting beyond standard CDN protections.
+  contact:
+    name: Daliso Ngoma
+    email: info@africantechno.com
+    url: https://daliso.com
+  license:
+    name: Content © Daliso Ngoma — quote with attribution and a link to the source URL.
+    url: https://daliso.com/privacy/
+servers:
+  - url: https://daliso.com
+    description: Production
+paths:
+  /llms.txt:
+    get:
+      operationId: getLlmsMap
+      summary: Machine-friendly map of daliso.com for LLMs.
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /llms-full.txt:
+    get:
+      operationId: getLlmsFullText
+      summary: Full plain-text of the site for ingestion.
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string
+  /feed.xml:
+    get:
+      operationId: getAtomFeed
+      summary: Atom feed of blog posts.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/atom+xml:
+              schema:
+                type: string
+  /feed.json:
+    get:
+      operationId: getJsonFeed
+      summary: JSON Feed 1.1 of blog posts.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/feed+json:
+              schema:
+                type: object
+  /sitemap.xml:
+    get:
+      operationId: getSitemap
+      summary: XML sitemap of canonical URLs.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/xml:
+              schema:
+                type: string
+  /api/projects.json:
+    get:
+      operationId: getProjects
+      summary: Structured list of projects with categories and status.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  generatedAt:
+                    type: string
+                    format: date-time
+                  categories:
+                    type: array
+                    items:
+                      type: object
+                  projects:
+                    type: array
+                    items:
+                      type: object
+  /blog/{slug}/plaintext.txt:
+    get:
+      operationId: getPostPlaintext
+      summary: Plain-text version of a single blog post.
+      parameters:
+        - in: path
+          name: slug
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            text/plain:
+              schema:
+                type: string

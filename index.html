@@ -43,27 +43,69 @@
   <meta name="twitter:image" content="https://daliso.com/assets/images/og-image-v2.png" />
   <meta name="twitter:image:alt" content="Daliso Ngoma site preview card" />
   <link rel="canonical" href="https://daliso.com/" />
+  <link rel="alternate" type="application/atom+xml" title="Daliso Ngoma — Blog (Atom)" href="https://daliso.com/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="Daliso Ngoma — Blog (JSON Feed)" href="https://daliso.com/feed.json" />
+  <link rel="alternate" type="text/plain" title="LLM-friendly site summary" href="https://daliso.com/llms.txt" />
   <script type="module" src="/js/main.js?v=20260410-cachefix"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Daliso Ngoma",
-  "url": "https://daliso.com",
-  "sameAs": [
-    "https://x.com/djngoma",
-    "https://linkedin.com/in/djngoma",
-    "https://instagram.com/djngoma"
-  ],
-  "jobTitle": "Founder & Managing Director",
-  "worksFor": {
-    "@type": "Organization",
-    "name": "African Technopreneurs"
-  },
-  "email": "info@africantechno.com",
-  "knowsAbout": ["Mixed Reality", "Spatial Computing", "XR", "VR", "AR", "Digital Commerce", "Podcasting", "Software Products"],
-  "description": "Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa.",
-  "image": "https://daliso.com/assets/images/hero-640.jpg"
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://daliso.com/#daliso",
+      "name": "Daliso Ngoma",
+      "givenName": "Daliso",
+      "familyName": "Ngoma",
+      "url": "https://daliso.com/",
+      "sameAs": [
+        "https://x.com/djngoma",
+        "https://linkedin.com/in/djngoma",
+        "https://instagram.com/djngoma",
+        "https://github.com/DJNgoma"
+      ],
+      "jobTitle": "Founder & Managing Director",
+      "worksFor": { "@id": "https://africantechno.com/#org" },
+      "email": "mailto:info@africantechno.com",
+      "knowsAbout": ["Mixed Reality", "Spatial Computing", "XR", "VR", "AR", "Digital Commerce", "Podcasting", "Software Products"],
+      "description": "Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa.",
+      "image": "https://daliso.com/assets/images/hero-640.jpg"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://africantechno.com/#org",
+      "name": "African Technopreneurs",
+      "url": "https://africantechno.com",
+      "founder": { "@id": "https://daliso.com/#daliso" },
+      "description": "African Technopreneurs builds immersive tech, commerce, media, and software products across African markets.",
+      "sameAs": ["https://podcast.africantechno.com"]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://daliso.com/#website",
+      "url": "https://daliso.com/",
+      "name": "Daliso Ngoma",
+      "description": "Personal site of Daliso Ngoma — founder, operator, and builder across immersive tech and software in Africa.",
+      "publisher": { "@id": "https://daliso.com/#daliso" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://daliso.com/#webpage",
+      "url": "https://daliso.com/",
+      "name": "Daliso Ngoma | Founder, African Technopreneurs, XR & Immersive Tech in Africa",
+      "isPartOf": { "@id": "https://daliso.com/#website" },
+      "about": { "@id": "https://daliso.com/#daliso" },
+      "primaryImageOfPage": "https://daliso.com/assets/images/og-image-v2.png",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://daliso.com/" }
+      ]
+    }
+  ]
 }
 </script>
 </head>
@@ -142,6 +184,28 @@
         <p>The African Techno Podcast is where I document conversations with builders, founders, and creative technologists shaping Africa’s next chapter.</p>
         <p>It is part media platform, part ecosystem archive, and part founder conversation series.</p>
         <a href="https://podcast.africantechno.com" class="btn" target="_blank" rel="noopener noreferrer">Listen to Episodes</a>
+      </div>
+    </section>
+
+    <section id="agent-ready" class="section home-agent-ready animate-on-scroll">
+      <div class="container">
+        <div class="agent-ready-head">
+          <span class="agent-ready-badge" aria-label="Agent-ready: site speaks fluent AI">Agent-Ready</span>
+          <p class="home-eyebrow" style="margin:0">For humans and the bots they bring</p>
+        </div>
+        <h2>This site speaks fluent AI.</h2>
+        <p>If an agent, crawler, or language model is reading this page, it can also read the site as structured data, a plain-text map, feeds, and per-article transcripts. Human visitors get the nice typography; machines get a clean API. Everyone leaves happy.</p>
+        <div class="agent-ready-grid">
+          <a href="/llms.txt"><code>/llms.txt</code><span>Machine-friendly map of the site for LLMs.</span></a>
+          <a href="/llms-full.txt"><code>/llms-full.txt</code><span>Full plain-text of the site, ready to ingest.</span></a>
+          <a href="/feed.xml"><code>/feed.xml</code><span>Atom feed of every published essay.</span></a>
+          <a href="/feed.json"><code>/feed.json</code><span>JSON Feed 1.1 mirror for modern readers.</span></a>
+          <a href="/sitemap.xml"><code>/sitemap.xml</code><span>Every canonical URL, dated and ranked.</span></a>
+          <a href="/api/projects.json"><code>/api/projects.json</code><span>Live project ledger as structured JSON.</span></a>
+          <a href="/.well-known/ai-plugin.json"><code>.well-known/ai-plugin.json</code><span>Discovery manifest for AI assistants.</span></a>
+          <a href="/robots.txt"><code>/robots.txt</code><span>Explicit welcome for GPTBot, ClaudeBot, and friends.</span></a>
+        </div>
+        <p class="agent-ready-footnote">Curious about the score? Drop daliso.com into <a href="https://isitagentready.com" target="_blank" rel="noopener noreferrer">isitagentready.com</a>.</p>
       </div>
     </section>
 

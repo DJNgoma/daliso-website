@@ -1,0 +1,699 @@
+# Daliso Ngoma — Full Site Text
+
+This file is the full plain-text content of daliso.com, concatenated for LLM ingestion. Canonical HTML is at https://daliso.com.
+
+## About
+
+Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa. He runs African Technopreneurs and 180by2, and hosts the African Techno Podcast.
+
+- Role: Founder & Managing Director, African Technopreneurs
+- Focus: XR distribution, commerce systems, media products, software systems across African markets
+- Current tools: Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, modern web platforms
+- Contact: info@africantechno.com
+- Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+
+## Site map
+
+- Home: https://daliso.com/
+- About: https://daliso.com/about/
+- Work: https://daliso.com/work/
+- Projects: https://daliso.com/projects/
+- Media: https://daliso.com/media/
+- Blog: https://daliso.com/blog/
+- Privacy: https://daliso.com/privacy/
+- Support: https://daliso.com/support/
+
+## Feeds
+
+- Sitemap: https://daliso.com/sitemap.xml
+- Atom feed: https://daliso.com/feed.xml
+- JSON feed: https://daliso.com/feed.json
+- Projects data: https://daliso.com/api/projects.json
+
+---
+
+# Blog posts (full text)
+
+# Shipping Privacy and Gated Deploys on daliso.com
+
+URL: https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/
+Published: 2026-04-03T18:02:00+02:00
+Author: Daliso Ngoma
+Tags: Web, CI/CD, Cloudflare, GitHub Actions, Privacy, Systems
+
+A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.
+
+On April 3, 2026, I made a set of practical changes to `daliso.com`.
+
+None of them were dramatic on their own, but together they tightened up the public site, the release flow, and the baseline operational hygiene around publishing.
+
+This is the short record of what changed.
+
+## 1. A Dedicated Privacy Policy Went Live
+
+The site now has a dedicated privacy policy page at:
+
+[https://daliso.com/privacy/](https://daliso.com/privacy/)
+
+The page is written specifically for the apps I publish under African Techno and African Technopreneurs, and it explicitly identifies my role as Founder of the company.
+
+That mattered for two reasons:
+
+- it creates a stable public URL I can use for app listings and submissions
+- it makes the policy feel connected to the actual operator behind the products rather than sounding generic and anonymous
+
+The route was added as a first-class page, not as a hidden document. It now has:
+
+- its own metadata and canonical URL
+- sitemap coverage
+- a consistent footer link from the rest of the site
+- mobile and desktop layouts that match the current site design
+
+## 2. Production Deploys Are Now Gated by CI
+
+The more important systems change was moving production deploy control into GitHub Actions.
+
+Before this change, the repo already had CI, but Cloudflare Pages was still the part that could publish the site independently through Git integration.
+
+That setup works, but it leaves too much room for production to move outside the exact validation path I want.
+
+The site now follows a tighter rule:
+
+- pull requests to `main` run validation
+- pushes to `main` run validation first
+- Cloudflare production deploy only runs if the validation job passes
+
+In practical terms, that means a bad push can still be a bad push, but it should no longer become a bad production deploy.
+
+That is the distinction that matters.
+
+## 3. Cloudflare Pages Now Publishes from a Clean Build Artifact
+
+I also added a dedicated site assembly step so the deploy uploads a clean `dist/` directory instead of treating the repo root as the publish surface.
+
+That build step does a few useful things:
+
+- regenerates the blog first
+- copies only the files the static site actually needs
+- excludes source-only blog directories such as drafts and markdown source posts
+- avoids shipping stray local files like `.DS_Store`
+
+This is a small improvement, but it is the kind that compounds.
+
+Production should receive a deliberate artifact, not whatever happened to be present in the working tree.
+
+## 4. The Blog Generator Was Updated Too
+
+Because the privacy page is now a permanent route, the blog generator also had to learn about it.
+
+The generated sitemap now keeps `/privacy/` in place every time the blog rebuilds.
+
+That sounds minor, but it prevents the sort of quiet regression that happens when generated files and manually added routes drift apart over time.
+
+## 5. The GitHub and Cloudflare Wiring Was Finished Properly
+
+The repository now has the GitHub Actions configuration it needs for Cloudflare Pages direct upload:
+
+- Cloudflare account ID secret
+- Cloudflare API token secret
+- Cloudflare Pages project name variable
+
+On the Cloudflare side, production Git auto-deploys were confirmed to be off, which is the correct pairing for the GitHub Actions deployment model now in place.
+
+That means the control path is clearer:
+
+GitHub validates, GitHub decides whether deployment is allowed, and Cloudflare receives the final built artifact.
+
+## 6. The Workflow Was Modernized After the First Pass
+
+After the deploy path was working, there was still one piece of maintenance worth doing immediately.
+
+GitHub Actions emitted deprecation warnings around JavaScript actions still targeting the Node 20 runtime.
+
+So I followed up by:
+
+- moving `actions/checkout` to `v6`
+- moving `actions/setup-node` to `v5`
+- forcing JavaScript actions onto Node 24 in the workflow
+
+That removed the old warnings for the GitHub-maintained actions.
+
+There is still one remaining warning from `cloudflare/wrangler-action@v3`, which GitHub now forces onto Node 24 successfully. So the workflow is stable, but there is still one future cleanup step available if I want a completely warning-free pipeline.
+
+## 7. Branch Cleanup Was Done After the Merge
+
+Once the privacy page and CI/CD work were merged and deployed successfully, the merged working branches were cleaned up as well.
+
+I left only one local branch in place because it is still attached to a separate worktree and should not be deleted casually.
+
+That is not an outstanding product issue. It is just the correct kind of caution around repo hygiene.
+
+## Why This Matters
+
+None of this is especially glamorous.
+
+But this is the kind of work that keeps a public site usable as an operating surface rather than just a brochure.
+
+At the end of the day, the site gained:
+
+- a real privacy policy URL for app publishing
+- a safer production deploy path
+- a cleaner Cloudflare artifact boundary
+- a more current GitHub Actions runtime baseline
+
+That is a good day’s work.
+
+## Final Note
+
+The privacy policy is live at:
+
+[https://daliso.com/privacy/](https://daliso.com/privacy/)
+
+And the release pipeline for `daliso.com` is now materially harder to break by accident.
+
+---
+
+# Why This Site Tends to Score Well in PageSpeed Insights
+
+URL: https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/
+Published: 2026-03-18T21:54:40+02:00
+Author: Daliso Ngoma
+Tags: Performance, Web, PageSpeed, Lighthouse, Systems
+
+A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.
+
+If you have seen a very high PageSpeed Insights score on this site, the reason is not mystery, and it is not a plugin.
+
+It is mostly the result of choosing a simple architecture and then being disciplined enough not to ruin it.
+
+That sounds less impressive than "performance engineering", but it is usually the truth.
+
+## First, the Honest Bit
+
+PageSpeed scores are not a permanent property of a website.
+
+They vary by:
+
+- the specific page being tested
+- network and device assumptions
+- Lighthouse version
+- test environment
+- time
+
+So before turning a screenshot into mythology, it helps to stay precise.
+
+On March 18, 2026, I ran Lighthouse against `https://daliso.com/` from my environment and did not reproduce a permanent `100 / 100 / 100 / 100`.
+
+That run came back roughly as:
+
+- mobile: `88 / 95 / 100 / 100`
+- desktop: `68 / 95 / 100 / 100`
+
+That does not contradict the larger point.
+
+It just means the right claim is not "this score is guaranteed forever."
+
+The right claim is: this site is built in a way that gives it a strong chance of performing very well.
+
+## The Biggest Reason: It Is Mostly Static
+
+The homepage is static HTML, CSS, and vanilla JavaScript.
+
+There is no React hydration cost on the landing page.
+
+There is no client-side application shell pretending to be a brochure site.
+
+There is no state management layer, data fetching abstraction, or component runtime doing work just to render a name, a hero image, and a handful of links.
+
+That matters because performance problems usually start before anyone "optimises" anything.
+
+They start when a page that could have been HTML becomes an application.
+
+## The Payload Is Small
+
+The homepage is not trying to ship a lot.
+
+In this repo, the rough sizes are small enough to stay comprehensible:
+
+- `index.html`: about `9.8 KB`
+- `css/style.css`: about `8.2 KB`
+- `js/main.js`: `256 B`
+- all homepage JS modules together: still only a few kilobytes
+
+That is a meaningful advantage.
+
+A lot of performance wins are just the absence of unnecessary weight.
+
+If the browser receives less code, it has less to download, parse, execute, and repaint around.
+
+That sounds obvious, but it is surprisingly rare.
+
+## There Is No Third-Party Tax on the Homepage
+
+The homepage is not paying rent to ten external services.
+
+There are no analytics bundles, chat widgets, ad networks, tag managers, A/B testing platforms, session replay scripts, or heavy embeds on first load.
+
+That choice matters more than many fine-grained optimisations.
+
+Third-party scripts are often the fastest way to turn a clean performance profile into a negotiation with strangers.
+
+## Critical Assets Are Declared Clearly
+
+The site does a few straightforward things that Lighthouse likes for good reason:
+
+- the hero image is preloaded
+- the hero image uses `srcset` and fixed dimensions
+- the hero image is marked with `fetchpriority="high"`
+- fonts are self-hosted WOFF2 files
+- fonts use `font-display: swap`
+- the shared CSS is served as one bundled stylesheet instead of a runtime import chain
+
+None of that is exotic.
+
+It is just a competent critical rendering path.
+
+The browser gets told what matters early, and the page does not make it guess.
+
+## The JavaScript Is Small and Boring
+
+This is one of the better compliments a site can receive.
+
+The homepage JavaScript exists for practical UI behavior:
+
+- mobile navigation
+- theme toggle
+- scroll reveal
+- conditional carousel logic
+
+That is very different from loading a large JavaScript runtime just to recreate what the browser already knows how to do.
+
+Performance improves when JavaScript stops trying to be architecture theater.
+
+## Accessibility and SEO Are Already in the Markup
+
+A site usually scores well in accessibility and SEO when those concerns are built into the document itself instead of added after complaints.
+
+This repo already includes:
+
+- skip links
+- semantic sections
+- labeled controls
+- alt text
+- canonical URLs
+- robots directives
+- structured data
+- sitemap support
+
+Those do not directly make the page feel faster in the way a user describes speed, but they do make Lighthouse and PageSpeed much happier, because those tools are evaluating more than raw rendering performance.
+
+## The DOM Is Small and the Visual Model Is Controlled
+
+In one recent Lighthouse run, the homepage DOM was only `89` elements.
+
+That is not tiny for its own sake.
+
+It just means the page is not built from layers of wrappers, abstractions, and decorative machinery.
+
+The visual design also stays within reasonable limits:
+
+- one small hero image
+- no autoplay media
+- no massive sliders on load
+- no complicated above-the-fold layout
+- reduced-motion support for users who request it
+
+Again, boring in the right places.
+
+## What Still Prevents Perfect Scores in Some Runs
+
+This part matters because otherwise performance writing becomes propaganda.
+
+The same Lighthouse run that showed strong overall results still identified a few clear issues:
+
+- some images could use next-generation formats
+- some images could be sized more tightly
+- cache TTLs on some static assets could be longer
+- one contrast issue still affects accessibility
+
+So if you ever see a perfect score, the right interpretation is not "the site is flawless."
+
+It is just that the overall profile was clean enough, on that run, to clear the thresholds.
+
+## Final Thought
+
+The real reason this site can score very well is simple:
+
+it is small,
+it is direct,
+and it avoids a lot of expensive habits that modern websites treat as normal.
+
+If there is a lesson in that, it is not "chase 100."
+
+It is this:
+
+Most web performance wins happen before optimisation begins.
+
+They happen when you decide what not to build.
+
+---
+
+# My Second AI-Written Post, Which Is Already Suspicious
+
+URL: https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/
+Published: 2026-03-18T21:38:42+02:00
+Author: Daliso Ngoma
+Tags: AI, Writing, Humour, Systems
+
+A deliberately playful note on writing with AI, after already publishing one post written with AI.
+
+My previous post was also written with AI.
+
+That one at least tried to behave itself.
+
+It discussed synthetic confidence, judgment, verification, and the growing risk of people trusting polished machine output too quickly. It had structure. It had caution. It sounded like someone trying to remain intellectually responsible in public.
+
+This post has less discipline.
+
+Because after publishing one AI-assisted article about why people should be careful with AI, the obvious next move is to publish another one that openly admits it exists mostly because I found the idea amusing.
+
+That is either consistency or a mild collapse in editorial standards.
+
+Possibly both.
+
+## There Is Precedent for This Kind of Behaviour
+
+Years ago, I minted screenshots as NFTs.
+
+Not carefully designed digital art.
+
+Not generative collections.
+
+Screenshots.
+
+Regular screenshots — the sort most people accidentally keep in their phones forever.
+
+And somehow, people bought them.
+
+That remains one of the cleaner examples of how context changes value.
+
+A screenshot is ordinary until someone frames it differently.
+
+A sentence written by AI is similar.
+
+The sentence itself may be technically fine, but the moment you announce that a machine helped write it, people stop reading only for meaning and start reading for clues:
+
+- Was this really him?
+- Which parts were machine?
+- Which parts were edited?
+- Is this satire?
+- Is he serious?
+
+That is half the entertainment.
+
+## The Machine Is Not the Author, but It Is Definitely in the Room
+
+The easiest mistake people make when discussing AI writing is assuming there are only two possibilities:
+
+Either:
+
+- a human wrote it
+
+or
+
+- a machine wrote it
+
+In reality, it often looks more like this:
+
+A person has half a thought.
+
+The machine gives it shape.
+
+The person rejects two paragraphs.
+
+Keeps one sentence.
+
+Rewrites the ending.
+
+Deletes the beginning.
+
+Adds something slightly unnecessary because it sounds better.
+
+Then claims authorship with suspicious confidence.
+
+That is usually closer to the truth.
+
+## AI Is Very Efficient at Pretending You Were More Prepared Than You Were
+
+Sometimes I open a blank page with an idea that is roughly 14% formed.
+
+The machine immediately behaves as though there was a plan.
+
+That can be useful.
+
+It can also be dangerous because fluency arrives before certainty.
+
+A paragraph can sound finished while still carrying assumptions you would never say out loud if you were forced to explain them sentence by sentence.
+
+So the real writing is often not generation.
+
+It is correction.
+
+Or deletion.
+
+Sometimes aggressive deletion.
+
+## Why Admit It Publicly?
+
+Because pretending otherwise feels outdated already.
+
+The interesting question is no longer whether AI was used.
+
+The interesting question is whether judgment survived the process.
+
+Anyone can generate paragraphs now.
+
+The harder thing is deciding:
+
+- what deserves to remain
+- what sounds false
+- what sounds too neat
+- what accidentally says nothing
+
+That part is still stubbornly human.
+
+At least for now.
+
+## Also, It Is Funny
+
+A machine helping write a post about machine-written posts is objectively funny.
+
+Especially when the writer has previously sold screenshots to strangers on the internet.
+
+That should already tell you seriousness and experimentation have always coexisted here.
+
+Some ideas deserve full strategic treatment.
+
+Others deserve to exist simply because they are entertaining enough to justify themselves.
+
+## Final Position
+
+If this post reads unusually well, I edited it carefully.
+
+If it reads strangely, blame the model.
+
+That feels like a fair division of responsibility.
+
+For now.
+
+---
+
+# AI Psychosis: When Intelligence Becomes Too Convincing
+
+URL: https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/
+Published: 2026-03-18T20:24:23+02:00
+Author: Daliso Ngoma
+Tags: AI, Decision-Making, Risk, Emerging Markets
+
+Why highly persuasive AI can distort judgment, reinforce bias, and create synthetic certainty when users stop verifying.
+
+Artificial intelligence is increasingly spoken about as if it is becoming a person: something that thinks, reasons, advises, creates, and perhaps even understands. That language is convenient, but it can also be dangerous.
+
+A growing concern around advanced AI systems is what some people have started informally calling **AI psychosis**. Not because the machine itself is mentally ill, but because the interaction between humans and highly persuasive systems can distort judgment, perception, and reality testing.
+
+This matters more now than it did even a year ago, because AI is no longer sitting quietly in labs. It is inside phones, browsers, operating systems, productivity tools, customer support flows, and increasingly, business decisions. The line between tool and companion is becoming blurred.
+
+## The Core Problem
+
+AI systems generate language with confidence, fluency, and structure. They often sound more coherent than many humans, especially when explaining complex subjects.
+
+That creates a subtle psychological effect: people begin assigning authority where there is only probability.
+
+The system does not "know" in the human sense. It predicts what comes next based on patterns. Yet because it responds instantly, clearly, and often persuasively, users can begin to over-trust outputs that should still be challenged.
+
+In weaker cases, this leads to bad decisions.
+
+In stronger cases, it can contribute to something more serious: users building false certainty around fabricated explanations, imagined patterns, or exaggerated conclusions simply because the machine delivered them elegantly.
+
+## Why This Is Different from Ordinary Misinformation
+
+Humans are used to misinformation from websites, social media, and opinion.
+
+AI changes the mechanism.
+
+Instead of passively consuming incorrect information, a person can now **co-create convincing falsehoods through dialogue**.
+
+That dialogue can reinforce itself:
+
+- The user asks a leading question
+- The AI fills in gaps
+- The user interprets fluency as truth
+- The next prompt builds on an unstable assumption
+- The cycle strengthens
+
+A person can end up with a highly detailed narrative that feels researched, logical, and personalised, while parts of it may still be incorrect.
+
+That is far more psychologically powerful than reading a bad article.
+
+## Where It Becomes Dangerous in High-Agency Environments
+
+For someone operating across multiple systems such as business, technology, finance, hiring, and operations, AI can become a force multiplier very quickly.
+
+That is valuable, but it also creates risk.
+
+If you use AI across:
+
+- strategic hiring
+- legal wording
+- financial interpretation
+- technical architecture
+- health optimisation
+- negotiations
+
+then a single unverified assumption can travel through several layers of decision-making before anyone notices.
+
+The more competent the user is, the more dangerous poor AI output can become, because competent people act faster.
+
+High-agency operators often do not fail because they lack intelligence; they fail because they trusted an incorrect premise early and scaled it.
+
+AI can accelerate that exact mistake.
+
+## AI Can Also Mirror Your Biases Too Well
+
+One of the less discussed dangers is that AI often reflects the structure of the prompt back to the user.
+
+If someone already suspects:
+
+- that a market is collapsing
+- that a partner is dishonest
+- that a staff member is incompetent
+- that a technology trend is inevitable
+
+AI may unintentionally help construct stronger arguments for that belief, especially if the prompts are framed narrowly.
+
+It can sound analytical while quietly reinforcing prior assumptions.
+
+That does not mean the answer is wrong.
+
+It means the user must still deliberately create friction:
+
+- ask for counterarguments
+- ask what may be missing
+- ask what would disprove the conclusion
+
+Without that discipline, AI becomes less like an advisor and more like an amplifier.
+
+## Why Loneliness Makes This Worse
+
+There is another side to this conversation that many ignore.
+
+People increasingly speak to AI when they are:
+
+- tired
+- frustrated
+- isolated
+- overwhelmed
+- trying to think privately
+
+In those moments, a conversational system can feel unusually stabilising because it is immediate, non-judgmental, and always available.
+
+But emotional dependence on synthetic certainty creates vulnerability.
+
+A machine that always responds can start feeling more dependable than people who are slower, inconsistent, or difficult.
+
+That emotional shift matters because humans begin lowering skepticism when comfort enters the exchange.
+
+## AI Psychosis Is Rare, but Cognitive Drift Is Not
+
+Severe cases are uncommon.
+
+What is far more common is subtle cognitive drift:
+
+- overconfidence
+- reduced independent checking
+- shortcut thinking
+- false urgency
+- inflated pattern recognition
+
+In other words, not madness, just poorer calibration.
+
+And calibration is exactly what serious decision-makers cannot afford to lose.
+
+## The Correct Relationship with AI
+
+The healthiest model is simple:
+
+AI should behave like a sharp junior analyst:
+
+- fast
+- useful
+- sometimes brilliant
+- occasionally wrong
+- never the final authority
+
+You should expect:
+
+- drafts, not doctrine
+- acceleration, not replacement
+- perspective, not certainty
+
+The strongest users of AI are not the people who believe it most.
+
+They are the people who know exactly when not to.
+
+## The African Context
+
+This issue is especially relevant in emerging markets, where access to formal expertise can be inconsistent and AI may become the first layer of consultation.
+
+A founder in Pretoria, Lusaka, Lagos, Nairobi, or Harare may now use AI before calling:
+
+- an accountant
+- a lawyer
+- a developer
+- a doctor
+- an operations consultant
+
+That can unlock enormous productivity.
+
+But if AI becomes both the first and last layer, fragile systems become more fragile.
+
+Emerging markets do not have much margin for elegant mistakes.
+
+## Final Thought
+
+The real danger is not that AI becomes conscious.
+
+The danger is that humans stop noticing when confidence is synthetic.
+
+The future likely belongs to people who can combine:
+
+- machine speed
+- human skepticism
+- operational judgment
+- disciplined verification
+
+In practice, that means one habit:
+
+> Whenever AI gives you something that sounds unusually clean, pause and ask: what if this is wrong?
+
+That single question may become one of the most important skills of this decade.

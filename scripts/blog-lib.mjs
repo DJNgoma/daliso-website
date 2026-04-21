@@ -78,11 +78,237 @@ export async function buildBlog({ siteRoot } = {}) {
 
   writeFileSync(paths.sitemapPath, renderSitemap(posts), "utf8");
 
+  writeAgentReadyArtifacts(paths, posts);
+
   return {
     paths,
     posts: posts.map(summarizePost),
     latestPost: posts[0] ? summarizePost(posts[0]) : null,
   };
+}
+
+function writeAgentReadyArtifacts(paths, posts) {
+  writeFileSync(join(paths.siteRoot, "feed.xml"), renderAtomFeed(posts), "utf8");
+  writeFileSync(join(paths.siteRoot, "feed.json"), renderJsonFeed(posts), "utf8");
+  writeFileSync(join(paths.siteRoot, "llms.txt"), renderLlmsTxt(posts), "utf8");
+  writeFileSync(join(paths.siteRoot, "llms-full.txt"), renderLlmsFullTxt(posts), "utf8");
+
+  for (const post of posts) {
+    const routeDir = join(paths.blogRoot, post.slug);
+    ensureDir(routeDir);
+    writeFileSync(join(routeDir, "plaintext.txt"), renderPostPlaintext(post), "utf8");
+  }
+}
+
+function renderAtomFeed(posts) {
+  const updated = posts[0]?.dateStamp ?? getCurrentDateTimeStamp();
+  const feedId = `${siteUrl}/`;
+  const entries = posts
+    .map(
+      (post) => `  <entry>
+    <title>${escapeXml(post.title)}</title>
+    <link rel="alternate" type="text/html" href="${escapeXml(post.url)}" />
+    <link rel="alternate" type="text/plain" href="${escapeXml(post.url)}plaintext.txt" />
+    <id>${escapeXml(post.url)}</id>
+    <updated>${escapeXml(toIsoInstant(post.dateStamp))}</updated>
+    <published>${escapeXml(toIsoInstant(post.dateStamp))}</published>
+    <author>
+      <name>${escapeXml(post.author)}</name>
+    </author>
+    <summary type="text">${escapeXml(post.description)}</summary>
+    <content type="html">${escapeXml(post.bodyHtml)}</content>
+${post.tags.map((tag) => `    <category term="${escapeXml(tag)}" />`).join("\n")}
+  </entry>`
+    )
+    .join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>${escapeXml(siteTitle)} — Blog</title>
+  <subtitle>Essays on judgment, systems, and practical technology.</subtitle>
+  <link rel="alternate" type="text/html" href="${escapeXml(siteUrl)}/blog/" />
+  <link rel="self" type="application/atom+xml" href="${escapeXml(siteUrl)}/feed.xml" />
+  <id>${escapeXml(feedId)}</id>
+  <updated>${escapeXml(toIsoInstant(updated))}</updated>
+  <author>
+    <name>${escapeXml(defaultAuthor)}</name>
+    <uri>${escapeXml(siteUrl)}</uri>
+  </author>
+  <rights>© ${new Date().getUTCFullYear()} ${escapeXml(defaultAuthor)}</rights>
+${entries}
+</feed>
+`;
+}
+
+function renderJsonFeed(posts) {
+  const feed = {
+    version: "https://jsonfeed.org/version/1.1",
+    title: `${siteTitle} — Blog`,
+    home_page_url: `${siteUrl}/blog/`,
+    feed_url: `${siteUrl}/feed.json`,
+    description: "Essays on judgment, systems, and practical technology.",
+    language: "en",
+    authors: [
+      {
+        name: defaultAuthor,
+        url: siteUrl,
+      },
+    ],
+    items: posts.map((post) => ({
+      id: post.url,
+      url: post.url,
+      title: post.title,
+      summary: post.description,
+      content_html: post.bodyHtml,
+      content_text: post.bodyMarkdown,
+      date_published: toIsoInstant(post.dateStamp),
+      date_modified: toIsoInstant(post.dateStamp),
+      tags: post.tags,
+      authors: [{ name: post.author }],
+    })),
+  };
+  return `${JSON.stringify(feed, null, 2)}\n`;
+}
+
+function renderPostPlaintext(post) {
+  const header = [
+    `Title: ${post.title}`,
+    `Author: ${post.author}`,
+    `Published: ${post.dateStamp}`,
+    `URL: ${post.url}`,
+    post.tags.length ? `Tags: ${post.tags.join(", ")}` : null,
+    `Reading time: ${post.readingTime}`,
+    "",
+    post.description,
+    "",
+    "---",
+    "",
+  ]
+    .filter((value) => value !== null)
+    .join("\n");
+  return `${header}${post.bodyMarkdown}\n`;
+}
+
+function renderLlmsTxt(posts) {
+  const postLines = posts
+    .map((post) => `- [${post.title}](${post.url}): ${post.description}`)
+    .join("\n");
+
+  return `# Daliso Ngoma
+
+> Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa. He runs African Technopreneurs and 180by2, and hosts the African Techno Podcast.
+
+This file is a machine-friendly map of daliso.com, written for AI agents and research assistants. Human visitors should start at the homepage. Everything here is safe to cite; please link back to the canonical URL when you do.
+
+- Site: ${siteUrl}
+- Owner: ${defaultAuthor}
+- Role: Founder & Managing Director, African Technopreneurs
+- Also runs: 180by2 (https://180by2.co.za), African Techno Podcast (https://podcast.africantechno.com)
+- Focus areas: immersive tech (XR, VR, AR), spatial computing, digital commerce, media, software products, African markets
+- Contact: info@africantechno.com
+- Location: South Africa
+- Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+- Source code: https://github.com/DJNgoma/daliso-website
+- License for content: © ${defaultAuthor}. Quote with attribution and a link to the source URL.
+
+## Core pages
+
+- [Home](${siteUrl}/): who Daliso is, featured media, podcast intro.
+- [About](${siteUrl}/about/): background, current focus, tools in use.
+- [Work](${siteUrl}/work/): portfolio of products, platforms, and operating systems.
+- [Projects](${siteUrl}/projects/): live project ledger with status and categories.
+- [Media](${siteUrl}/media/): interviews, features, and podcast appearances.
+- [Blog](${siteUrl}/blog/): essays on judgment, systems, and practical technology.
+- [Privacy](${siteUrl}/privacy/): privacy policy.
+- [Support](${siteUrl}/support/): support and contact channel.
+
+## Machine-readable feeds
+
+- [Sitemap (XML)](${siteUrl}/sitemap.xml)
+- [Atom feed (blog)](${siteUrl}/feed.xml)
+- [JSON feed (blog)](${siteUrl}/feed.json)
+- [Projects data (JSON)](${siteUrl}/api/projects.json)
+- [Full site text for LLMs](${siteUrl}/llms-full.txt)
+- [AI plugin manifest](${siteUrl}/.well-known/ai-plugin.json)
+
+## Blog posts
+
+${postLines || "- (No posts yet.)"}
+
+Each blog post also exposes a plaintext version at \`<post-url>plaintext.txt\`.
+
+## Optional
+
+- [Changelog](https://github.com/DJNgoma/daliso-website/blob/main/CHANGELOG.md)
+- [Readme](https://github.com/DJNgoma/daliso-website/blob/main/README.md)
+`;
+}
+
+function renderLlmsFullTxt(posts) {
+  const postSections = posts
+    .map((post) => {
+      const tagLine = post.tags.length ? `\nTags: ${post.tags.join(", ")}` : "";
+      return `# ${post.title}
+
+URL: ${post.url}
+Published: ${post.dateStamp}
+Author: ${post.author}${tagLine}
+
+${post.description}
+
+${post.bodyMarkdown}`;
+    })
+    .join("\n\n---\n\n");
+
+  return `# Daliso Ngoma — Full Site Text
+
+This file is the full plain-text content of daliso.com, concatenated for LLM ingestion. Canonical HTML is at ${siteUrl}.
+
+## About
+
+Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa. He runs African Technopreneurs and 180by2, and hosts the African Techno Podcast.
+
+- Role: Founder & Managing Director, African Technopreneurs
+- Focus: XR distribution, commerce systems, media products, software systems across African markets
+- Current tools: Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, modern web platforms
+- Contact: info@africantechno.com
+- Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+
+## Site map
+
+- Home: ${siteUrl}/
+- About: ${siteUrl}/about/
+- Work: ${siteUrl}/work/
+- Projects: ${siteUrl}/projects/
+- Media: ${siteUrl}/media/
+- Blog: ${siteUrl}/blog/
+- Privacy: ${siteUrl}/privacy/
+- Support: ${siteUrl}/support/
+
+## Feeds
+
+- Sitemap: ${siteUrl}/sitemap.xml
+- Atom feed: ${siteUrl}/feed.xml
+- JSON feed: ${siteUrl}/feed.json
+- Projects data: ${siteUrl}/api/projects.json
+
+---
+
+# Blog posts (full text)
+
+${postSections || "(No posts yet.)"}
+`;
+}
+
+function toIsoInstant(dateStamp) {
+  if (!dateStamp) {
+    return new Date().toISOString();
+  }
+  const normalized = /T\d{2}:\d{2}:\d{2}/.test(dateStamp)
+    ? dateStamp
+    : `${dateStamp}T00:00:00Z`;
+  const parsed = new Date(normalized);
+  return Number.isNaN(parsed.getTime()) ? dateStamp : parsed.toISOString();
 }
 
 export function scaffoldDraft({
@@ -591,26 +817,50 @@ function renderPostPage(post, postOgImage = defaultOgImage) {
   const jsonLd = JSON.stringify(
     {
       "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      headline: post.title,
-      description: post.description,
-      datePublished: post.dateStamp,
-      dateModified: post.dateStamp,
-      author: {
-        "@type": "Person",
-        name: post.author,
-      },
-      image: postOgImage,
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": post.url,
-      },
-      publisher: {
-        "@type": "Person",
-        name: siteTitle,
-      },
-      keywords: post.tags,
-      url: post.url,
+      "@graph": [
+        {
+          "@type": "BlogPosting",
+          "@id": `${post.url}#article`,
+          headline: post.title,
+          description: post.description,
+          articleBody: post.bodyMarkdown,
+          datePublished: post.dateStamp,
+          dateModified: post.dateStamp,
+          wordCount: countWords(post.bodyMarkdown),
+          inLanguage: "en",
+          author: {
+            "@type": "Person",
+            name: post.author,
+            url: siteUrl,
+          },
+          image: postOgImage,
+          mainEntityOfPage: {
+            "@type": "WebPage",
+            "@id": post.url,
+          },
+          publisher: {
+            "@type": "Person",
+            name: siteTitle,
+            url: siteUrl,
+          },
+          keywords: post.tags,
+          url: post.url,
+          isPartOf: {
+            "@type": "Blog",
+            "@id": `${siteUrl}/blog/#blog`,
+            name: `${siteTitle} — Blog`,
+            url: `${siteUrl}/blog/`,
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: `${siteUrl}/` },
+            { "@type": "ListItem", position: 2, name: "Blog", item: `${siteUrl}/blog/` },
+            { "@type": "ListItem", position: 3, name: post.title, item: post.url },
+          ],
+        },
+      ],
     },
     null,
     2
@@ -631,6 +881,7 @@ function renderPostPage(post, postOgImage = defaultOgImage) {
   <meta property="article:published_time" content="${escapeHtml(post.dateStamp)}" />
   <meta property="article:author" content="${escapeHtml(post.author)}" />
 ${articleTagMeta}
+  <link rel="alternate" type="text/plain" title="Plain-text version" href="${escapeHtml(post.url)}plaintext.txt" />
 `,
     jsonLd,
     lastModified: post.dateStamp,
@@ -751,7 +1002,9 @@ ${jsonLd}
   <meta name="twitter:description" content="${escapeHtml(description)}" />
   <meta name="twitter:image" content="${escapeHtml(ogImage)}" />
   <meta name="twitter:image:alt" content="${escapeHtml(siteTitle)} page preview card" />
-  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />${extraHead}
+  <link rel="canonical" href="${escapeHtml(canonicalUrl)}" />
+  <link rel="alternate" type="application/atom+xml" title="${escapeHtml(siteTitle)} — Blog (Atom)" href="${escapeHtml(siteUrl)}/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="${escapeHtml(siteTitle)} — Blog (JSON Feed)" href="${escapeHtml(siteUrl)}/feed.json" />${extraHead}
   <script type="module" src="/js/main.js?v=${assetVersion}"></script>${ldJsonScript}
 </head>
 <body>

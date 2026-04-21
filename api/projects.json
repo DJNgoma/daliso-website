@@ -1,0 +1,692 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "url": "https://daliso.com/projects/",
+  "name": "Daliso Ngoma — Projects ledger",
+  "description": "Curated portfolio of live and in-progress projects grouped by category.",
+  "generatedAt": "2026-04-21T00:05:41.271Z",
+  "categories": [
+    {
+      "id": "websites-publishing",
+      "title": "Websites & Publishing",
+      "description": "Public sites, brand surfaces, and publishing destinations that are already live or close to launch.",
+      "order": 10
+    },
+    {
+      "id": "products-commerce",
+      "title": "Products & Commerce",
+      "description": "Product builds focused on finance, retail operations, commercial tooling, and purchase workflows.",
+      "order": 20
+    },
+    {
+      "id": "internal-systems",
+      "title": "Internal Systems",
+      "description": "Operator-facing systems and internal control planes that support delivery, governance, and maintenance.",
+      "order": 30
+    },
+    {
+      "id": "experiments-tools",
+      "title": "Experiments & Tools",
+      "description": "Smaller experiments and exploratory builds that are still shaping the next product direction.",
+      "order": 40
+    }
+  ],
+  "projects": [
+    {
+      "id": "BuildATPage",
+      "title": "Build by African Techno",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Building",
+      "summary": "Community events website for AI-focused meetups in South Africa.",
+      "order": 10,
+      "links": [],
+      "url": "https://daliso.com/projects/#buildatpage"
+    },
+    {
+      "id": "CallGrid",
+      "title": "CallGrid",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "CLI-first telephony governance system for Zoom Phone inventory, validation, migration planning, and operator review.",
+      "order": 10,
+      "links": [],
+      "url": "https://daliso.com/projects/#callgrid"
+    },
+    {
+      "id": "FounderPressureTest",
+      "title": "Founder Pressure Test",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Prototype",
+      "summary": "Mobile-first decision game about founder tradeoffs, pressure, and pacing.",
+      "order": 10,
+      "links": [],
+      "url": "https://daliso.com/projects/#founderpressuretest"
+    },
+    {
+      "id": "LedgerOne",
+      "title": "LedgerOne",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Building",
+      "summary": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary.",
+      "order": 10,
+      "links": [],
+      "url": "https://daliso.com/projects/#ledgerone"
+    },
+    {
+      "id": "EmailAliasOps",
+      "title": "AliasOps",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
+      "order": 20,
+      "links": [],
+      "url": "https://daliso.com/projects/#emailaliasops"
+    },
+    {
+      "id": "daliso-website",
+      "title": "Daliso.com",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Live",
+      "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
+      "order": 20,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://daliso.com",
+          "kind": "live"
+        }
+      ],
+      "url": "https://daliso.com/projects/#daliso-website"
+    },
+    {
+      "id": "PoolOps",
+      "title": "Pool Clarity",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Live",
+      "summary": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage.",
+      "order": 20,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/pool-clarity/id6761671930",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/8EYv7shk",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#poolops"
+    },
+    {
+      "id": "PricePilotForShopify",
+      "title": "Price Pilot",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes.",
+      "order": 20,
+      "links": [],
+      "url": "https://daliso.com/projects/#pricepilotforshopify"
+    },
+    {
+      "id": "Cin7CorePriceAnalyzer",
+      "title": "Cin7 Price Analyzer",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories.",
+      "order": 25,
+      "links": [],
+      "url": "https://daliso.com/projects/#cin7corepriceanalyzer"
+    },
+    {
+      "id": "EARN_Ecosystem_Website",
+      "title": "EARN Ecosystem Website",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Live",
+      "summary": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages.",
+      "order": 30,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://earn-ecosystem-website.pages.dev",
+          "kind": "live"
+        }
+      ],
+      "url": "https://daliso.com/projects/#earn-ecosystem-website"
+    },
+    {
+      "id": "GearRoulette",
+      "title": "Gear Roulette",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Prototype",
+      "summary": "Playful product discovery app that recommends XR and creator gear from a short quiz.",
+      "order": 30,
+      "links": [],
+      "url": "https://daliso.com/projects/#gearroulette"
+    },
+    {
+      "id": "repo-workboard",
+      "title": "Repo Workboard",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps.",
+      "order": 30,
+      "links": [],
+      "url": "https://daliso.com/projects/#repo-workboard"
+    },
+    {
+      "id": "quickquote",
+      "title": "FlashQuote",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast.",
+      "order": 35,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/flashquote/id6761631585",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/NrfVZc6x",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#quickquote"
+    },
+    {
+      "id": "invoiceGenerator",
+      "title": "Commercial Invoice Generator",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Lightweight customs-compliant invoice tool for courier-ready export paperwork.",
+      "order": 40,
+      "links": [],
+      "url": "https://daliso.com/projects/#invoicegenerator"
+    },
+    {
+      "id": "thelombardy-co-za",
+      "title": "The Lombardy Lifestyle Estate",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Live",
+      "summary": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate.",
+      "order": 40,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://thelombardy.co.za",
+          "kind": "live"
+        }
+      ],
+      "url": "https://daliso.com/projects/#thelombardy-co-za"
+    },
+    {
+      "id": "EARN_Company_OS_Websites",
+      "title": "EARN OS Change Review",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Building",
+      "summary": "Change review workflow app for African Technopreneurs operational decisions and release governance.",
+      "order": 50,
+      "links": [],
+      "url": "https://daliso.com/projects/#earn-company-os-websites"
+    },
+    {
+      "id": "FearGreedCryptoTrader",
+      "title": "Sentiment Trader",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Prototype",
+      "summary": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard.",
+      "order": 50,
+      "links": [],
+      "url": "https://daliso.com/projects/#feargreedcryptotrader"
+    },
+    {
+      "id": "TheDevilsAIDictionary",
+      "title": "The Devil's AI Dictionary",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Live",
+      "summary": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions.",
+      "order": 50,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://thedevilsaidictionary.com/",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/the-devils-ai-dictionary/id6761293350",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/AtJWXcgD",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#thedevilsaidictionary"
+    },
+    {
+      "id": "actioninbox",
+      "title": "Action Inbox",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow.",
+      "order": 55,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/action-inbox/id6760961555",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/JYqETxJ1",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#actioninbox"
+    },
+    {
+      "id": "justsomethingdotapp",
+      "title": "justsomething.app",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Live",
+      "summary": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface.",
+      "order": 55,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        }
+      ],
+      "url": "https://daliso.com/projects/#justsomethingdotapp"
+    },
+    {
+      "id": "VR_Rental_Website",
+      "title": "HeadsetHire",
+      "category": "websites-publishing",
+      "categoryTitle": "Websites & Publishing",
+      "status": "Building",
+      "summary": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow.",
+      "order": 60,
+      "links": [],
+      "url": "https://daliso.com/projects/#vr-rental-website"
+    },
+    {
+      "id": "MyMedRoutine",
+      "title": "My Med Routine",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Native iOS medication tracking and daily routine reminder app for consistent at-home care.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/my-med-routine/id6761585029",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/uffDMQSF",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#mymedroutine"
+    },
+    {
+      "id": "commanddashboard",
+      "title": "Ops Atlas",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Building",
+      "summary": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/7asmBkDp",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#commanddashboard"
+    },
+    {
+      "id": "UniverseUnveiled",
+      "title": "Universe Unveiled",
+      "category": "experiments-tools",
+      "categoryTitle": "Experiments & Tools",
+      "status": "Live",
+      "summary": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning.",
+      "order": 60,
+      "links": [
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/universe-unveiled/id6476923783",
+          "kind": "appstore"
+        }
+      ],
+      "url": "https://daliso.com/projects/#universeunveiled"
+    },
+    {
+      "id": "JustBP",
+      "title": "Just BP",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility.",
+      "order": 65,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-bp/id6761688889",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/1NqxSEA2",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#justbp"
+    },
+    {
+      "id": "JustGlucose",
+      "title": "Just Glucose",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup.",
+      "order": 67,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-glucose/id6761859666",
+          "kind": "appstore"
+        }
+      ],
+      "url": "https://daliso.com/projects/#justglucose"
+    },
+    {
+      "id": "JustWeight",
+      "title": "Just Weight - No Wait",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking.",
+      "order": 68,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://justsomething.app",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/just-weight-no-wait/id6761859022",
+          "kind": "appstore"
+        }
+      ],
+      "url": "https://daliso.com/projects/#justweight"
+    },
+    {
+      "id": "ItsADateScheduler",
+      "title": "It’s a Date — Scheduler",
+      "category": "products-commerce",
+      "categoryTitle": "Products & Commerce",
+      "status": "Live",
+      "summary": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction.",
+      "order": 70,
+      "links": [
+        {
+          "label": "Visit site",
+          "url": "https://itsadate.to/",
+          "kind": "live"
+        },
+        {
+          "label": "Download on the App Store",
+          "url": "https://apps.apple.com/us/app/its-a-date-scheduler/id6761782557",
+          "kind": "appstore"
+        },
+        {
+          "label": "Available on TestFlight",
+          "url": "https://testflight.apple.com/join/kpGjZW95",
+          "kind": "testflight"
+        }
+      ],
+      "url": "https://daliso.com/projects/#itsadatescheduler"
+    }
+  ],
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Build by African Techno",
+      "url": "https://daliso.com/projects/#buildatpage",
+      "description": "Community events website for AI-focused meetups in South Africa."
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "CallGrid",
+      "url": "https://daliso.com/projects/#callgrid",
+      "description": "CLI-first telephony governance system for Zoom Phone inventory, validation, migration planning, and operator review."
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Founder Pressure Test",
+      "url": "https://daliso.com/projects/#founderpressuretest",
+      "description": "Mobile-first decision game about founder tradeoffs, pressure, and pacing."
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "name": "LedgerOne",
+      "url": "https://daliso.com/projects/#ledgerone",
+      "description": "South African personal finance MVP with a ledger-first architecture and bank-connector boundary."
+    },
+    {
+      "@type": "ListItem",
+      "position": 5,
+      "name": "AliasOps",
+      "url": "https://daliso.com/projects/#emailaliasops",
+      "description": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs."
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
+      "name": "Daliso.com",
+      "url": "https://daliso.com/projects/#daliso-website",
+      "description": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects."
+    },
+    {
+      "@type": "ListItem",
+      "position": 7,
+      "name": "Pool Clarity",
+      "url": "https://daliso.com/projects/#poolops",
+      "description": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage."
+    },
+    {
+      "@type": "ListItem",
+      "position": 8,
+      "name": "Price Pilot",
+      "url": "https://daliso.com/projects/#pricepilotforshopify",
+      "description": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes."
+    },
+    {
+      "@type": "ListItem",
+      "position": 9,
+      "name": "Cin7 Price Analyzer",
+      "url": "https://daliso.com/projects/#cin7corepriceanalyzer",
+      "description": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories."
+    },
+    {
+      "@type": "ListItem",
+      "position": 10,
+      "name": "EARN Ecosystem Website",
+      "url": "https://daliso.com/projects/#earn-ecosystem-website",
+      "description": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages."
+    },
+    {
+      "@type": "ListItem",
+      "position": 11,
+      "name": "Gear Roulette",
+      "url": "https://daliso.com/projects/#gearroulette",
+      "description": "Playful product discovery app that recommends XR and creator gear from a short quiz."
+    },
+    {
+      "@type": "ListItem",
+      "position": 12,
+      "name": "Repo Workboard",
+      "url": "https://daliso.com/projects/#repo-workboard",
+      "description": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps."
+    },
+    {
+      "@type": "ListItem",
+      "position": 13,
+      "name": "FlashQuote",
+      "url": "https://daliso.com/projects/#quickquote",
+      "description": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast."
+    },
+    {
+      "@type": "ListItem",
+      "position": 14,
+      "name": "Commercial Invoice Generator",
+      "url": "https://daliso.com/projects/#invoicegenerator",
+      "description": "Lightweight customs-compliant invoice tool for courier-ready export paperwork."
+    },
+    {
+      "@type": "ListItem",
+      "position": 15,
+      "name": "The Lombardy Lifestyle Estate",
+      "url": "https://daliso.com/projects/#thelombardy-co-za",
+      "description": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate."
+    },
+    {
+      "@type": "ListItem",
+      "position": 16,
+      "name": "EARN OS Change Review",
+      "url": "https://daliso.com/projects/#earn-company-os-websites",
+      "description": "Change review workflow app for African Technopreneurs operational decisions and release governance."
+    },
+    {
+      "@type": "ListItem",
+      "position": 17,
+      "name": "Sentiment Trader",
+      "url": "https://daliso.com/projects/#feargreedcryptotrader",
+      "description": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard."
+    },
+    {
+      "@type": "ListItem",
+      "position": 18,
+      "name": "The Devil's AI Dictionary",
+      "url": "https://daliso.com/projects/#thedevilsaidictionary",
+      "description": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions."
+    },
+    {
+      "@type": "ListItem",
+      "position": 19,
+      "name": "Action Inbox",
+      "url": "https://daliso.com/projects/#actioninbox",
+      "description": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow."
+    },
+    {
+      "@type": "ListItem",
+      "position": 20,
+      "name": "justsomething.app",
+      "url": "https://daliso.com/projects/#justsomethingdotapp",
+      "description": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface."
+    },
+    {
+      "@type": "ListItem",
+      "position": 21,
+      "name": "HeadsetHire",
+      "url": "https://daliso.com/projects/#vr-rental-website",
+      "description": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow."
+    },
+    {
+      "@type": "ListItem",
+      "position": 22,
+      "name": "My Med Routine",
+      "url": "https://daliso.com/projects/#mymedroutine",
+      "description": "Native iOS medication tracking and daily routine reminder app for consistent at-home care."
+    },
+    {
+      "@type": "ListItem",
+      "position": 23,
+      "name": "Ops Atlas",
+      "url": "https://daliso.com/projects/#commanddashboard",
+      "description": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS."
+    },
+    {
+      "@type": "ListItem",
+      "position": 24,
+      "name": "Universe Unveiled",
+      "url": "https://daliso.com/projects/#universeunveiled",
+      "description": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning."
+    },
+    {
+      "@type": "ListItem",
+      "position": 25,
+      "name": "Just BP",
+      "url": "https://daliso.com/projects/#justbp",
+      "description": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility."
+    },
+    {
+      "@type": "ListItem",
+      "position": 26,
+      "name": "Just Glucose",
+      "url": "https://daliso.com/projects/#justglucose",
+      "description": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup."
+    },
+    {
+      "@type": "ListItem",
+      "position": 27,
+      "name": "Just Weight - No Wait",
+      "url": "https://daliso.com/projects/#justweight",
+      "description": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking."
+    },
+    {
+      "@type": "ListItem",
+      "position": 28,
+      "name": "It’s a Date — Scheduler",
+      "url": "https://daliso.com/projects/#itsadatescheduler",
+      "description": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction."
+    }
+  ]
+}

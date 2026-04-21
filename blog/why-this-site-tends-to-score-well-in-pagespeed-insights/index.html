@@ -42,6 +42,8 @@
   <meta name="twitter:image" content="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/og-image.png" />
   <meta name="twitter:image:alt" content="Daliso Ngoma page preview card" />
   <link rel="canonical" href="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/" />
+  <link rel="alternate" type="application/atom+xml" title="Daliso Ngoma — Blog (Atom)" href="https://daliso.com/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="Daliso Ngoma — Blog (JSON Feed)" href="https://daliso.com/feed.json" />
   <meta property="article:published_time" content="2026-03-18T21:54:40+02:00" />
   <meta property="article:author" content="Daliso Ngoma" />
   <meta property="article:tag" content="Performance" />
@@ -49,37 +51,77 @@
   <meta property="article:tag" content="PageSpeed" />
   <meta property="article:tag" content="Lighthouse" />
   <meta property="article:tag" content="Systems" />
+  <link rel="alternate" type="text/plain" title="Plain-text version" href="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/plaintext.txt" />
 
   <script type="module" src="/js/main.js?v=20260410-cachefix"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Why This Site Tends to Score Well in PageSpeed Insights",
-  "description": "A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.",
-  "datePublished": "2026-03-18T21:54:40+02:00",
-  "dateModified": "2026-03-18T21:54:40+02:00",
-  "author": {
-    "@type": "Person",
-    "name": "Daliso Ngoma"
-  },
-  "image": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/og-image.png",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Daliso Ngoma"
-  },
-  "keywords": [
-    "Performance",
-    "Web",
-    "PageSpeed",
-    "Lighthouse",
-    "Systems"
-  ],
-  "url": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/#article",
+      "headline": "Why This Site Tends to Score Well in PageSpeed Insights",
+      "description": "A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.",
+      "articleBody": "If you have seen a very high PageSpeed Insights score on this site, the reason is not mystery, and it is not a plugin.\n\nIt is mostly the result of choosing a simple architecture and then being disciplined enough not to ruin it.\n\nThat sounds less impressive than \"performance engineering\", but it is usually the truth.\n\n## First, the Honest Bit\n\nPageSpeed scores are not a permanent property of a website.\n\nThey vary by:\n\n- the specific page being tested\n- network and device assumptions\n- Lighthouse version\n- test environment\n- time\n\nSo before turning a screenshot into mythology, it helps to stay precise.\n\nOn March 18, 2026, I ran Lighthouse against `https://daliso.com/` from my environment and did not reproduce a permanent `100 / 100 / 100 / 100`.\n\nThat run came back roughly as:\n\n- mobile: `88 / 95 / 100 / 100`\n- desktop: `68 / 95 / 100 / 100`\n\nThat does not contradict the larger point.\n\nIt just means the right claim is not \"this score is guaranteed forever.\"\n\nThe right claim is: this site is built in a way that gives it a strong chance of performing very well.\n\n## The Biggest Reason: It Is Mostly Static\n\nThe homepage is static HTML, CSS, and vanilla JavaScript.\n\nThere is no React hydration cost on the landing page.\n\nThere is no client-side application shell pretending to be a brochure site.\n\nThere is no state management layer, data fetching abstraction, or component runtime doing work just to render a name, a hero image, and a handful of links.\n\nThat matters because performance problems usually start before anyone \"optimises\" anything.\n\nThey start when a page that could have been HTML becomes an application.\n\n## The Payload Is Small\n\nThe homepage is not trying to ship a lot.\n\nIn this repo, the rough sizes are small enough to stay comprehensible:\n\n- `index.html`: about `9.8 KB`\n- `css/style.css`: about `8.2 KB`\n- `js/main.js`: `256 B`\n- all homepage JS modules together: still only a few kilobytes\n\nThat is a meaningful advantage.\n\nA lot of performance wins are just the absence of unnecessary weight.\n\nIf the browser receives less code, it has less to download, parse, execute, and repaint around.\n\nThat sounds obvious, but it is surprisingly rare.\n\n## There Is No Third-Party Tax on the Homepage\n\nThe homepage is not paying rent to ten external services.\n\nThere are no analytics bundles, chat widgets, ad networks, tag managers, A/B testing platforms, session replay scripts, or heavy embeds on first load.\n\nThat choice matters more than many fine-grained optimisations.\n\nThird-party scripts are often the fastest way to turn a clean performance profile into a negotiation with strangers.\n\n## Critical Assets Are Declared Clearly\n\nThe site does a few straightforward things that Lighthouse likes for good reason:\n\n- the hero image is preloaded\n- the hero image uses `srcset` and fixed dimensions\n- the hero image is marked with `fetchpriority=\"high\"`\n- fonts are self-hosted WOFF2 files\n- fonts use `font-display: swap`\n- the shared CSS is served as one bundled stylesheet instead of a runtime import chain\n\nNone of that is exotic.\n\nIt is just a competent critical rendering path.\n\nThe browser gets told what matters early, and the page does not make it guess.\n\n## The JavaScript Is Small and Boring\n\nThis is one of the better compliments a site can receive.\n\nThe homepage JavaScript exists for practical UI behavior:\n\n- mobile navigation\n- theme toggle\n- scroll reveal\n- conditional carousel logic\n\nThat is very different from loading a large JavaScript runtime just to recreate what the browser already knows how to do.\n\nPerformance improves when JavaScript stops trying to be architecture theater.\n\n## Accessibility and SEO Are Already in the Markup\n\nA site usually scores well in accessibility and SEO when those concerns are built into the document itself instead of added after complaints.\n\nThis repo already includes:\n\n- skip links\n- semantic sections\n- labeled controls\n- alt text\n- canonical URLs\n- robots directives\n- structured data\n- sitemap support\n\nThose do not directly make the page feel faster in the way a user describes speed, but they do make Lighthouse and PageSpeed much happier, because those tools are evaluating more than raw rendering performance.\n\n## The DOM Is Small and the Visual Model Is Controlled\n\nIn one recent Lighthouse run, the homepage DOM was only `89` elements.\n\nThat is not tiny for its own sake.\n\nIt just means the page is not built from layers of wrappers, abstractions, and decorative machinery.\n\nThe visual design also stays within reasonable limits:\n\n- one small hero image\n- no autoplay media\n- no massive sliders on load\n- no complicated above-the-fold layout\n- reduced-motion support for users who request it\n\nAgain, boring in the right places.\n\n## What Still Prevents Perfect Scores in Some Runs\n\nThis part matters because otherwise performance writing becomes propaganda.\n\nThe same Lighthouse run that showed strong overall results still identified a few clear issues:\n\n- some images could use next-generation formats\n- some images could be sized more tightly\n- cache TTLs on some static assets could be longer\n- one contrast issue still affects accessibility\n\nSo if you ever see a perfect score, the right interpretation is not \"the site is flawless.\"\n\nIt is just that the overall profile was clean enough, on that run, to clear the thresholds.\n\n## Final Thought\n\nThe real reason this site can score very well is simple:\n\nit is small,\nit is direct,\nand it avoids a lot of expensive habits that modern websites treat as normal.\n\nIf there is a lesson in that, it is not \"chase 100.\"\n\nIt is this:\n\nMost web performance wins happen before optimisation begins.\n\nThey happen when you decide what not to build.",
+      "datePublished": "2026-03-18T21:54:40+02:00",
+      "dateModified": "2026-03-18T21:54:40+02:00",
+      "wordCount": 925,
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "image": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "keywords": [
+        "Performance",
+        "Web",
+        "PageSpeed",
+        "Lighthouse",
+        "Systems"
+      ],
+      "url": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://daliso.com/blog/#blog",
+        "name": "Daliso Ngoma — Blog",
+        "url": "https://daliso.com/blog/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://daliso.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://daliso.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Why This Site Tends to Score Well in PageSpeed Insights",
+          "item": "https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/"
+        }
+      ]
+    }
+  ]
 }
   </script>
 </head>

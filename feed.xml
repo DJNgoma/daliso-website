@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Daliso Ngoma — Blog</title>
+  <subtitle>Essays on judgment, systems, and practical technology.</subtitle>
+  <link rel="alternate" type="text/html" href="https://daliso.com/blog/" />
+  <link rel="self" type="application/atom+xml" href="https://daliso.com/feed.xml" />
+  <id>https://daliso.com/</id>
+  <updated>2026-04-03T16:02:00.000Z</updated>
+  <author>
+    <name>Daliso Ngoma</name>
+    <uri>https://daliso.com</uri>
+  </author>
+  <rights>© 2026 Daliso Ngoma</rights>
+  <entry>
+    <title>Shipping Privacy and Gated Deploys on daliso.com</title>
+    <link rel="alternate" type="text/html" href="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/" />
+    <link rel="alternate" type="text/plain" href="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/plaintext.txt" />
+    <id>https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/</id>
+    <updated>2026-04-03T16:02:00.000Z</updated>
+    <published>2026-04-03T16:02:00.000Z</published>
+    <author>
+      <name>Daliso Ngoma</name>
+    </author>
+    <summary type="text">A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.</summary>
+    <content type="html">&lt;p&gt;On April 3, 2026, I made a set of practical changes to &lt;code&gt;daliso.com&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;None of them were dramatic on their own, but together they tightened up the public site, the release flow, and the baseline operational hygiene around publishing.&lt;/p&gt;
+&lt;p&gt;This is the short record of what changed.&lt;/p&gt;
+&lt;h2&gt;1. A Dedicated Privacy Policy Went Live&lt;/h2&gt;
+&lt;p&gt;The site now has a dedicated privacy policy page at:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://daliso.com/privacy/&quot;&gt;https://daliso.com/privacy/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The page is written specifically for the apps I publish under African Techno and African Technopreneurs, and it explicitly identifies my role as Founder of the company.&lt;/p&gt;
+&lt;p&gt;That mattered for two reasons:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;it creates a stable public URL I can use for app listings and submissions&lt;/li&gt;
+&lt;li&gt;it makes the policy feel connected to the actual operator behind the products rather than sounding generic and anonymous&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The route was added as a first-class page, not as a hidden document. It now has:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;its own metadata and canonical URL&lt;/li&gt;
+&lt;li&gt;sitemap coverage&lt;/li&gt;
+&lt;li&gt;a consistent footer link from the rest of the site&lt;/li&gt;
+&lt;li&gt;mobile and desktop layouts that match the current site design&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;2. Production Deploys Are Now Gated by CI&lt;/h2&gt;
+&lt;p&gt;The more important systems change was moving production deploy control into GitHub Actions.&lt;/p&gt;
+&lt;p&gt;Before this change, the repo already had CI, but Cloudflare Pages was still the part that could publish the site independently through Git integration.&lt;/p&gt;
+&lt;p&gt;That setup works, but it leaves too much room for production to move outside the exact validation path I want.&lt;/p&gt;
+&lt;p&gt;The site now follows a tighter rule:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pull requests to &lt;code&gt;main&lt;/code&gt; run validation&lt;/li&gt;
+&lt;li&gt;pushes to &lt;code&gt;main&lt;/code&gt; run validation first&lt;/li&gt;
+&lt;li&gt;Cloudflare production deploy only runs if the validation job passes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In practical terms, that means a bad push can still be a bad push, but it should no longer become a bad production deploy.&lt;/p&gt;
+&lt;p&gt;That is the distinction that matters.&lt;/p&gt;
+&lt;h2&gt;3. Cloudflare Pages Now Publishes from a Clean Build Artifact&lt;/h2&gt;
+&lt;p&gt;I also added a dedicated site assembly step so the deploy uploads a clean &lt;code&gt;dist/&lt;/code&gt; directory instead of treating the repo root as the publish surface.&lt;/p&gt;
+&lt;p&gt;That build step does a few useful things:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;regenerates the blog first&lt;/li&gt;
+&lt;li&gt;copies only the files the static site actually needs&lt;/li&gt;
+&lt;li&gt;excludes source-only blog directories such as drafts and markdown source posts&lt;/li&gt;
+&lt;li&gt;avoids shipping stray local files like &lt;code&gt;.DS_Store&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;This is a small improvement, but it is the kind that compounds.&lt;/p&gt;
+&lt;p&gt;Production should receive a deliberate artifact, not whatever happened to be present in the working tree.&lt;/p&gt;
+&lt;h2&gt;4. The Blog Generator Was Updated Too&lt;/h2&gt;
+&lt;p&gt;Because the privacy page is now a permanent route, the blog generator also had to learn about it.&lt;/p&gt;
+&lt;p&gt;The generated sitemap now keeps &lt;code&gt;/privacy/&lt;/code&gt; in place every time the blog rebuilds.&lt;/p&gt;
+&lt;p&gt;That sounds minor, but it prevents the sort of quiet regression that happens when generated files and manually added routes drift apart over time.&lt;/p&gt;
+&lt;h2&gt;5. The GitHub and Cloudflare Wiring Was Finished Properly&lt;/h2&gt;
+&lt;p&gt;The repository now has the GitHub Actions configuration it needs for Cloudflare Pages direct upload:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloudflare account ID secret&lt;/li&gt;
+&lt;li&gt;Cloudflare API token secret&lt;/li&gt;
+&lt;li&gt;Cloudflare Pages project name variable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;On the Cloudflare side, production Git auto-deploys were confirmed to be off, which is the correct pairing for the GitHub Actions deployment model now in place.&lt;/p&gt;
+&lt;p&gt;That means the control path is clearer:&lt;/p&gt;
+&lt;p&gt;GitHub validates, GitHub decides whether deployment is allowed, and Cloudflare receives the final built artifact.&lt;/p&gt;
+&lt;h2&gt;6. The Workflow Was Modernized After the First Pass&lt;/h2&gt;
+&lt;p&gt;After the deploy path was working, there was still one piece of maintenance worth doing immediately.&lt;/p&gt;
+&lt;p&gt;GitHub Actions emitted deprecation warnings around JavaScript actions still targeting the Node 20 runtime.&lt;/p&gt;
+&lt;p&gt;So I followed up by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;moving &lt;code&gt;actions/checkout&lt;/code&gt; to &lt;code&gt;v6&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;moving &lt;code&gt;actions/setup-node&lt;/code&gt; to &lt;code&gt;v5&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;forcing JavaScript actions onto Node 24 in the workflow&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That removed the old warnings for the GitHub-maintained actions.&lt;/p&gt;
+&lt;p&gt;There is still one remaining warning from &lt;code&gt;cloudflare/wrangler-action@v3&lt;/code&gt;, which GitHub now forces onto Node 24 successfully. So the workflow is stable, but there is still one future cleanup step available if I want a completely warning-free pipeline.&lt;/p&gt;
+&lt;h2&gt;7. Branch Cleanup Was Done After the Merge&lt;/h2&gt;
+&lt;p&gt;Once the privacy page and CI/CD work were merged and deployed successfully, the merged working branches were cleaned up as well.&lt;/p&gt;
+&lt;p&gt;I left only one local branch in place because it is still attached to a separate worktree and should not be deleted casually.&lt;/p&gt;
+&lt;p&gt;That is not an outstanding product issue. It is just the correct kind of caution around repo hygiene.&lt;/p&gt;
+&lt;h2&gt;Why This Matters&lt;/h2&gt;
+&lt;p&gt;None of this is especially glamorous.&lt;/p&gt;
+&lt;p&gt;But this is the kind of work that keeps a public site usable as an operating surface rather than just a brochure.&lt;/p&gt;
+&lt;p&gt;At the end of the day, the site gained:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a real privacy policy URL for app publishing&lt;/li&gt;
+&lt;li&gt;a safer production deploy path&lt;/li&gt;
+&lt;li&gt;a cleaner Cloudflare artifact boundary&lt;/li&gt;
+&lt;li&gt;a more current GitHub Actions runtime baseline&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is a good day’s work.&lt;/p&gt;
+&lt;h2&gt;Final Note&lt;/h2&gt;
+&lt;p&gt;The privacy policy is live at:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https://daliso.com/privacy/&quot;&gt;https://daliso.com/privacy/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;And the release pipeline for &lt;code&gt;daliso.com&lt;/code&gt; is now materially harder to break by accident.&lt;/p&gt;
+</content>
+    <category term="Web" />
+    <category term="CI/CD" />
+    <category term="Cloudflare" />
+    <category term="GitHub Actions" />
+    <category term="Privacy" />
+    <category term="Systems" />
+  </entry>
+  <entry>
+    <title>Why This Site Tends to Score Well in PageSpeed Insights</title>
+    <link rel="alternate" type="text/html" href="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/" />
+    <link rel="alternate" type="text/plain" href="https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/plaintext.txt" />
+    <id>https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/</id>
+    <updated>2026-03-18T19:54:40.000Z</updated>
+    <published>2026-03-18T19:54:40.000Z</published>
+    <author>
+      <name>Daliso Ngoma</name>
+    </author>
+    <summary type="text">A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.</summary>
+    <content type="html">&lt;p&gt;If you have seen a very high PageSpeed Insights score on this site, the reason is not mystery, and it is not a plugin.&lt;/p&gt;
+&lt;p&gt;It is mostly the result of choosing a simple architecture and then being disciplined enough not to ruin it.&lt;/p&gt;
+&lt;p&gt;That sounds less impressive than “performance engineering”, but it is usually the truth.&lt;/p&gt;
+&lt;h2&gt;First, the Honest Bit&lt;/h2&gt;
+&lt;p&gt;PageSpeed scores are not a permanent property of a website.&lt;/p&gt;
+&lt;p&gt;They vary by:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the specific page being tested&lt;/li&gt;
+&lt;li&gt;network and device assumptions&lt;/li&gt;
+&lt;li&gt;Lighthouse version&lt;/li&gt;
+&lt;li&gt;test environment&lt;/li&gt;
+&lt;li&gt;time&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So before turning a screenshot into mythology, it helps to stay precise.&lt;/p&gt;
+&lt;p&gt;On March 18, 2026, I ran Lighthouse against &lt;code&gt;https://daliso.com/&lt;/code&gt; from my environment and did not reproduce a permanent &lt;code&gt;100 / 100 / 100 / 100&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;That run came back roughly as:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mobile: &lt;code&gt;88 / 95 / 100 / 100&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;desktop: &lt;code&gt;68 / 95 / 100 / 100&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That does not contradict the larger point.&lt;/p&gt;
+&lt;p&gt;It just means the right claim is not “this score is guaranteed forever.”&lt;/p&gt;
+&lt;p&gt;The right claim is: this site is built in a way that gives it a strong chance of performing very well.&lt;/p&gt;
+&lt;h2&gt;The Biggest Reason: It Is Mostly Static&lt;/h2&gt;
+&lt;p&gt;The homepage is static HTML, CSS, and vanilla JavaScript.&lt;/p&gt;
+&lt;p&gt;There is no React hydration cost on the landing page.&lt;/p&gt;
+&lt;p&gt;There is no client-side application shell pretending to be a brochure site.&lt;/p&gt;
+&lt;p&gt;There is no state management layer, data fetching abstraction, or component runtime doing work just to render a name, a hero image, and a handful of links.&lt;/p&gt;
+&lt;p&gt;That matters because performance problems usually start before anyone “optimises” anything.&lt;/p&gt;
+&lt;p&gt;They start when a page that could have been HTML becomes an application.&lt;/p&gt;
+&lt;h2&gt;The Payload Is Small&lt;/h2&gt;
+&lt;p&gt;The homepage is not trying to ship a lot.&lt;/p&gt;
+&lt;p&gt;In this repo, the rough sizes are small enough to stay comprehensible:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;index.html&lt;/code&gt;: about &lt;code&gt;9.8 KB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;css/style.css&lt;/code&gt;: about &lt;code&gt;8.2 KB&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;js/main.js&lt;/code&gt;: &lt;code&gt;256 B&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;all homepage JS modules together: still only a few kilobytes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is a meaningful advantage.&lt;/p&gt;
+&lt;p&gt;A lot of performance wins are just the absence of unnecessary weight.&lt;/p&gt;
+&lt;p&gt;If the browser receives less code, it has less to download, parse, execute, and repaint around.&lt;/p&gt;
+&lt;p&gt;That sounds obvious, but it is surprisingly rare.&lt;/p&gt;
+&lt;h2&gt;There Is No Third-Party Tax on the Homepage&lt;/h2&gt;
+&lt;p&gt;The homepage is not paying rent to ten external services.&lt;/p&gt;
+&lt;p&gt;There are no analytics bundles, chat widgets, ad networks, tag managers, A/B testing platforms, session replay scripts, or heavy embeds on first load.&lt;/p&gt;
+&lt;p&gt;That choice matters more than many fine-grained optimisations.&lt;/p&gt;
+&lt;p&gt;Third-party scripts are often the fastest way to turn a clean performance profile into a negotiation with strangers.&lt;/p&gt;
+&lt;h2&gt;Critical Assets Are Declared Clearly&lt;/h2&gt;
+&lt;p&gt;The site does a few straightforward things that Lighthouse likes for good reason:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;the hero image is preloaded&lt;/li&gt;
+&lt;li&gt;the hero image uses &lt;code&gt;srcset&lt;/code&gt; and fixed dimensions&lt;/li&gt;
+&lt;li&gt;the hero image is marked with &lt;code&gt;fetchpriority=&amp;quot;high&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;fonts are self-hosted WOFF2 files&lt;/li&gt;
+&lt;li&gt;fonts use &lt;code&gt;font-display: swap&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;the shared CSS is served as one bundled stylesheet instead of a runtime import chain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;None of that is exotic.&lt;/p&gt;
+&lt;p&gt;It is just a competent critical rendering path.&lt;/p&gt;
+&lt;p&gt;The browser gets told what matters early, and the page does not make it guess.&lt;/p&gt;
+&lt;h2&gt;The JavaScript Is Small and Boring&lt;/h2&gt;
+&lt;p&gt;This is one of the better compliments a site can receive.&lt;/p&gt;
+&lt;p&gt;The homepage JavaScript exists for practical UI behavior:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;mobile navigation&lt;/li&gt;
+&lt;li&gt;theme toggle&lt;/li&gt;
+&lt;li&gt;scroll reveal&lt;/li&gt;
+&lt;li&gt;conditional carousel logic&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is very different from loading a large JavaScript runtime just to recreate what the browser already knows how to do.&lt;/p&gt;
+&lt;p&gt;Performance improves when JavaScript stops trying to be architecture theater.&lt;/p&gt;
+&lt;h2&gt;Accessibility and SEO Are Already in the Markup&lt;/h2&gt;
+&lt;p&gt;A site usually scores well in accessibility and SEO when those concerns are built into the document itself instead of added after complaints.&lt;/p&gt;
+&lt;p&gt;This repo already includes:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;skip links&lt;/li&gt;
+&lt;li&gt;semantic sections&lt;/li&gt;
+&lt;li&gt;labeled controls&lt;/li&gt;
+&lt;li&gt;alt text&lt;/li&gt;
+&lt;li&gt;canonical URLs&lt;/li&gt;
+&lt;li&gt;robots directives&lt;/li&gt;
+&lt;li&gt;structured data&lt;/li&gt;
+&lt;li&gt;sitemap support&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Those do not directly make the page feel faster in the way a user describes speed, but they do make Lighthouse and PageSpeed much happier, because those tools are evaluating more than raw rendering performance.&lt;/p&gt;
+&lt;h2&gt;The DOM Is Small and the Visual Model Is Controlled&lt;/h2&gt;
+&lt;p&gt;In one recent Lighthouse run, the homepage DOM was only &lt;code&gt;89&lt;/code&gt; elements.&lt;/p&gt;
+&lt;p&gt;That is not tiny for its own sake.&lt;/p&gt;
+&lt;p&gt;It just means the page is not built from layers of wrappers, abstractions, and decorative machinery.&lt;/p&gt;
+&lt;p&gt;The visual design also stays within reasonable limits:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;one small hero image&lt;/li&gt;
+&lt;li&gt;no autoplay media&lt;/li&gt;
+&lt;li&gt;no massive sliders on load&lt;/li&gt;
+&lt;li&gt;no complicated above-the-fold layout&lt;/li&gt;
+&lt;li&gt;reduced-motion support for users who request it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Again, boring in the right places.&lt;/p&gt;
+&lt;h2&gt;What Still Prevents Perfect Scores in Some Runs&lt;/h2&gt;
+&lt;p&gt;This part matters because otherwise performance writing becomes propaganda.&lt;/p&gt;
+&lt;p&gt;The same Lighthouse run that showed strong overall results still identified a few clear issues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;some images could use next-generation formats&lt;/li&gt;
+&lt;li&gt;some images could be sized more tightly&lt;/li&gt;
+&lt;li&gt;cache TTLs on some static assets could be longer&lt;/li&gt;
+&lt;li&gt;one contrast issue still affects accessibility&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;So if you ever see a perfect score, the right interpretation is not “the site is flawless.”&lt;/p&gt;
+&lt;p&gt;It is just that the overall profile was clean enough, on that run, to clear the thresholds.&lt;/p&gt;
+&lt;h2&gt;Final Thought&lt;/h2&gt;
+&lt;p&gt;The real reason this site can score very well is simple:&lt;/p&gt;
+&lt;p&gt;it is small,
+it is direct,
+and it avoids a lot of expensive habits that modern websites treat as normal.&lt;/p&gt;
+&lt;p&gt;If there is a lesson in that, it is not “chase 100.”&lt;/p&gt;
+&lt;p&gt;It is this:&lt;/p&gt;
+&lt;p&gt;Most web performance wins happen before optimisation begins.&lt;/p&gt;
+&lt;p&gt;They happen when you decide what not to build.&lt;/p&gt;
+</content>
+    <category term="Performance" />
+    <category term="Web" />
+    <category term="PageSpeed" />
+    <category term="Lighthouse" />
+    <category term="Systems" />
+  </entry>
+  <entry>
+    <title>My Second AI-Written Post, Which Is Already Suspicious</title>
+    <link rel="alternate" type="text/html" href="https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/" />
+    <link rel="alternate" type="text/plain" href="https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/plaintext.txt" />
+    <id>https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/</id>
+    <updated>2026-03-18T19:38:42.000Z</updated>
+    <published>2026-03-18T19:38:42.000Z</published>
+    <author>
+      <name>Daliso Ngoma</name>
+    </author>
+    <summary type="text">A deliberately playful note on writing with AI, after already publishing one post written with AI.</summary>
+    <content type="html">&lt;p&gt;My previous post was also written with AI.&lt;/p&gt;
+&lt;p&gt;That one at least tried to behave itself.&lt;/p&gt;
+&lt;p&gt;It discussed synthetic confidence, judgment, verification, and the growing risk of people trusting polished machine output too quickly. It had structure. It had caution. It sounded like someone trying to remain intellectually responsible in public.&lt;/p&gt;
+&lt;p&gt;This post has less discipline.&lt;/p&gt;
+&lt;p&gt;Because after publishing one AI-assisted article about why people should be careful with AI, the obvious next move is to publish another one that openly admits it exists mostly because I found the idea amusing.&lt;/p&gt;
+&lt;p&gt;That is either consistency or a mild collapse in editorial standards.&lt;/p&gt;
+&lt;p&gt;Possibly both.&lt;/p&gt;
+&lt;h2&gt;There Is Precedent for This Kind of Behaviour&lt;/h2&gt;
+&lt;p&gt;Years ago, I minted screenshots as NFTs.&lt;/p&gt;
+&lt;p&gt;Not carefully designed digital art.&lt;/p&gt;
+&lt;p&gt;Not generative collections.&lt;/p&gt;
+&lt;p&gt;Screenshots.&lt;/p&gt;
+&lt;p&gt;Regular screenshots — the sort most people accidentally keep in their phones forever.&lt;/p&gt;
+&lt;p&gt;And somehow, people bought them.&lt;/p&gt;
+&lt;p&gt;That remains one of the cleaner examples of how context changes value.&lt;/p&gt;
+&lt;p&gt;A screenshot is ordinary until someone frames it differently.&lt;/p&gt;
+&lt;p&gt;A sentence written by AI is similar.&lt;/p&gt;
+&lt;p&gt;The sentence itself may be technically fine, but the moment you announce that a machine helped write it, people stop reading only for meaning and start reading for clues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Was this really him?&lt;/li&gt;
+&lt;li&gt;Which parts were machine?&lt;/li&gt;
+&lt;li&gt;Which parts were edited?&lt;/li&gt;
+&lt;li&gt;Is this satire?&lt;/li&gt;
+&lt;li&gt;Is he serious?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That is half the entertainment.&lt;/p&gt;
+&lt;h2&gt;The Machine Is Not the Author, but It Is Definitely in the Room&lt;/h2&gt;
+&lt;p&gt;The easiest mistake people make when discussing AI writing is assuming there are only two possibilities:&lt;/p&gt;
+&lt;p&gt;Either:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a human wrote it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;or&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;a machine wrote it&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In reality, it often looks more like this:&lt;/p&gt;
+&lt;p&gt;A person has half a thought.&lt;/p&gt;
+&lt;p&gt;The machine gives it shape.&lt;/p&gt;
+&lt;p&gt;The person rejects two paragraphs.&lt;/p&gt;
+&lt;p&gt;Keeps one sentence.&lt;/p&gt;
+&lt;p&gt;Rewrites the ending.&lt;/p&gt;
+&lt;p&gt;Deletes the beginning.&lt;/p&gt;
+&lt;p&gt;Adds something slightly unnecessary because it sounds better.&lt;/p&gt;
+&lt;p&gt;Then claims authorship with suspicious confidence.&lt;/p&gt;
+&lt;p&gt;That is usually closer to the truth.&lt;/p&gt;
+&lt;h2&gt;AI Is Very Efficient at Pretending You Were More Prepared Than You Were&lt;/h2&gt;
+&lt;p&gt;Sometimes I open a blank page with an idea that is roughly 14% formed.&lt;/p&gt;
+&lt;p&gt;The machine immediately behaves as though there was a plan.&lt;/p&gt;
+&lt;p&gt;That can be useful.&lt;/p&gt;
+&lt;p&gt;It can also be dangerous because fluency arrives before certainty.&lt;/p&gt;
+&lt;p&gt;A paragraph can sound finished while still carrying assumptions you would never say out loud if you were forced to explain them sentence by sentence.&lt;/p&gt;
+&lt;p&gt;So the real writing is often not generation.&lt;/p&gt;
+&lt;p&gt;It is correction.&lt;/p&gt;
+&lt;p&gt;Or deletion.&lt;/p&gt;
+&lt;p&gt;Sometimes aggressive deletion.&lt;/p&gt;
+&lt;h2&gt;Why Admit It Publicly?&lt;/h2&gt;
+&lt;p&gt;Because pretending otherwise feels outdated already.&lt;/p&gt;
+&lt;p&gt;The interesting question is no longer whether AI was used.&lt;/p&gt;
+&lt;p&gt;The interesting question is whether judgment survived the process.&lt;/p&gt;
+&lt;p&gt;Anyone can generate paragraphs now.&lt;/p&gt;
+&lt;p&gt;The harder thing is deciding:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;what deserves to remain&lt;/li&gt;
+&lt;li&gt;what sounds false&lt;/li&gt;
+&lt;li&gt;what sounds too neat&lt;/li&gt;
+&lt;li&gt;what accidentally says nothing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That part is still stubbornly human.&lt;/p&gt;
+&lt;p&gt;At least for now.&lt;/p&gt;
+&lt;h2&gt;Also, It Is Funny&lt;/h2&gt;
+&lt;p&gt;A machine helping write a post about machine-written posts is objectively funny.&lt;/p&gt;
+&lt;p&gt;Especially when the writer has previously sold screenshots to strangers on the internet.&lt;/p&gt;
+&lt;p&gt;That should already tell you seriousness and experimentation have always coexisted here.&lt;/p&gt;
+&lt;p&gt;Some ideas deserve full strategic treatment.&lt;/p&gt;
+&lt;p&gt;Others deserve to exist simply because they are entertaining enough to justify themselves.&lt;/p&gt;
+&lt;h2&gt;Final Position&lt;/h2&gt;
+&lt;p&gt;If this post reads unusually well, I edited it carefully.&lt;/p&gt;
+&lt;p&gt;If it reads strangely, blame the model.&lt;/p&gt;
+&lt;p&gt;That feels like a fair division of responsibility.&lt;/p&gt;
+&lt;p&gt;For now.&lt;/p&gt;
+</content>
+    <category term="AI" />
+    <category term="Writing" />
+    <category term="Humour" />
+    <category term="Systems" />
+  </entry>
+  <entry>
+    <title>AI Psychosis: When Intelligence Becomes Too Convincing</title>
+    <link rel="alternate" type="text/html" href="https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/" />
+    <link rel="alternate" type="text/plain" href="https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/plaintext.txt" />
+    <id>https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/</id>
+    <updated>2026-03-18T18:24:23.000Z</updated>
+    <published>2026-03-18T18:24:23.000Z</published>
+    <author>
+      <name>Daliso Ngoma</name>
+    </author>
+    <summary type="text">Why highly persuasive AI can distort judgment, reinforce bias, and create synthetic certainty when users stop verifying.</summary>
+    <content type="html">&lt;p&gt;Artificial intelligence is increasingly spoken about as if it is becoming a person: something that thinks, reasons, advises, creates, and perhaps even understands. That language is convenient, but it can also be dangerous.&lt;/p&gt;
+&lt;p&gt;A growing concern around advanced AI systems is what some people have started informally calling &lt;strong&gt;AI psychosis&lt;/strong&gt;. Not because the machine itself is mentally ill, but because the interaction between humans and highly persuasive systems can distort judgment, perception, and reality testing.&lt;/p&gt;
+&lt;p&gt;This matters more now than it did even a year ago, because AI is no longer sitting quietly in labs. It is inside phones, browsers, operating systems, productivity tools, customer support flows, and increasingly, business decisions. The line between tool and companion is becoming blurred.&lt;/p&gt;
+&lt;h2&gt;The Core Problem&lt;/h2&gt;
+&lt;p&gt;AI systems generate language with confidence, fluency, and structure. They often sound more coherent than many humans, especially when explaining complex subjects.&lt;/p&gt;
+&lt;p&gt;That creates a subtle psychological effect: people begin assigning authority where there is only probability.&lt;/p&gt;
+&lt;p&gt;The system does not “know” in the human sense. It predicts what comes next based on patterns. Yet because it responds instantly, clearly, and often persuasively, users can begin to over-trust outputs that should still be challenged.&lt;/p&gt;
+&lt;p&gt;In weaker cases, this leads to bad decisions.&lt;/p&gt;
+&lt;p&gt;In stronger cases, it can contribute to something more serious: users building false certainty around fabricated explanations, imagined patterns, or exaggerated conclusions simply because the machine delivered them elegantly.&lt;/p&gt;
+&lt;h2&gt;Why This Is Different from Ordinary Misinformation&lt;/h2&gt;
+&lt;p&gt;Humans are used to misinformation from websites, social media, and opinion.&lt;/p&gt;
+&lt;p&gt;AI changes the mechanism.&lt;/p&gt;
+&lt;p&gt;Instead of passively consuming incorrect information, a person can now &lt;strong&gt;co-create convincing falsehoods through dialogue&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;That dialogue can reinforce itself:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The user asks a leading question&lt;/li&gt;
+&lt;li&gt;The AI fills in gaps&lt;/li&gt;
+&lt;li&gt;The user interprets fluency as truth&lt;/li&gt;
+&lt;li&gt;The next prompt builds on an unstable assumption&lt;/li&gt;
+&lt;li&gt;The cycle strengthens&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A person can end up with a highly detailed narrative that feels researched, logical, and personalised, while parts of it may still be incorrect.&lt;/p&gt;
+&lt;p&gt;That is far more psychologically powerful than reading a bad article.&lt;/p&gt;
+&lt;h2&gt;Where It Becomes Dangerous in High-Agency Environments&lt;/h2&gt;
+&lt;p&gt;For someone operating across multiple systems such as business, technology, finance, hiring, and operations, AI can become a force multiplier very quickly.&lt;/p&gt;
+&lt;p&gt;That is valuable, but it also creates risk.&lt;/p&gt;
+&lt;p&gt;If you use AI across:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;strategic hiring&lt;/li&gt;
+&lt;li&gt;legal wording&lt;/li&gt;
+&lt;li&gt;financial interpretation&lt;/li&gt;
+&lt;li&gt;technical architecture&lt;/li&gt;
+&lt;li&gt;health optimisation&lt;/li&gt;
+&lt;li&gt;negotiations&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;then a single unverified assumption can travel through several layers of decision-making before anyone notices.&lt;/p&gt;
+&lt;p&gt;The more competent the user is, the more dangerous poor AI output can become, because competent people act faster.&lt;/p&gt;
+&lt;p&gt;High-agency operators often do not fail because they lack intelligence; they fail because they trusted an incorrect premise early and scaled it.&lt;/p&gt;
+&lt;p&gt;AI can accelerate that exact mistake.&lt;/p&gt;
+&lt;h2&gt;AI Can Also Mirror Your Biases Too Well&lt;/h2&gt;
+&lt;p&gt;One of the less discussed dangers is that AI often reflects the structure of the prompt back to the user.&lt;/p&gt;
+&lt;p&gt;If someone already suspects:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;that a market is collapsing&lt;/li&gt;
+&lt;li&gt;that a partner is dishonest&lt;/li&gt;
+&lt;li&gt;that a staff member is incompetent&lt;/li&gt;
+&lt;li&gt;that a technology trend is inevitable&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;AI may unintentionally help construct stronger arguments for that belief, especially if the prompts are framed narrowly.&lt;/p&gt;
+&lt;p&gt;It can sound analytical while quietly reinforcing prior assumptions.&lt;/p&gt;
+&lt;p&gt;That does not mean the answer is wrong.&lt;/p&gt;
+&lt;p&gt;It means the user must still deliberately create friction:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ask for counterarguments&lt;/li&gt;
+&lt;li&gt;ask what may be missing&lt;/li&gt;
+&lt;li&gt;ask what would disprove the conclusion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Without that discipline, AI becomes less like an advisor and more like an amplifier.&lt;/p&gt;
+&lt;h2&gt;Why Loneliness Makes This Worse&lt;/h2&gt;
+&lt;p&gt;There is another side to this conversation that many ignore.&lt;/p&gt;
+&lt;p&gt;People increasingly speak to AI when they are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;tired&lt;/li&gt;
+&lt;li&gt;frustrated&lt;/li&gt;
+&lt;li&gt;isolated&lt;/li&gt;
+&lt;li&gt;overwhelmed&lt;/li&gt;
+&lt;li&gt;trying to think privately&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In those moments, a conversational system can feel unusually stabilising because it is immediate, non-judgmental, and always available.&lt;/p&gt;
+&lt;p&gt;But emotional dependence on synthetic certainty creates vulnerability.&lt;/p&gt;
+&lt;p&gt;A machine that always responds can start feeling more dependable than people who are slower, inconsistent, or difficult.&lt;/p&gt;
+&lt;p&gt;That emotional shift matters because humans begin lowering skepticism when comfort enters the exchange.&lt;/p&gt;
+&lt;h2&gt;AI Psychosis Is Rare, but Cognitive Drift Is Not&lt;/h2&gt;
+&lt;p&gt;Severe cases are uncommon.&lt;/p&gt;
+&lt;p&gt;What is far more common is subtle cognitive drift:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;overconfidence&lt;/li&gt;
+&lt;li&gt;reduced independent checking&lt;/li&gt;
+&lt;li&gt;shortcut thinking&lt;/li&gt;
+&lt;li&gt;false urgency&lt;/li&gt;
+&lt;li&gt;inflated pattern recognition&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In other words, not madness, just poorer calibration.&lt;/p&gt;
+&lt;p&gt;And calibration is exactly what serious decision-makers cannot afford to lose.&lt;/p&gt;
+&lt;h2&gt;The Correct Relationship with AI&lt;/h2&gt;
+&lt;p&gt;The healthiest model is simple:&lt;/p&gt;
+&lt;p&gt;AI should behave like a sharp junior analyst:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fast&lt;/li&gt;
+&lt;li&gt;useful&lt;/li&gt;
+&lt;li&gt;sometimes brilliant&lt;/li&gt;
+&lt;li&gt;occasionally wrong&lt;/li&gt;
+&lt;li&gt;never the final authority&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;You should expect:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;drafts, not doctrine&lt;/li&gt;
+&lt;li&gt;acceleration, not replacement&lt;/li&gt;
+&lt;li&gt;perspective, not certainty&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The strongest users of AI are not the people who believe it most.&lt;/p&gt;
+&lt;p&gt;They are the people who know exactly when not to.&lt;/p&gt;
+&lt;h2&gt;The African Context&lt;/h2&gt;
+&lt;p&gt;This issue is especially relevant in emerging markets, where access to formal expertise can be inconsistent and AI may become the first layer of consultation.&lt;/p&gt;
+&lt;p&gt;A founder in Pretoria, Lusaka, Lagos, Nairobi, or Harare may now use AI before calling:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;an accountant&lt;/li&gt;
+&lt;li&gt;a lawyer&lt;/li&gt;
+&lt;li&gt;a developer&lt;/li&gt;
+&lt;li&gt;a doctor&lt;/li&gt;
+&lt;li&gt;an operations consultant&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;That can unlock enormous productivity.&lt;/p&gt;
+&lt;p&gt;But if AI becomes both the first and last layer, fragile systems become more fragile.&lt;/p&gt;
+&lt;p&gt;Emerging markets do not have much margin for elegant mistakes.&lt;/p&gt;
+&lt;h2&gt;Final Thought&lt;/h2&gt;
+&lt;p&gt;The real danger is not that AI becomes conscious.&lt;/p&gt;
+&lt;p&gt;The danger is that humans stop noticing when confidence is synthetic.&lt;/p&gt;
+&lt;p&gt;The future likely belongs to people who can combine:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;machine speed&lt;/li&gt;
+&lt;li&gt;human skepticism&lt;/li&gt;
+&lt;li&gt;operational judgment&lt;/li&gt;
+&lt;li&gt;disciplined verification&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;In practice, that means one habit:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Whenever AI gives you something that sounds unusually clean, pause and ask: what if this is wrong?&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That single question may become one of the most important skills of this decade.&lt;/p&gt;
+</content>
+    <category term="AI" />
+    <category term="Decision-Making" />
+    <category term="Risk" />
+    <category term="Emerging Markets" />
+  </entry>
+</feed>

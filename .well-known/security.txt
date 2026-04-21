@@ -1,0 +1,5 @@
+Contact: mailto:info@africantechno.com
+Preferred-Languages: en
+Canonical: https://daliso.com/.well-known/security.txt
+Policy: https://daliso.com/privacy/
+Expires: 2027-04-01T00:00:00.000Z

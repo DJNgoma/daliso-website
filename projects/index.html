@@ -54,7 +54,41 @@
   <meta name="twitter:image" content="https://daliso.com/assets/images/og-projects.png" />
   <meta name="twitter:image:alt" content="Daliso Ngoma projects page preview card" />
   <link rel="canonical" href="https://daliso.com/projects/" />
+  <link rel="alternate" type="application/atom+xml" title="Daliso Ngoma — Blog (Atom)" href="https://daliso.com/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="Daliso Ngoma — Blog (JSON Feed)" href="https://daliso.com/feed.json" />
+  <link rel="alternate" type="application/json" title="Projects data (JSON)" href="https://daliso.com/api/projects.json" />
+  <link rel="alternate" type="text/plain" title="LLM-friendly site summary" href="https://daliso.com/llms.txt" />
   <script type="module" src="/js/projects-page.js?v=20260410-cachefix"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "CollectionPage",
+      "@id": "https://daliso.com/projects/#webpage",
+      "url": "https://daliso.com/projects/",
+      "name": "Projects | Daliso Ngoma",
+      "description": "A curated portfolio of products, platforms, and systems across immersive tech, commerce, media, and software.",
+      "isPartOf": { "@id": "https://daliso.com/#website" },
+      "about": { "@id": "https://daliso.com/#daliso" },
+      "mainEntity": {
+        "@type": "DataFeed",
+        "name": "Projects ledger",
+        "url": "https://daliso.com/api/projects.json",
+        "encodingFormat": "application/json"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://daliso.com/" },
+        { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://daliso.com/projects/" }
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>

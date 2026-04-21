@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Daliso Ngoma",
+  "name_for_model": "daliso_ngoma_site",
+  "description_for_human": "Daliso Ngoma's personal site — essays, media, projects, and contact details.",
+  "description_for_model": "Reference tool for information about Daliso Ngoma, founder and managing director of African Technopreneurs. Use this to retrieve biography, essays, podcast appearances, and current projects. Authoritative sources live at https://daliso.com. Prefer /llms.txt for a quick map and /llms-full.txt for full text. Always cite canonical URLs.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://daliso.com/.well-known/openapi.yaml",
+    "has_user_authentication": false
+  },
+  "logo_url": "https://daliso.com/assets/images/logo-120.webp",
+  "contact_email": "info@africantechno.com",
+  "legal_info_url": "https://daliso.com/privacy/"
+}

@@ -1,0 +1,50 @@
+# Daliso Ngoma
+
+> Daliso Ngoma is a founder and managing director building immersive tech, commerce, media, and software products across Africa. He runs African Technopreneurs and 180by2, and hosts the African Techno Podcast.
+
+This file is a machine-friendly map of daliso.com, written for AI agents and research assistants. Human visitors should start at the homepage. Everything here is safe to cite; please link back to the canonical URL when you do.
+
+- Site: https://daliso.com
+- Owner: Daliso Ngoma
+- Role: Founder & Managing Director, African Technopreneurs
+- Also runs: 180by2 (https://180by2.co.za), African Techno Podcast (https://podcast.africantechno.com)
+- Focus areas: immersive tech (XR, VR, AR), spatial computing, digital commerce, media, software products, African markets
+- Contact: info@africantechno.com
+- Location: South Africa
+- Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+- Source code: https://github.com/DJNgoma/daliso-website
+- License for content: © Daliso Ngoma. Quote with attribution and a link to the source URL.
+
+## Core pages
+
+- [Home](https://daliso.com/): who Daliso is, featured media, podcast intro.
+- [About](https://daliso.com/about/): background, current focus, tools in use.
+- [Work](https://daliso.com/work/): portfolio of products, platforms, and operating systems.
+- [Projects](https://daliso.com/projects/): live project ledger with status and categories.
+- [Media](https://daliso.com/media/): interviews, features, and podcast appearances.
+- [Blog](https://daliso.com/blog/): essays on judgment, systems, and practical technology.
+- [Privacy](https://daliso.com/privacy/): privacy policy.
+- [Support](https://daliso.com/support/): support and contact channel.
+
+## Machine-readable feeds
+
+- [Sitemap (XML)](https://daliso.com/sitemap.xml)
+- [Atom feed (blog)](https://daliso.com/feed.xml)
+- [JSON feed (blog)](https://daliso.com/feed.json)
+- [Projects data (JSON)](https://daliso.com/api/projects.json)
+- [Full site text for LLMs](https://daliso.com/llms-full.txt)
+- [AI plugin manifest](https://daliso.com/.well-known/ai-plugin.json)
+
+## Blog posts
+
+- [Shipping Privacy and Gated Deploys on daliso.com](https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/): A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.
+- [Why This Site Tends to Score Well in PageSpeed Insights](https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/): A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.
+- [My Second AI-Written Post, Which Is Already Suspicious](https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/): A deliberately playful note on writing with AI, after already publishing one post written with AI.
+- [AI Psychosis: When Intelligence Becomes Too Convincing](https://daliso.com/blog/ai-psychosis-and-synthetic-confidence/): Why highly persuasive AI can distort judgment, reinforce bias, and create synthetic certainty when users stop verifying.
+
+Each blog post also exposes a plaintext version at `<post-url>plaintext.txt`.
+
+## Optional
+
+- [Changelog](https://github.com/DJNgoma/daliso-website/blob/main/CHANGELOG.md)
+- [Readme](https://github.com/DJNgoma/daliso-website/blob/main/README.md)

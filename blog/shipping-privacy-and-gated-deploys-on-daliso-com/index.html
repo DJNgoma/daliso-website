@@ -42,6 +42,8 @@
   <meta name="twitter:image" content="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png" />
   <meta name="twitter:image:alt" content="Daliso Ngoma page preview card" />
   <link rel="canonical" href="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/" />
+  <link rel="alternate" type="application/atom+xml" title="Daliso Ngoma — Blog (Atom)" href="https://daliso.com/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="Daliso Ngoma — Blog (JSON Feed)" href="https://daliso.com/feed.json" />
   <meta property="article:published_time" content="2026-04-03T18:02:00+02:00" />
   <meta property="article:author" content="Daliso Ngoma" />
   <meta property="article:tag" content="Web" />
@@ -50,38 +52,78 @@
   <meta property="article:tag" content="GitHub Actions" />
   <meta property="article:tag" content="Privacy" />
   <meta property="article:tag" content="Systems" />
+  <link rel="alternate" type="text/plain" title="Plain-text version" href="https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/plaintext.txt" />
 
   <script type="module" src="/js/main.js?v=20260410-cachefix"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "BlogPosting",
-  "headline": "Shipping Privacy and Gated Deploys on daliso.com",
-  "description": "A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.",
-  "datePublished": "2026-04-03T18:02:00+02:00",
-  "dateModified": "2026-04-03T18:02:00+02:00",
-  "author": {
-    "@type": "Person",
-    "name": "Daliso Ngoma"
-  },
-  "image": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png",
-  "mainEntityOfPage": {
-    "@type": "WebPage",
-    "@id": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
-  },
-  "publisher": {
-    "@type": "Person",
-    "name": "Daliso Ngoma"
-  },
-  "keywords": [
-    "Web",
-    "CI/CD",
-    "Cloudflare",
-    "GitHub Actions",
-    "Privacy",
-    "Systems"
-  ],
-  "url": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/#article",
+      "headline": "Shipping Privacy and Gated Deploys on daliso.com",
+      "description": "A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.",
+      "articleBody": "On April 3, 2026, I made a set of practical changes to `daliso.com`.\n\nNone of them were dramatic on their own, but together they tightened up the public site, the release flow, and the baseline operational hygiene around publishing.\n\nThis is the short record of what changed.\n\n## 1. A Dedicated Privacy Policy Went Live\n\nThe site now has a dedicated privacy policy page at:\n\n[https://daliso.com/privacy/](https://daliso.com/privacy/)\n\nThe page is written specifically for the apps I publish under African Techno and African Technopreneurs, and it explicitly identifies my role as Founder of the company.\n\nThat mattered for two reasons:\n\n- it creates a stable public URL I can use for app listings and submissions\n- it makes the policy feel connected to the actual operator behind the products rather than sounding generic and anonymous\n\nThe route was added as a first-class page, not as a hidden document. It now has:\n\n- its own metadata and canonical URL\n- sitemap coverage\n- a consistent footer link from the rest of the site\n- mobile and desktop layouts that match the current site design\n\n## 2. Production Deploys Are Now Gated by CI\n\nThe more important systems change was moving production deploy control into GitHub Actions.\n\nBefore this change, the repo already had CI, but Cloudflare Pages was still the part that could publish the site independently through Git integration.\n\nThat setup works, but it leaves too much room for production to move outside the exact validation path I want.\n\nThe site now follows a tighter rule:\n\n- pull requests to `main` run validation\n- pushes to `main` run validation first\n- Cloudflare production deploy only runs if the validation job passes\n\nIn practical terms, that means a bad push can still be a bad push, but it should no longer become a bad production deploy.\n\nThat is the distinction that matters.\n\n## 3. Cloudflare Pages Now Publishes from a Clean Build Artifact\n\nI also added a dedicated site assembly step so the deploy uploads a clean `dist/` directory instead of treating the repo root as the publish surface.\n\nThat build step does a few useful things:\n\n- regenerates the blog first\n- copies only the files the static site actually needs\n- excludes source-only blog directories such as drafts and markdown source posts\n- avoids shipping stray local files like `.DS_Store`\n\nThis is a small improvement, but it is the kind that compounds.\n\nProduction should receive a deliberate artifact, not whatever happened to be present in the working tree.\n\n## 4. The Blog Generator Was Updated Too\n\nBecause the privacy page is now a permanent route, the blog generator also had to learn about it.\n\nThe generated sitemap now keeps `/privacy/` in place every time the blog rebuilds.\n\nThat sounds minor, but it prevents the sort of quiet regression that happens when generated files and manually added routes drift apart over time.\n\n## 5. The GitHub and Cloudflare Wiring Was Finished Properly\n\nThe repository now has the GitHub Actions configuration it needs for Cloudflare Pages direct upload:\n\n- Cloudflare account ID secret\n- Cloudflare API token secret\n- Cloudflare Pages project name variable\n\nOn the Cloudflare side, production Git auto-deploys were confirmed to be off, which is the correct pairing for the GitHub Actions deployment model now in place.\n\nThat means the control path is clearer:\n\nGitHub validates, GitHub decides whether deployment is allowed, and Cloudflare receives the final built artifact.\n\n## 6. The Workflow Was Modernized After the First Pass\n\nAfter the deploy path was working, there was still one piece of maintenance worth doing immediately.\n\nGitHub Actions emitted deprecation warnings around JavaScript actions still targeting the Node 20 runtime.\n\nSo I followed up by:\n\n- moving `actions/checkout` to `v6`\n- moving `actions/setup-node` to `v5`\n- forcing JavaScript actions onto Node 24 in the workflow\n\nThat removed the old warnings for the GitHub-maintained actions.\n\nThere is still one remaining warning from `cloudflare/wrangler-action@v3`, which GitHub now forces onto Node 24 successfully. So the workflow is stable, but there is still one future cleanup step available if I want a completely warning-free pipeline.\n\n## 7. Branch Cleanup Was Done After the Merge\n\nOnce the privacy page and CI/CD work were merged and deployed successfully, the merged working branches were cleaned up as well.\n\nI left only one local branch in place because it is still attached to a separate worktree and should not be deleted casually.\n\nThat is not an outstanding product issue. It is just the correct kind of caution around repo hygiene.\n\n## Why This Matters\n\nNone of this is especially glamorous.\n\nBut this is the kind of work that keeps a public site usable as an operating surface rather than just a brochure.\n\nAt the end of the day, the site gained:\n\n- a real privacy policy URL for app publishing\n- a safer production deploy path\n- a cleaner Cloudflare artifact boundary\n- a more current GitHub Actions runtime baseline\n\nThat is a good day’s work.\n\n## Final Note\n\nThe privacy policy is live at:\n\n[https://daliso.com/privacy/](https://daliso.com/privacy/)\n\nAnd the release pipeline for `daliso.com` is now materially harder to break by accident.",
+      "datePublished": "2026-04-03T18:02:00+02:00",
+      "dateModified": "2026-04-03T18:02:00+02:00",
+      "wordCount": 849,
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "image": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "keywords": [
+        "Web",
+        "CI/CD",
+        "Cloudflare",
+        "GitHub Actions",
+        "Privacy",
+        "Systems"
+      ],
+      "url": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://daliso.com/blog/#blog",
+        "name": "Daliso Ngoma — Blog",
+        "url": "https://daliso.com/blog/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://daliso.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://daliso.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Shipping Privacy and Gated Deploys on daliso.com",
+          "item": "https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/"
+        }
+      ]
+    }
+  ]
 }
   </script>
 </head>
