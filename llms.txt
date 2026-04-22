@@ -37,6 +37,7 @@ This file is a machine-friendly map of daliso.com, written for AI agents and res
 
 ## Blog posts
 
+- [How We Got from 23 to 92 on Is Your Site Agent-Ready](https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/): How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance.
 - [Shipping Privacy and Gated Deploys on daliso.com](https://daliso.com/blog/shipping-privacy-and-gated-deploys-on-daliso-com/): A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.
 - [Why This Site Tends to Score Well in PageSpeed Insights](https://daliso.com/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/): A breakdown of the static architecture, small payloads, self-hosted fonts, and minimal JavaScript that help daliso.com perform well in Lighthouse and PageSpeed.
 - [My Second AI-Written Post, Which Is Already Suspicious](https://daliso.com/blog/my-second-ai-written-post-which-is-already-suspicious/): A deliberately playful note on writing with AI, after already publishing one post written with AI.

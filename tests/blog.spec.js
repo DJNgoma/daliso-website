@@ -1,7 +1,8 @@
 import { test, expect } from '@playwright/test';
+import { readdirSync, readFileSync } from 'node:fs';
+import { join } from 'node:path';
 
-const FEATURED_ARTICLE_PATH = '/blog/shipping-privacy-and-gated-deploys-on-daliso-com/';
-const ARCHIVE_ARTICLE_PATH = '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/';
+const [FEATURED_POST, ARCHIVE_POST] = loadPublishedPostsFromSource();
 
 test.describe('Blog pages', () => {
   test('blog index renders generated content and featured article link', async ({ page }) => {
@@ -18,36 +19,57 @@ test.describe('Blog pages', () => {
       })
     ).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Latest article' })).toBeVisible();
-    await expect(page.locator('.blog-featured-card h3 a')).toHaveAttribute('href', FEATURED_ARTICLE_PATH);
-    await expect(page.locator('.blog-featured-card')).toContainText(
-      'Shipping Privacy and Gated Deploys on daliso.com'
-    );
+    await expect(page.locator('.blog-featured-card h3 a')).toHaveAttribute('href', FEATURED_POST.canonicalPath);
+    await expect(page.locator('.blog-featured-card')).toContainText(FEATURED_POST.title);
     await expect(
       page.locator('.blog-post-grid').getByRole('link', {
-        name: 'Why This Site Tends to Score Well in PageSpeed Insights',
+        name: ARCHIVE_POST.title,
       })
-    ).toHaveAttribute('href', ARCHIVE_ARTICLE_PATH);
+    ).toHaveAttribute('href', ARCHIVE_POST.canonicalPath);
     await expect(page.locator('.blog-featured-card')).toContainText('Read article');
   });
 
   test('article page renders the published post content', async ({ page }) => {
-    await page.goto(FEATURED_ARTICLE_PATH);
+    await page.goto(FEATURED_POST.canonicalPath);
 
-    await expect(
-      page.getByRole('heading', { name: 'Shipping Privacy and Gated Deploys on daliso.com' })
-    ).toBeVisible();
-    await expect(page.locator('time[datetime="2026-04-03T18:02:00+02:00"]')).toBeVisible();
-    await expect(page.locator('.blog-prose')).toContainText(
-      'And the release pipeline for daliso.com is now materially harder to break by accident.'
-    );
+    await expect(page.getByRole('heading', { name: FEATURED_POST.title })).toBeVisible();
+    await expect(page.locator(`time[datetime="${FEATURED_POST.dateStamp}"]`)).toBeVisible();
+    await expect(page.locator('.blog-prose p').first()).toBeVisible();
     await expect(page.getByRole('link', { name: 'Back to blog' })).toHaveAttribute('href', '/blog/');
   });
 
   test('skip link and main content region exist on blog index and article pages', async ({ page }) => {
-    for (const path of ['/blog/', FEATURED_ARTICLE_PATH]) {
+    for (const path of ['/blog/', FEATURED_POST.canonicalPath]) {
       await page.goto(path);
       await expect(page.locator('.skip-link')).toHaveAttribute('href', '#main-content');
       await expect(page.locator('main#main-content')).toHaveCount(1);
     }
   });
 });
+
+function loadPublishedPostsFromSource() {
+  const postsDir = join(process.cwd(), 'blog', 'posts');
+
+  return readdirSync(postsDir)
+    .filter((fileName) => fileName.endsWith('.md'))
+    .map((fileName) => parsePostSource(join(postsDir, fileName)))
+    .sort((left, right) => new Date(right.dateStamp).getTime() - new Date(left.dateStamp).getTime());
+}
+
+function parsePostSource(filePath) {
+  const source = readFileSync(filePath, 'utf8');
+  const titleMatch = source.match(/^title:\s*"(.+)"$/m);
+  const slugMatch = source.match(/^slug:\s*"(.+)"$/m);
+  const dateMatch = source.match(/^date:\s*"(.+)"$/m);
+
+  if (!titleMatch || !slugMatch || !dateMatch) {
+    throw new Error(`Published post is missing expected frontmatter: ${filePath}`);
+  }
+
+  return {
+    title: titleMatch[1],
+    slug: slugMatch[1],
+    dateStamp: dateMatch[1],
+    canonicalPath: `/blog/${slugMatch[1]}/`,
+  };
+}

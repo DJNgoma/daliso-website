@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance." />
+  <meta name="author" content="Daliso Ngoma" />
+  <meta name="robots" content="index, follow" />
+  <meta name="base-path" content="/" />
+  <meta name="theme-color" content="#0077ff" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="last-modified" content="2026-04-22T03:03:17+02:00" />
+  <title>How We Got from 23 to 92 on Is Your Site Agent-Ready | Blog | Daliso Ngoma</title>
+  <link rel="icon" href="/assets/images/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/images/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/images/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" href="/assets/images/apple-touch-icon.png" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('theme');
+      if ((savedTheme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light')) === 'dark') {
+        document.documentElement.dataset.theme = 'dark';
+      }
+    } catch {}
+  </script>
+  <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="stylesheet" href="/css/style.css?v=20260410-cachefix" />
+  <link rel="stylesheet" href="/css/pages/blog.css?v=20260410-cachefix" />
+  <meta property="og:title" content="How We Got from 23 to 92 on Is Your Site Agent-Ready | Blog | Daliso Ngoma" />
+  <meta property="og:description" content="How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance." />
+  <meta property="og:image" content="https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/og-image.png" />
+  <meta property="og:url" content="https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/" />
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Daliso Ngoma" />
+  <meta property="og:image:alt" content="Daliso Ngoma page preview card" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How We Got from 23 to 92 on Is Your Site Agent-Ready | Blog | Daliso Ngoma" />
+  <meta name="twitter:description" content="How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance." />
+  <meta name="twitter:image" content="https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/og-image.png" />
+  <meta name="twitter:image:alt" content="Daliso Ngoma page preview card" />
+  <link rel="canonical" href="https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/" />
+  <link rel="alternate" type="application/atom+xml" title="Daliso Ngoma — Blog (Atom)" href="https://daliso.com/feed.xml" />
+  <link rel="alternate" type="application/feed+json" title="Daliso Ngoma — Blog (JSON Feed)" href="https://daliso.com/feed.json" />
+  <meta property="article:published_time" content="2026-04-22T03:03:17+02:00" />
+  <meta property="article:author" content="Daliso Ngoma" />
+  <meta property="article:tag" content="Agents" />
+  <meta property="article:tag" content="Web" />
+  <meta property="article:tag" content="Standards" />
+  <meta property="article:tag" content="Systems" />
+  <meta property="article:tag" content="Performance" />
+  <link rel="alternate" type="text/plain" title="Plain-text version" href="https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/plaintext.txt" />
+
+  <script type="module" src="/js/main.js?v=20260410-cachefix"></script>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BlogPosting",
+      "@id": "https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/#article",
+      "headline": "How We Got from 23 to 92 on Is Your Site Agent-Ready",
+      "description": "How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance.",
+      "articleBody": "A few weeks ago I wrote about why this site tends to score well in PageSpeed Insights.\n\nThat post was about performance discipline: small static pages, minimal JavaScript, and very little third-party drag.\n\nThis post is about a different scoreboard.\n\n[isitagentready.com](https://isitagentready.com) does not ask whether a site is fast for humans. It asks whether a software agent can figure out what the site is, what it exposes, and how to consume it.\n\nThe first time I ran it against [daliso.com](https://daliso.com), the result came back as `23`.\n\nA few focused sessions later, the same check came back as `92`, Level 5: Agent-Native.\n\nThe score moved because I added truthful machine-readable surfaces, not because I optimized frontend performance. That distinction matters.\n\n## Why 23 Was Not a Surprise\n\nI was not especially surprised by the starting point. I had already seen the same pattern elsewhere: decent content hygiene, weak agent-discovery surfaces.\n\nIn my own work, more discovery is starting inside AI assistants rather than a classic search page. That changes the question from \"can a human browse this?\" to \"can a program understand this without improvising?\"\n\nThis site already had some of the older web basics in place. What it lacked was the newer layer: machine-readable entry points, discovery metadata, and an explicit policy about how AI systems may use the content.\n\n## Two Scoreboards, Two Very Different Questions\n\nPageSpeed asks whether a browser can render the page quickly and cleanly.\n\nAgent-readiness asks whether a client landing on the domain can discover the site's content, policy, and interfaces without a human driving.\n\nA site can be excellent at the first and mute on the second.\n\nThat is where this site started.\n\n## What the 100s Were Quietly Covering Even at 23\n\nThe interesting thing about the 23 is that two of the four sub-scores were already at 100 from the start.\n\nDiscoverability: 100.\nContent: 100.\n\nThose were not the product of any recent agent-specific work. They came from earlier habits that were already useful for accessibility and SEO.\n\nThe site has a real `sitemap.xml`, generated from the blog pipeline rather than hand maintained. It has a canonical URL on every page. It has a valid `robots.txt`. It has a PWA manifest. It has structured data in the markup, not bolted on via a plugin. It has semantic HTML, skip links, labeled controls, alt text, and a document that reads sensibly in the absence of CSS.\n\nThe same authoring discipline that helps screen readers and search engines also helps agents.\n\nThe overall score of 23 was not because the site was invisible. It was because the machine-readable layer around the content was still thin.\n\n## The Build That Moved the Number, 23 to 83\n\nThe jump from 23 to 83 was not a single trick. It came from adding a real set of agent-facing surfaces.\n\nFirst, I added cleaner content representations:\n\n- `llms.txt` and `llms-full.txt`\n- Atom and JSON feeds for the blog\n- `/api/projects.json` as a structured project ledger\n- per-post `plaintext.txt` endpoints\n- Markdown representations generated alongside the HTML\n\nSecond, I added discovery metadata so those surfaces were actually findable:\n\n- a richer JSON-LD graph on the homepage\n- `/.well-known/api-catalog`\n- `/.well-known/agent-skills/index.json` and four concrete `SKILL.md` entries\n- `/.well-known/mcp/server-card.json`\n- `/.well-known/oauth-protected-resource`\n- `Link` headers in `_headers` advertising the important endpoints\n\nThird, I tightened the agent-facing affordances:\n\n- named AI crawlers with explicit `Allow` rules in `robots.txt`\n- WebMCP tools exposed on the homepage via `navigator.modelContext.provideContext()`\n\nThat was the substantive part of the work. It raised the discovery and API-facing surfaces of the site because agents now had structured places to start, not just HTML to scrape.\n\nJust as important, each of those files points at something real. If an agent follows the catalog, link headers, or skills index, it reaches a valid resource rather than placeholder metadata.\n\n## The One Line That Closed the Gap, 83 to 92\n\nThe sub-score that moved last was Bot Access Control, 50 to 100.\n\nThe change was one line in `robots.txt`:\n\n```\nContent-Signal: ai-train=yes, search=yes, ai-input=yes\n```\n\nThat line, in the [Content Signals](https://contentsignals.org) proposal, says three things explicitly.\n\nIt says search engines are welcome to index the content. It says AI systems can use it as live input for answering a user's question, with attribution. It says AI systems are also welcome to train on this content.\n\nFor this site, that is the honest policy. It is a public portfolio and writing surface meant to be read, indexed, and cited.\n\nThat will not be the right policy for every domain. Some sites should absolutely choose more restrictive defaults. The point is not permissiveness for its own sake. The point is to publish the policy that matches the actual intent of the site.\n\nBefore this line existed, the site said nothing explicit about AI use. The checker treated that silence as an unresolved gap.\n\n## The Remaining 8 Points, Honestly\n\nThe only sub-score still short is API, Auth, MCP and Skill Discovery, sitting at 5 of 6. The specific check that fails is OAuth or OIDC discovery metadata: the checker wants `/.well-known/openid-configuration` or `/.well-known/oauth-authorization-server`.\n\nThere isn't one.\n\nThis site has no login, no token issuer, no session state, no accounts, and no protected API. The Protected Resource document already says so. Publishing discovery metadata anyway would advertise endpoints and trust relationships that do not exist.\n\nIf this site later grows an authenticated surface, that metadata becomes worth adding. Until then, the missing file is the correct file to be missing.\n\nAgent-readiness is a measurement, not a checklist to game. A truthful 92 with one standards-compliant gap is better than a 100 patched together with metadata that lies about what is there.\n\n## How This Compares to the PageSpeed Write-Up\n\nThe previous post made a simple argument: performance wins often start with what you choose not to build.\n\nPageSpeed rewards restraint. Less JavaScript, fewer third parties, smaller payloads, simpler DOM. You score well by doing less of the wrong things.\n\nAgent-readiness rewards articulation. The site has to say what it is, in a form a machine can parse. Sitemaps. Structured data. Canonical URLs. Feeds. API catalogs. Skill indexes. Content preferences. Discovery documents where relevant. You score well by saying more of the right things, in the right format, but only when those things are true.\n\nThe two scoreboards are not in conflict. The restraint that keeps PageSpeed high, static pages, clean markup, no hydration, very little third-party noise, also makes the site easier for an agent to parse in the first place.\n\nBut they are not identical either. A site can score 100 on PageSpeed and still be invisible to agents, because rendering fast is not the same as being understood.\n\nThe effort curve is different, though. Most of the journey from 23 to 83 was substantive work: new files, new endpoints, and real structured metadata. Once that was in place, a single line in `robots.txt` closed the last visible gap and added nine points.\n\n## What This Means for Everyone Else\n\nIf you are running a small site, especially a personal one, there are a few straightforward takeaways.\n\nMost of the \"baseline\" work to become agent-ready is already done if you have been doing SEO and accessibility properly. You almost certainly have a sitemap. You almost certainly have a `robots.txt`. You probably have canonical URLs and some structured data. That is what kept [daliso.com](https://daliso.com)'s Discoverability and Content sub-scores at 100 even while the overall score was 23.\n\nThe next layer is not magical. It is mostly about publishing honest, structured surfaces: `llms.txt`, feeds, machine-readable ledgers, `/.well-known` discovery files, link headers, and an explicit policy instead of silence.\n\nThe harder rule is the more important one: do not publish metadata for systems you do not actually run. Discovery documents are promises. Broken promises are worse than missing ones.\n\n## Final Thought\n\nGoing from 23 to 92 was not about gaming a checker. It was about making the site more legible without lying about its capabilities.\n\nMost of the improvement came from publishing real machine-readable surfaces. The last jump came from stating the content policy plainly. The remaining gap is there because the site does not do auth, and saying otherwise would be false.\n\nThat is the lesson I trust here.\n\nBuild something small. Describe it clearly. Do not pretend.",
+      "datePublished": "2026-04-22T03:03:17+02:00",
+      "dateModified": "2026-04-22T03:03:17+02:00",
+      "wordCount": 1449,
+      "inLanguage": "en",
+      "author": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "image": "https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/og-image.png",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Daliso Ngoma",
+        "url": "https://daliso.com"
+      },
+      "keywords": [
+        "Agents",
+        "Web",
+        "Standards",
+        "Systems",
+        "Performance"
+      ],
+      "url": "https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/",
+      "isPartOf": {
+        "@type": "Blog",
+        "@id": "https://daliso.com/blog/#blog",
+        "name": "Daliso Ngoma — Blog",
+        "url": "https://daliso.com/blog/"
+      }
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://daliso.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Blog",
+          "item": "https://daliso.com/blog/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "How We Got from 23 to 92 on Is Your Site Agent-Ready",
+          "item": "https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/"
+        }
+      ]
+    }
+  ]
+}
+  </script>
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <header class="hero">
+    <div class="container">
+      
+      <nav class="navbar" aria-label="Primary">
+        <div class="logo">
+          <a href="/"><img id="site-logo" src="/assets/images/logo-120.webp" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+        </div>
+        <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </button>
+        <ul class="nav-menu" id="nav-menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="/about/">About</a></li>
+          <li><a href="/work/">Work</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/media/">Media</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
+      </nav>
+  
+      
+        <div class="blog-article-hero animate-on-scroll">
+          <a class="blog-back-link" href="/blog/">Back to blog</a>
+          <p class="blog-eyebrow">Essay</p>
+          <h1>How We Got from 23 to 92 on Is Your Site Agent-Ready</h1>
+          <p class="blog-article-dek">How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance.</p>
+          <div class="blog-meta-list" aria-label="Article metadata">
+            <span>By Daliso Ngoma</span>
+            <span><time datetime="2026-04-22T03:03:17+02:00">22 April 2026 at 03:03</time></span>
+            <span>8 min read</span>
+          </div>
+          
+          
+          <ul class="blog-tag-list" aria-label="Tags">
+            <li class="blog-tag">Agents</li><li class="blog-tag">Web</li><li class="blog-tag">Standards</li><li class="blog-tag">Systems</li><li class="blog-tag">Performance</li>
+          </ul>
+  
+        </div>
+  
+    </div>
+  </header>
+
+  <main id="main-content">
+    
+    <section class="section blog-article-section">
+      <div class="container">
+        <article class="blog-article animate-on-scroll">
+          <div class="blog-prose">
+            <p>A few weeks ago I wrote about why this site tends to score well in PageSpeed Insights.</p>
+<p>That post was about performance discipline: small static pages, minimal JavaScript, and very little third-party drag.</p>
+<p>This post is about a different scoreboard.</p>
+<p><a href="https://isitagentready.com">isitagentready.com</a> does not ask whether a site is fast for humans. It asks whether a software agent can figure out what the site is, what it exposes, and how to consume it.</p>
+<p>The first time I ran it against <a href="https://daliso.com">daliso.com</a>, the result came back as <code>23</code>.</p>
+<p>A few focused sessions later, the same check came back as <code>92</code>, Level 5: Agent-Native.</p>
+<p>The score moved because I added truthful machine-readable surfaces, not because I optimized frontend performance. That distinction matters.</p>
+<h2>Why 23 Was Not a Surprise</h2>
+<p>I was not especially surprised by the starting point. I had already seen the same pattern elsewhere: decent content hygiene, weak agent-discovery surfaces.</p>
+<p>In my own work, more discovery is starting inside AI assistants rather than a classic search page. That changes the question from “can a human browse this?” to “can a program understand this without improvising?”</p>
+<p>This site already had some of the older web basics in place. What it lacked was the newer layer: machine-readable entry points, discovery metadata, and an explicit policy about how AI systems may use the content.</p>
+<h2>Two Scoreboards, Two Very Different Questions</h2>
+<p>PageSpeed asks whether a browser can render the page quickly and cleanly.</p>
+<p>Agent-readiness asks whether a client landing on the domain can discover the site’s content, policy, and interfaces without a human driving.</p>
+<p>A site can be excellent at the first and mute on the second.</p>
+<p>That is where this site started.</p>
+<h2>What the 100s Were Quietly Covering Even at 23</h2>
+<p>The interesting thing about the 23 is that two of the four sub-scores were already at 100 from the start.</p>
+<p>Discoverability: 100.
+Content: 100.</p>
+<p>Those were not the product of any recent agent-specific work. They came from earlier habits that were already useful for accessibility and SEO.</p>
+<p>The site has a real <code>sitemap.xml</code>, generated from the blog pipeline rather than hand maintained. It has a canonical URL on every page. It has a valid <code>robots.txt</code>. It has a PWA manifest. It has structured data in the markup, not bolted on via a plugin. It has semantic HTML, skip links, labeled controls, alt text, and a document that reads sensibly in the absence of CSS.</p>
+<p>The same authoring discipline that helps screen readers and search engines also helps agents.</p>
+<p>The overall score of 23 was not because the site was invisible. It was because the machine-readable layer around the content was still thin.</p>
+<h2>The Build That Moved the Number, 23 to 83</h2>
+<p>The jump from 23 to 83 was not a single trick. It came from adding a real set of agent-facing surfaces.</p>
+<p>First, I added cleaner content representations:</p>
+<ul>
+<li><code>llms.txt</code> and <code>llms-full.txt</code></li>
+<li>Atom and JSON feeds for the blog</li>
+<li><code>/api/projects.json</code> as a structured project ledger</li>
+<li>per-post <code>plaintext.txt</code> endpoints</li>
+<li>Markdown representations generated alongside the HTML</li>
+</ul>
+<p>Second, I added discovery metadata so those surfaces were actually findable:</p>
+<ul>
+<li>a richer JSON-LD graph on the homepage</li>
+<li><code>/.well-known/api-catalog</code></li>
+<li><code>/.well-known/agent-skills/index.json</code> and four concrete <code>SKILL.md</code> entries</li>
+<li><code>/.well-known/mcp/server-card.json</code></li>
+<li><code>/.well-known/oauth-protected-resource</code></li>
+<li><code>Link</code> headers in <code>_headers</code> advertising the important endpoints</li>
+</ul>
+<p>Third, I tightened the agent-facing affordances:</p>
+<ul>
+<li>named AI crawlers with explicit <code>Allow</code> rules in <code>robots.txt</code></li>
+<li>WebMCP tools exposed on the homepage via <code>navigator.modelContext.provideContext()</code></li>
+</ul>
+<p>That was the substantive part of the work. It raised the discovery and API-facing surfaces of the site because agents now had structured places to start, not just HTML to scrape.</p>
+<p>Just as important, each of those files points at something real. If an agent follows the catalog, link headers, or skills index, it reaches a valid resource rather than placeholder metadata.</p>
+<h2>The One Line That Closed the Gap, 83 to 92</h2>
+<p>The sub-score that moved last was Bot Access Control, 50 to 100.</p>
+<p>The change was one line in <code>robots.txt</code>:</p>
+<pre><code>Content-Signal: ai-train=yes, search=yes, ai-input=yes
+</code></pre>
+<p>That line, in the <a href="https://contentsignals.org">Content Signals</a> proposal, says three things explicitly.</p>
+<p>It says search engines are welcome to index the content. It says AI systems can use it as live input for answering a user’s question, with attribution. It says AI systems are also welcome to train on this content.</p>
+<p>For this site, that is the honest policy. It is a public portfolio and writing surface meant to be read, indexed, and cited.</p>
+<p>That will not be the right policy for every domain. Some sites should absolutely choose more restrictive defaults. The point is not permissiveness for its own sake. The point is to publish the policy that matches the actual intent of the site.</p>
+<p>Before this line existed, the site said nothing explicit about AI use. The checker treated that silence as an unresolved gap.</p>
+<h2>The Remaining 8 Points, Honestly</h2>
+<p>The only sub-score still short is API, Auth, MCP and Skill Discovery, sitting at 5 of 6. The specific check that fails is OAuth or OIDC discovery metadata: the checker wants <code>/.well-known/openid-configuration</code> or <code>/.well-known/oauth-authorization-server</code>.</p>
+<p>There isn’t one.</p>
+<p>This site has no login, no token issuer, no session state, no accounts, and no protected API. The Protected Resource document already says so. Publishing discovery metadata anyway would advertise endpoints and trust relationships that do not exist.</p>
+<p>If this site later grows an authenticated surface, that metadata becomes worth adding. Until then, the missing file is the correct file to be missing.</p>
+<p>Agent-readiness is a measurement, not a checklist to game. A truthful 92 with one standards-compliant gap is better than a 100 patched together with metadata that lies about what is there.</p>
+<h2>How This Compares to the PageSpeed Write-Up</h2>
+<p>The previous post made a simple argument: performance wins often start with what you choose not to build.</p>
+<p>PageSpeed rewards restraint. Less JavaScript, fewer third parties, smaller payloads, simpler DOM. You score well by doing less of the wrong things.</p>
+<p>Agent-readiness rewards articulation. The site has to say what it is, in a form a machine can parse. Sitemaps. Structured data. Canonical URLs. Feeds. API catalogs. Skill indexes. Content preferences. Discovery documents where relevant. You score well by saying more of the right things, in the right format, but only when those things are true.</p>
+<p>The two scoreboards are not in conflict. The restraint that keeps PageSpeed high, static pages, clean markup, no hydration, very little third-party noise, also makes the site easier for an agent to parse in the first place.</p>
+<p>But they are not identical either. A site can score 100 on PageSpeed and still be invisible to agents, because rendering fast is not the same as being understood.</p>
+<p>The effort curve is different, though. Most of the journey from 23 to 83 was substantive work: new files, new endpoints, and real structured metadata. Once that was in place, a single line in <code>robots.txt</code> closed the last visible gap and added nine points.</p>
+<h2>What This Means for Everyone Else</h2>
+<p>If you are running a small site, especially a personal one, there are a few straightforward takeaways.</p>
+<p>Most of the “baseline” work to become agent-ready is already done if you have been doing SEO and accessibility properly. You almost certainly have a sitemap. You almost certainly have a <code>robots.txt</code>. You probably have canonical URLs and some structured data. That is what kept <a href="https://daliso.com">daliso.com</a>’s Discoverability and Content sub-scores at 100 even while the overall score was 23.</p>
+<p>The next layer is not magical. It is mostly about publishing honest, structured surfaces: <code>llms.txt</code>, feeds, machine-readable ledgers, <code>/.well-known</code> discovery files, link headers, and an explicit policy instead of silence.</p>
+<p>The harder rule is the more important one: do not publish metadata for systems you do not actually run. Discovery documents are promises. Broken promises are worse than missing ones.</p>
+<h2>Final Thought</h2>
+<p>Going from 23 to 92 was not about gaming a checker. It was about making the site more legible without lying about its capabilities.</p>
+<p>Most of the improvement came from publishing real machine-readable surfaces. The last jump came from stating the content policy plainly. The remaining gap is there because the site does not do auth, and saying otherwise would be false.</p>
+<p>That is the lesson I trust here.</p>
+<p>Build something small. Describe it clearly. Do not pretend.</p>
+
+          </div>
+          <div class="blog-article-cta">
+            <a class="btn btn-outline" href="/blog/">Back to all posts</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  
+  </main>
+
+  
+  <footer>
+    <div class="container">
+      <h2>Get in Touch</h2>
+      <p class="footer-contact"><a href="mailto:info@africantechno.com">info@africantechno.com</a></p>
+      <ul class="social-links">
+        <li><a href="mailto:info@africantechno.com" aria-label="Email"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 4h20v16H2V4zm2 2v.01L12 13l8-6.99V6H4zm0 2.83V18h16V8.83l-8 7-8-7z"/></svg></a></li>
+        <li><a href="https://linkedin.com/in/djngoma" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.24 8.98h4.51V24H.24zM8.6 8.98h4.31v2.05h.06c.6-1.14 2.06-2.35 4.24-2.35 4.54 0 5.38 2.99 5.38 6.87V24h-4.51v-7.56c0-1.8-.03-4.12-2.51-4.12-2.51 0-2.9 1.96-2.9 3.98V24H8.6z"/></svg></a></li>
+        <li><a href="https://x.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="X"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.146 2H16.36l-4.28 5.62-3.66-5.62H2.22l6.73 9.63L2 22h3.787l4.356-5.72L14 22h5.908l-7.08-10.21z"/></svg></a></li>
+        <li><a href="https://instagram.com/djngoma" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.2c3.2 0 3.584.012 4.85.07 1.17.056 1.97.24 2.43.402a4.92 4.92 0 011.77 1.025c.47.47.843 1.1 1.025 1.77.162.46.346 1.26.402 2.43.058 1.267.07 1.65.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.402 2.43a4.92 4.92 0 01-1.025 1.77 4.92 4.92 0 01-1.77 1.025c-.46.162-1.26.346-2.43.402-1.267.058-1.65.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.43-.402a4.92 4.92 0 01-1.77-1.025A4.92 4.92 0 012.2 19.65c-.162-.46-.346-1.26-.402-2.43C1.74 15.954 1.728 15.57 1.728 12.37s.012-3.584.07-4.85c.056-1.17.24-1.97.402-2.43a4.92 4.92 0 011.025-1.77A4.92 4.92 0 015.32 2.672c.46-.162 1.26-.346 2.43-.402C8.416 2.212 8.8 2.2 12 2.2zM12 6.838a5.162 5.162 0 100 10.324 5.162 5.162 0 000-10.324zm0 8.324a3.162 3.162 0 110-6.324 3.162 3.162 0 010 6.324zm6.406-8.826a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0z"/></svg></a></li>
+      </ul>
+      <p class="footer-copy">© 2026 Daliso Ngoma. <a href="/privacy/">Privacy Policy</a> · <a href="/support/">Support</a> · <a href="https://github.com/DJNgoma/daliso-website" target="_blank" rel="noopener noreferrer">Source Code</a></p>
+    </div>
+  </footer>
+  
+</body>
+</html>

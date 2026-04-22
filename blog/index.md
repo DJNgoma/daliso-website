@@ -20,32 +20,31 @@ Featured essay
 
           
 
-### Shipping Privacy and Gated Deploys on daliso.com
+### How We Got from 23 to 92 on Is Your Site Agent-Ready
 
           
 
-A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.
+How daliso.com moved from 23 to 92 on isitagentready.com by adding truthful machine-readable surfaces rather than just chasing frontend performance.
 
           
 
-            03 April 2026 at 18:02
-            5 min read
+            22 April 2026 at 03:03
+            8 min read
           
 
           
           
 
-            - Web
-- CI/CD
-- Cloudflare
-- GitHub Actions
-- Privacy
+            - Agents
+- Web
+- Standards
 - Systems
+- Performance
 
           
 
   
-          [Read article](/blog/shipping-privacy-and-gated-deploys-on-daliso-com/)
+          [Read article](/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/)
         
 
   
@@ -71,6 +70,43 @@ Archive
 
         
 
+          
+
+            
+
+Post
+
+            
+
+### Shipping Privacy and Gated Deploys on daliso.com
+
+            
+
+A short build log covering the new privacy policy page, the move to gated Cloudflare Pages deploys through GitHub Actions, and the workflow cleanup done on April 3, 2026.
+
+            
+
+              03 April 2026 at 18:02
+              5 min read
+            
+
+            
+          
+
+            - Web
+- CI/CD
+- Cloudflare
+- GitHub Actions
+- Privacy
+- Systems
+
+          
+
+  
+            [Read article](/blog/shipping-privacy-and-gated-deploys-on-daliso-com/)
+          
+
+  
           
 
             
