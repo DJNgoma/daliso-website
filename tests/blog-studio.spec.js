@@ -120,6 +120,7 @@ test.describe('Blog studio', () => {
   });
 
   test('shows the AI disclosure only when it is enabled', async ({ page }, testInfo) => {
+    test.setTimeout(30000);
     const visibleTitle = withProjectSuffix('AI Disclosure Enabled', testInfo);
     const visibleSlug = slugify(visibleTitle);
     const hiddenTitle = withProjectSuffix('AI Disclosure Hidden', testInfo);

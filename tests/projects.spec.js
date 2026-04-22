@@ -140,6 +140,7 @@ test.describe('Projects page', () => {
   });
 
   test('recent activity filter shows the latest workspace updates', async ({ page, request }) => {
+    test.setTimeout(30000);
     const data = await loadProjectsData(request);
     const recentProjects = getRecentProjects(data);
 

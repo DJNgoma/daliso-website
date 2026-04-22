@@ -53,7 +53,6 @@ function buildProjectsApi() {
     name: "Daliso Ngoma — Projects ledger",
     description:
       "Curated portfolio of live and in-progress projects grouped by category.",
-    generatedAt: new Date().toISOString(),
     categories,
     projects,
     itemListElement: projects.map((project, index) => ({
@@ -65,7 +64,20 @@ function buildProjectsApi() {
     })),
   };
 
-  writeFileSync(outputPath, `${JSON.stringify(payload, null, 2)}\n`, "utf8");
+  const generatedAt = resolveGeneratedAt(payload);
+  const outputPayload = {
+    "@context": payload["@context"],
+    "@type": payload["@type"],
+    url: payload.url,
+    name: payload.name,
+    description: payload.description,
+    generatedAt,
+    categories: payload.categories,
+    projects: payload.projects,
+    itemListElement: payload.itemListElement,
+  };
+
+  writeFileSync(outputPath, `${JSON.stringify(outputPayload, null, 2)}\n`, "utf8");
   console.log(`Wrote ${outputPath} with ${projects.length} projects.`);
 }
 
@@ -74,4 +86,31 @@ function slugify(value) {
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+function resolveGeneratedAt(payload) {
+  const existingPayload = readExistingPayload();
+
+  if (
+    existingPayload?.generatedAt &&
+    JSON.stringify(stripGeneratedAt(existingPayload)) ===
+      JSON.stringify(stripGeneratedAt(payload))
+  ) {
+    return existingPayload.generatedAt;
+  }
+
+  return new Date().toISOString();
+}
+
+function readExistingPayload() {
+  try {
+    return JSON.parse(readFileSync(outputPath, "utf8"));
+  } catch {
+    return null;
+  }
+}
+
+function stripGeneratedAt(payload) {
+  const { generatedAt: _generatedAt, ...rest } = payload;
+  return rest;
 }
