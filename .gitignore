@@ -28,3 +28,7 @@ playwright-report/
 
 # Local audit artifacts
 audit/lighthouse-*.json
+
+# Blog drafts (local-only authoring)
+blog/drafts/*
+!blog/drafts/.gitkeep

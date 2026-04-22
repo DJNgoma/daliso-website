@@ -297,6 +297,7 @@ footer .social-links {
   align-items: center;
   justify-content: center;
   min-width: 140px;
+  box-sizing: border-box;
 }
 
 .btn:hover {
