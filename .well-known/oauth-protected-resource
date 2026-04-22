@@ -1,0 +1,11 @@
+{
+  "resource": "https://daliso.com/",
+  "resource_name": "Daliso Ngoma — public content",
+  "resource_documentation": "https://daliso.com/llms.txt",
+  "resource_policy_uri": "https://daliso.com/privacy/",
+  "authorization_servers": [],
+  "scopes_supported": [],
+  "bearer_methods_supported": [],
+  "authentication_required": false,
+  "note": "All content under https://daliso.com/ is public. Agents do not need to obtain access tokens. This document is published so clients that check OAuth Protected Resource Metadata (RFC 9728) can confirm the resource is open."
+}

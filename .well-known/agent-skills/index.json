@@ -1,0 +1,43 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schemas/v0.2.0/index.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "Daliso Ngoma",
+    "url": "https://daliso.com/",
+    "contact": "mailto:info@africantechno.com"
+  },
+  "skills": [
+    {
+      "name": "read-blog",
+      "type": "reference",
+      "description": "Read Daliso Ngoma's essays on judgment, systems, and practical technology via Atom or JSON Feed.",
+      "url": "https://daliso.com/.well-known/agent-skills/read-blog/SKILL.md",
+      "endpoint": "https://daliso.com/feed.json",
+      "sha256": "1c9d765b83c7757130ba04eb04f87f5566c0ebbddeb7da3f83724fc50361bb27"
+    },
+    {
+      "name": "list-projects",
+      "type": "reference",
+      "description": "Enumerate Daliso Ngoma's portfolio of live, in-progress, and prototype projects.",
+      "url": "https://daliso.com/.well-known/agent-skills/list-projects/SKILL.md",
+      "endpoint": "https://daliso.com/api/projects.json",
+      "sha256": "f9cce361b27a26dcb6375d692ff9669f5c8ed722ccf0471455a9cc7dab7cf525"
+    },
+    {
+      "name": "read-site",
+      "type": "reference",
+      "description": "Ingest the full plain-text content of daliso.com in a single request.",
+      "url": "https://daliso.com/.well-known/agent-skills/read-site/SKILL.md",
+      "endpoint": "https://daliso.com/llms-full.txt",
+      "sha256": "824f9f5685719aab32fa0003acb4598ffe2c139b98869981b726cb590eed43ea"
+    },
+    {
+      "name": "contact-author",
+      "type": "reference",
+      "description": "Reach Daliso Ngoma by email for inquiries, collaborations, or app support.",
+      "url": "https://daliso.com/.well-known/agent-skills/contact-author/SKILL.md",
+      "endpoint": "mailto:info@africantechno.com",
+      "sha256": "77cec5a081b7ea4da73e4613f612dd9f70cf4ebeb06f48ba3c8d4ea9bbb726db"
+    }
+  ]
+}

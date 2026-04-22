@@ -1,6 +1,10 @@
 # daliso.com — robots.txt
 # AI agents and crawlers are welcome. See /llms.txt for a machine-friendly map of this site.
 
+# Content Signals (contentsignals.org): this is a public personal site meant to be
+# read, indexed, and cited. All three signals below are permissive.
+Content-Signal: ai-train=yes, search=yes, ai-input=yes
+
 User-agent: *
 Allow: /
 

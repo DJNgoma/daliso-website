@@ -1,0 +1,65 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schemas/server-card.json",
+  "serverInfo": {
+    "name": "daliso-com",
+    "version": "1.0.0",
+    "description": "Read-only MCP server exposing Daliso Ngoma's site content (blog, projects, media, bio) for AI agents.",
+    "vendor": "African Technopreneurs",
+    "homepage": "https://daliso.com/",
+    "documentation": "https://daliso.com/llms.txt",
+    "license": {
+      "name": "Content © Daliso Ngoma — cite with attribution.",
+      "url": "https://daliso.com/privacy/"
+    }
+  },
+  "transports": [
+    {
+      "type": "http",
+      "url": "https://daliso.com/api/projects.json",
+      "description": "Static JSON endpoint for the project ledger (read-only).",
+      "auth": { "type": "none" }
+    },
+    {
+      "type": "http",
+      "url": "https://daliso.com/feed.json",
+      "description": "JSON Feed 1.1 of blog posts (read-only).",
+      "auth": { "type": "none" }
+    }
+  ],
+  "capabilities": {
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "tools": {
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "resources": [
+    {
+      "uri": "https://daliso.com/llms-full.txt",
+      "name": "Full site text",
+      "mimeType": "text/plain",
+      "description": "Concatenated plain-text of every page on daliso.com for LLM ingestion."
+    },
+    {
+      "uri": "https://daliso.com/feed.json",
+      "name": "Blog (JSON Feed)",
+      "mimeType": "application/feed+json",
+      "description": "Every published essay as JSON Feed 1.1."
+    },
+    {
+      "uri": "https://daliso.com/api/projects.json",
+      "name": "Projects ledger",
+      "mimeType": "application/json",
+      "description": "Curated list of live and in-progress projects with categories and status."
+    }
+  ],
+  "contact": {
+    "email": "info@africantechno.com",
+    "url": "https://daliso.com/support/"
+  }
+}

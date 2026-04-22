@@ -1,0 +1,64 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://daliso.com/api/projects.json",
+      "service-desc": [
+        {
+          "href": "https://daliso.com/.well-known/openapi.yaml",
+          "type": "application/yaml"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://daliso.com/projects/",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://daliso.com/api/projects.json",
+          "type": "application/json"
+        }
+      ],
+      "describedby": [
+        {
+          "href": "https://daliso.com/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    },
+    {
+      "anchor": "https://daliso.com/feed.json",
+      "service-desc": [
+        {
+          "href": "https://daliso.com/.well-known/openapi.yaml",
+          "type": "application/yaml"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://daliso.com/blog/",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://daliso.com/feed.xml",
+      "service-doc": [
+        {
+          "href": "https://daliso.com/blog/",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://daliso.com/llms-full.txt",
+      "service-doc": [
+        {
+          "href": "https://daliso.com/llms.txt",
+          "type": "text/plain"
+        }
+      ]
+    }
+  ]
+}

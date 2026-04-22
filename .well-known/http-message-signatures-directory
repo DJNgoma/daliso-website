@@ -1,0 +1,4 @@
+{
+  "keys": [],
+  "note": "daliso.com does not currently dispatch signed bot requests. This empty JWKS advertises readiness for Web Bot Auth (draft-ietf-webbotauth) so keys can be added without changing the discovery path."
+}
