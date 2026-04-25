@@ -1,16 +1,16 @@
 # Performance Guardrails
 
-Updated: 10 April 2026
+Updated: 26 April 2026
 
 ## Live Snapshot
 
-The official PageSpeed Insights API returned a Google quota error on 3 April 2026, so the live check was taken with Lighthouse directly against `https://daliso.com/` from this workspace instead.
+The official PageSpeed Insights API returned Google quota errors on 3 April 2026 and again on 26 April 2026, so live checks use Lighthouse directly against `https://daliso.com/` from this workspace when PSI is blocked.
 
 - Desktop performance: `100`
-- Mobile performance: `94`
-- Mobile lab metrics: `FCP 2.0s`, `LCP 2.7s`, `Speed Index 2.4s`, `TBT 0ms`, `CLS 0`
+- Latest post-deploy mobile performance: `97`
+- Latest post-deploy mobile lab metrics: `FCP 1.6s`, `LCP 2.4s`, `Speed Index 1.8s`, `TBT 0ms`, `CLS 0`
 
-That means the site is still excellent on desktop, but it is not currently a stable mobile `100`.
+That means the site is back to a desktop `100`, but it should not be described as a stable mobile `100` unless a fresh PageSpeed or Lighthouse run actually reports that score.
 
 ## What Pulled Mobile Down
 
@@ -33,6 +33,9 @@ That means the site is still excellent on desktop, but it is not currently a sta
 - Added `hero-320.webp` and `hero-640.webp` and updated the homepage hero markup to prefer WebP.
 - Added a small head theme bootstrap so dark-mode users do not wait for the module script before the correct theme is applied.
 - Added `Cache-Control: ... no-transform` to the default HTML header rule to stop Cloudflare HTML rewrites from reintroducing the email decoder script.
+- Scoped HTML-only discovery headers and `no-transform` to HTML responses so CSS, JS, fonts, and images stay compressible.
+- Collapsed the duplicate Inter 600 font transfer into the existing Inter 400 file while the files are byte-identical.
+- Switched custom font faces to `font-display: optional` so slow font delivery does not block critical text paint.
 - Added performance guardrail coverage in `tests/performance.spec.js`.
 
 ## Safari Cache Incident: 10 April 2026
@@ -53,6 +56,7 @@ The homepage route links worked in preview but failed on the live site in Safari
 - Preserve HTML `no-transform` unless Cloudflare email obfuscation is disabled another way, but do not apply it to CSS, JS, fonts, images, or other assets.
 - Keep HTML-only discovery headers (`Link` and `Vary: Accept`) out of asset responses.
 - Do not preload both Inter font files while they are byte-identical.
+- Keep critical custom fonts on `font-display: optional` unless there is a deliberate visual reason to trade slower mobile text paint for font fidelity.
 - Treat third-party or edge-injected scripts as performance regressions unless they are clearly worth the cost.
 
 ## Verification Workflow

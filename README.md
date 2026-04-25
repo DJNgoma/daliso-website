@@ -148,6 +148,7 @@ The repo relies on query-string versioning for shared entrypoints such as `js/ma
 - Shared CSS and JS entrypoints must stay revalidating: `Cache-Control: public, max-age=0, must-revalidate`.
 - HTML responses keep `Cache-Control: public, max-age=0, must-revalidate, no-transform` from the Cloudflare Pages middleware so Cloudflare does not rewrite email links back into the page.
 - Discovery `Link` headers and `Vary: Accept` belong on HTML responses only; keep them out of `/css/*`, `/js/*`, `/assets/*`, and font responses.
+- Custom fonts use `font-display: optional` so slow font delivery does not hold critical text paint hostage on mobile Lighthouse runs.
 - Do not mark `/js/*` or `/css/*` immutable unless the filenames themselves become content-hashed.
 - The Safari/WebKit failure on 10 April 2026 came from stale immutable JS: the homepage HTML was fresh, but the browser kept executing an older `main.js` module body that still imported `nav-menu.js?v=20260403-perf`, which rewrote `About` and `Work` back to home-page anchors.
 - `_headers` is the source of truth for cache policy, and `tests/performance-guardrails.spec.mjs` protects this rule in CI.

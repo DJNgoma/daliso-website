@@ -69,6 +69,10 @@ The live site was sending the long discovery `Link` header, `Vary: Accept`, and 
 
 The site still keeps `no-transform` on HTML, because that protects against Cloudflare rewriting email links and injecting the old email decoder script. But assets should not inherit that rule. They need to stay cacheable, compressible, and boring.
 
+Fifth, custom fonts were told to stop holding the first text paint hostage.
+
+The hero headline is the mobile LCP element. The site still uses its custom fonts, but the font faces now use `font-display: optional` so a slow font fetch does not delay readable text on constrained Lighthouse-style mobile runs.
+
 ## What We Did Not Change
 
 We did not add a framework.
@@ -103,6 +107,7 @@ The useful version is:
 - Keep HTML `Cache-Control: public, max-age=0, must-revalidate, no-transform` in the Cloudflare Pages middleware unless Cloudflare email obfuscation is disabled another way.
 - Do not let `no-transform`, long discovery `Link` headers, or `Vary: Accept` leak onto `/css/*`, `/js/*`, `/assets/*`, fonts, or images.
 - Do not preload both Inter font files while the Inter 400 and Inter 600 files are byte-identical.
+- Keep critical custom fonts on `font-display: optional` unless there is a deliberate visual reason to trade slower mobile text paint for font fidelity.
 - Do not mark unfingerprinted `/js/*` or `/css/*` as immutable; this repo already had a Safari/WebKit stale-module incident from that pattern.
 - Before calling it fixed, run `npm run check`, inspect live headers after deploy, and run Lighthouse or PageSpeed against the live homepage.
 

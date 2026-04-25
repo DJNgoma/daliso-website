@@ -48,6 +48,8 @@ test("home page avoids the duplicate Inter font transfer", () => {
   assert.match(html, /\/assets\/fonts\/inter-400\.woff2/);
   assert.doesNotMatch(html, /\/assets\/fonts\/inter-600\.woff2/);
   assert.doesNotMatch(fontsCss, /inter-600\.woff2/);
+  assert.match(fontsCss, /font-display:\s*optional/, "Custom fonts should not hold text paint hostage on slow mobile runs.");
+  assert.doesNotMatch(fontsCss, /font-display:\s*swap/, "Use optional display for the critical text fonts unless there is a deliberate visual reason not to.");
 });
 
 test("theme runtime and blog generator keep the lightweight shared asset path", () => {
