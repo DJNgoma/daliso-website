@@ -87,7 +87,7 @@ function htmlToMarkdown(html, fallbackTitle) {
     .filter((value) => value !== null)
     .join("\n");
 
-  return `${header}\n${converted.trim()}\n`;
+  return `${header}\n${trimTrailingWhitespace(converted.trim())}\n`;
 }
 
 function convertHtmlFragment(fragment) {
@@ -194,4 +194,8 @@ function stripFrontMatter(source) {
     }
   }
   return source;
+}
+
+function trimTrailingWhitespace(source) {
+  return source.replace(/[ \t]+$/gm, "");
 }

@@ -22,7 +22,9 @@ test.describe('Performance guardrails', () => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
 
-    expect(cssRequests.has('/css/style.css')).toBe(true);
+    expect(cssRequests.has('/css/home.css')).toBe(true);
+    expect(cssRequests.has('/css/style.css')).toBe(false);
+    expect(cssRequests.has('/css/pages/home.css')).toBe(false);
 
     for (const cssPath of SHARED_CSS_PARTIALS) {
       expect(cssRequests.has(cssPath)).toBe(false);

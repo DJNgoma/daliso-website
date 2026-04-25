@@ -46,10 +46,13 @@ The homepage route links worked in preview but failed on the live site in Safari
 ## Guardrails
 
 - Keep shared CSS source files in `css/`, but always serve the generated bundle in `css/style.css`.
+- Keep the homepage on the generated `css/home.css` bundle so it does not request both shared CSS and page CSS on the critical path.
 - Keep shared JS entrypoints revalidating unless the repo moves to content-hashed filenames for public modules.
 - Do not reintroduce JS-driven image swaps for above-the-fold assets.
 - Keep the homepage hero and nav logo in modern, tightly sized formats.
-- Preserve HTML `no-transform` unless Cloudflare email obfuscation is disabled another way.
+- Preserve HTML `no-transform` unless Cloudflare email obfuscation is disabled another way, but do not apply it to CSS, JS, fonts, images, or other assets.
+- Keep HTML-only discovery headers (`Link` and `Vary: Accept`) out of asset responses.
+- Do not preload both Inter font files while they are byte-identical.
 - Treat third-party or edge-injected scripts as performance regressions unless they are clearly worth the cost.
 
 ## Verification Workflow

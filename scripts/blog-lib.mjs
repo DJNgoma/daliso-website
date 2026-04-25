@@ -987,7 +987,6 @@ ${jsonLd}
     } catch {}
   </script>
   <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/inter-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/style.css?v=${assetVersion}" />
   <link rel="stylesheet" href="/css/pages/blog.css?v=${assetVersion}" />

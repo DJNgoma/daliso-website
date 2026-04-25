@@ -4,6 +4,24 @@
 // markdown version of any HTML page. Humans continue to receive HTML. Also
 // sets a Vary header so intermediaries do not serve the wrong variant.
 
+const htmlCacheControl = "public, max-age=0, must-revalidate, no-transform";
+const htmlDiscoveryLinks = [
+  '</llms.txt>; rel="describedby"; type="text/plain"',
+  '</llms-full.txt>; rel="alternate"; type="text/plain"; title="Full site text"',
+  '</sitemap.xml>; rel="sitemap"; type="application/xml"',
+  '</feed.xml>; rel="alternate"; type="application/atom+xml"; title="Blog (Atom)"',
+  '</feed.json>; rel="alternate"; type="application/feed+json"; title="Blog (JSON Feed)"',
+  '</.well-known/api-catalog>; rel="api-catalog"; type="application/linkset+json"',
+  '</.well-known/openapi.yaml>; rel="service-desc"; type="application/yaml"',
+  '</.well-known/ai-plugin.json>; rel="service-meta"; type="application/json"',
+  '</.well-known/agent-skills/index.json>; rel="agent-skills"; type="application/json"',
+  '</.well-known/mcp/server-card.json>; rel="mcp-server-card"; type="application/json"',
+  '</.well-known/oauth-protected-resource>; rel="oauth-protected-resource"; type="application/json"',
+  '</privacy/>; rel="privacy-policy"',
+  '</.well-known/security.txt>; rel="security"; type="text/plain"',
+  '<mailto:info@africantechno.com>; rel="author"',
+];
+
 export const onRequest = async (context) => {
   const { request, next, env } = context;
   const url = new URL(request.url);
@@ -25,17 +43,7 @@ export const onRequest = async (context) => {
   const isHtml = contentType.toLowerCase().includes("text/html");
 
   if (!wantsMarkdown || !isHtml || response.status !== 200) {
-    // Always announce that we vary on Accept.
-    const headers = new Headers(response.headers);
-    const existingVary = headers.get("Vary") || "";
-    if (!existingVary.split(",").map((s) => s.trim().toLowerCase()).includes("accept")) {
-      headers.set("Vary", existingVary ? `${existingVary}, Accept` : "Accept");
-    }
-    return new Response(response.body, {
-      status: response.status,
-      statusText: response.statusText,
-      headers,
-    });
+    return isHtml ? withHtmlHeaders(response) : response;
   }
 
   const mdCandidates = candidateMarkdownPaths(url.pathname);
@@ -68,14 +76,26 @@ export const onRequest = async (context) => {
   }
 
   // No markdown variant found — return HTML but still advertise Vary.
+  return withHtmlHeaders(response);
+};
+
+function withHtmlHeaders(response) {
   const headers = new Headers(response.headers);
-  headers.set("Vary", "Accept");
+  const existingVary = headers.get("Vary") || "";
+  const varyValues = existingVary.split(",").map((s) => s.trim().toLowerCase());
+
+  headers.set("Cache-Control", htmlCacheControl);
+  headers.set("Link", htmlDiscoveryLinks.join(", "));
+  if (!varyValues.includes("accept")) {
+    headers.set("Vary", existingVary ? `${existingVary}, Accept` : "Accept");
+  }
+
   return new Response(response.body, {
     status: response.status,
     statusText: response.statusText,
     headers,
   });
-};
+}
 
 function candidateMarkdownPaths(pathname) {
   const clean = pathname.replace(/\/+$/, "") || "";
