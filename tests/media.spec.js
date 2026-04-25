@@ -23,14 +23,14 @@ test.describe('Media talks', () => {
     await expect(page.locator('.talk-meta').getByText('Gauteng AI Community', { exact: true })).toBeVisible();
 
     const deckFrame = page.locator('iframe.talk-deck-frame');
-    await expect(deckFrame).toHaveAttribute('src', '/media/coding-with-ai/deck.html');
+    await expect(deckFrame).toHaveAttribute('src', '/media/coding-with-ai/deck');
 
     const frame = page.frameLocator('iframe.talk-deck-frame');
     await expect(frame.locator('body')).toContainText('Coding with AI');
 
     await expect(page.getByRole('link', { name: /Open full-screen deck/ })).toHaveAttribute(
       'href',
-      '/media/coding-with-ai/deck.html'
+      '/media/coding-with-ai/deck'
     );
     await expect(page.getByRole('link', { name: /Download PDF/ }).last()).toHaveAttribute(
       'href',
@@ -39,7 +39,7 @@ test.describe('Media talks', () => {
   });
 
   test('deck and PDF assets are served with useful content types', async ({ request }) => {
-    const deckResponse = await request.get('/media/coding-with-ai/deck.html');
+    const deckResponse = await request.get('/media/coding-with-ai/deck');
     expect(deckResponse.ok()).toBe(true);
     expect(deckResponse.headers()['content-type']).toContain('text/html');
 

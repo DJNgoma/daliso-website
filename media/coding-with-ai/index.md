@@ -78,6 +78,6 @@ The embedded version keeps the talk on this page. Use the full-screen deck if yo
 
 
 
-          [Open full-screen deck →](/media/coding-with-ai/deck.html)
+          [Open full-screen deck →](/media/coding-with-ai/deck)
           [Download PDF →](/media/coding-with-ai/coding-with-ai.pdf)
           [Back to Media →](/media/)

@@ -76,7 +76,12 @@ test("embedded talk deck opts out of the global frame-deny header", () => {
   );
   assert.match(
     headers,
+    /\/media\/coding-with-ai\/deck\s+[\s\S]*?! X-Frame-Options\s+[\s\S]*?Content-Security-Policy:\s+frame-ancestors 'self'/,
+    "The extensionless embedded deck route must detach X-Frame-Options and allow same-origin framing via CSP."
+  );
+  assert.match(
+    headers,
     /\/media\/coding-with-ai\/deck\.html\s+[\s\S]*?! X-Frame-Options\s+[\s\S]*?Content-Security-Policy:\s+frame-ancestors 'self'/,
-    "The embedded deck must detach X-Frame-Options and allow same-origin framing via CSP."
+    "The HTML deck route should keep the same frame policy for direct requests and redirects."
   );
 });
