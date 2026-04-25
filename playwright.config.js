@@ -15,7 +15,7 @@ export default defineConfig({
   testDir: './tests',
   testIgnore: ['tests/blog-generator.spec.mjs'],
   timeout: 15000,
-  workers: 2,
+  workers: process.env.CI ? 1 : 2,
   use: {
     baseURL: `http://127.0.0.1:${playwrightPort}`,
   },
