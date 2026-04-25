@@ -65,3 +65,18 @@ test("unfingerprinted CSS and JS stay revalidating instead of immutable", () => 
     "Do not mark unfingerprinted JS as immutable."
   );
 });
+
+test("embedded talk deck opts out of the global frame-deny header", () => {
+  const headers = read("_headers");
+
+  assert.match(
+    headers,
+    /\/\*\s+[\s\S]*?X-Frame-Options:\s+DENY/,
+    "The default site security header should still deny framing."
+  );
+  assert.match(
+    headers,
+    /\/media\/coding-with-ai\/deck\.html\s+[\s\S]*?! X-Frame-Options\s+[\s\S]*?Content-Security-Policy:\s+frame-ancestors 'self'/,
+    "The embedded deck must detach X-Frame-Options and allow same-origin framing via CSP."
+  );
+});

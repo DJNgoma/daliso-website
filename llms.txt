@@ -21,7 +21,7 @@ This file is a machine-friendly map of daliso.com, written for AI agents and res
 - [About](https://daliso.com/about/): background, current focus, tools in use.
 - [Work](https://daliso.com/work/): portfolio of products, platforms, and operating systems.
 - [Projects](https://daliso.com/projects/): live project ledger with status and categories.
-- [Media](https://daliso.com/media/): interviews, features, and podcast appearances.
+- [Media](https://daliso.com/media/): talks, presentations, interviews, features, and podcast appearances.
 - [Blog](https://daliso.com/blog/): essays on judgment, systems, and practical technology.
 - [Privacy](https://daliso.com/privacy/): privacy policy.
 - [Support](https://daliso.com/support/): support and contact channel.

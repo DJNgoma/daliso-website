@@ -26,6 +26,11 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://daliso.com/media/coding-with-ai/</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://daliso.com/blog/</loc>
     <lastmod>2026-04-22T03:03:17+02:00</lastmod>
     <changefreq>weekly</changefreq>

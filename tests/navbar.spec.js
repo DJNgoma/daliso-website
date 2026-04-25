@@ -8,6 +8,7 @@ const SHARED_CHROME_PATHS = [
   '/work/',
   '/projects/',
   '/media/',
+  '/media/coding-with-ai/',
   '/blog/',
   '/privacy/',
   '/blog/ai-psychosis-and-synthetic-confidence/',

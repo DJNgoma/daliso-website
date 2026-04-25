@@ -6,6 +6,7 @@ const CORE_PUBLIC_PATHS = [
   '/work/',
   '/projects/',
   '/media/',
+  '/media/coding-with-ai/',
   '/blog/',
   '/blog/ai-psychosis-and-synthetic-confidence/',
 ];

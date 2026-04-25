@@ -217,7 +217,7 @@ This file is a machine-friendly map of daliso.com, written for AI agents and res
 - [About](${siteUrl}/about/): background, current focus, tools in use.
 - [Work](${siteUrl}/work/): portfolio of products, platforms, and operating systems.
 - [Projects](${siteUrl}/projects/): live project ledger with status and categories.
-- [Media](${siteUrl}/media/): interviews, features, and podcast appearances.
+- [Media](${siteUrl}/media/): talks, presentations, interviews, features, and podcast appearances.
 - [Blog](${siteUrl}/blog/): essays on judgment, systems, and practical technology.
 - [Privacy](${siteUrl}/privacy/): privacy policy.
 - [Support](${siteUrl}/support/): support and contact channel.
@@ -281,6 +281,7 @@ Daliso Ngoma is a founder and managing director building immersive tech, commerc
 - Work: ${siteUrl}/work/
 - Projects: ${siteUrl}/projects/
 - Media: ${siteUrl}/media/
+- Coding with AI talk: ${siteUrl}/media/coding-with-ai/
 - Blog: ${siteUrl}/blog/
 - Privacy: ${siteUrl}/privacy/
 - Support: ${siteUrl}/support/
@@ -1152,6 +1153,11 @@ function renderSitemap(posts) {
       loc: `${siteUrl}/media/`,
       changefreq: "monthly",
       priority: "0.7",
+    },
+    {
+      loc: `${siteUrl}/media/coding-with-ai/`,
+      changefreq: "yearly",
+      priority: "0.5",
     },
     {
       loc: `${siteUrl}/blog/`,

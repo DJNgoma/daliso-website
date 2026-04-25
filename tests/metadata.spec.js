@@ -6,6 +6,7 @@ const CORE_PUBLIC_PATHS = [
   '/work/',
   '/projects/',
   '/media/',
+  '/media/coding-with-ai/',
   '/blog/',
   '/privacy/',
   '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/',

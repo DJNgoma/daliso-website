@@ -15,6 +15,11 @@ const pages = [
     title: "Projects | Daliso Ngoma",
   },
   { file: "media/index.html", md: "media/index.md", title: "Media | Daliso Ngoma" },
+  {
+    file: "media/coding-with-ai/index.html",
+    md: "media/coding-with-ai/index.md",
+    title: "Coding with AI | Talks | Daliso Ngoma",
+  },
   { file: "blog/index.html", md: "blog/index.md", title: "Blog | Daliso Ngoma" },
   {
     file: "privacy/index.html",
@@ -88,8 +93,8 @@ function htmlToMarkdown(html, fallbackTitle) {
 function convertHtmlFragment(fragment) {
   let out = fragment;
 
-  // Remove script, style, svg blocks.
-  out = out.replace(/<(script|style|svg|noscript)[^>]*>[\s\S]*?<\/\1>/gi, "");
+  // Remove script, style, svg, and embedded media blocks.
+  out = out.replace(/<(script|style|svg|iframe|noscript)[^>]*>[\s\S]*?<\/\1>/gi, "");
 
   // Headings.
   out = out.replace(/<h([1-6])[^>]*>([\s\S]*?)<\/h\1>/gi, (_m, level, text) => {

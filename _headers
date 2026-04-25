@@ -32,6 +32,10 @@
 /js/projects-data.json
   Cache-Control: public, max-age=0, must-revalidate
 
+/media/coding-with-ai/deck.html
+  ! X-Frame-Options
+  Content-Security-Policy: frame-ancestors 'self'
+
 /manifest.webmanifest
   Cache-Control: public, max-age=0, must-revalidate
 
