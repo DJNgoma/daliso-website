@@ -25,6 +25,8 @@ https://daliso.com
 - Mobile-friendly and accessible
 - Security headers (X-Content-Type-Options, X-Frame-Options, Referrer-Policy, Permissions-Policy)
 - SEO: robots.txt, sitemap.xml, structured data, theme-color meta
+- Agent-readiness surfaces: `llms.txt`, `llms-full.txt`, feed output, per-post plaintext/Markdown, API discovery, agent skills, MCP metadata, and read-only WebMCP homepage tools
+- Explicit AI content policy via `Content-Signal` in `robots.txt`
 
 ---
 
@@ -44,10 +46,16 @@ https://daliso.com
 - `css/animations.css` → Scroll-triggered animations with reduced-motion support (source)
 - `css/pages/` → Page-specific styles (`404.css`, `projects.css`)
 - `scripts/build-css.mjs` → Rebuilds `css/style.css` from the shared source stylesheets
+- `api/projects.json` → Generated structured project ledger for machine readers
+- `.well-known/` → API catalog, AI plugin, agent-skill, MCP, OAuth protected-resource, HTTP message-signature, and security discovery files
 - `data/projects-manifest.json` → Checked-in curation manifest for the public projects page
 - `scripts/blog-generator.mjs` → Generates `/blog/`, `/blog/{slug}/`, and draft post scaffolds
+- `scripts/build-api.mjs` → Generates `/api/projects.json` from the curated project manifest
+- `scripts/build-agent-skills.mjs` → Regenerates `/.well-known/agent-skills/index.json`
+- `scripts/build-markdown-pages.mjs` → Generates Markdown copies of public pages for agents and text-first readers
 - `js/main.js` → Single entry point
 - `js/modules/` → Modular UI behaviors (nav, theme, scroll, carousel)
+- `js/webmcp.js` → Read-only WebMCP tools exposed to browser agents that support `navigator.modelContext`
 - `js/projects-page.js` → Projects page renderer (fetches synced portfolio data from JSON)
 - `js/projects-data.json` → Generated project catalog data for `/projects/`
 - `scripts/sync-projects.mjs` → Syncs the curated projects page from the live Developer folder
@@ -74,6 +82,12 @@ npm run build:css
 npm run build:assets
 npm run sync:projects
 npm test
+```
+
+For a production-equivalent local artifact, including the generated agent-readiness files, run:
+
+```bash
+npm run build:site
 ```
 
 For the local site plus the write-capable blog studio:
@@ -182,6 +196,23 @@ On April 3, 2026, a fresh live Lighthouse run against `https://daliso.com/` from
 - Desktop performance: `100`
 
 The main mobile misses were render-blocking CSS chaining, image delivery, and an injected Cloudflare email-decoder script on the live page. See [`audit/performance-guardrails.md`](/Users/daliso/Developer/daliso-website/audit/performance-guardrails.md) for the current fixes and the guardrails that should stop those regressions from sneaking back in.
+
+## Agent-Readiness Notes
+
+The April 2026 agent-readiness work moved the site from `23` to `92`, Level 5: Agent-Native, on [isitagentready.com](https://isitagentready.com). The public write-up is [`How We Got from 23 to 92 on Is Your Site Agent-Ready`](https://daliso.com/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/).
+
+That work added real machine-readable surfaces rather than placeholder metadata:
+
+- `llms.txt`, `llms-full.txt`, Atom and JSON feeds, per-post `plaintext.txt`, and generated Markdown page copies
+- `/api/projects.json` as a structured project ledger
+- `/.well-known/api-catalog`, `/.well-known/openapi.yaml`, `/.well-known/ai-plugin.json`, and `/.well-known/http-message-signatures-directory`
+- `/.well-known/agent-skills/index.json` plus four concrete `SKILL.md` entries for reading the site, reading the blog, listing projects, and contacting the author
+- `/.well-known/mcp/server-card.json` and `/.well-known/oauth-protected-resource`
+- Homepage discovery links, richer structured data, and read-only WebMCP tools in `js/webmcp.js`
+- `_headers` `Link` discovery headers for the important machine-readable endpoints
+- `robots.txt` AI crawler allow rules plus `Content-Signal: ai-train=yes, search=yes, ai-input=yes`
+
+The remaining score gap is intentional: the site does not publish OIDC or OAuth authorization-server discovery metadata because it has no login, token issuer, protected API, accounts, or session state.
 
 ## Projects Sync Workflow
 
