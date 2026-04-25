@@ -61,7 +61,7 @@ The source files stay readable. The generated files become smaller. That is the 
 
 Third, the duplicate Inter font transfer was removed.
 
-The `inter-400.woff2` and `inter-600.woff2` files were byte-identical. Preloading both meant the browser could fetch the same font twice under two URLs. The CSS now points both weights at the same file, and the duplicate preload is gone.
+The Inter 400 and Inter 600 font files were byte-identical. Preloading both meant the browser could fetch the same font twice under two URLs. The CSS now points both weights at the same file, and the duplicate preload is gone.
 
 Fourth, HTML-only headers were moved out of asset responses.
 
@@ -102,7 +102,7 @@ The useful version is:
 - Keep generated CSS minified, but keep the editable source files readable.
 - Keep HTML `Cache-Control: public, max-age=0, must-revalidate, no-transform` in the Cloudflare Pages middleware unless Cloudflare email obfuscation is disabled another way.
 - Do not let `no-transform`, long discovery `Link` headers, or `Vary: Accept` leak onto `/css/*`, `/js/*`, `/assets/*`, fonts, or images.
-- Do not preload both Inter font files while `inter-400.woff2` and `inter-600.woff2` are byte-identical.
+- Do not preload both Inter font files while the Inter 400 and Inter 600 files are byte-identical.
 - Do not mark unfingerprinted `/js/*` or `/css/*` as immutable; this repo already had a Safari/WebKit stale-module incident from that pattern.
 - Before calling it fixed, run `npm run check`, inspect live headers after deploy, and run Lighthouse or PageSpeed against the live homepage.
 

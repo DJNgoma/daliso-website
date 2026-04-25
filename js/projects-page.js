@@ -1,4 +1,4 @@
-import './main.js?v=20260410-cachefix';
+import './main.js?v=20260426-perf';
 
 async function init() {
   const heroMetrics = document.getElementById('hero-metrics');

@@ -17,7 +17,7 @@ const siteUrl = "https://daliso.com";
 const siteTitle = "Daliso Ngoma";
 const defaultAuthor = "Daliso Ngoma";
 const defaultOgImage = `${siteUrl}/assets/images/og-image-v2.png`;
-const assetVersion = "20260410-cachefix";
+const assetVersion = "20260426-perf";
 const generatedMarkerFile = ".blog-generated";
 const reservedBlogDirs = new Set(["posts", "drafts"]);
 const validDocumentStatuses = new Set(["draft", "published"]);
@@ -986,8 +986,8 @@ ${jsonLd}
       }
     } catch {}
   </script>
-  <link rel="preload" href="/assets/fonts/inter-400.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/inter-400.woff2?v=20260426-perf" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="/assets/fonts/space-grotesk-700.woff2?v=20260426-perf" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="/css/style.css?v=${assetVersion}" />
   <link rel="stylesheet" href="/css/pages/blog.css?v=${assetVersion}" />
   <meta property="og:title" content="${escapeHtml(pageTitle)}" />
