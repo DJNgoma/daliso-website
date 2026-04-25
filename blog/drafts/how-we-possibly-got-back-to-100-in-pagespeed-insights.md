@@ -114,5 +114,5 @@ The useful version is:
 ## Draft Notes Before Publishing
 
 - Replace "possibly" with a firmer claim only after the deployed homepage has a fresh PageSpeed or Lighthouse result.
-- Add the final deployed score and fetch time.
+- Add the final deployed score and fetch time. The 26 April 2026 follow-up still measured desktop at `100`, but mobile remained variable in the `95-97` band rather than a stable `100`.
 - Consider including the before/after request list if the story needs evidence rather than just explanation.

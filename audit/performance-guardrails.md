@@ -7,8 +7,8 @@ Updated: 26 April 2026
 The official PageSpeed Insights API returned Google quota errors on 3 April 2026 and again on 26 April 2026, so live checks use Lighthouse directly against `https://daliso.com/` from this workspace when PSI is blocked.
 
 - Desktop performance: `100`
-- Latest post-deploy mobile performance: `97`
-- Latest post-deploy mobile lab metrics: `FCP 1.6s`, `LCP 2.4s`, `Speed Index 1.8s`, `TBT 0ms`, `CLS 0`
+- Final post-deploy mobile performance observed in this run: `95-97`
+- Latest final mobile lab metrics: `FCP 2.0s`, `LCP 2.3s`, `Speed Index 2.0s`, `TBT 0ms`, `CLS 0`
 
 That means the site is back to a desktop `100`, but it should not be described as a stable mobile `100` unless a fresh PageSpeed or Lighthouse run actually reports that score.
 
