@@ -20,6 +20,8 @@ The important word is **possibly**.
 
 PageSpeed Insights is not a permanent property of a website. It is a lab run, with network assumptions, device assumptions, a Lighthouse version, and whatever the edge happens to serve at that moment.
 
+Update on 26 April 2026: the practical state is desktop `100` and mobile `90` on PageSpeed Insights. That is good enough for now. The lesson here is not "we permanently got mobile to 100"; it is "we removed the obvious accidental cost and set guardrails so the site does not slip further."
+
 So the goal was not to perform some grand redesign. The goal was smaller and more useful: look at the current misses, avoid breaking the site, and remove the last bits of accidental cost that had crept into the homepage.
 
 ## The Baseline
@@ -110,10 +112,11 @@ The useful version is:
 - Do not preload both Inter font files while the Inter 400 and Inter 600 files are byte-identical.
 - Keep critical custom fonts on `font-display: optional` unless there is a deliberate visual reason to trade slower mobile text paint for font fidelity.
 - Do not mark unfingerprinted `/js/*` or `/css/*` as immutable; this repo already had a Safari/WebKit stale-module incident from that pattern.
+- Treat desktop `100` and mobile `90+` as acceptable for now; do not chase the final mobile points with large structural changes unless there is a concrete user-visible regression.
 - Before calling it fixed, run `npm run check`, inspect live headers after deploy, and run Lighthouse or PageSpeed against the live homepage.
 
 ## Draft Notes Before Publishing
 
-- Replace "possibly" with a firmer claim only after the deployed homepage has a fresh PageSpeed or Lighthouse result.
-- Add the final deployed score and fetch time. The 26 April 2026 follow-up still measured desktop at `100`, but mobile remained variable in the `95-97` band rather than a stable `100`.
+- Keep "possibly" in the title unless a later deployed homepage has a stable mobile `100`.
+- Current accepted score note: desktop `100`, mobile `90` on 26 April 2026 PageSpeed Insights.
 - Consider including the before/after request list if the story needs evidence rather than just explanation.

@@ -4,13 +4,13 @@ Updated: 26 April 2026
 
 ## Live Snapshot
 
-The official PageSpeed Insights API returned Google quota errors on 3 April 2026 and again on 26 April 2026, so live checks use Lighthouse directly against `https://daliso.com/` from this workspace when PSI is blocked.
+The official PageSpeed Insights API returned Google quota errors on 3 April 2026 and again on 26 April 2026, so live checks use Lighthouse directly against `https://daliso.com/` from this workspace when PSI is blocked. User-visible PSI reports are still the public source of truth when they are available.
 
-- Desktop performance: `100`
-- Final post-deploy mobile performance observed in this run: `95-97`
-- Latest final mobile lab metrics: `FCP 2.0s`, `LCP 2.3s`, `Speed Index 2.0s`, `TBT 0ms`, `CLS 0`
+- Accepted current state on 26 April 2026: desktop `100`, mobile `90` on the user's PageSpeed Insights run.
+- Last local live Lighthouse fallback after the critical-CSS follow-up: mobile `97`, desktop `100`.
+- Operational bar for now: desktop should stay `100`; mobile is acceptable at `90+` unless a specific regression or user-visible slowdown appears.
 
-That means the site is back to a desktop `100`, but it should not be described as a stable mobile `100` unless a fresh PageSpeed or Lighthouse run actually reports that score.
+That means the site is back to a desktop `100`, but it should not be described as a stable mobile `100`.
 
 ## What Pulled Mobile Down
 
@@ -59,6 +59,7 @@ The homepage route links worked in preview but failed on the live site in Safari
 - Do not preload both Inter font files while they are byte-identical.
 - Keep critical custom fonts on `font-display: optional` unless there is a deliberate visual reason to trade slower mobile text paint for font fidelity.
 - Treat third-party or edge-injected scripts as performance regressions unless they are clearly worth the cost.
+- Do not chase the final mobile points with large structural changes while desktop remains `100`, mobile remains `90+`, and the live site feels correct.
 
 ## Verification Workflow
 

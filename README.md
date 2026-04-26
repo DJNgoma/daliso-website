@@ -186,9 +186,9 @@ The studio is local-only. It is not included in the production publish surface, 
 If the homepage posts a very high PageSpeed Insights or Lighthouse score, the reason is mostly architectural rather than tactical.
 
 - The site is primarily static HTML, CSS, and vanilla JavaScript, so there is no hydration cost or framework runtime on the homepage.
-- The homepage ships very little code: `index.html` is about 9.8 KB, `js/main.js` is 256 B before it conditionally loads anything else, and the shared CSS is now served as a single generated bundle.
+- The homepage ships very little code: `index.html` is about 20 KB with first-viewport CSS inlined, `js/main.js` is 336 B before it conditionally loads anything else, and the homepage CSS is served as one generated bundle.
 - There are no analytics tags, ad scripts, chat widgets, or third-party embeds on the homepage.
-- Critical assets are explicit: the hero image is preloaded, responsive, and dimensioned, and the primary fonts are self-hosted WOFF2 files with `font-display: swap`.
+- Critical assets are explicit: the hero image is preloaded, responsive, and dimensioned, and the primary fonts are self-hosted WOFF2 files with `font-display: optional`.
 - Accessibility and SEO are mostly handled in the markup itself: skip link, semantic sections, ARIA labels, canonical URL, robots meta, sitemap, and structured data.
 - The DOM is small and the interaction model is simple, which keeps main-thread work low.
 
@@ -198,6 +198,12 @@ On April 3, 2026, a fresh live Lighthouse run against `https://daliso.com/` from
 
 - Mobile performance: `94`
 - Desktop performance: `100`
+
+On April 26, 2026, the accepted working state is:
+
+- Mobile PageSpeed Insights: `90`
+- Desktop PageSpeed Insights: `100`
+- Desktop should stay at `100`; mobile is good enough at `90+` unless a concrete regression appears.
 
 The main mobile misses were render-blocking CSS chaining, image delivery, and an injected Cloudflare email-decoder script on the live page. See [`audit/performance-guardrails.md`](/Users/daliso/Developer/daliso-website/audit/performance-guardrails.md) for the current fixes and the guardrails that should stop those regressions from sneaking back in.
 
