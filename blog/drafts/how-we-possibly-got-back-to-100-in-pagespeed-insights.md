@@ -53,7 +53,7 @@ Now the build creates a generated homepage bundle:
 
 - `/css/home.css`
 
-That bundle keeps the editable source files intact, but gives the homepage one stylesheet on the critical path.
+That bundle keeps the editable source files intact. The homepage also carries a small first-viewport CSS block so the hero can paint before the full generated stylesheet finishes loading.
 
 Second, generated CSS is minified.
 
@@ -77,7 +77,7 @@ The hero headline is the mobile LCP element. The site still uses its custom font
 
 We did not add a framework.
 
-We did not inline a large block of critical CSS.
+We did not inline the whole stylesheet. Only the first-viewport hero and navigation rules are in the document head.
 
 We did not remove the hero image preload.
 
@@ -103,6 +103,7 @@ The useful version is:
 
 - For `daliso-website`, live PageSpeed can be blocked by the official PSI API quota, so use Lighthouse against `https://daliso.com/` as the fallback and record the exact Lighthouse version.
 - Keep homepage CSS on the generated `/css/home.css` bundle; do not make the homepage request both `/css/style.css` and `/css/pages/home.css`.
+- Keep the inline homepage critical CSS limited to first-viewport hero and navigation rules.
 - Keep generated CSS minified, but keep the editable source files readable.
 - Keep HTML `Cache-Control: public, max-age=0, must-revalidate, no-transform` in the Cloudflare Pages middleware unless Cloudflare email obfuscation is disabled another way.
 - Do not let `no-transform`, long discovery `Link` headers, or `Vary: Accept` leak onto `/css/*`, `/js/*`, `/assets/*`, fonts, or images.

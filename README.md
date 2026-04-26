@@ -146,6 +146,7 @@ Deploy workflow summary:
 The repo relies on query-string versioning for shared entrypoints such as `js/main.js`, `js/projects-page.js`, `css/style.css`, and the page-specific stylesheets linked from the static HTML files.
 
 - Shared CSS and JS entrypoints must stay revalidating: `Cache-Control: public, max-age=0, must-revalidate`.
+- The homepage may inline a small first-viewport CSS block, but the full page styling should still come from the generated `css/home.css` bundle.
 - HTML responses keep `Cache-Control: public, max-age=0, must-revalidate, no-transform` from the Cloudflare Pages middleware so Cloudflare does not rewrite email links back into the page.
 - Discovery `Link` headers and `Vary: Accept` belong on HTML responses only; keep them out of `/css/*`, `/js/*`, `/assets/*`, and font responses.
 - Custom fonts use `font-display: optional` so slow font delivery does not hold critical text paint hostage on mobile Lighthouse runs.

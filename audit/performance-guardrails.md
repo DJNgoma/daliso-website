@@ -29,6 +29,7 @@ That means the site is back to a desktop `100`, but it should not be described a
 ## Repo Changes Shipped
 
 - Added `scripts/build-css.mjs` and now generate `css/style.css` as a real bundle instead of relying on runtime CSS imports.
+- Added a small homepage-only first-viewport CSS block so the hero can paint before the full generated stylesheet finishes loading.
 - Switched the shared nav logo to lighter WebP assets and kept the light/dark swap in the theme module.
 - Added `hero-320.webp` and `hero-640.webp` and updated the homepage hero markup to prefer WebP.
 - Added a small head theme bootstrap so dark-mode users do not wait for the module script before the correct theme is applied.
@@ -49,7 +50,7 @@ The homepage route links worked in preview but failed on the live site in Safari
 ## Guardrails
 
 - Keep shared CSS source files in `css/`, but always serve the generated bundle in `css/style.css`.
-- Keep the homepage on the generated `css/home.css` bundle so it does not request both shared CSS and page CSS on the critical path.
+- Keep the homepage on one generated `css/home.css` bundle for the full page, with only a small inline first-viewport block for early hero paint.
 - Keep shared JS entrypoints revalidating unless the repo moves to content-hashed filenames for public modules.
 - Do not reintroduce JS-driven image swaps for above-the-fold assets.
 - Keep the homepage hero and nav logo in modern, tightly sized formats.
