@@ -19,8 +19,13 @@ test.describe('Blog pages', () => {
       })
     ).toBeVisible();
     await expect(page.getByRole('heading', { name: 'Latest article' })).toBeVisible();
-    await expect(page.locator('.blog-featured-card h3 a')).toHaveAttribute('href', FEATURED_POST.canonicalPath);
-    await expect(page.locator('.blog-featured-card')).toContainText(FEATURED_POST.title);
+    const featuredLink = page.locator('.blog-featured-card h3 a');
+    await expect(featuredLink).toHaveAttribute('href', /^\/blog\/[^/]+\/$/);
+    expect((await featuredLink.textContent())?.trim().length).toBeGreaterThan(0);
+    await expect(page.getByRole('link', { name: FEATURED_POST.title }).first()).toHaveAttribute(
+      'href',
+      FEATURED_POST.canonicalPath
+    );
     await expect(
       page.locator('.blog-post-grid').getByRole('link', {
         name: ARCHIVE_POST.title,

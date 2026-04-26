@@ -199,6 +199,7 @@ Preview **works** here.
 
 test("saveDraft writes draft files and publishDocument promotes them into published posts", async (t) => {
   const fixtureRoot = createFixture(t);
+  copyFonts(fixtureRoot);
   const source = `---
 title: "Draft Promotion"
 slug: "draft-promotion"
