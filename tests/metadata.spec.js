@@ -9,7 +9,20 @@ const CORE_PUBLIC_PATHS = [
   '/media/coding-with-ai/',
   '/blog/',
   '/privacy/',
+  '/support/',
   '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/',
+];
+
+const SOCIAL_METADATA_PATHS = [
+  ...new Set([
+    ...CORE_PUBLIC_PATHS,
+    '/404.html',
+    '/blog/ai-psychosis-and-synthetic-confidence/',
+    '/blog/how-we-got-from-23-to-92-on-is-your-site-agent-ready/',
+    '/blog/my-second-ai-written-post-which-is-already-suspicious/',
+    '/blog/shipping-privacy-and-gated-deploys-on-daliso-com/',
+    '/blog/why-this-site-tends-to-score-well-in-pagespeed-insights/',
+  ]),
 ];
 
 test.describe('Metadata', () => {
@@ -31,13 +44,16 @@ test.describe('Metadata', () => {
     }
   });
 
-  test('core public pages include enriched social metadata', async ({ page }) => {
-    for (const path of CORE_PUBLIC_PATHS) {
+  test('public pages include enriched social metadata', async ({ page }) => {
+    for (const path of SOCIAL_METADATA_PATHS) {
       await page.goto(path);
       await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute('content', 'Daliso Ngoma');
       await expect(page.locator('meta[property="og:image:alt"]')).toHaveAttribute('content', /preview card/i);
       await expect(page.locator('meta[name="twitter:image:alt"]')).toHaveAttribute('content', /preview card/i);
       await expect(page.locator('meta[property="og:image"]')).toHaveCount(1);
+      await expect(page.locator('meta[property="og:image:type"]')).toHaveAttribute('content', 'image/png');
+      await expect(page.locator('meta[property="og:image:width"]')).toHaveAttribute('content', '1200');
+      await expect(page.locator('meta[property="og:image:height"]')).toHaveAttribute('content', '630');
       await expect(page.locator('meta[name="twitter:image"]')).toHaveCount(1);
     }
   });

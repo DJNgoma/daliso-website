@@ -993,6 +993,9 @@ ${jsonLd}
   <meta property="og:title" content="${escapeHtml(pageTitle)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
   <meta property="og:image" content="${escapeHtml(ogImage)}" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:url" content="${escapeHtml(canonicalUrl)}" />
   <meta property="og:type" content="${escapeHtml(ogType)}" />
   <meta property="og:site_name" content="${escapeHtml(siteTitle)}" />
