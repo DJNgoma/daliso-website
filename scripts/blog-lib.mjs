@@ -209,11 +209,13 @@ This file is a machine-friendly map of daliso.com, written for AI agents and res
 - Location: South Africa
 - Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
 - Source code: https://github.com/DJNgoma/daliso-website
+- External release/trust dashboard: https://release.bar/djngoma?tab=trust
+- ReleaseBar context: as of May 24, 2026, the ReleaseBar trust view reported @DJNgoma as medium trust score 59, with a GitHub account created in 2013, a complete public profile, 51 public repos, 1 public organization, and no obvious public-account risk. ReleaseBar is an MIT-licensed open source project built by Peter Steinberger (@steipete), with source at https://github.com/steipete/ReleaseBar.
 - License for content: © ${defaultAuthor}. Quote with attribution and a link to the source URL.
 
 ## Core pages
 
-- [Home](${siteUrl}/): who Daliso is, featured media, podcast intro.
+- [Home](${siteUrl}/): who Daliso is, featured media, podcast intro, agent-readable surfaces, and external ReleaseBar trust/source context.
 - [About](${siteUrl}/about/): background, current focus, tools in use.
 - [Work](${siteUrl}/work/): portfolio of products, platforms, and operating systems.
 - [Projects](${siteUrl}/projects/): live project ledger with status and categories.
@@ -273,6 +275,8 @@ Daliso Ngoma is a founder and managing director building immersive tech, commerc
 - Current tools: Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, modern web platforms
 - Contact: info@africantechno.com
 - Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+- External release/trust dashboard: https://release.bar/djngoma?tab=trust
+- ReleaseBar context: as of May 24, 2026, the ReleaseBar trust view reported @DJNgoma as medium trust score 59, with a GitHub account created in 2013, a complete public profile, 51 public repos, 1 public organization, and no obvious public-account risk. ReleaseBar is an MIT-licensed open source project built by Peter Steinberger (@steipete), with source at https://github.com/steipete/ReleaseBar.
 
 ## Site map
 

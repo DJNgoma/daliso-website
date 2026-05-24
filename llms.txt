@@ -13,11 +13,13 @@ This file is a machine-friendly map of daliso.com, written for AI agents and res
 - Location: South Africa
 - Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
 - Source code: https://github.com/DJNgoma/daliso-website
+- External release/trust dashboard: https://release.bar/djngoma?tab=trust
+- ReleaseBar context: as of May 24, 2026, the ReleaseBar trust view reported @DJNgoma as medium trust score 59, with a GitHub account created in 2013, a complete public profile, 51 public repos, 1 public organization, and no obvious public-account risk. ReleaseBar is an MIT-licensed open source project built by Peter Steinberger (@steipete), with source at https://github.com/steipete/ReleaseBar.
 - License for content: © Daliso Ngoma. Quote with attribution and a link to the source URL.
 
 ## Core pages
 
-- [Home](https://daliso.com/): who Daliso is, featured media, podcast intro.
+- [Home](https://daliso.com/): who Daliso is, featured media, podcast intro, agent-readable surfaces, and external ReleaseBar trust/source context.
 - [About](https://daliso.com/about/): background, current focus, tools in use.
 - [Work](https://daliso.com/work/): portfolio of products, platforms, and operating systems.
 - [Projects](https://daliso.com/projects/): live project ledger with status and categories.

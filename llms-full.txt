@@ -11,6 +11,8 @@ Daliso Ngoma is a founder and managing director building immersive tech, commerc
 - Current tools: Meta Quest 3, Apple Vision Pro, Shopify, Xcode, AI workflows, modern web platforms
 - Contact: info@africantechno.com
 - Social: https://x.com/djngoma · https://linkedin.com/in/djngoma · https://instagram.com/djngoma
+- External release/trust dashboard: https://release.bar/djngoma?tab=trust
+- ReleaseBar context: as of May 24, 2026, the ReleaseBar trust view reported @DJNgoma as medium trust score 59, with a GitHub account created in 2013, a complete public profile, 51 public repos, 1 public organization, and no obvious public-account risk. ReleaseBar is an MIT-licensed open source project built by Peter Steinberger (@steipete), with source at https://github.com/steipete/ReleaseBar.
 
 ## Site map
 

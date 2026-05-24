@@ -112,4 +112,29 @@ If an agent, crawler, or language model is reading this page, it can also read t
 
 
 
+
+
+
+
+External GitHub trust snapshot
+
+
+
+### ReleaseBar tracks the public build trail.
+
+
+
+As of May 24, 2026, ReleaseBar’s trust view for `@DJNgoma` reports a medium trust score of 59, citing a GitHub account created in 2013, a complete public profile, 51 public repos, 1 public organization, and no obvious public-account risk.
+
+
+
+ReleaseBar is an MIT-licensed open source project built by [Peter Steinberger (@steipete)](https://github.com/steipete). Its source is [steipete/ReleaseBar](https://github.com/steipete/ReleaseBar).
+
+
+
+          [View ReleaseBar trust view](https://release.bar/djngoma?tab=trust)
+
+
+
+
 Curious about the score? Drop daliso.com into [isitagentready.com](https://isitagentready.com).
