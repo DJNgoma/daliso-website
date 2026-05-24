@@ -23,10 +23,23 @@ Allow: /
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# Legacy Anthropic identifiers retained for compatibility with older auditors.
 User-agent: Claude-Web
 Allow: /
 
 User-agent: anthropic-ai
+Allow: /
+
+User-agent: HermesAgent
+Allow: /
+
+User-agent: Hermes-Agent
 Allow: /
 
 User-agent: PerplexityBot

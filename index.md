@@ -107,7 +107,7 @@ If an agent, crawler, or language model is reading this page, it can also read t
           [/sitemap.xmlEvery canonical URL, dated and ranked.](/sitemap.xml)
           [/api/projects.jsonLive project ledger as structured JSON.](/api/projects.json)
           [.well-known/ai-plugin.jsonDiscovery manifest for AI assistants.](/.well-known/ai-plugin.json)
-          [/robots.txtExplicit welcome for GPTBot, ClaudeBot, and friends.](/robots.txt)
+          [/robots.txtGPTBot, Anthropic Claude agents, HermesAgent, and other fetchers.](/robots.txt)
 
 
 

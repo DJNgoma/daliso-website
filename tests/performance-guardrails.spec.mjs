@@ -126,3 +126,28 @@ test("embedded talk deck opts out of the global frame-deny header", () => {
     "The HTML deck route should keep the same frame policy for direct requests and redirects."
   );
 });
+
+test("robots.txt keeps current AI crawler access explicit", () => {
+  const robots = read("robots.txt");
+  const expectedAgents = [
+    "GPTBot",
+    "OAI-SearchBot",
+    "ChatGPT-User",
+    "ClaudeBot",
+    "Claude-SearchBot",
+    "Claude-User",
+    "HermesAgent",
+    "Hermes-Agent",
+    "PerplexityBot",
+    "Perplexity-User",
+  ];
+
+  assert.match(robots, /Content-Signal:\s*ai-train=yes,\s*search=yes,\s*ai-input=yes/);
+  for (const agent of expectedAgents) {
+    assert.match(
+      robots,
+      new RegExp(`User-agent:\\s*${agent}\\s+Allow:\\s*/`),
+      `Expected robots.txt to explicitly allow ${agent}.`
+    );
+  }
+});
