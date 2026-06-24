@@ -809,6 +809,7 @@ function renderBlogIndex(posts) {
     description:
       "Thoughts on immersive tech, product building, AI, and the African tech ecosystem.",
     canonicalPath: "/blog/",
+    bodyClass: "site-page page-blog",
     heroContent: hero,
     mainContent: content,
     lastModified: latestDate,
@@ -878,6 +879,7 @@ function renderPostPage(post, postOgImage = defaultOgImage) {
     pageTitle: `${post.title} | Blog | ${siteTitle}`,
     description: post.description,
     canonicalPath: post.canonicalPath,
+    bodyClass: "site-page page-blog-article",
     ogType: "article",
     ogImage: postOgImage,
     heroContent: hero,
@@ -948,6 +950,7 @@ function renderDocument({
   pageTitle,
   description,
   canonicalPath,
+  bodyClass = "site-page",
   heroContent,
   mainContent,
   ogType = "website",
@@ -1014,11 +1017,11 @@ ${jsonLd}
   <link rel="alternate" type="application/feed+json" title="${escapeHtml(siteTitle)} — Blog (JSON Feed)" href="${escapeHtml(siteUrl)}/feed.json" />${extraHead}
   <script type="module" src="/js/main.js?v=${assetVersion}"></script>${ldJsonScript}
 </head>
-<body>
+<body class="${escapeHtml(bodyClass)}">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <header class="hero">
     <div class="container">
-      ${renderNav()}
+      ${renderNav(canonicalPath)}
       ${heroContent}
     </div>
   </header>
@@ -1033,11 +1036,27 @@ ${jsonLd}
 `;
 }
 
-function renderNav() {
+function renderNav(currentPath = "/") {
+  const navItems = [
+    ["Home", "/"],
+    ["About", "/about/"],
+    ["Work", "/work/"],
+    ["Projects", "/projects/"],
+    ["Media", "/media/"],
+    ["Blog", "/blog/"],
+  ];
+  const links = navItems
+    .map(([label, href]) => {
+      const isCurrent = href === "/" ? currentPath === "/" : currentPath.startsWith(href);
+      const currentAttribute = isCurrent ? ' aria-current="page"' : "";
+      return `          <li><a href="${href}"${currentAttribute}>${label}</a></li>`;
+    })
+    .join("\n");
+
   return `
       <nav class="navbar" aria-label="Primary">
         <div class="logo">
-          <a href="/"><img id="site-logo" src="/assets/images/logo-120.webp" alt="Daliso Logo" width="40" height="40" decoding="async" /></a>
+          <a id="site-logo" class="site-wordmark" href="/" aria-label="Daliso home">daliso</a>
         </div>
         <button class="hamburger" id="hamburger" aria-label="Toggle menu">
           <span class="bar"></span>
@@ -1045,14 +1064,9 @@ function renderNav() {
           <span class="bar"></span>
         </button>
         <ul class="nav-menu" id="nav-menu">
-          <li><a href="/">Home</a></li>
-          <li><a href="/about/">About</a></li>
-          <li><a href="/work/">Work</a></li>
-          <li><a href="/projects/">Projects</a></li>
-          <li><a href="/media/">Media</a></li>
-          <li><a href="/blog/">Blog</a></li>
+${links}
         </ul>
-        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">🌓</button>
+        <button id="theme-toggle" aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode"><span class="theme-toggle-mark" aria-hidden="true"></span></button>
       </nav>
   `;
 }

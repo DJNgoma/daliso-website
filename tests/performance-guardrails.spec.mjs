@@ -1,9 +1,31 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
+import { readdirSync, readFileSync } from "node:fs";
 
 function read(path) {
   return readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
+}
+
+function publicShellPages() {
+  const pages = [
+    "index.html",
+    "about/index.html",
+    "work/index.html",
+    "projects/index.html",
+    "media/index.html",
+    "media/coding-with-ai/index.html",
+    "privacy/index.html",
+    "support/index.html",
+    "blog/index.html",
+  ];
+  const blogRoot = new URL("../blog/", import.meta.url);
+  for (const entry of readdirSync(blogRoot, { withFileTypes: true })) {
+    if (!entry.isDirectory() || ["drafts", "posts"].includes(entry.name)) {
+      continue;
+    }
+    pages.push(`blog/${entry.name}/index.html`);
+  }
+  return [...new Set(pages)].sort();
 }
 
 test("css/style.css stays flattened and avoids @import request chains", () => {
@@ -61,13 +83,35 @@ test("theme runtime and blog generator keep the lightweight shared asset path", 
   const blogTemplate = read("scripts/blog-lib.mjs");
 
   assert.doesNotMatch(themeModule, /logo_white-120\.webp/, "Theme toggling should not swap in a second logo asset.");
-  assert.match(blogTemplate, /logo-120\.webp/, "Generated blog pages should use the shared lightweight logo asset.");
+  assert.doesNotMatch(blogTemplate, /logo-120\.webp/, "Generated blog pages should not regress to the old image-logo shell.");
+  assert.match(blogTemplate, /class="site-wordmark"/, "Generated blog pages should use the shared operator wordmark.");
   assert.match(blogTemplate, /meta name="color-scheme" content="light dark"/);
   assert.match(
     blogTemplate,
     /localStorage\.getItem\('theme'\)/,
     "Generated pages should bootstrap the saved theme before CSS loads."
   );
+});
+
+test("public pages share the operator shell contract", () => {
+  for (const page of publicShellPages()) {
+    const html = read(page);
+    const nav = html.match(/<nav class="navbar" aria-label="Primary">[\s\S]*?<\/nav>/)?.[0] ?? "";
+    assert.ok(nav, `${page} should render the shared primary nav.`);
+
+    if (page === "index.html") {
+      assert.match(html, /<body class="home-page">/, "Home keeps its optimized home-page body contract.");
+      assert.match(nav, /class="home-wordmark"/, "Home should use the operator text wordmark.");
+    } else {
+      assert.match(html, /<body class="[^"]*\bsite-page\b/, `${page} should carry the site-page shell class.`);
+      assert.match(nav, /class="site-wordmark"/, `${page} should use the shared operator text wordmark.`);
+    }
+
+    assert.match(nav, /id="site-logo"[^>]*>daliso<\/a>/, `${page} should expose the text wordmark as #site-logo.`);
+    assert.doesNotMatch(nav, /<img[^>]+id="site-logo"/, `${page} should not use the old image logo in primary nav.`);
+    assert.doesNotMatch(nav, /logo-120\.webp/, `${page} should not pull the old logo asset into the primary nav.`);
+    assert.match(nav, /class="theme-toggle-mark"/, `${page} should use the shared theme-toggle mark.`);
+  }
 });
 
 test("unfingerprinted CSS and JS stay revalidating instead of immutable", () => {

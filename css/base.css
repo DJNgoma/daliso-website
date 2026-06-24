@@ -16,14 +16,20 @@
 }
 
 :root {
-  --background: #ffffff;
-  --text: #111111;
-  --accent: #0077ff;
-  --card: #f5f5f5;
-  --shadow: rgba(0, 0, 0, 0.05);
-  --navbar-bg: #ffffff;
-  --hamburger-bar: #111111;
-  --accent-hover: #005fd1;
+  --background: #f6f3ee;
+  --text: #0e0e10;
+  --accent: #1e40ff;
+  --accent-hover: #1736d0;
+  --card: #fffaf3;
+  --shadow: rgba(14, 14, 16, 0.08);
+  --navbar-bg: #f6f3ee;
+  --hamburger-bar: #0e0e10;
+  --home-graphite: #1b1b1f;
+  --home-muted: rgba(27, 27, 31, 0.68);
+  --home-line: rgba(14, 14, 16, 0.16);
+  --home-amber: #f5a524;
+  --home-panel: #141820;
+  --home-green: #42d477;
 }
 
 html {
@@ -32,14 +38,18 @@ html {
 }
 
 [data-theme="dark"] {
-  --background: #121212;
-  --text: #ffffff;
-  --accent: #66ccff;
-  --card: #1e1e1e;
-  --shadow: rgba(255, 255, 255, 0.1);
-  --navbar-bg: #1e1e1e;
-  --hamburger-bar: #ffffff;
-  --accent-hover: #4db8e6;
+  --background: #0e0e10;
+  --text: #f6f3ee;
+  --accent: #7892ff;
+  --accent-hover: #91a5ff;
+  --card: #17191f;
+  --shadow: rgba(0, 0, 0, 0.38);
+  --navbar-bg: #0e0e10;
+  --hamburger-bar: #f6f3ee;
+  --home-graphite: #e8e1d6;
+  --home-muted: rgba(246, 243, 238, 0.66);
+  --home-line: rgba(246, 243, 238, 0.16);
+  --home-panel: #11151c;
 }
 
 body {
@@ -49,6 +59,10 @@ body {
   color: var(--text);
   line-height: 1.6;
   transition: background 0.3s ease, color 0.3s ease;
+}
+
+body.site-page {
+  min-height: 100vh;
 }
 
 h1,

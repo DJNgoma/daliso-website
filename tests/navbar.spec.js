@@ -11,6 +11,7 @@ const SHARED_CHROME_PATHS = [
   '/media/coding-with-ai/',
   '/blog/',
   '/privacy/',
+  '/support/',
   '/blog/ai-psychosis-and-synthetic-confidence/',
 ];
 
@@ -57,13 +58,15 @@ test.describe('Navbar consistency', () => {
     await expect(logo).toHaveAttribute('href', '/');
   });
 
-  test('logo renders on projects page', async ({ page }) => {
-    await page.goto('/projects/');
-    const logo = page.locator('#site-logo');
-    await expect(logo).toBeVisible();
-    await expect(logo).toHaveAttribute('src', /logo-120\.webp/);
-    const naturalWidth = await logo.evaluate(img => img.naturalWidth);
-    expect(naturalWidth).toBeGreaterThan(0);
+  test('operator wordmark renders on shared chrome pages', async ({ page }) => {
+    for (const path of SHARED_CHROME_PATHS) {
+      await page.goto(path);
+      const logo = page.locator('#site-logo');
+      await expect(logo).toBeVisible();
+      await expect(logo).toHaveText('daliso');
+      await expect(logo).toHaveAttribute('href', '/');
+      await expect(logo).toHaveClass(path === '/' ? /home-wordmark/ : /site-wordmark/);
+    }
   });
 
   test('hamburger menu works on mobile', async ({ page, viewport }) => {
