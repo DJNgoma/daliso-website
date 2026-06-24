@@ -49,13 +49,12 @@ test.describe('Navbar consistency', () => {
     expect(navItems).toEqual(EXPECTED_NAV_ITEMS);
   });
 
-  test('logo renders on main page', async ({ page }) => {
+  test('home wordmark renders on main page', async ({ page }) => {
     await page.goto('/');
     const logo = page.locator('#site-logo');
     await expect(logo).toBeVisible();
-    await expect(logo).toHaveAttribute('src', /logo-120\.webp/);
-    const naturalWidth = await logo.evaluate(img => img.naturalWidth);
-    expect(naturalWidth).toBeGreaterThan(0);
+    await expect(logo).toHaveText('daliso');
+    await expect(logo).toHaveAttribute('href', '/');
   });
 
   test('logo renders on projects page', async ({ page }) => {

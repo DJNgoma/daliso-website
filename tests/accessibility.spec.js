@@ -80,9 +80,9 @@ test.describe('Accessibility', () => {
 
     await page.goto('/');
 
-    const primaryCta = page.getByRole('link', { name: 'See My Work' });
-    const secondaryCta = page.getByRole('link', { name: 'Get in Touch' });
-    const heroPicture = page.locator('.home-hero-split > picture');
+    const primaryCta = page.getByRole('link', { name: 'See current work' });
+    const secondaryCta = page.getByRole('link', { name: 'Read the index' });
+    const heroPicture = page.locator('.operator-portrait');
 
     await expect(primaryCta).toBeVisible();
     await expect(secondaryCta).toBeVisible();

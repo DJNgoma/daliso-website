@@ -20,15 +20,13 @@ test.describe('Theme toggle', () => {
     await expect(toggle).toHaveAttribute('title', 'Switch to dark mode');
   });
 
-  test('logo source stays stable across theme changes', async ({ page }) => {
+  test('home wordmark stays stable across theme changes', async ({ page }) => {
     await page.goto('/');
     const logo = page.locator('#site-logo');
-    const lightSrc = await logo.getAttribute('src');
-    expect(lightSrc).toContain('logo-120.webp');
+    await expect(logo).toHaveText('daliso');
 
     await page.click('#theme-toggle');
-    const darkSrc = await logo.getAttribute('src');
-    expect(darkSrc).toContain('logo-120.webp');
+    await expect(logo).toHaveText('daliso');
   });
 
   test('theme persists across navigation', async ({ page }) => {
