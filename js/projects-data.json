@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-22T07:19:57.016Z",
+  "generatedAt": "2026-06-30T12:14:53.025Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level"
@@ -99,7 +99,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-05-24T18:23:21.000Z",
+      "lastUpdated": "2026-06-24T12:54:50.000Z",
       "freshnessSource": "git",
       "links": [
         {
