@@ -137,6 +137,7 @@ test.describe('Projects page', () => {
     await expect(catalog.getByRole('heading', { name: 'Sentiment Trader', exact: true })).toBeVisible();
     await expect(catalog.getByRole('heading', { name: 'Pool Clarity', exact: true })).toBeVisible();
     await expect(catalog.getByRole('heading', { name: 'FlashQuote', exact: true })).toBeVisible();
+    await expect(catalog.getByRole('heading', { name: 'AT Ops Workbench', exact: true })).toBeVisible();
   });
 
   test('recent activity filter shows the latest workspace updates', async ({ page, request }) => {

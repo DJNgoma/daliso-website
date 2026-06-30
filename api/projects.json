@@ -4,7 +4,7 @@
   "url": "https://daliso.com/projects/",
   "name": "Daliso Ngoma — Projects ledger",
   "description": "Curated portfolio of live and in-progress projects grouped by category.",
-  "generatedAt": "2026-04-22T19:07:56.606Z",
+  "generatedAt": "2026-06-30T13:19:19.909Z",
   "categories": [
     {
       "id": "websites-publishing",
@@ -75,6 +75,17 @@
       "order": 10,
       "links": [],
       "url": "https://daliso.com/projects/#ledgerone"
+    },
+    {
+      "id": "at-ops-workbench",
+      "title": "AT Ops Workbench",
+      "category": "internal-systems",
+      "categoryTitle": "Internal Systems",
+      "status": "Operational",
+      "summary": "Local-first internal operations dashboard for African Technopreneurs, covering inventory, finance, fulfilment, supplier, and integration control workflows.",
+      "order": 15,
+      "links": [],
+      "url": "https://daliso.com/projects/#at-ops-workbench"
     },
     {
       "id": "EmailAliasOps",
@@ -523,167 +534,174 @@
     {
       "@type": "ListItem",
       "position": 5,
+      "name": "AT Ops Workbench",
+      "url": "https://daliso.com/projects/#at-ops-workbench",
+      "description": "Local-first internal operations dashboard for African Technopreneurs, covering inventory, finance, fulfilment, supplier, and integration control workflows."
+    },
+    {
+      "@type": "ListItem",
+      "position": 6,
       "name": "AliasOps",
       "url": "https://daliso.com/projects/#emailaliasops",
       "description": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs."
     },
     {
       "@type": "ListItem",
-      "position": 6,
+      "position": 7,
       "name": "Daliso.com",
       "url": "https://daliso.com/projects/#daliso-website",
       "description": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects."
     },
     {
       "@type": "ListItem",
-      "position": 7,
+      "position": 8,
       "name": "Pool Clarity",
       "url": "https://daliso.com/projects/#poolops",
       "description": "Weekend-first pool maintenance dashboard with rule-based water analysis, planner workflows, and optional GPT-5.4 photo triage."
     },
     {
       "@type": "ListItem",
-      "position": 8,
+      "position": 9,
       "name": "Price Pilot",
       "url": "https://daliso.com/projects/#pricepilotforshopify",
       "description": "Internal Shopify pricing console for catalogue updates, validation, and audit-ready batch changes."
     },
     {
       "@type": "ListItem",
-      "position": 9,
+      "position": 10,
       "name": "Cin7 Price Analyzer",
       "url": "https://daliso.com/projects/#cin7corepriceanalyzer",
       "description": "Product pricing anomaly detector with bulk correction for Cin7 Core and DearSystems inventories."
     },
     {
       "@type": "ListItem",
-      "position": 10,
+      "position": 11,
       "name": "EARN Ecosystem Website",
       "url": "https://daliso.com/projects/#earn-ecosystem-website",
       "description": "Public website for the Enterprising Africa Regional Network, built on React, TypeScript, and Cloudflare Pages."
     },
     {
       "@type": "ListItem",
-      "position": 11,
+      "position": 12,
       "name": "Gear Roulette",
       "url": "https://daliso.com/projects/#gearroulette",
       "description": "Playful product discovery app that recommends XR and creator gear from a short quiz."
     },
     {
       "@type": "ListItem",
-      "position": 12,
+      "position": 13,
       "name": "Repo Workboard",
       "url": "https://daliso.com/projects/#repo-workboard",
       "description": "Local dashboard and report generator that scans repos, TODOs, recent source activity, and test coverage gaps."
     },
     {
       "@type": "ListItem",
-      "position": 13,
+      "position": 14,
       "name": "FlashQuote",
       "url": "https://daliso.com/projects/#quickquote",
       "description": "Offline-first iOS quoting app for freelancers, field technicians, and solo sellers who need to produce clean quotes fast."
     },
     {
       "@type": "ListItem",
-      "position": 14,
+      "position": 15,
       "name": "Commercial Invoice Generator",
       "url": "https://daliso.com/projects/#invoicegenerator",
       "description": "Lightweight customs-compliant invoice tool for courier-ready export paperwork."
     },
     {
       "@type": "ListItem",
-      "position": 15,
+      "position": 16,
       "name": "The Lombardy Lifestyle Estate",
       "url": "https://daliso.com/projects/#thelombardy-co-za",
       "description": "Brochure-plus-operations website for owners, residents, and prospective residents at The Lombardy Lifestyle Estate."
     },
     {
       "@type": "ListItem",
-      "position": 16,
+      "position": 17,
       "name": "EARN OS Change Review",
       "url": "https://daliso.com/projects/#earn-company-os-websites",
       "description": "Change review workflow app for African Technopreneurs operational decisions and release governance."
     },
     {
       "@type": "ListItem",
-      "position": 17,
+      "position": 18,
       "name": "Sentiment Trader",
       "url": "https://daliso.com/projects/#feargreedcryptotrader",
       "description": "BTC sentiment-regime trading MVP with backtesting, paper execution, and a Cloudflare-ready operator dashboard."
     },
     {
       "@type": "ListItem",
-      "position": 18,
+      "position": 19,
       "name": "The Devil's AI Dictionary",
       "url": "https://daliso.com/projects/#thedevilsaidictionary",
       "description": "Editorial AI glossary available as a website and iOS app, translating hype vocabulary, product labels, and technical terms into sharp plain-English definitions."
     },
     {
       "@type": "ListItem",
-      "position": 19,
+      "position": 20,
       "name": "Action Inbox",
       "url": "https://daliso.com/projects/#actioninbox",
       "description": "Native iOS app for capturing and triaging actions with a fast inbox-first workflow."
     },
     {
       "@type": "ListItem",
-      "position": 20,
+      "position": 21,
       "name": "justsomething.app",
       "url": "https://daliso.com/projects/#justsomethingdotapp",
       "description": "Public website for the Just apps family, bringing Just BP, Just Glucose, and Just Weight together under one product surface."
     },
     {
       "@type": "ListItem",
-      "position": 21,
+      "position": 22,
       "name": "HeadsetHire",
       "url": "https://daliso.com/projects/#vr-rental-website",
       "description": "Static VR/XR headset rental site for South Africa with inventory-led pricing and a structured quote workflow."
     },
     {
       "@type": "ListItem",
-      "position": 22,
+      "position": 23,
       "name": "My Med Routine",
       "url": "https://daliso.com/projects/#mymedroutine",
       "description": "Native iOS medication tracking and daily routine reminder app for consistent at-home care."
     },
     {
       "@type": "ListItem",
-      "position": 23,
+      "position": 24,
       "name": "Ops Atlas",
       "url": "https://daliso.com/projects/#commanddashboard",
       "description": "Operator companion app for navigating workstreams, systems, and daily field operations on iOS."
     },
     {
       "@type": "ListItem",
-      "position": 24,
+      "position": 25,
       "name": "Universe Unveiled",
       "url": "https://daliso.com/projects/#universeunveiled",
       "description": "Spatial astronomy app for iPhone, iPad, and visionOS focused on guided planetary exploration and immersive learning."
     },
     {
       "@type": "ListItem",
-      "position": 25,
+      "position": 26,
       "name": "Just BP",
       "url": "https://daliso.com/projects/#justbp",
       "description": "Minimal iOS blood pressure tracker focused on fast entry and clear trend visibility."
     },
     {
       "@type": "ListItem",
-      "position": 26,
+      "position": 27,
       "name": "Just Glucose",
       "url": "https://daliso.com/projects/#justglucose",
       "description": "Minimal iPhone glucose tracker built for quick readings, clean trends, and zero account setup."
     },
     {
       "@type": "ListItem",
-      "position": 27,
+      "position": 28,
       "name": "Just Weight - No Wait",
       "url": "https://daliso.com/projects/#justweight",
       "description": "Fast weight logger for iPhone and Apple Watch with Apple Health support and simple history tracking."
     },
     {
       "@type": "ListItem",
-      "position": 28,
+      "position": 29,
       "name": "It’s a Date — Scheduler",
       "url": "https://daliso.com/projects/#itsadatescheduler",
       "description": "Lightweight iOS scheduler for planning dates, follow-ups, and shared plans with minimal friction."

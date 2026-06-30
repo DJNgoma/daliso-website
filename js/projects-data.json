@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-06-30T12:14:53.025Z",
+  "generatedAt": "2026-06-30T13:14:14.590Z",
   "source": {
     "label": "Developer folder",
-    "scanMode": "top-level"
+    "scanMode": "top-level-plus-curated-at-labs"
   },
   "projectSections": [
     {
@@ -80,6 +80,18 @@
       "links": []
     },
     {
+      "id": "at-ops-workbench",
+      "folder": "at-labs/at-ops-workbench",
+      "title": "AT Ops Workbench",
+      "category": "internal-systems",
+      "status": "Operational",
+      "summary": "Local-first internal operations dashboard for African Technopreneurs, covering inventory, finance, fulfilment, supplier, and integration control workflows.",
+      "order": 15,
+      "lastUpdated": "2026-06-27T20:27:13.000Z",
+      "freshnessSource": "git",
+      "links": []
+    },
+    {
       "id": "EmailAliasOps",
       "folder": "EmailAliasOps",
       "title": "AliasOps",
@@ -99,7 +111,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-06-24T12:54:50.000Z",
+      "lastUpdated": "2026-06-30T12:26:08.000Z",
       "freshnessSource": "git",
       "links": [
         {

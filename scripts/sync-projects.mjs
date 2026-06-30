@@ -71,7 +71,7 @@ function main() {
   const categories = [...manifest.categories].sort((left, right) => left.order - right.order);
   const categoryIds = new Set(categories.map((category) => category.id));
   const missingFolders = publishedProjects
-    .filter((project) => !workspaceFolders.includes(project.folder))
+    .filter((project) => !isPublishedFolderAvailable(project.folder, workspaceFolders))
     .map((project) => `${project.id} -> ${project.folder}`);
 
   if (missingFolders.length > 0) {
@@ -112,7 +112,7 @@ function main() {
     generatedAt: new Date().toISOString(),
     source: {
       label: "Developer folder",
-      scanMode: "top-level",
+      scanMode: "top-level-plus-curated-at-labs",
     },
     projectSections: categories,
     projectCatalog,
@@ -123,6 +123,30 @@ function main() {
   console.log(`Synced ${projectCatalog.length} projects from ${workspaceRoot}`);
   console.log(`Manifest: ${manifestPath}`);
   console.log(`Output: ${outputPath}`);
+}
+
+function isPublishedFolderAvailable(folder, workspaceFolders) {
+  if (workspaceFolders.includes(folder)) {
+    return true;
+  }
+
+  if (!isAllowedAtLabsFolder(folder)) {
+    return false;
+  }
+
+  const projectPath = join(workspaceRoot, folder);
+  return existsSync(projectPath) && statSync(projectPath).isDirectory();
+}
+
+function isAllowedAtLabsFolder(folder) {
+  const parts = folder.split("/");
+  return (
+    parts.length === 2 &&
+    parts[0] === "at-labs" &&
+    parts[1].length > 0 &&
+    !parts[1].startsWith(".") &&
+    !parts[1].includes("..")
+  );
 }
 
 function getProjectFreshness(projectPath) {

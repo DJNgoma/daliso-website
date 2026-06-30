@@ -138,6 +138,15 @@
       "order": 20,
       "links": []
     },
+    "at-ops-workbench": {
+      "folder": "at-labs/at-ops-workbench",
+      "title": "AT Ops Workbench",
+      "category": "internal-systems",
+      "status": "Operational",
+      "summary": "Local-first internal operations dashboard for African Technopreneurs, covering inventory, finance, fulfilment, supplier, and integration control workflows.",
+      "order": 15,
+      "links": []
+    },
     "GearRoulette": {
       "title": "Gear Roulette",
       "category": "experiments-tools",
