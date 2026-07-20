@@ -1,5 +1,6 @@
 .nav-menu {
   display: flex;
+  justify-self: center;
   list-style: none;
   align-items: center;
   gap: clamp(1.1rem, 3vw, 3.8rem);
@@ -45,6 +46,7 @@
 }
 
 #theme-toggle {
+  justify-self: end;
   background: none;
   border: 1px solid var(--home-line);
   border-radius: 999px;
@@ -188,6 +190,7 @@
 
 .hamburger {
   display: none;
+  justify-self: center;
   flex-direction: column;
   gap: 4px;
   background: none;

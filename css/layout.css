@@ -5,8 +5,8 @@
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
   text-align: center;
   padding: 1.15rem clamp(1rem, 3vw, 3.5rem);
@@ -23,7 +23,8 @@
 }
 
 .navbar .logo {
-  min-width: 10rem;
+  min-width: 0;
+  justify-self: start;
   text-align: left;
 }
 

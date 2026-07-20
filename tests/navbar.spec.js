@@ -81,6 +81,34 @@ test.describe('Navbar consistency', () => {
     await expect(navMenu).toHaveClass(/show/);
   });
 
+  test('mobile menu trigger and open panel stay centred in the viewport', async ({ page, viewport }) => {
+    if (viewport.width > 768) {
+      test.skip();
+    }
+
+    for (const width of [375, 768]) {
+      await page.setViewportSize({ width, height: 812 });
+      await page.goto('/');
+      const hamburger = page.locator('#hamburger');
+      const hamburgerBox = await hamburger.boundingBox();
+      expect(hamburgerBox).not.toBeNull();
+      expect(Math.abs(hamburgerBox.x + hamburgerBox.width / 2 - width / 2)).toBeLessThanOrEqual(1);
+
+      await hamburger.click();
+      const menu = page.locator('#nav-menu');
+      const menuBox = await menu.boundingBox();
+      expect(menuBox).not.toBeNull();
+      const menuCenter = menuBox.x + menuBox.width / 2;
+      expect(Math.abs(menuCenter - width / 2)).toBeLessThanOrEqual(1);
+
+      for (const link of await menu.locator('a').all()) {
+        const linkBox = await link.boundingBox();
+        expect(linkBox).not.toBeNull();
+        expect(Math.abs(linkBox.x + linkBox.width / 2 - menuCenter)).toBeLessThanOrEqual(1);
+      }
+    }
+  });
+
   test('mobile menu routes About and Work to standalone pages', async ({ page, viewport }) => {
     if (viewport.width > 768) {
       test.skip();
