@@ -46,6 +46,7 @@
 }
 
 #theme-toggle {
+  grid-column: 3;
   justify-self: end;
   background: none;
   border: 1px solid var(--home-line);
@@ -341,5 +342,8 @@
 
   .hamburger {
     display: flex;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }

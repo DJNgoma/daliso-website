@@ -86,7 +86,7 @@ test.describe('Navbar consistency', () => {
       test.skip();
     }
 
-    for (const width of [375, 768]) {
+    for (const width of [375, 700, 768]) {
       await page.setViewportSize({ width, height: 812 });
       await page.goto('/');
       const hamburger = page.locator('#hamburger');
@@ -106,6 +106,28 @@ test.describe('Navbar consistency', () => {
         expect(linkBox).not.toBeNull();
         expect(Math.abs(linkBox.x + linkBox.width / 2 - menuCenter)).toBeLessThanOrEqual(1);
       }
+    }
+  });
+
+  test('mobile menu stays centred when the deferred stylesheet is unavailable', async ({ page, viewport }) => {
+    if (viewport.width > 768) {
+      test.skip();
+    }
+
+    await page.route('**/css/home.css*', (route) => route.abort());
+
+    for (const width of [375, 700, 768]) {
+      await page.setViewportSize({ width, height: 812 });
+      await page.goto('/');
+      const hamburger = page.locator('#hamburger');
+      const hamburgerBox = await hamburger.boundingBox();
+      expect(hamburgerBox).not.toBeNull();
+      expect(Math.abs(hamburgerBox.x + hamburgerBox.width / 2 - width / 2)).toBeLessThanOrEqual(1);
+
+      await hamburger.click();
+      const menuBox = await page.locator('#nav-menu').boundingBox();
+      expect(menuBox).not.toBeNull();
+      expect(Math.abs(menuBox.x + menuBox.width / 2 - width / 2)).toBeLessThanOrEqual(1);
     }
   });
 
