@@ -1,6 +1,6 @@
 # Performance Guardrails
 
-Updated: 26 April 2026
+Updated: 20 July 2026
 
 ## Live Snapshot
 
@@ -47,10 +47,21 @@ The homepage route links worked in preview but failed on the live site in Safari
 - That stale module imported `nav-menu.js?v=20260403-perf`, which rewrote `About` and `Work` back to `/#about` and `/#work`.
 - The fix was to change shared JS cache headers to `max-age=0, must-revalidate`, rotate the shared entrypoint version again, and add a guardrail test in `tests/performance-guardrails.spec.mjs` so unfingerprinted JS cannot be marked immutable again.
 
+## Deferred Homepage CSS Fallback: 20 July 2026
+
+The mobile menu appeared centred in normal automated checks but remained offset in the in-app browser. The browser was rendering the homepage's stale inline CSS fallback instead of the newer grid rules from deferred `css/home.css`.
+
+- Blocking `css/home.css` reproduced the reported offset exactly: the hamburger sat `14.4` CSS pixels to the right of the dropdown centre, which became roughly `34` physical pixels at the captured device scale.
+- The hamburger is now anchored directly to the viewport centre in both the generated component CSS and the inline homepage fallback.
+- The theme toggle is explicitly pinned to grid column three so centring the hamburger cannot move or cover it.
+- The homepage CSS query version was rotated to `20260720-menu-alignment`.
+- `tests/navbar.spec.js` now validates both the normal stylesheet path and a deliberately blocked-stylesheet fallback at `375`, `700`, and `768` pixels.
+
 ## Guardrails
 
 - Keep shared CSS source files in `css/`, but always serve the generated bundle in `css/style.css`.
 - Keep the homepage on one generated `css/home.css` bundle for the full page, with only a small inline first-viewport block for early hero paint.
+- Treat the inline homepage navbar rules as a supported fallback: changes to its geometry must also pass the browser test with `css/home.css` blocked.
 - Keep shared JS entrypoints revalidating unless the repo moves to content-hashed filenames for public modules.
 - Do not reintroduce JS-driven image swaps for above-the-fold assets.
 - Keep the homepage hero and nav logo in modern, tightly sized formats.

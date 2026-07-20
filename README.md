@@ -147,6 +147,7 @@ The repo relies on query-string versioning for shared entrypoints such as `js/ma
 
 - Shared CSS and JS entrypoints must stay revalidating: `Cache-Control: public, max-age=0, must-revalidate`.
 - The homepage may inline a small first-viewport CSS block, but the full page styling should still come from the generated `css/home.css` bundle.
+- Keep critical navbar geometry aligned between the inline homepage CSS and `css/home.css`; the browser suite deliberately blocks the deferred bundle to verify the fallback independently.
 - HTML responses keep `Cache-Control: public, max-age=0, must-revalidate, no-transform` from the Cloudflare Pages middleware so Cloudflare does not rewrite email links back into the page.
 - Discovery `Link` headers and `Vary: Accept` belong on HTML responses only; keep them out of `/css/*`, `/js/*`, `/assets/*`, and font responses.
 - Custom fonts use `font-display: optional` so slow font delivery does not hold critical text paint hostage on mobile Lighthouse runs.

@@ -1,5 +1,20 @@
 # Changelog
 
+## 2026-07-20
+
+### Navigation
+- Centred the mobile hamburger independently of the unequal logo and theme-toggle widths
+- Kept the dropdown panel and every navigation label aligned to the same viewport centre from 375px through the 768px breakpoint
+
+### Resilience
+- Fixed the stale inline-CSS fallback used when the deferred homepage stylesheet is slow or is not promoted from preload to stylesheet
+- Pinned the theme toggle to the right grid column so the centred hamburger cannot overlap or intercept it
+- Rotated the homepage stylesheet version to prevent older cached layout rules surviving the release
+
+### Tests
+- Added geometry regression coverage for the hamburger, dropdown panel, and navigation labels at phone and tablet widths
+- Added a fallback test that deliberately blocks `css/home.css` and verifies the menu remains centred and interactive
+
 ## 2026-04-10
 
 ### Caching
