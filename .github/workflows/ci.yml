@@ -23,7 +23,8 @@ concurrency:
 jobs:
   test:
     name: Validate site
-    runs-on: ubuntu-latest
+    # Playwright 1.58.2 supports Ubuntu 24.04, not the newer ubuntu-latest image.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
 
     steps:
