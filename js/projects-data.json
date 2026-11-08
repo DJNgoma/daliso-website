@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-25T21:57:48.727Z",
+  "generatedAt": "2026-11-08T22:03:11.352Z",
   "source": {
     "label": "Developer folder",
     "scanMode": "top-level-plus-curated-at-labs"
@@ -99,7 +99,7 @@
       "status": "Operational",
       "summary": "Private Cloudflare Workers control plane for managing email routing aliases and audit logs.",
       "order": 20,
-      "lastUpdated": "2026-07-07T16:56:58.000Z",
+      "lastUpdated": "2026-11-05T07:44:12.000Z",
       "freshnessSource": "git",
       "links": []
     },
@@ -111,7 +111,7 @@
       "status": "Live",
       "summary": "Personal website and publishing surface for Daliso Ngoma across work, podcasting, and software projects.",
       "order": 20,
-      "lastUpdated": "2026-10-19T03:36:57.000Z",
+      "lastUpdated": "2026-11-02T12:22:58.000Z",
       "freshnessSource": "git",
       "links": [
         {
